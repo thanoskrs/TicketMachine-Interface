@@ -72,31 +72,58 @@
         app:layout_constraintStart_toStartOf="@+id/cardButton" />
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:id="@+id/ticketInfoButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="11dp"
         android:layout_marginTop="232dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#80FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/ticketButton"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_info_32" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:id="@+id/cardInfoButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="11dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="252dp"
+        android:layout_marginBottom="260dp"
         android:backgroundTint="#80FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/cardButton"
         app:srcCompat="@drawable/ic_baseline_info_32" />
+
+    <ImageButton
+        android:id="@+id/englishButton"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:padding="6dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardInfoButton"
+        app:layout_constraintVertical_bias="0.476"
+        app:srcCompat="@drawable/english" />
+
+    <TextView
+        android:id="@+id/language_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="EN"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/englishButton"
+        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
