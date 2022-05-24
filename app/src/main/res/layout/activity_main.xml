@@ -30,12 +30,21 @@
         android:id="@+id/ticketInfoText"
         android:layout_width="260dp"
         android:layout_height="158dp"
-        android:backgroundTint="#FFFFFF"
-        android:text="Epanafortishh"
+        android:background="@drawable/background_rectangle_info"
+        android:text="\nΠατήστε εδώ εάν θέλετε να εκδόσετε νέο εισιτήριο ή να επαναφορτίσετε κάποιο υπάρχον εισιτήριο."
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#100D0D"
+        android:textIsSelectable="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/ticketButton"
         app:layout_constraintEnd_toEndOf="@+id/ticketButton"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/ticketButton"
-        app:layout_constraintTop_toTopOf="@+id/ticketButton" />
+        app:layout_constraintTop_toTopOf="@+id/ticketButton"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/cardButton"
@@ -54,12 +63,32 @@
         app:srcCompat="@drawable/athena_card" />
 
     <TextView
+        android:id="@+id/cardInfoText"
+        android:layout_width="260dp"
+        android:layout_height="158dp"
+        android:background="@drawable/background_rectangle_info"
+        android:text="\nΠατήστε εδώ εάν θέλετε να επαναφορτίσετε την κάρτα σας. (Προσωποποιημένη, Ανώνυμη, Κάρτα Ανέργων)"
+        android:textAlignment="center"
+        android:textColor="#100D0D"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/cardButton"
+        app:layout_constraintEnd_toEndOf="@+id/cardButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cardButton"
+        app:layout_constraintTop_toTopOf="@+id/cardButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <TextView
         android:id="@+id/buy_or_recharge_ticket_text"
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
         android:background="@color/athena_blue"
         android:text="Αγορά ή Επαναφόρτιση \nΕισιτηρίου"
+        android:visibility="visible"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
@@ -75,6 +104,7 @@
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
         android:background="@color/athena_blue"
+        android:visibility="visible"
         android:text="Επαναφόρτιση \nΚάρτας"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -97,7 +127,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/ticketButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_info_32" />
+        app:srcCompat="@drawable/info_icon" />
 
     <ImageButton
         android:id="@+id/cardInfoButton"
@@ -111,7 +141,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/cardButton"
-        app:srcCompat="@drawable/ic_baseline_info_32" />
+        app:srcCompat="@drawable/info_icon" />
 
     <ImageButton
         android:id="@+id/englishButton"

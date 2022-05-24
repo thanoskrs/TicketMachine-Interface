@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -26,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
         TextView languageText = (TextView) findViewById(R.id.language_text);
         TextView ticketRechargeText = (TextView) findViewById(R.id.buy_or_recharge_ticket_text);
         TextView cardRechargeText = (TextView) findViewById(R.id.recharge_card_text);
-        TextView tickeInfoText = (TextView) findViewById(R.id.ticketInfoText);
+        TextView ticketInfoText = (TextView) findViewById(R.id.ticketInfoText);
+        TextView cardInfoText = (TextView) findViewById(R.id.cardInfoText);
 
         ticketBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,16 +47,13 @@ public class MainActivity extends AppCompatActivity {
         englishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("Lan0", languageText.getText().toString());
 
                 if (languageText.getText().toString().equals("EN")) {
-                    Log.e("Lan1", "ok");
                     languageText.setText("GR");
                     englishBtn.setImageResource(R.drawable.greek);
                     ticketRechargeText.setText("Buy or Recharge \nTicket");
                     cardRechargeText.setText("Recharge \nCard");
                 } else {
-                    Log.e("Lan2", "ok");
                     languageText.setText("EN");
                     englishBtn.setImageResource(R.drawable.english);
                     ticketRechargeText.setText("Αγορά ή Επαναφόρτιση \nΕισιτηρίου");
@@ -66,11 +65,31 @@ public class MainActivity extends AppCompatActivity {
         ticketInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ticketInfoBtn.getVisibility() == View.INVISIBLE) {
-                    tickeInfoText.setVisibility(View.VISIBLE);
+                if (ticketInfoText.getVisibility() == View.INVISIBLE) {
+                    ticketInfoText.setVisibility(View.VISIBLE);
+                    ticketRechargeText.setVisibility(View.INVISIBLE);
+                    ticketInfoBtn.setImageResource(R.drawable.info_pressed_icon);
                 }
                 else {
-                    tickeInfoText.setVisibility(View.INVISIBLE);
+                    ticketInfoText.setVisibility(View.INVISIBLE);
+                    ticketRechargeText.setVisibility(View.VISIBLE);
+                    ticketInfoBtn.setImageResource(R.drawable.info_icon);
+                }
+            }
+        });
+
+        cardInfoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (cardInfoText.getVisibility() == View.INVISIBLE) {
+                    cardInfoText.setVisibility(View.VISIBLE);
+                    cardRechargeText.setVisibility(View.INVISIBLE);
+                    cardInfoBtn.setImageResource(R.drawable.info_pressed_icon);
+                }
+                else {
+                    cardInfoText.setVisibility(View.INVISIBLE);
+                    cardRechargeText.setVisibility(View.VISIBLE);
+                    cardInfoBtn.setImageResource(R.drawable.info_icon);
                 }
             }
         });
