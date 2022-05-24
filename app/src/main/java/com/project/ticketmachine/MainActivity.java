@@ -20,9 +20,13 @@ public class MainActivity extends AppCompatActivity {
         ImageButton ticketBtn = (ImageButton) findViewById(R.id.ticketButton);
         ImageButton cardBtn = (ImageButton) findViewById(R.id.cardButton);
         ImageButton englishBtn = (ImageButton) findViewById(R.id.englishButton);
+        ImageButton ticketInfoBtn = (ImageButton) findViewById(R.id.ticketInfoButton);
+        ImageButton cardInfoBtn = (ImageButton) findViewById(R.id.cardInfoButton);
+
         TextView languageText = (TextView) findViewById(R.id.language_text);
         TextView ticketRechargeText = (TextView) findViewById(R.id.buy_or_recharge_ticket_text);
         TextView cardRechargeText = (TextView) findViewById(R.id.recharge_card_text);
+        TextView tickeInfoText = (TextView) findViewById(R.id.ticketInfoText);
 
         ticketBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +59,18 @@ public class MainActivity extends AppCompatActivity {
                     englishBtn.setImageResource(R.drawable.english);
                     ticketRechargeText.setText("Αγορά ή Επαναφόρτιση \nΕισιτηρίου");
                     cardRechargeText.setText("Επαναφόρτιση \nΚάρτας");
+                }
+            }
+        });
+
+        ticketInfoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ticketInfoBtn.getVisibility() == View.INVISIBLE) {
+                    tickeInfoText.setVisibility(View.VISIBLE);
+                }
+                else {
+                    tickeInfoText.setVisibility(View.INVISIBLE);
                 }
             }
         });

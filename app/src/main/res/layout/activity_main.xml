@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
     tools:context=".MainActivity">
 
 
@@ -22,6 +24,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/athena_ticket" />
+
+
+    <TextView
+        android:id="@+id/ticketInfoText"
+        android:layout_width="260dp"
+        android:layout_height="158dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Epanafortishh"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/ticketButton"
+        app:layout_constraintStart_toStartOf="@+id/ticketButton"
+        app:layout_constraintTop_toTopOf="@+id/ticketButton" />
 
     <ImageButton
         android:id="@+id/cardButton"
@@ -137,5 +151,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home_screen" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
