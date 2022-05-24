@@ -51,11 +51,15 @@ public class MainActivity extends AppCompatActivity {
                 if (languageText.getText().toString().equals("EN")) {
                     languageText.setText("GR");
                     englishBtn.setImageResource(R.drawable.greek);
+                    ticketInfoText.setText("\nPress here if you want to buy a new ticket or recharge existing ticket");
+                    cardInfoText.setText("\nPress here if you want to recharge your card. (Personalized, Anonymous, Unemployed Card)");
                     ticketRechargeText.setText("Buy or Recharge \nTicket");
                     cardRechargeText.setText("Recharge \nCard");
                 } else {
                     languageText.setText("EN");
                     englishBtn.setImageResource(R.drawable.english);
+                    ticketInfoText.setText("\nΠατήστε εδώ εάν θέλετε να εκδόσετε νέο εισιτήριο ή να επαναφορτίσετε κάποιο υπάρχον εισιτήριο.");
+                    cardInfoText.setText("\nΠατήστε εδώ εάν θέλετε να επαναφορτίσετε την κάρτα σας. (Προσωποποιημένη, Ανώνυμη, Κάρτα Ανέργων)");
                     ticketRechargeText.setText("Αγορά ή Επαναφόρτιση \nΕισιτηρίου");
                     cardRechargeText.setText("Επαναφόρτιση \nΚάρτας");
                 }
