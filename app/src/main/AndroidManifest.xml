@@ -14,6 +14,10 @@
         android:theme="@style/Theme.TicketMachine"
         tools:targetApi="31">
         <activity
+            android:name=".ProductScreen"
+            android:exported="false"
+            android:label="@string/title_activity_product_screen" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

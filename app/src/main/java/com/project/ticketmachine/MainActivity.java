@@ -2,6 +2,7 @@ package com.project.ticketmachine;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,7 +41,11 @@ public class MainActivity extends AppCompatActivity {
         cardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Card Button", Toast.LENGTH_SHORT).show();
+                Intent myIntent = new Intent(MainActivity.this, ProductScreen.class);
+                //myIntent.putExtra("key", value); //Optional parameters
+                MainActivity.this.startActivity(myIntent);
+                //Toast.makeText(getApplicationContext(), "Card Button", Toast.LENGTH_SHORT).show();
+
             }
         });
 

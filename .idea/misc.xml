@@ -4,10 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/drawable/background_rectangle_info.xml" value="0.1985" />
+        <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/drawable/bottom_nav_item_color.xml" value="0.106" />
         <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.1995" />
+        <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.258" />
+        <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.258" />
+        <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.258" />
         <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/drawable/info_icon.xml" value="0.1995" />
         <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/drawable/info_pressed_icon.xml" value="0.1995" />
         <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/layout/activity_product_screen.xml" value="0.33" />
+        <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/layout/fragment_airport.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/layout/fragment_home.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/layout/fragment_notifications.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/layout/fragment_uniform.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/menu/bottom_nav_menu.xml" value="0.33" />
       </map>
     </option>
   </component>
