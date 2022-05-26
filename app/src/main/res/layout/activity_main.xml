@@ -170,17 +170,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardButton" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginBottom="112dp"
-        android:scaleType="fitStart"
-        app:layout_constraintBottom_toTopOf="@+id/ticketButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home_screen" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
