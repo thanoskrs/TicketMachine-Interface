@@ -9,22 +9,79 @@
     tools:context=".MainActivity">
 
 
+    <TextView
+        android:id="@+id/cardInfoText"
+        android:layout_width="260dp"
+        android:layout_height="158dp"
+        android:background="@drawable/background_rectangle_info"
+        android:text="\nΠατήστε εδώ εάν θέλετε να επαναφορτίσετε την κάρτα σας. (Προσωποποιημένη, Ανώνυμη, Κάρτα Ανέργων)"
+        android:textAlignment="center"
+        android:textColor="#100D0D"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/cardButton"
+        app:layout_constraintEnd_toEndOf="@+id/cardButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cardButton"
+        app:layout_constraintTop_toTopOf="@+id/cardButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/englishButton"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:padding="6dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/english"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="81dp" />
+
+    <ImageButton
+        android:id="@+id/ticketInfoButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#80FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ticketButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/info_icon" />
+
+    <ImageButton
+        android:id="@+id/cardButton"
+        android:layout_width="260dp"
+        android:layout_height="158dp"
+        android:layout_marginBottom="152dp"
+        android:adjustViewBounds="false"
+        android:backgroundTint="@color/athena_blue"
+        android:contextClickable="false"
+        android:padding="7dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/athena_card" />
+
     <ImageButton
         android:id="@+id/ticketButton"
         android:layout_width="260dp"
         android:layout_height="158dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="220dp"
         android:adjustViewBounds="false"
         android:backgroundTint="@color/athena_blue"
         android:cropToPadding="false"
         android:padding="7dp"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/athena_ticket" />
-
 
     <TextView
         android:id="@+id/ticketInfoText"
@@ -47,39 +104,46 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/cardButton"
-        android:layout_width="260dp"
-        android:layout_height="158dp"
-        android:layout_marginBottom="200dp"
-        android:adjustViewBounds="false"
-        android:backgroundTint="@color/athena_blue"
-        android:contextClickable="false"
-        android:padding="7dp"
-        android:scaleType="centerInside"
+        android:id="@+id/cardInfoButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="212dp"
+        android:backgroundTint="#80FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/athena_card" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/cardButton"
+        app:srcCompat="@drawable/info_icon" />
 
     <TextView
-        android:id="@+id/cardInfoText"
-        android:layout_width="260dp"
-        android:layout_height="158dp"
-        android:background="@drawable/background_rectangle_info"
-        android:text="\nΠατήστε εδώ εάν θέλετε να επαναφορτίσετε την κάρτα σας. (Προσωποποιημένη, Ανώνυμη, Κάρτα Ανέργων)"
+        android:id="@+id/recharge_card_text"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/athena_blue"
+        android:text="Επαναφόρτιση \nΚάρτας"
         android:textAlignment="center"
-        android:textColor="#100D0D"
-        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/cardButton"
         app:layout_constraintEnd_toEndOf="@+id/cardButton"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/cardButton"
-        app:layout_constraintTop_toTopOf="@+id/cardButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="@+id/cardButton" />
 
+    <TextView
+        android:id="@+id/language_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EN"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="59dp" />
 
     <TextView
         android:id="@+id/buy_or_recharge_ticket_text"
@@ -88,89 +152,15 @@
         android:layout_marginBottom="8dp"
         android:background="@color/athena_blue"
         android:text="Αγορά ή Επαναφόρτιση \nΕισιτηρίου"
-        android:visibility="visible"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/ticketButton"
         app:layout_constraintEnd_toEndOf="@+id/ticketButton"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="@+id/ticketButton" />
-
-    <TextView
-        android:id="@+id/recharge_card_text"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/athena_blue"
-        android:visibility="visible"
-        android:text="Επαναφόρτιση \nΚάρτας"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/cardButton"
-        app:layout_constraintEnd_toEndOf="@+id/cardButton"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="@+id/cardButton" />
-
-    <ImageButton
-        android:id="@+id/ticketInfoButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="232dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="#80FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/ticketButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/info_icon" />
-
-    <ImageButton
-        android:id="@+id/cardInfoButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="260dp"
-        android:backgroundTint="#80FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/cardButton"
-        app:srcCompat="@drawable/info_icon" />
-
-    <ImageButton
-        android:id="@+id/englishButton"
-        android:layout_width="70dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="16dp"
-        android:padding="6dp"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardInfoButton"
-        app:layout_constraintVertical_bias="0.476"
-        app:srcCompat="@drawable/english" />
-
-    <TextView
-        android:id="@+id/language_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="EN"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/englishButton"
-        app:layout_constraintHorizontal_bias="0.976"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardButton" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
