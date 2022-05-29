@@ -170,6 +170,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardButton" />
 
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/card_barcode"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/lite_grey1"
+        app:layout_constraintTop_toBottomOf="@id/language_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+    </com.google.android.material.textfield.TextInputEditText>
+
+    <Button
+        android:id="@+id/send_barcode"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="ok"
+        android:backgroundTint="@color/green"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_barcode"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    </Button>
+
 
 
 

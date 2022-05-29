@@ -5,6 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.uniform.UniformFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+
 
     <TextView
         android:id="@+id/text_home"
@@ -455,7 +461,465 @@
 
     </com.google.android.material.button.MaterialButton>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ticket_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+
+        <TextView
+            android:id="@+id/text_home_ticket"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:backgroundTint="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider_ticket"
+            style="@style/Divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="match_parent"
+            tools:ignore="MissingConstraints">
+
+        </View>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/box1_ticket"
+            style="?attr/materialButtonOutlinedStyle"
+            app:strokeColor="@color/athena_blue"
+            app:strokeWidth="2dp"
+
+            android:layout_width="161dp"
+            android:layout_height="106dp"
+
+            android:backgroundTint="@color/lite_grey"
+            app:layout_constraintTop_toBottomOf="@id/text_home_ticket"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintEnd_toEndOf="@id/divider_ticket"
+            app:cornerRadius="8dp"
+
+            tools:ignore="MissingConstraints">
+        </com.google.android.material.button.MaterialButton>
+
+        <TextView
+            android:id="@+id/duration_box1_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="90Λεπτά"
+            android:textAlignment="center"
+            android:textColor="@color/athena_blue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/box1_ticket"
+            app:layout_constraintEnd_toEndOf="@id/box1_ticket"
+
+            app:layout_constraintStart_toStartOf="@id/box1_ticket"
+            app:layout_constraintTop_toTopOf="@id/box1_ticket"
+            app:layout_constraintVertical_bias="0.337" />
+
+        <TextView
+            android:id="@+id/cost_box1_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Τιμή : 1.20$"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/box1_ticket"
+            app:layout_constraintEnd_toEndOf="@id/box1_ticket"
+            app:layout_constraintStart_toStartOf="@id/box1_ticket"
+            app:layout_constraintTop_toTopOf="@id/box1_ticket"
+            app:layout_constraintVertical_bias="0.838" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/box2_ticket"
+            style="?attr/materialButtonOutlinedStyle"
+            app:strokeColor="@color/athena_blue"
+            app:strokeWidth="2dp"
+            android:layout_width="161dp"
+            android:layout_height="106dp"
+
+
+            app:layout_constraintTop_toBottomOf="@id/text_home_ticket"
+            app:cornerRadius="8dp"
+            app:layout_constraintStart_toStartOf="@id/divider_ticket"
+
+            app:layout_constraintEnd_toEndOf="parent">
+
+        </com.google.android.material.button.MaterialButton>
+
+
+        <!--    First horizontal divider -->
+
+        <View
+            android:id="@+id/divider_horizontal1_ticket"
+            style="@style/Divider_Horizontal"
+            app:layout_constraintTop_toBottomOf="@id/box1_ticket"
+            android:layout_width="match_parent"
+            tools:ignore="MissingConstraints">
+
+        </View>
+
+        <TextView
+            android:id="@+id/duration_box2_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30 Ημερών"
+            android:textAlignment="center"
+            android:textColor="@color/athena_blue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/box2_ticket"
+            app:layout_constraintEnd_toEndOf="@id/box2_ticket"
+
+            app:layout_constraintStart_toStartOf="@id/box2_ticket"
+            app:layout_constraintTop_toTopOf="@id/box2_ticket"
+            app:layout_constraintVertical_bias="0.337" />
+
+        <TextView
+            android:id="@+id/cost_box2_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Τιμή : 27$"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/box2_ticket"
+            app:layout_constraintEnd_toEndOf="@id/box2_ticket"
+            app:layout_constraintStart_toStartOf="@id/box2_ticket"
+            app:layout_constraintTop_toTopOf="@id/box1_ticket"
+            app:layout_constraintVertical_bias="0.838" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/box3_ticket"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="161dp"
+            android:layout_height="106dp"
+            app:backgroundTint="@android:color/transparent"
+            app:cornerRadius="8dp"
+            app:layout_constraintTop_toBottomOf="@id/divider_horizontal1_ticket"
+            app:rippleColor="#33AAAAAA"
+            app:strokeColor="@color/athena_blue"
+            app:strokeWidth="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintEnd_toEndOf="@id/divider_ticket"
+
+            >
+
+        </com.google.android.material.button.MaterialButton>
+
+        <TextView
+            android:id="@+id/duration_box3_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 Διαδρομές"
+            android:textAlignment="center"
+            android:textColor="@color/athena_blue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/box3_ticket"
+            app:layout_constraintEnd_toEndOf="@id/box3_ticket"
+
+            app:layout_constraintStart_toStartOf="@id/box3_ticket"
+            app:layout_constraintTop_toTopOf="@id/box3_ticket"
+            app:layout_constraintVertical_bias="0.337" />
+
+        <TextView
+            android:id="@+id/cost_box3_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Τιμή : 2.30$"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/box3_ticket"
+            app:layout_constraintEnd_toEndOf="@id/box3_ticket"
+            app:layout_constraintStart_toStartOf="@id/box3_ticket"
+            app:layout_constraintTop_toTopOf="@id/box3_ticket"
+            app:layout_constraintVertical_bias="0.838" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/box4_ticket"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="161dp"
+            android:layout_height="106dp"
+            app:backgroundTint="@android:color/transparent"
+            app:cornerRadius="8dp"
+            app:layout_constraintTop_toBottomOf="@id/divider_horizontal1_ticket"
+            app:strokeColor="@color/athena_blue"
+            app:strokeWidth="2dp"
+            app:layout_constraintStart_toStartOf="@id/divider_ticket"
+
+            app:layout_constraintEnd_toEndOf="parent">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <TextView
+            android:id="@+id/duration_box4_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="90 Ημερών"
+            android:textAlignment="center"
+            android:textColor="@color/athena_blue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/box4_ticket"
+            app:layout_constraintEnd_toEndOf="@id/box4_ticket"
+
+            app:layout_constraintStart_toStartOf="@id/box4_ticket"
+            app:layout_constraintTop_toTopOf="@id/box4_ticket"
+            app:layout_constraintVertical_bias="0.337" />
+
+        <TextView
+            android:id="@+id/cost_box4_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Τιμή : 78$"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/box4_ticket"
+            app:layout_constraintEnd_toEndOf="@id/box4_ticket"
+            app:layout_constraintStart_toStartOf="@id/box4_ticket"
+            app:layout_constraintTop_toTopOf="@id/box4_ticket"
+            app:layout_constraintVertical_bias="0.838" />
+
+        <!--    Second horizontal divider -->
+
+        <View
+            android:id="@+id/divider_horizontal2_ticket"
+            style="@style/Divider_Horizontal"
+            app:layout_constraintTop_toBottomOf="@id/box4_ticket"
+            android:layout_width="match_parent"
+            tools:ignore="MissingConstraints">
+
+        </View>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/box5_ticket"
+            style="?attr/materialButtonOutlinedStyle"
+            app:strokeColor="@color/athena_blue"
+            app:strokeWidth="2dp"
+            android:layout_width="161dp"
+            android:layout_height="106dp"
+            app:backgroundTint="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@id/divider_horizontal2_ticket"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintEnd_toEndOf="@id/divider_ticket"
+            app:cornerRadius="8dp"
+            >
+
+        </com.google.android.material.button.MaterialButton>
+
+        <TextView
+            android:id="@+id/duration_box5_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5 Διαδρομές"
+            android:textAlignment="center"
+            android:textColor="@color/athena_blue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/box5_ticket"
+            app:layout_constraintEnd_toEndOf="@id/box5_ticket"
+
+            app:layout_constraintStart_toStartOf="@id/box5_ticket"
+            app:layout_constraintTop_toTopOf="@id/box5_ticket"
+            app:layout_constraintVertical_bias="0.337" />
+
+        <TextView
+            android:id="@+id/cost_box5_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Τιμή : 8.20$"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/box5_ticket"
+            app:layout_constraintEnd_toEndOf="@id/box5_ticket"
+            app:layout_constraintStart_toStartOf="@id/box5_ticket"
+            app:layout_constraintTop_toTopOf="@id/box5_ticket"
+            app:layout_constraintVertical_bias="0.838" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/box6_ticket"
+            style="?attr/materialButtonOutlinedStyle"
+            app:strokeColor="@color/athena_blue"
+            app:strokeWidth="2dp"
+            android:layout_width="161dp"
+            android:layout_height="106dp"
+            app:backgroundTint="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@id/divider_horizontal2_ticket"
+            app:cornerRadius="8dp"
+            app:layout_constraintStart_toStartOf="@id/divider_ticket"
+
+            app:layout_constraintEnd_toEndOf="parent">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <TextView
+            android:id="@+id/duration_box6_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="180 Ημερών"
+            android:textAlignment="center"
+            android:textColor="@color/athena_blue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/box6_ticket"
+            app:layout_constraintEnd_toEndOf="@id/box6_ticket"
+
+            app:layout_constraintStart_toStartOf="@id/box6_ticket"
+            app:layout_constraintTop_toTopOf="@id/box6_ticket"
+            app:layout_constraintVertical_bias="0.337" />
+
+        <TextView
+            android:id="@+id/cost_box6_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Τιμή : 155$"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/box6_ticket"
+            app:layout_constraintEnd_toEndOf="@id/box6_ticket"
+            app:layout_constraintStart_toStartOf="@id/box6_ticket"
+            app:layout_constraintTop_toTopOf="@id/box6_ticket"
+            app:layout_constraintVertical_bias="0.838" />
+
+        <!--    Third horizontal divider -->
+
+        <View
+            android:id="@+id/divider_horizontal3_ticket"
+            style="@style/Divider_Horizontal"
+            app:layout_constraintTop_toBottomOf="@id/box6_ticket"
+            android:layout_width="match_parent"
+            tools:ignore="MissingConstraints">
+
+        </View>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/box7_ticket"
+            style="?attr/materialButtonOutlinedStyle"
+            app:strokeColor="@color/athena_blue"
+            app:strokeWidth="2dp"
+            android:layout_width="161dp"
+            android:layout_height="106dp"
+            app:cornerRadius="8dp"
+            app:backgroundTint="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@id/divider_horizontal3_ticket"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintEnd_toEndOf="@id/divider_ticket"
+            >
+
+        </com.google.android.material.button.MaterialButton>
+
+        <TextView
+            android:id="@+id/duration_box7_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10+1\nΔιαδρομές"
+            android:textAlignment="center"
+            android:textColor="@color/athena_blue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/box7_ticket"
+            app:layout_constraintEnd_toEndOf="@id/box7_ticket"
+
+
+            app:layout_constraintStart_toStartOf="@id/box7_ticket"
+            app:layout_constraintTop_toTopOf="@id/box7_ticket"
+            app:layout_constraintVertical_bias="0.158" />
+
+        <TextView
+            android:id="@+id/cost_box7_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Τιμή : 12$"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/box7_ticket"
+            app:layout_constraintEnd_toEndOf="@id/box7_ticket"
+            app:layout_constraintStart_toStartOf="@id/box7_ticket"
+            app:layout_constraintTop_toTopOf="@id/box7_ticket"
+            app:layout_constraintVertical_bias="0.838" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/box8_ticket"
+            style="?attr/materialButtonOutlinedStyle"
+            app:strokeColor="@color/athena_blue"
+            app:strokeWidth="2dp"
+            android:layout_width="161dp"
+            android:layout_height="106dp"
+            app:cornerRadius="8dp"
+            app:backgroundTint="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@id/divider_horizontal3_ticket"
+            app:layout_constraintStart_toStartOf="@id/divider_ticket"
+
+            app:layout_constraintEnd_toEndOf="parent">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <TextView
+            android:id="@+id/duration_box8_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="365 Ημερών"
+            android:textAlignment="center"
+            android:textColor="@color/athena_blue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/box8_ticket"
+            app:layout_constraintEnd_toEndOf="@id/box8_ticket"
+
+
+            app:layout_constraintStart_toStartOf="@id/box8_ticket"
+            app:layout_constraintTop_toTopOf="@id/box8_ticket"
+            app:layout_constraintVertical_bias="0.337" />
+
+        <TextView
+            android:id="@+id/cost_box8_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Τιμή : 300$"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/box8_ticket"
+            app:layout_constraintEnd_toEndOf="@id/box8_ticket"
+            app:layout_constraintStart_toStartOf="@id/box8_ticket"
+            app:layout_constraintTop_toTopOf="@id/box8_ticket"
+            app:layout_constraintVertical_bias="0.838" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancel_button_ticket"
+            style="?attr/materialButtonOutlinedStyle"
+            app:strokeColor="@color/white"
+            android:backgroundTint="@color/red"
+            app:strokeWidth="2dp"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            app:cornerRadius="8dp"
+            android:text="Ακύρωση"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/box8_ticket"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            >
+
+        </com.google.android.material.button.MaterialButton>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

@@ -16,13 +16,25 @@ import com.project.ticketmachine.databinding.ActivityProductScreenBinding;
 public class ProductScreen extends AppCompatActivity {
 
     private ActivityProductScreenBinding binding;
+    private String product_kind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Bundle extras = getIntent().getExtras();
+        System.out.println(extras.get("key"));
+        if (extras.get("key").equals("ticket")){
+            product_kind = "ticket";
+        }
+        else{
+            product_kind = "card";
+        }
+
         binding = ActivityProductScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
 
         binding.cancelRepeat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +52,10 @@ public class ProductScreen extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_product_screen);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+    }
+
+    public String getProduct_kind() {
+        return product_kind;
     }
 
 }

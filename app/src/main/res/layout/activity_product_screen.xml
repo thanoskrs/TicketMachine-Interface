@@ -63,7 +63,7 @@
                 tools:ignore="MissingConstraints">
 
             </View>
-
+<!--thanosaueboasa13-->
             <TextView
                 android:id="@+id/repeat"
                 android:layout_width="wrap_content"
@@ -89,6 +89,7 @@
                 android:background="@color/lite_grey1">
 
                 <TextView
+                    android:id="@+id/ticket_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -103,6 +104,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/ticket_duration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -117,7 +119,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-
+                    android:id="@+id/ticket_cost"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"

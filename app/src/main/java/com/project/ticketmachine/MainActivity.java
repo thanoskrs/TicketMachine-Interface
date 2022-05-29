@@ -4,14 +4,29 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoDatabase;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
 public class MainActivity extends AppCompatActivity {
+
+    public static final String MainServerIp = "10.0.2.2";
+    public static final int MainServerPort = 8080;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +45,16 @@ public class MainActivity extends AppCompatActivity {
         TextView cardRechargeText = (TextView) findViewById(R.id.recharge_card_text);
         TextView ticketInfoText = (TextView) findViewById(R.id.ticketInfoText);
         TextView cardInfoText = (TextView) findViewById(R.id.cardInfoText);
+        Button send_barcode = (Button) findViewById(R.id.send_barcode);
+        TextInputEditText inputCode = (TextInputEditText) findViewById(R.id.card_barcode);
 
         ticketBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Ticket Button", Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(getApplicationContext(), "Ticket Button", Toast.LENGTH_SHORT).show();
+                Intent myIntent = new Intent(MainActivity.this, ProductScreen.class);
+                myIntent.putExtra("key", "ticket"); //Optional parameters
+                MainActivity.this.startActivity(myIntent);
             }
         });
 
@@ -42,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(MainActivity.this, ProductScreen.class);
-                //myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("key", "card"); //Optional parameters
                 MainActivity.this.startActivity(myIntent);
                 //Toast.makeText(getApplicationContext(), "Card Button", Toast.LENGTH_SHORT).show();
 
@@ -102,7 +122,52 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        send_barcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //send to the server the barcode code
+                String[] params = new String[2];
+                params[0] = inputCode.toString();
+                CheckCode checkCode = new CheckCode();
+                checkCode.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+
+            }
+        });
     }
 
+    private class CheckCode extends AsyncTask<String, String, String>{
+        private Socket socket = null;
+        private ObjectOutputStream objectOutputStream;
+        private ObjectInputStream objectInputStream;
+
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            try {
+                socket = new Socket(MainServerIp , MainServerPort);
+
+                objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                objectInputStream = new ObjectInputStream(socket.getInputStream());
+
+                objectOutputStream.writeUTF("check");
+                objectOutputStream.flush();
+
+                int code = Integer.parseInt(strings[0]);
+
+                objectOutputStream.writeInt(code);
+                objectOutputStream.flush();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+    }
 
 }
+
