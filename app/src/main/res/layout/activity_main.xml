@@ -143,89 +143,76 @@
         android:layout_width="50dp"
         android:layout_height="53.5dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="85dp"
+        android:layout_marginBottom="84dp"
         android:padding="1dp"
         android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.963"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/greece_square" />
 
     <ImageButton
         android:id="@+id/ukButton"
         android:layout_width="50dp"
         android:layout_height="53.5dp"
-        android:layout_marginBottom="85dp"
         android:alpha="0.5"
         android:padding="1dp"
         android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/greeceButton"
         app:layout_constraintStart_toEndOf="@id/greeceButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.963"
         app:srcCompat="@drawable/united_kingdom_square" />
 
     <ImageButton
         android:id="@+id/italyButton"
         android:layout_width="50dp"
         android:layout_height="53.5dp"
-        android:layout_marginBottom="85dp"
         android:alpha="0.5"
         android:padding="1dp"
         android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/greeceButton"
         app:layout_constraintStart_toEndOf="@id/ukButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.964"
         app:srcCompat="@drawable/italy_square" />
 
     <ImageButton
         android:id="@+id/germanButton"
         android:layout_width="50dp"
         android:layout_height="53.5dp"
-        android:layout_marginBottom="85dp"
         android:alpha="0.5"
         android:padding="1dp"
         android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/greeceButton"
         app:layout_constraintStart_toEndOf="@id/italyButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.964"
         app:srcCompat="@drawable/germany_square" />
 
     <ImageButton
         android:id="@+id/franceButton"
         android:layout_width="50dp"
         android:layout_height="53.5dp"
-        android:layout_marginBottom="85dp"
         android:alpha="0.5"
         android:padding="1dp"
         android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/greeceButton"
         app:layout_constraintStart_toEndOf="@id/germanButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.964"
         app:srcCompat="@drawable/france_square" />
 
     <ImageButton
         android:id="@+id/saudiArabiaButton"
         android:layout_width="50dp"
         android:layout_height="53.5dp"
-        android:layout_marginBottom="85dp"
         android:alpha="0.5"
         android:padding="0dp"
         android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/greeceButton"
         app:layout_constraintStart_toEndOf="@id/franceButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.964"
         app:srcCompat="@drawable/saudi_arabia_square" />
 
     <ImageButton
         android:id="@+id/russiaButton"
         android:layout_width="50dp"
         android:layout_height="53.5dp"
-        android:layout_marginBottom="85dp"
         android:alpha="0.5"
         android:padding="1dp"
         android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/greeceButton"
         app:layout_constraintStart_toEndOf="@id/saudiArabiaButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.964"
         app:srcCompat="@drawable/russia_square" />
 </androidx.constraintlayout.widget.ConstraintLayout>
