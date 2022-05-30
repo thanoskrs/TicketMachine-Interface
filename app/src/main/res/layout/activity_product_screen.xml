@@ -44,10 +44,24 @@
         app:layout_constraintBottom_toTopOf="@id/nav_view"
         tools:layout_editor_absoluteX="-30dp">
 
+<!--        <Button-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="200dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:background="@drawable/drop_shadow"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        </Button>-->
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/repeat_order_layout"
             android:layout_width="350dp"
             android:layout_height="200dp"
-            android:background="@color/white"
+            android:background="@color/lite_grey0"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

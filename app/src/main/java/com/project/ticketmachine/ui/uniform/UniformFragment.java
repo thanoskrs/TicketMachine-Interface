@@ -56,7 +56,7 @@ public class UniformFragment extends Fragment {
         });
 
         // on cancel button
-        binding.cancelButtonTicket.setOnClickListener(new View.OnClickListener() {
+        binding.cancelButtonCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
@@ -74,7 +74,7 @@ public class UniformFragment extends Fragment {
             }
         });
 
-        binding.box1Ticket.setOnClickListener(new View.OnClickListener() {
+        binding.box1Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
@@ -90,7 +90,7 @@ public class UniformFragment extends Fragment {
             }
         });
 
-        binding.box2Ticket.setOnClickListener(new View.OnClickListener() {
+        binding.box2Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
@@ -106,7 +106,7 @@ public class UniformFragment extends Fragment {
             }
         });
 
-        binding.box3Ticket.setOnClickListener(new View.OnClickListener() {
+        binding.box3Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
@@ -122,7 +122,7 @@ public class UniformFragment extends Fragment {
             }
         });
 
-        binding.box4Ticket.setOnClickListener(new View.OnClickListener() {
+        binding.box4Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
@@ -138,7 +138,7 @@ public class UniformFragment extends Fragment {
             }
         });
 
-        binding.box5Ticket.setOnClickListener(new View.OnClickListener() {
+        binding.box5Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
@@ -154,7 +154,7 @@ public class UniformFragment extends Fragment {
             }
         });
 
-        binding.box6Ticket.setOnClickListener(new View.OnClickListener() {
+        binding.box6Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
@@ -162,7 +162,7 @@ public class UniformFragment extends Fragment {
             }
         });
 
-        binding.box7.setOnClickListener(new View.OnClickListener() {
+        binding.box7Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
@@ -170,23 +170,8 @@ public class UniformFragment extends Fragment {
             }
         });
 
-        binding.box7Ticket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        binding.box8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        binding.box8Ticket.setOnClickListener(new View.OnClickListener() {
+        binding.box8Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);

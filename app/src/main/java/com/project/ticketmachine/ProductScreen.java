@@ -35,6 +35,10 @@ public class ProductScreen extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
+        if (product_kind.equals("ticket")){
+            binding.softBackground.setVisibility(View.INVISIBLE);
+            binding.repeatOrderLayout.setVisibility(View.INVISIBLE);
+        }
 
         binding.cancelRepeat.setOnClickListener(new View.OnClickListener() {
             @Override
