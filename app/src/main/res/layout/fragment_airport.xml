@@ -7,16 +7,81 @@
     tools:context=".ui.airport.AirportFragment">
 
     <TextView
-        android:id="@+id/text_notifications"
+        android:id="@+id/text_home"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="80dp"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:backgroundTint="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <View
+        android:id="@+id/divider"
+        style="@style/Divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+
+    </View>
+
+    <View
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:background="@android:color/darker_gray"
+    app:layout_constraintTop_toBottomOf="@id/text_home">
+    </View>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/box1"
+        style="?attr/materialButtonOutlinedStyle"
+        app:strokeColor="@color/athena_blue"
+        app:strokeWidth="2dp"
+
+        android:layout_width="161dp"
+        android:layout_height="106dp"
+
+        android:backgroundTint="@color/lite_grey"
+        app:layout_constraintTop_toBottomOf="@id/text_home"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintEnd_toEndOf="@id/divider"
+        app:cornerRadius="8dp"
+
+        tools:ignore="MissingConstraints">
+    </com.google.android.material.button.MaterialButton>
+
+    <TextView
+        android:id="@+id/duration_box1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="90 Λεπτά"
+        android:textAlignment="center"
+        android:textColor="@color/athena_blue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/box1"
+        app:layout_constraintEnd_toEndOf="@id/box1"
+
+        app:layout_constraintStart_toStartOf="@id/box1"
+        app:layout_constraintTop_toTopOf="@id/box1"
+        app:layout_constraintVertical_bias="0.337" />
+
+    <TextView
+        android:id="@+id/cost_box1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Τιμή : 1.20€"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/box1"
+        app:layout_constraintEnd_toEndOf="@id/box1"
+        app:layout_constraintStart_toStartOf="@id/box1"
+        app:layout_constraintTop_toTopOf="@id/box1"
+        app:layout_constraintVertical_bias="0.838" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

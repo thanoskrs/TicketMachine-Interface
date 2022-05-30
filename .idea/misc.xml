@@ -23,9 +23,11 @@
         <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/layout/fragment_uniform.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/layout/payment.xml" value="0.33" />
         <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/menu/bottom_nav_menu.xml" value="0.33" />
+        <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.247" />
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

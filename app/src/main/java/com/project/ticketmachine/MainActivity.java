@@ -8,11 +8,33 @@ import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
+/*import com.google.android.material.textfield.TextInputEditText;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoDatabase;*/
+
+
 public class MainActivity extends AppCompatActivity {
+
+
+    public static final String MainServerIp = "10.0.2.2";
+    public static final int MainServerPort = 8080;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton ticketBtn = (ImageButton) findViewById(R.id.ticketButton);
         ImageButton cardBtn = (ImageButton) findViewById(R.id.cardButton);
+
         ImageButton ticketInfoBtn = (ImageButton) findViewById(R.id.ticketInfoButton);
         ImageButton cardInfoBtn = (ImageButton) findViewById(R.id.cardInfoButton);
 
@@ -40,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
         TextView ticketInfoText = (TextView) findViewById(R.id.ticketInfoText);
         TextView cardInfoText = (TextView) findViewById(R.id.cardInfoText);
 
+        Button send_barcode = (Button) findViewById(R.id.send_barcode);
+        TextInputEditText inputCode = (TextInputEditText) findViewById(R.id.card_barcode);
+
+
         ticketBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,13 +81,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(MainActivity.this, ProductScreen.class);
-                //myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("key", "card");
                 MainActivity.this.startActivity(myIntent);
-                //Toast.makeText(getApplicationContext(), "Card Button", Toast.LENGTH_SHORT).show();
-
             }
         });
-
 
         ticketInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,6 +186,19 @@ public class MainActivity extends AppCompatActivity {
                 russiaBtn.setAlpha(1.0f);
             }
         });
+
+        send_barcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //send to the server the barcode code
+                String[] params = new String[2];
+                params[0] = inputCode.toString();
+                CheckCode checkCode = new CheckCode();
+                checkCode.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+
+            }
+        });
     }
 
     private void setAlphaForLanguageButtons(ImageButton[] imageButtons) {
@@ -169,4 +206,35 @@ public class MainActivity extends AppCompatActivity {
             imageButtons[i].setAlpha(0.5f);
     }
 
+    private class CheckCode extends AsyncTask<String, String, String>{
+        private Socket socket = null;
+        private ObjectOutputStream objectOutputStream;
+        private ObjectInputStream objectInputStream;
+
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            try {
+                socket = new Socket(MainServerIp , MainServerPort);
+
+                objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                objectInputStream = new ObjectInputStream(socket.getInputStream());
+
+                objectOutputStream.writeUTF("check");
+                objectOutputStream.flush();
+
+                int code = Integer.parseInt(strings[0]);
+
+                objectOutputStream.writeInt(code);
+                objectOutputStream.flush();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+    }
 }

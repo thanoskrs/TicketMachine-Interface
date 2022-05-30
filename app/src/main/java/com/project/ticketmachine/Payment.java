@@ -20,8 +20,8 @@ public class Payment extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
-        MaterialButton backBtn = (MaterialButton) findViewById(R.id.payment_back);
-        MaterialButton cancelBtn = (MaterialButton) findViewById(R.id.payment_cancel);
+        MaterialButton backBtn = (MaterialButton) findViewById(R.id.payment_back_button);
+        MaterialButton cancelBtn = (MaterialButton) findViewById(R.id.payment_cancel_button);
 
         TextView productText = (TextView) findViewById(R.id.product_chosen_text);
         TextView priceText = (TextView) findViewById(R.id.product_price_chosen_text);
