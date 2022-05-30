@@ -125,8 +125,6 @@
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="@+id/cardButton" />
 
-
-
     <ImageButton
         android:id="@+id/cardInfoButton"
         android:layout_width="50dp"
