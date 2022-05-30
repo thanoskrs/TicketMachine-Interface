@@ -43,7 +43,10 @@ public class MainActivity extends AppCompatActivity {
         ticketBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Ticket Button", Toast.LENGTH_SHORT).show();
+                Intent paymentScreen = new Intent(MainActivity.this, Payment.class);
+                paymentScreen.putExtra("product", "90 Λεπτών");
+                paymentScreen.putExtra("price", "1.20$");
+                MainActivity.this.startActivity(paymentScreen);
             }
         });
 
@@ -55,6 +58,39 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(myIntent);
                 //Toast.makeText(getApplicationContext(), "Card Button", Toast.LENGTH_SHORT).show();
 
+            }
+        });
+
+
+        ticketInfoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ticketInfoText.getVisibility() == View.INVISIBLE) {
+                    ticketInfoText.setVisibility(View.VISIBLE);
+                    ticketRechargeText.setVisibility(View.INVISIBLE);
+                    ticketInfoBtn.setImageResource(R.drawable.info_pressed_icon);
+                }
+                else {
+                    ticketInfoText.setVisibility(View.INVISIBLE);
+                    ticketRechargeText.setVisibility(View.VISIBLE);
+                    ticketInfoBtn.setImageResource(R.drawable.info_icon);
+                }
+            }
+        });
+
+        cardInfoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (cardInfoText.getVisibility() == View.INVISIBLE) {
+                    cardInfoText.setVisibility(View.VISIBLE);
+                    cardRechargeText.setVisibility(View.INVISIBLE);
+                    cardInfoBtn.setImageResource(R.drawable.info_pressed_icon);
+                }
+                else {
+                    cardInfoText.setVisibility(View.INVISIBLE);
+                    cardRechargeText.setVisibility(View.VISIBLE);
+                    cardInfoBtn.setImageResource(R.drawable.info_icon);
+                }
             }
         });
 
@@ -124,38 +160,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setAlphaForLanguageButtons(imageButtons);
                 russiaBtn.setAlpha(1.0f);
-            }
-        });
-
-        ticketInfoBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (ticketInfoText.getVisibility() == View.INVISIBLE) {
-                    ticketInfoText.setVisibility(View.VISIBLE);
-                    ticketRechargeText.setVisibility(View.INVISIBLE);
-                    ticketInfoBtn.setImageResource(R.drawable.info_pressed_icon);
-                }
-                else {
-                    ticketInfoText.setVisibility(View.INVISIBLE);
-                    ticketRechargeText.setVisibility(View.VISIBLE);
-                    ticketInfoBtn.setImageResource(R.drawable.info_icon);
-                }
-            }
-        });
-
-        cardInfoBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (cardInfoText.getVisibility() == View.INVISIBLE) {
-                    cardInfoText.setVisibility(View.VISIBLE);
-                    cardRechargeText.setVisibility(View.INVISIBLE);
-                    cardInfoBtn.setImageResource(R.drawable.info_pressed_icon);
-                }
-                else {
-                    cardInfoText.setVisibility(View.INVISIBLE);
-                    cardRechargeText.setVisibility(View.VISIBLE);
-                    cardInfoBtn.setImageResource(R.drawable.info_icon);
-                }
             }
         });
     }

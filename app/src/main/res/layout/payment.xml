@@ -4,7 +4,197 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
     tools:context=".Payment">
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/productChosen"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="220dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="96dp"
+        android:clickable="false"
+        app:backgroundTint="@android:color/transparent"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/athena_blue"
+        app:strokeWidth="2dp">
+
+    </com.google.android.material.button.MaterialButton>
+
+    <TextView
+        android:id="@+id/product_chosen_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/athena_blue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/productChosen"
+        app:layout_constraintEnd_toEndOf="@id/productChosen"
+        app:layout_constraintStart_toStartOf="@id/productChosen"
+        app:layout_constraintTop_toTopOf="@id/productChosen"
+        app:layout_constraintVertical_bias="0.337" />
+
+    <TextView
+        android:id="@+id/product_price_chosen_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Τιμή : "
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/productChosen"
+        app:layout_constraintEnd_toEndOf="@id/productChosen"
+        app:layout_constraintStart_toStartOf="@id/productChosen"
+        app:layout_constraintTop_toTopOf="@id/productChosen"
+        app:layout_constraintVertical_bias="0.838" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/pay_cash_button"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="200sp"
+        android:layout_height="70dp"
+        android:layout_marginTop="428dp"
+        app:backgroundTint="@android:color/transparent"
+        app:cornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/athena_blue"
+        app:strokeWidth="2dp" />
+
+    <TextView
+        android:id="@+id/cash_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Μετρητά"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pay_cash_button"
+        app:layout_constraintEnd_toEndOf="@+id/pay_cash_button"
+        app:layout_constraintStart_toStartOf="@+id/pay_cash_button"
+        app:layout_constraintTop_toTopOf="@+id/pay_cash_button" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/pay_card_button"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="200dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="4dp"
+        app:backgroundTint="@android:color/transparent"
+        app:cornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pay_cash_button"
+        app:strokeColor="@color/athena_blue"
+        app:strokeWidth="2dp" />
+
+    <TextView
+        android:id="@+id/card_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Χρεωστική / \nΠιστωτική κάρτα"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pay_card_button"
+        app:layout_constraintEnd_toEndOf="@+id/pay_card_button"
+        app:layout_constraintStart_toStartOf="@+id/pay_card_button"
+        app:layout_constraintTop_toTopOf="@+id/pay_card_button"
+        app:layout_constraintVertical_bias="0.523" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/payment_back_button"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="136dp"
+        android:backgroundTint="@android:color/transparent"
+        android:text="ΠΙΣΩ"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:cornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pay_cash_button"
+        app:strokeColor="#E2AD1D"
+        app:strokeWidth="2dp" />
+
+    <com.google.android.material.button.MaterialButton
+        style="?attr/materialButtonOutlinedStyle"
+        android:id="@+id/payment_cancel_button"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@android:color/transparent"
+        android:text="Ακυρωση"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/payment_back_button"
+        app:strokeColor="#AD2717"
+        app:strokeWidth="2dp" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:background="@color/athena_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Πληρωμή"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@id/view"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.695" />
+
+    <TextView
+        android:id="@+id/product_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="72dp"
+        android:text="1"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productChosen" />
+
+    <ImageView
+        android:id="@+id/payment_back_text"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/payment_back_button"
+        app:layout_constraintStart_toStartOf="@+id/payment_back_button"
+        app:layout_constraintTop_toTopOf="@+id/payment_back_button"
+        app:srcCompat="@drawable/back" />
+
+    <ImageView
+        android:id="@+id/paymrnt_cancel_text"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/payment_cancel_button"
+        app:layout_constraintStart_toStartOf="@+id/payment_cancel_button"
+        app:layout_constraintTop_toTopOf="@+id/payment_cancel_button"
+        app:srcCompat="@drawable/cancel" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
