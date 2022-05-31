@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.project.ticketmachine.MainActivity;
+import com.project.ticketmachine.Payment;
 import com.project.ticketmachine.ProductScreen;
 import com.project.ticketmachine.databinding.ActivityProductScreenBinding;
 import com.project.ticketmachine.databinding.FragmentUniformBinding;
@@ -68,104 +69,130 @@ public class UniformFragment extends Fragment {
         binding.box1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
+                Intent paymentScreen = new Intent(getActivity(), Payment.class);
+                paymentScreen.putExtra("product", "90 Λεπτών");
+                paymentScreen.putExtra("price", "1.20$");
+                UniformFragment.this.startActivity(paymentScreen);
             }
         });
 
         binding.box1Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
+                Intent paymentScreen = new Intent(getActivity(), Payment.class);
+                paymentScreen.putExtra("product", "90 Λεπτών");
+                paymentScreen.putExtra("price", "1.20$");
+                UniformFragment.this.startActivity(paymentScreen);
             }
         });
 
         binding.box2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
+                Intent paymentScreen = new Intent(getActivity(), Payment.class);
+                paymentScreen.putExtra("product", "90 Λεπτών");
+                paymentScreen.putExtra("price", "1.20$");
+                UniformFragment.this.startActivity(paymentScreen);
             }
         });
 
         binding.box2Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
+                Intent paymentScreen = new Intent(getActivity(), Payment.class);
+                paymentScreen.putExtra("product", "90 Λεπτών");
+                paymentScreen.putExtra("price", "1.20$");
+                UniformFragment.this.startActivity(paymentScreen);
             }
         });
 
         binding.box3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
+                Intent paymentScreen = new Intent(getActivity(), Payment.class);
+                paymentScreen.putExtra("product", "90 Λεπτών");
+                paymentScreen.putExtra("price", "1.20$");
+                UniformFragment.this.startActivity(paymentScreen);
             }
         });
 
         binding.box3Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
+                Intent paymentScreen = new Intent(getActivity(), Payment.class);
+                paymentScreen.putExtra("product", "90 Λεπτών");
+                paymentScreen.putExtra("price", "1.20$");
+                UniformFragment.this.startActivity(paymentScreen);
             }
         });
 
         binding.box4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
+                Intent paymentScreen = new Intent(getActivity(), Payment.class);
+                paymentScreen.putExtra("product", "90 Λεπτών");
+                paymentScreen.putExtra("price", "1.20$");
+                UniformFragment.this.startActivity(paymentScreen);
             }
         });
 
         binding.box4Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
+                Intent paymentScreen = new Intent(getActivity(), Payment.class);
+                paymentScreen.putExtra("product", "90 Λεπτών");
+                paymentScreen.putExtra("price", "1.20$");
+                UniformFragment.this.startActivity(paymentScreen);
             }
         });
 
         binding.box5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
+                Intent paymentScreen = new Intent(getActivity(), Payment.class);
+                paymentScreen.putExtra("product", "90 Λεπτών");
+                paymentScreen.putExtra("price", "1.20$");
+                UniformFragment.this.startActivity(paymentScreen);
             }
         });
 
         binding.box5Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
+                Intent paymentScreen = new Intent(getActivity(), Payment.class);
+                paymentScreen.putExtra("product", "90 Λεπτών");
+                paymentScreen.putExtra("price", "1.20$");
+                UniformFragment.this.startActivity(paymentScreen);
             }
         });
 
         binding.box6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
+                Intent paymentScreen = new Intent(getActivity(), Payment.class);
+                paymentScreen.putExtra("product", "90 Λεπτών");
+                paymentScreen.putExtra("price", "1.20$");
+                UniformFragment.this.startActivity(paymentScreen);
             }
         });
 
         binding.box6Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
+                Intent paymentScreen = new Intent(getActivity(), Payment.class);
+                paymentScreen.putExtra("product", "90 Λεπτών");
+                paymentScreen.putExtra("price", "1.20$");
+                UniformFragment.this.startActivity(paymentScreen);
             }
         });
 
         binding.box7Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
+                Intent paymentScreen = new Intent(getActivity(), Payment.class);
+                paymentScreen.putExtra("product", "90 Λεπτών");
+                paymentScreen.putExtra("price", "1.20$");
+                UniformFragment.this.startActivity(paymentScreen);
             }
         });
 
@@ -173,8 +200,10 @@ public class UniformFragment extends Fragment {
         binding.box8Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
+                Intent paymentScreen = new Intent(getActivity(), Payment.class);
+                paymentScreen.putExtra("product", "90 Λεπτών");
+                paymentScreen.putExtra("price", "1.20$");
+                UniformFragment.this.startActivity(paymentScreen);
             }
         });
         return root;

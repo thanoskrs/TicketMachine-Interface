@@ -22,7 +22,9 @@ public class ProductScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         Bundle extras = getIntent().getExtras();
         System.out.println(extras.get("key"));
         if (extras.get("key").equals("ticket")){

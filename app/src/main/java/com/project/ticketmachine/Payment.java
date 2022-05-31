@@ -25,20 +25,29 @@ public class Payment extends AppCompatActivity {
 
         TextView productText = (TextView) findViewById(R.id.product_chosen_text);
         TextView priceText = (TextView) findViewById(R.id.product_price_chosen_text);
+        TextView totalPriceText = (TextView) findViewById(R.id.total_price_text);
 
-        productText.setText(getIntent().getStringExtra("product"));
-        priceText.setText(priceText.getText().toString() + getIntent().getStringExtra("price"));
+        String product = getIntent().getStringExtra("product");
+        String price = getIntent().getStringExtra("price");
+
+        productText.setText(product);
+        priceText.setText(priceText.getText().toString() + price);
+        totalPriceText.setText(totalPriceText.getText().toString() + price);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent myIntent = new Intent(Payment.this, ProductScreen.class);
+                myIntent.putExtra("key", "card");
+                Payment.this.startActivity(myIntent);
             }
         });
 
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent myIntent = new Intent(Payment.this, MainActivity.class);
+                Payment.this.startActivity(myIntent);
             }
         });
     }
