@@ -58,7 +58,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/repeat_order_layout"
             android:layout_width="350dp"
-            android:layout_height="220dp"
+            android:layout_height="240dp"
             android:background="@android:drawable/dialog_holo_light_frame"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

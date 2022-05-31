@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         cardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.e("fdsafddsfsd", "SDFdfdfs");
                 Intent myIntent = new Intent(MainActivity.this, ProductScreen.class);
                 myIntent.putExtra("key", "card");
                 MainActivity.this.startActivity(myIntent);
