@@ -38,68 +38,70 @@
         android:id="@+id/soft_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black_low"
+        android:background="@color/white"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@id/nav_view"
         tools:layout_editor_absoluteX="-30dp">
 
-<!--        <Button-->
-<!--            android:layout_width="350dp"-->
-<!--            android:layout_height="200dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:background="@drawable/drop_shadow"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--        <Button-->
+        <!--            android:layout_width="350dp"-->
+        <!--            android:layout_height="200dp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:background="@drawable/drop_shadow"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
 
-<!--            app:layout_constraintTop_toTopOf="parent">-->
+        <!--            app:layout_constraintTop_toTopOf="parent">-->
 
-<!--        </Button>-->
+        <!--        </Button>-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/repeat_order_layout"
             android:layout_width="350dp"
-            android:layout_height="200dp"
-            android:background="@color/lite_grey0"
-
+            android:layout_height="240dp"
+            android:background="@android:drawable/dialog_holo_light_frame"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.499"
             tools:ignore="MissingConstraints">
 
             <View
                 android:id="@+id/divider"
                 style="@style/Divider"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints">
 
             </View>
-<!--thanosaueboasa13-->
+            <!--thanosaueboasa13-->
             <TextView
                 android:id="@+id/repeat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Θέλετε να επαναλάβετε την τελευταία σας αγορά;"
                 android:textAlignment="center"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/ticket_info"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/ticket_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/ticket_info"
                 android:layout_width="250dp"
                 android:layout_height="100dp"
-                app:layout_constraintTop_toTopOf="parent"
+                android:background="@color/lite_grey1"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
 
-                android:background="@color/lite_grey1">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:id="@+id/ticket_category"
@@ -126,8 +128,8 @@
 
                     android:textColor="@color/athena_blue"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -149,33 +151,46 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Button
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/repeat_order"
+                style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:text="Ναι"
+                android:layout_height="45dp"
+                android:layout_marginEnd="32dp"
                 android:backgroundTint="@color/green"
-                app:layout_constraintStart_toStartOf="@id/repeat"
+                android:text="ναι"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                app:cornerRadius="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/divider"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.745"
+                app:layout_constraintStart_toStartOf="@id/repeat"
                 app:layout_constraintTop_toBottomOf="@id/ticket_info"
-                >
+                app:layout_constraintVertical_bias="0.533"
+                app:strokeColor="@color/athena_blue"
+                app:strokeWidth="1dp" />
 
-            </Button>
-
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/cancel_repeat"
+                style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="80dp"
-                android:layout_height="40dp"
+                android:layout_height="45dp"
+                android:layout_marginEnd="32dp"
+                android:backgroundTint="#AD2717"
                 android:text="οχι"
-                android:backgroundTint="@color/red"
-                app:layout_constraintStart_toStartOf="@id/divider"
-                app:layout_constraintEnd_toEndOf="@id/repeat"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                app:cornerRadius="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/repeat"
+                app:layout_constraintHorizontal_bias="0.884"
+                app:layout_constraintStart_toStartOf="@id/divider"
                 app:layout_constraintTop_toBottomOf="@id/ticket_info"
-                >
-
-            </Button>
+                app:layout_constraintVertical_bias="0.6"
+                app:strokeColor="@color/athena_blue"
+                app:strokeWidth="1dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

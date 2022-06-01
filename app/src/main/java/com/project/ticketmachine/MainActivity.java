@@ -70,16 +70,16 @@ public class MainActivity extends AppCompatActivity {
         ticketBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent paymentScreen = new Intent(MainActivity.this, Payment.class);
-                paymentScreen.putExtra("product", "90 Λεπτών");
-                paymentScreen.putExtra("price", "1.20$");
-                MainActivity.this.startActivity(paymentScreen);
+                Intent myIntent = new Intent(MainActivity.this, ProductScreen.class);
+                myIntent.putExtra("key", "ticket");
+                MainActivity.this.startActivity(myIntent);
             }
         });
 
         cardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.e("fdsafddsfsd", "SDFdfdfs");
                 Intent myIntent = new Intent(MainActivity.this, ProductScreen.class);
                 myIntent.putExtra("key", "card");
                 MainActivity.this.startActivity(myIntent);
@@ -224,10 +224,10 @@ public class MainActivity extends AppCompatActivity {
                 objectOutputStream.writeUTF("check");
                 objectOutputStream.flush();
 
-                int code = Integer.parseInt(strings[0]);
-
-                objectOutputStream.writeInt(code);
-                objectOutputStream.flush();
+//                int code = Integer.parseInt(strings[0]);
+//
+//                objectOutputStream.writeInt(code);
+//                objectOutputStream.flush();
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -236,5 +236,10 @@ public class MainActivity extends AppCompatActivity {
 
             return null;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

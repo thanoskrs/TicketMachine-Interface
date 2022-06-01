@@ -14,9 +14,9 @@
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="220dp"
         android:layout_height="130dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="108dp"
         android:clickable="false"
-        app:backgroundTint="@android:color/transparent"
+        app:backgroundTint="#BBE5F3"
         app:cornerRadius="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -55,18 +55,45 @@
         app:layout_constraintTop_toTopOf="@id/productChosen"
         app:layout_constraintVertical_bias="0.838" />
 
+
+    <View
+        android:id="@+id/total_price"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/athena_blue"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_quantity" />
+
+    <TextView
+        android:id="@+id/total_price_text"
+        android:layout_width="148dp"
+        android:layout_height="32dp"
+        android:text="Σύνολο: "
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/total_price"
+        app:layout_constraintEnd_toEndOf="@+id/total_price"
+        app:layout_constraintStart_toStartOf="@+id/total_price"
+        app:layout_constraintTop_toTopOf="@+id/total_price" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/pay_cash_button"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="200sp"
+        android:layout_width="220dp"
         android:layout_height="70dp"
-        android:layout_marginTop="428dp"
+        android:layout_marginTop="24dp"
         app:backgroundTint="@android:color/transparent"
         app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/payment_choice_text"
         app:strokeColor="@color/athena_blue"
         app:strokeWidth="2dp" />
 
@@ -85,7 +112,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/pay_card_button"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="200dp"
+        android:layout_width="220dp"
         android:layout_height="75dp"
         android:layout_marginTop="4dp"
         app:backgroundTint="@android:color/transparent"
@@ -117,7 +144,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="136dp"
-        android:backgroundTint="@android:color/transparent"
+        android:backgroundTint="#0DE2AD1D"
         android:text="ΠΙΣΩ"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -128,12 +155,12 @@
         app:strokeWidth="2dp" />
 
     <com.google.android.material.button.MaterialButton
-        style="?attr/materialButtonOutlinedStyle"
         android:id="@+id/payment_cancel_button"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="120dp"
         android:layout_height="60dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@android:color/transparent"
+        android:backgroundTint="#0DAD2717"
         android:text="Ακυρωση"
         android:textAlignment="textEnd"
         android:textColor="@color/black"
@@ -169,9 +196,9 @@
         android:id="@+id/product_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="20dp"
         android:text="1"
+        android:textColor="@color/black"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -196,5 +223,67 @@
         app:layout_constraintTop_toTopOf="@+id/payment_cancel_button"
         app:srcCompat="@drawable/cancel" />
 
+    <TextView
+        android:id="@+id/payment_choice_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="52dp"
+        android:text="Επιλέξτε τρόπο πληρωμής"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total_price" />
+
+    <View
+        android:layout_width="140dp"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/payment_choice_text" />
+
+    <TextView
+        android:id="@+id/payment_product_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="Επιλεγμένο Προϊόν"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <View
+        android:layout_width="140dp"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/payment_product_text" />
+
+    <ImageButton
+        android:id="@+id/decrease_quantity_button"
+        android:layout_width="45dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="15dp"
+        android:background="#0D085394"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toStartOf="@+id/product_quantity"
+        app:layout_constraintTop_toBottomOf="@+id/productChosen"
+        app:srcCompat="@drawable/minus" />
+
+    <ImageButton
+        android:id="@+id/increase_quantity_button"
+        android:layout_width="45dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="15dp"
+        android:background="#0D085394"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toEndOf="@+id/product_quantity"
+        app:layout_constraintTop_toTopOf="@+id/decrease_quantity_button"
+        app:srcCompat="@drawable/add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

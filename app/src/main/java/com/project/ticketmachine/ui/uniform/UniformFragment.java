@@ -68,7 +68,9 @@ public class UniformFragment extends Fragment {
         binding.box1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.Payment.class);
+//                intent.putExtra("product", binding.durationBox1.getText().toString());
+//                intent.putExtra("price", binding.costBox1.getText().toString());
                 startActivity(intent);
             }
         });
@@ -76,7 +78,8 @@ public class UniformFragment extends Fragment {
         binding.box1Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.Payment.class);
+                // access to DB
                 startActivity(intent);
             }
         });
@@ -84,7 +87,7 @@ public class UniformFragment extends Fragment {
         binding.box2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.Payment.class);
                 startActivity(intent);
             }
         });
@@ -92,7 +95,7 @@ public class UniformFragment extends Fragment {
         binding.box2Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.Payment.class);
                 startActivity(intent);
             }
         });
@@ -100,39 +103,27 @@ public class UniformFragment extends Fragment {
         binding.box3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.Payment.class);
                 startActivity(intent);
             }
         });
 
-        binding.box3Card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         binding.box4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.Payment.class);
                 startActivity(intent);
             }
         });
 
-        binding.box4Card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         binding.box5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.Payment.class);
                 startActivity(intent);
             }
         });
@@ -140,7 +131,7 @@ public class UniformFragment extends Fragment {
         binding.box5Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.Payment.class);
                 startActivity(intent);
             }
         });
@@ -148,7 +139,7 @@ public class UniformFragment extends Fragment {
         binding.box6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.Payment.class);
                 startActivity(intent);
             }
         });
@@ -156,7 +147,7 @@ public class UniformFragment extends Fragment {
         binding.box6Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.Payment.class);
                 startActivity(intent);
             }
         });
@@ -164,16 +155,15 @@ public class UniformFragment extends Fragment {
         binding.box7Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.Payment.class);
                 startActivity(intent);
             }
         });
 
-
         binding.box8Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.Payment.class);
                 startActivity(intent);
             }
         });
