@@ -2,6 +2,7 @@ package com.project.ticketmachine;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String MainServerIp = "10.0.2.2";
     public static final int MainServerPort = 8080;
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -76,10 +78,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        cardBtn.setId(45);
+
         cardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("fdsafddsfsd", "SDFdfdfs");
+                Log.e("ID1", String.valueOf(cardBtn.getId()));
                 Intent myIntent = new Intent(MainActivity.this, ProductScreen.class);
                 myIntent.putExtra("key", "card");
                 MainActivity.this.startActivity(myIntent);
@@ -89,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         ticketInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.e("ID", String.valueOf(cardBtn.getId()));
                 if (ticketInfoText.getVisibility() == View.INVISIBLE) {
                     ticketInfoText.setVisibility(View.VISIBLE);
                     ticketRechargeText.setVisibility(View.INVISIBLE);

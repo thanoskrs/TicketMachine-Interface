@@ -76,6 +76,7 @@ public class UniformFragment extends Fragment {
             }
         });
 
+
         binding.box1Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

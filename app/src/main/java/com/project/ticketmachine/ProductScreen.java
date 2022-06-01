@@ -1,5 +1,6 @@
 package com.project.ticketmachine;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,6 +13,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.project.ticketmachine.databinding.ActivityProductScreenBinding;
+import com.project.ticketmachine.ui.uniform.UniformFragment;
 
 public class ProductScreen extends AppCompatActivity {
 
@@ -47,6 +49,16 @@ public class ProductScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 binding.softBackground.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        binding.repeatOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent paymentScreen = new Intent(ProductScreen.this, Payment.class);
+                paymentScreen.putExtra("product", "90 Λεπτών");
+                paymentScreen.putExtra("price", "1.20$");
+                ProductScreen.this.startActivity(paymentScreen);
             }
         });
 
