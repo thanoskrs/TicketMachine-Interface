@@ -78,7 +78,6 @@
 
             </View>
             <!--thanosaueboasa13-->
-
             <TextView
                 android:id="@+id/repeat"
                 android:layout_width="wrap_content"
@@ -157,7 +156,6 @@
                 app:layout_constraintStart_toStartOf="@id/lastProductChosen"
                 app:layout_constraintTop_toTopOf="@id/lastProductChosen"
                 app:layout_constraintVertical_bias="0.838" />
-
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/repeat_order"

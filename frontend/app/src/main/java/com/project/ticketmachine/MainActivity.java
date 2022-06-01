@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         cardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("ID1", String.valueOf(cardBtn.getId()));
                 Intent myIntent = new Intent(MainActivity.this, ProductScreen.class);
                 myIntent.putExtra("key", "card");
                 MainActivity.this.startActivity(myIntent);
@@ -229,10 +228,10 @@ public class MainActivity extends AppCompatActivity {
                 objectOutputStream.writeUTF("check");
                 objectOutputStream.flush();
 
-                int code = Integer.parseInt(strings[0]);
-
-                objectOutputStream.writeInt(code);
-                objectOutputStream.flush();
+//                int code = Integer.parseInt(strings[0]);
+//
+//                objectOutputStream.writeInt(code);
+//                objectOutputStream.flush();
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -247,4 +246,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
     }
+
 }
+

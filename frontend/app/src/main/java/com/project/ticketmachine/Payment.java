@@ -37,6 +37,7 @@ public class Payment extends AppCompatActivity {
         String product = getIntent().getStringExtra("product");
         String price_str = getIntent().getStringExtra("price");
         float price = Float.parseFloat(price_str.replace("$", ""));
+
         String total_price = totalPriceText.getText().toString();
 
         productText.setText(product);

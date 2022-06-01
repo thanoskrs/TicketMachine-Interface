@@ -15,8 +15,10 @@ import androidx.lifecycle.ViewModelProvider;
 import com.project.ticketmachine.MainActivity;
 import com.project.ticketmachine.Payment;
 import com.project.ticketmachine.ProductScreen;
+
 import com.project.ticketmachine.databinding.ActivityProductScreenBinding;
 import com.project.ticketmachine.databinding.FragmentUniformBinding;
+import com.project.ticketmachine.ui.uniform.UniformFragment;
 
 public class UniformFragment extends Fragment {
 
@@ -90,6 +92,7 @@ public class UniformFragment extends Fragment {
         binding.box2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent paymentScreen = new Intent(getActivity(), Payment.class);
                 paymentScreen.putExtra("product", "90 Λεπτών");
                 paymentScreen.putExtra("price", "1.20$");
@@ -117,15 +120,6 @@ public class UniformFragment extends Fragment {
             }
         });
 
-        binding.box3Card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent paymentScreen = new Intent(getActivity(), Payment.class);
-                paymentScreen.putExtra("product", "90 Λεπτών");
-                paymentScreen.putExtra("price", "1.20$");
-                UniformFragment.this.startActivity(paymentScreen);
-            }
-        });
 
         binding.box4.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,15 +131,6 @@ public class UniformFragment extends Fragment {
             }
         });
 
-        binding.box4Card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent paymentScreen = new Intent(getActivity(), Payment.class);
-                paymentScreen.putExtra("product", "90 Λεπτών");
-                paymentScreen.putExtra("price", "1.20$");
-                UniformFragment.this.startActivity(paymentScreen);
-            }
-        });
 
         binding.box5.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -196,7 +181,6 @@ public class UniformFragment extends Fragment {
                 UniformFragment.this.startActivity(paymentScreen);
             }
         });
-
 
         binding.box8Card.setOnClickListener(new View.OnClickListener() {
             @Override
