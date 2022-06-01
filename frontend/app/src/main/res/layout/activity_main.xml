@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
+    tools:context=".MainActivity">
+
+
+    <ImageButton
+        android:id="@+id/ticketButton"
+        android:layout_width="260dp"
+        android:layout_height="158dp"
+        android:layout_marginTop="96dp"
+        android:adjustViewBounds="false"
+        android:backgroundTint="@color/athena_blue"
+        android:cropToPadding="false"
+        android:padding="7dp"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/athena_ticket" />
+
+    <TextView
+        android:id="@+id/ticketInfoText"
+        android:layout_width="260dp"
+        android:layout_height="158dp"
+        android:background="@drawable/background_rectangle_info"
+        android:text="\nΠατήστε εδώ εάν θέλετε να εκδόσετε νέο εισιτήριο ή να επαναφορτίσετε κάποιο υπάρχον εισιτήριο."
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#100D0D"
+        android:textIsSelectable="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/ticketButton"
+        app:layout_constraintEnd_toEndOf="@+id/ticketButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ticketButton"
+        app:layout_constraintTop_toTopOf="@+id/ticketButton"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <TextView
+        android:id="@+id/buy_or_recharge_ticket_text"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/athena_blue"
+        android:text="Αγορά ή Επαναφόρτιση \nΕισιτηρίου"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/ticketButton"
+        app:layout_constraintEnd_toEndOf="@+id/ticketButton"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="@+id/ticketButton" />
+
+    <ImageButton
+        android:id="@+id/ticketInfoButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="52dp"
+        android:backgroundTint="#80FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/ticketButton"
+        app:layout_constraintTop_toTopOf="@+id/ticketButton"
+        app:srcCompat="@drawable/info_icon" />
+
+    <ImageButton
+        android:id="@+id/cardButton"
+        android:layout_width="260dp"
+        android:layout_height="158dp"
+        android:adjustViewBounds="false"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/athena_blue"
+        android:contextClickable="false"
+        android:padding="7dp"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ticketButton"
+        app:srcCompat="@drawable/athena_card" />
+
+
+    <TextView
+        android:id="@+id/cardInfoText"
+        android:layout_width="260dp"
+        android:layout_height="158dp"
+        android:background="@drawable/background_rectangle_info"
+        android:text="\nΠατήστε εδώ εάν θέλετε να επαναφορτίσετε την κάρτα σας. (Προσωποποιημένη, Ανώνυμη, Κάρτα Ανέργων)"
+        android:textAlignment="center"
+        android:textColor="#100D0D"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/cardButton"
+        app:layout_constraintEnd_toEndOf="@+id/cardButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cardButton"
+        app:layout_constraintTop_toTopOf="@+id/cardButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/recharge_card_text"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/athena_blue"
+        android:text="Επαναφόρτιση \nΚάρτας"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/cardButton"
+        app:layout_constraintEnd_toEndOf="@+id/cardButton"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="@+id/cardButton" />
+
+    <ImageButton
+        android:id="@+id/cardInfoButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="52dp"
+        android:backgroundTint="#80FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/cardButton"
+        app:layout_constraintTop_toTopOf="@+id/cardButton"
+        app:srcCompat="@drawable/info_icon" />
+
+    <ImageButton
+        android:id="@+id/greeceButton"
+        android:layout_width="50dp"
+        android:layout_height="53.5dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="84dp"
+        android:padding="1dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/greece_square" />
+
+    <ImageButton
+        android:id="@+id/ukButton"
+        android:layout_width="50dp"
+        android:layout_height="53.5dp"
+        android:alpha="0.5"
+        android:padding="1dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/greeceButton"
+        app:layout_constraintStart_toEndOf="@id/greeceButton"
+        app:srcCompat="@drawable/united_kingdom_square" />
+
+    <ImageButton
+        android:id="@+id/italyButton"
+        android:layout_width="50dp"
+        android:layout_height="53.5dp"
+        android:alpha="0.5"
+        android:padding="1dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/greeceButton"
+        app:layout_constraintStart_toEndOf="@id/ukButton"
+        app:srcCompat="@drawable/italy_square" />
+
+    <ImageButton
+        android:id="@+id/germanButton"
+        android:layout_width="50dp"
+        android:layout_height="53.5dp"
+        android:alpha="0.5"
+        android:padding="1dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/greeceButton"
+        app:layout_constraintStart_toEndOf="@id/italyButton"
+        app:srcCompat="@drawable/germany_square" />
+
+    <ImageButton
+        android:id="@+id/franceButton"
+        android:layout_width="50dp"
+        android:layout_height="53.5dp"
+        android:alpha="0.5"
+        android:padding="1dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/greeceButton"
+        app:layout_constraintStart_toEndOf="@id/germanButton"
+        app:srcCompat="@drawable/france_square" />
+
+    <ImageButton
+        android:id="@+id/saudiArabiaButton"
+        android:layout_width="50dp"
+        android:layout_height="53.5dp"
+        android:alpha="0.5"
+        android:padding="0dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/greeceButton"
+        app:layout_constraintStart_toEndOf="@id/franceButton"
+        app:srcCompat="@drawable/saudi_arabia_square" />
+
+    <ImageButton
+        android:id="@+id/russiaButton"
+        android:layout_width="50dp"
+        android:layout_height="53.5dp"
+        android:alpha="0.5"
+        android:padding="1dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/greeceButton"
+        app:layout_constraintStart_toEndOf="@id/saudiArabiaButton"
+        app:srcCompat="@drawable/russia_square" />
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/card_barcode"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@color/lite_grey1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/send_barcode"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="ok"
+        android:backgroundTint="@color/green"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_barcode"
+        app:layout_constraintBottom_toBottomOf="parent">
+    </Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

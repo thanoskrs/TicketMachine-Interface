@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/athena_blue"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:itemTextColor="@drawable/bottom_nav_item_color"
+        app:itemIconTint="@drawable/bottom_nav_item_color"
+        app:menu="@menu/bottom_nav_menu"
+        />
+
+
+
+    <fragment
+        android:id="@+id/nav_host_fragment_activity_product_screen"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:navGraph="@navigation/mobile_navigation" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/soft_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/nav_view"
+        tools:layout_editor_absoluteX="-30dp">
+
+        <!--        <Button-->
+        <!--            android:layout_width="350dp"-->
+        <!--            android:layout_height="200dp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:background="@drawable/drop_shadow"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+
+        <!--            app:layout_constraintTop_toTopOf="parent">-->
+
+        <!--        </Button>-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/repeat_order_layout"
+            android:layout_width="350dp"
+            android:layout_height="260dp"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.499"
+            tools:ignore="MissingConstraints">
+
+            <View
+                android:id="@+id/divider"
+                style="@style/Divider"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints">
+
+            </View>
+            <!--thanosaueboasa13-->
+            <TextView
+                android:id="@+id/repeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Θέλετε να επαναλάβετε την τελευταία σας αγορά;"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/lastProductChosen"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.521"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.615" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/lastProductChosen"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="220dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="55dp"
+                android:clickable="false"
+                app:backgroundTint="#BBE5F3"
+                app:cornerRadius="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.484"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/divider"
+                app:strokeColor="@color/athena_blue"
+                app:strokeWidth="2dp">
+
+            </com.google.android.material.button.MaterialButton>
+
+
+            <TextView
+                android:id="@+id/kind_product_chosen_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Είδος : Ενιαίο"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/lastProductChosen"
+                app:layout_constraintEnd_toEndOf="@id/lastProductChosen"
+                app:layout_constraintHorizontal_bias="0.518"
+                app:layout_constraintStart_toStartOf="@id/lastProductChosen"
+                app:layout_constraintTop_toTopOf="@id/lastProductChosen"
+                app:layout_constraintVertical_bias="0.188" />
+
+            <TextView
+                android:id="@+id/product_chosen_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Διάρκεια: 90 Λεπτών"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/lastProductChosen"
+                app:layout_constraintEnd_toEndOf="@id/lastProductChosen"
+                app:layout_constraintHorizontal_bias="0.553"
+                app:layout_constraintStart_toStartOf="@id/lastProductChosen"
+                app:layout_constraintTop_toTopOf="@id/lastProductChosen"
+                app:layout_constraintVertical_bias="0.509" />
+
+            <TextView
+                android:id="@+id/product_price_chosen_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Τιμή : 1.20€"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/lastProductChosen"
+                app:layout_constraintEnd_toEndOf="@id/lastProductChosen"
+                app:layout_constraintStart_toStartOf="@id/lastProductChosen"
+                app:layout_constraintTop_toTopOf="@id/lastProductChosen"
+                app:layout_constraintVertical_bias="0.838" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/repeat_order"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="@color/green"
+                android:text="ναι"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                app:cornerRadius="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/divider"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@id/repeat"
+                app:strokeColor="@color/athena_blue"
+                app:strokeWidth="1dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancel_repeat"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="#AD2717"
+                android:text="οχι"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                app:cornerRadius="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/repeat"
+                app:layout_constraintHorizontal_bias="0.476"
+                app:layout_constraintStart_toStartOf="@id/divider"
+                app:strokeColor="@color/athena_blue"
+                app:strokeWidth="1dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
