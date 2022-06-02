@@ -20,6 +20,11 @@
         tools:targetApi="31">
         <activity
 
+            android:name=".CheckCard"
+            android:exported="false"
+            android:label="CheckCardScreen" />
+        <activity
+
             android:name=".Payment"
             android:exported="false"
             android:label="@string/title_payment" />

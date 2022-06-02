@@ -30,7 +30,7 @@ public class AccessDB {
 //        insert();
     }
 
-    public void CheckCode(String id) throws IOException {
+    public boolean CheckCode(String id) throws IOException {
         // Creating Credentials
         MongoCredential credential;
 
@@ -47,13 +47,17 @@ public class AccessDB {
                 Server.objectOutputStream.writeUTF("Pass");
                 Server.objectOutputStream.flush();
 
-                Server.objectOutputStream.writeUTF(String.valueOf(doc.get("Student")));
+                Server.objectOutputStream.writeUTF((String) doc.get("Category"));
                 Server.objectOutputStream.flush();
-                return;
+
+                Server.objectOutputStream.writeUTF((String) doc.get("Type"));
+                Server.objectOutputStream.flush();
+                return true;
             }
         }
         Server.objectOutputStream.writeUTF("Not-Pass");
         Server.objectOutputStream.flush();
+        return false;
 
 
     }
@@ -79,9 +83,7 @@ public class AccessDB {
             Server.objectOutputStream.flush();
         }
 
-
     }
-
 
 
     public void insert(){

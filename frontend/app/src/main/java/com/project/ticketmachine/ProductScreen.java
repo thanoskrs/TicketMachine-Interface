@@ -23,11 +23,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ProductScreen extends AppCompatActivity {
 
     private ActivityProductScreenBinding binding;
     private String product_kind;
+    public static String category = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +40,22 @@ public class ProductScreen extends AppCompatActivity {
         }
         Bundle extras = getIntent().getExtras();
 
-        System.out.println(extras.get("key"));
-        System.out.println(extras.get("Student"));
+        System.out.println(extras.get("Type"));
+        System.out.println(extras.get("Category"));
 
-        if (extras.get("key").equals("ticket")){
+
+        if (extras.get("Type").equals("Ticket")){
             product_kind = "ticket";
+            category = "undefined";
         }
         else{
             product_kind = "card";
+            if (extras.get("Category").equals("Student")){
+                category = "Student";
+            }
+            else if(extras.get("Category").equals("Anonymus")){
+                category = "Anonymus";
+            }
         }
 
         binding = ActivityProductScreenBinding.inflate(getLayoutInflater());
@@ -58,7 +68,7 @@ public class ProductScreen extends AppCompatActivity {
 
             String[] params = new String[2];
             //params[0] = String.valueOf(extras.get("Student"));
-            params[0] = String.valueOf(false);
+            params[0] = category;
             params[1] = "Ticket";
 
             GetTickets getTickets = new GetTickets();
@@ -66,9 +76,14 @@ public class ProductScreen extends AppCompatActivity {
         }
         else{
             String[] params = new String[2];
-            params[0] = String.valueOf(extras.get("Student"));
-            params[1] = "Card";
-
+            if (Objects.equals(category, "Anonymus")){
+                params[0] = String.valueOf(extras.get("Category"));
+                params[1] = "Ticket";
+            }
+            else if (Objects.equals(category, "Student")){
+                params[0] = String.valueOf(extras.get("Category"));
+                params[1] = "Card";
+            }
             GetTickets getTickets = new GetTickets();
             getTickets.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
         }
@@ -119,17 +134,15 @@ public class ProductScreen extends AppCompatActivity {
 
             try {
 
+                objectOutputStream = CheckCard.objectOutputStream;
+                objectInputStream = CheckCard.objectInputStream;
 
-                objectOutputStream = MainActivity.objectOutputStream;
-                objectInputStream = MainActivity.objectInputStream;
-
-                Boolean student = Boolean.parseBoolean(strings[0]);
+                String category = strings[0];
                 String task = strings[1];
-                Log.e("student" , String.valueOf(student));
+                Log.e("category" , category);
                 Log.e("task" , task);
 
-                objectOutputStream.writeUTF(task);
-                objectOutputStream.flush();
+
 
                 int list_len = objectInputStream.readInt();
                 System.out.println(list_len);
@@ -137,14 +150,11 @@ public class ProductScreen extends AppCompatActivity {
 
                 for (int i =0; i < list_len; i++){
                     list.add((Document) objectInputStream.readObject());
-
                 }
                 for (int i =0; i < list_len; i++){
                     System.out.println(list.get(i));
                 }
 
-//                objectOutputStream.writeBoolean(student);
-//                objectOutputStream.flush();
 
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();

@@ -23,6 +23,7 @@ public class Server extends Thread{
 
     public static ObjectInputStream objectInputStream;
     public static ObjectOutputStream objectOutputStream;
+    private boolean HasAccess;
 
     public Server(Socket connectionSocket) {
         try {
@@ -41,6 +42,7 @@ public class Server extends Thread{
         myServerSocket = new ServerSocket(8080);
 
         System.out.println("Server starts with port 3000");
+
         
         while (true){
             connectionSocket = myServerSocket.accept();
@@ -53,25 +55,23 @@ public class Server extends Thread{
 
     public void run(){
         try {
-            String task = objectInputStream.readUTF();
+
 
             while (true){
-
+                String task = objectInputStream.readUTF();
                 if (task.equals("check")){
 
                     String ID = objectInputStream.readUTF();
-
                     new AccessDB().CheckCode(ID);
-
-                    String tsk = objectInputStream.readUTF();
-                    new AccessDB().getCardsorTickets(tsk);
                 }
 
-                if (task.equals("getSimpleTickets")){
+                if (task.equals("Card")){
 
+                    new AccessDB().getCardsorTickets(task);
+                }
+                if (task.equals("Ticket")){
 
-                    String tsk = objectInputStream.readUTF();
-                    new AccessDB().getCardsorTickets(tsk);
+                    new AccessDB().getCardsorTickets(task);
                 }
             }
 
