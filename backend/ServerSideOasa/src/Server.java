@@ -21,8 +21,8 @@ import java.util.Set;
 
 public class Server extends Thread{
 
-    ObjectInputStream objectInputStream;
-    ObjectOutputStream objectOutputStream;
+    public static ObjectInputStream objectInputStream;
+    public static ObjectOutputStream objectOutputStream;
 
     public Server(Socket connectionSocket) {
         try {
@@ -55,13 +55,27 @@ public class Server extends Thread{
         try {
             String task = objectInputStream.readUTF();
 
-            if (task.equals("check")){
+            while (true){
 
-               // int code = objectInputStream.readInt();
+                if (task.equals("check")){
 
-                AccessDB accessDB = new AccessDB();
-//                accessDB.CheckCode(code);
+                    String ID = objectInputStream.readUTF();
+
+                    new AccessDB().CheckCode(ID);
+
+                    String tsk = objectInputStream.readUTF();
+                    new AccessDB().getCardsorTickets(tsk);
+                }
+
+                if (task.equals("getSimpleTickets")){
+
+
+                    String tsk = objectInputStream.readUTF();
+                    new AccessDB().getCardsorTickets(tsk);
+                }
             }
+
+
 
         } catch (IOException e) {
             e.printStackTrace();

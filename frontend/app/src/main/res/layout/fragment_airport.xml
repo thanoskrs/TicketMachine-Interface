@@ -45,7 +45,7 @@
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/box1_card"
+        android:id="@+id/airport_box1_card"
         style="?attr/materialButtonOutlinedStyle"
         app:strokeColor="@color/athena_blue"
         app:strokeWidth="2dp"
@@ -63,32 +63,32 @@
     </com.google.android.material.button.MaterialButton>
 
     <TextView
-        android:id="@+id/duration_box1_card"
+        android:id="@+id/airport_duration_box1_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Λεωφοριακές\nΓραμμές Express"
         android:textAlignment="center"
         android:textColor="@color/athena_blue"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/box1_card"
-        app:layout_constraintEnd_toEndOf="@id/box1_card"
+        app:layout_constraintBottom_toBottomOf="@id/airport_box1_card"
+        app:layout_constraintEnd_toEndOf="@id/airport_box1_card"
 
-        app:layout_constraintStart_toStartOf="@id/box1_card"
-        app:layout_constraintTop_toTopOf="@id/box1_card"
+        app:layout_constraintStart_toStartOf="@id/airport_box1_card"
+        app:layout_constraintTop_toTopOf="@id/airport_box1_card"
         app:layout_constraintVertical_bias="0.337" />
 
     <TextView
-        android:id="@+id/cost_box1_card"
+        android:id="@+id/airport_cost_box1_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Τιμή : 5.50€"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@id/box1_card"
-        app:layout_constraintEnd_toEndOf="@id/box1_card"
-        app:layout_constraintStart_toStartOf="@id/box1_card"
-        app:layout_constraintTop_toTopOf="@id/box1_card"
+        app:layout_constraintBottom_toBottomOf="@id/airport_box1_card"
+        app:layout_constraintEnd_toEndOf="@id/airport_box1_card"
+        app:layout_constraintStart_toStartOf="@id/airport_box1_card"
+        app:layout_constraintTop_toTopOf="@id/airport_box1_card"
         app:layout_constraintVertical_bias="0.838" />
 
 
@@ -99,14 +99,14 @@
     <View
         android:id="@+id/divider_horizontal1_card"
         style="@style/Divider_Horizontal"
-        app:layout_constraintTop_toBottomOf="@id/box1_card"
+        app:layout_constraintTop_toBottomOf="@id/airport_box1_card"
         android:layout_width="match_parent"
         tools:ignore="MissingConstraints">
 
     </View>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/box2_card"
+        android:id="@+id/airport_box2_card"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="161dp"
         android:layout_height="106dp"
@@ -122,32 +122,32 @@
     </com.google.android.material.button.MaterialButton>
 
     <TextView
-        android:id="@+id/duration_box2_card"
+        android:id="@+id/airport_duration_box2_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="90 Λεπτών"
         android:textAlignment="center"
         android:textColor="@color/athena_blue"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/box2_card"
-        app:layout_constraintEnd_toEndOf="@id/box2_card"
+        app:layout_constraintBottom_toBottomOf="@id/airport_box2_card"
+        app:layout_constraintEnd_toEndOf="@id/airport_box2_card"
 
-        app:layout_constraintStart_toStartOf="@id/box2_card"
-        app:layout_constraintTop_toTopOf="@id/box2_card"
+        app:layout_constraintStart_toStartOf="@id/airport_box2_card"
+        app:layout_constraintTop_toTopOf="@id/airport_box2_card"
         app:layout_constraintVertical_bias="0.337" />
 
     <TextView
-        android:id="@+id/cost_box2_card"
+        android:id="@+id/airport_cost_box2_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Τιμή : 9.00€"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@id/box2_card"
-        app:layout_constraintEnd_toEndOf="@id/box2_card"
-        app:layout_constraintStart_toStartOf="@id/box2_card"
-        app:layout_constraintTop_toTopOf="@id/box2_card"
+        app:layout_constraintBottom_toBottomOf="@id/airport_box2_card"
+        app:layout_constraintEnd_toEndOf="@id/airport_box2_card"
+        app:layout_constraintStart_toStartOf="@id/airport_box2_card"
+        app:layout_constraintTop_toTopOf="@id/airport_box2_card"
         app:layout_constraintVertical_bias="0.838" />
 
 
@@ -156,14 +156,14 @@
     <View
         android:id="@+id/divider_horizontal2_card"
         style="@style/Divider_Horizontal"
-        app:layout_constraintTop_toBottomOf="@id/box2_card"
+        app:layout_constraintTop_toBottomOf="@id/airport_box2_card"
         android:layout_width="match_parent"
         tools:ignore="MissingConstraints">
 
     </View>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/box3_card"
+        android:id="@+id/airport_box3_card"
         style="?attr/materialButtonOutlinedStyle"
         app:strokeColor="@color/athena_blue"
         app:strokeWidth="2dp"
@@ -182,32 +182,32 @@
     </com.google.android.material.button.MaterialButton>
 
     <TextView
-        android:id="@+id/duration_box3_card"
+        android:id="@+id/airport_duration_box3_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="30 Ημερών"
         android:textAlignment="center"
         android:textColor="@color/athena_blue"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/box3_card"
-        app:layout_constraintEnd_toEndOf="@id/box3_card"
+        app:layout_constraintBottom_toBottomOf="@id/airport_box3_card"
+        app:layout_constraintEnd_toEndOf="@id/airport_box3_card"
 
-        app:layout_constraintStart_toStartOf="@id/box3_card"
-        app:layout_constraintTop_toTopOf="@id/box3_card"
+        app:layout_constraintStart_toStartOf="@id/airport_box3_card"
+        app:layout_constraintTop_toTopOf="@id/airport_box3_card"
         app:layout_constraintVertical_bias="0.337" />
 
     <TextView
-        android:id="@+id/cost_box3_card"
+        android:id="@+id/airport_cost_box3_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Τιμή : 45.00€"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@id/box3_card"
-        app:layout_constraintEnd_toEndOf="@id/box3_card"
-        app:layout_constraintStart_toStartOf="@id/box3_card"
-        app:layout_constraintTop_toTopOf="@id/box3_card"
+        app:layout_constraintBottom_toBottomOf="@id/airport_box3_card"
+        app:layout_constraintEnd_toEndOf="@id/airport_box3_card"
+        app:layout_constraintStart_toStartOf="@id/airport_box3_card"
+        app:layout_constraintTop_toTopOf="@id/airport_box3_card"
         app:layout_constraintVertical_bias="0.838" />
 
 
@@ -218,14 +218,14 @@
     <View
         android:id="@+id/divider_horizontal3_card"
         style="@style/Divider_Horizontal"
-        app:layout_constraintTop_toBottomOf="@id/box3_card"
+        app:layout_constraintTop_toBottomOf="@id/airport_box3_card"
         android:layout_width="match_parent"
         tools:ignore="MissingConstraints">
 
     </View>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/box5_card"
+        android:id="@+id/airport_box5_card"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="161dp"
         android:layout_height="106dp"
@@ -241,39 +241,39 @@
     </com.google.android.material.button.MaterialButton>
 
     <TextView
-        android:id="@+id/duration_box5_card"
+        android:id="@+id/airport_duration_box5_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="365 Ημερών"
         android:textAlignment="center"
         android:textColor="@color/athena_blue"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/box5_card"
-        app:layout_constraintEnd_toEndOf="@id/box5_card"
+        app:layout_constraintBottom_toBottomOf="@id/airport_box5_card"
+        app:layout_constraintEnd_toEndOf="@id/airport_box5_card"
 
-        app:layout_constraintStart_toStartOf="@id/box5_card"
-        app:layout_constraintTop_toTopOf="@id/box5_card"
+        app:layout_constraintStart_toStartOf="@id/airport_box5_card"
+        app:layout_constraintTop_toTopOf="@id/airport_box5_card"
         app:layout_constraintVertical_bias="0.337" />
 
     <TextView
-        android:id="@+id/cost_box5_card"
+        android:id="@+id/airport_cost_box5_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Τιμή : 446.00€"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@id/box5_card"
-        app:layout_constraintEnd_toEndOf="@id/box5_card"
-        app:layout_constraintStart_toStartOf="@id/box5_card"
-        app:layout_constraintTop_toTopOf="@id/box5_card"
+        app:layout_constraintBottom_toBottomOf="@id/airport_box5_card"
+        app:layout_constraintEnd_toEndOf="@id/airport_box5_card"
+        app:layout_constraintStart_toStartOf="@id/airport_box5_card"
+        app:layout_constraintTop_toTopOf="@id/airport_box5_card"
         app:layout_constraintVertical_bias="0.838" />
 
 
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/box6_card"
+        android:id="@+id/airport_box6_card"
         style="?attr/materialButtonOutlinedStyle"
         app:strokeColor="@color/athena_blue"
         app:strokeWidth="2dp"
@@ -292,32 +292,32 @@
     </com.google.android.material.button.MaterialButton>
 
     <TextView
-        android:id="@+id/duration_box6_card"
+        android:id="@+id/airport_duration_box6_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="180 Ημερών"
         android:textAlignment="center"
         android:textColor="@color/athena_blue"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/box6_card"
-        app:layout_constraintEnd_toEndOf="@id/box6_card"
+        app:layout_constraintBottom_toBottomOf="@id/airport_box6_card"
+        app:layout_constraintEnd_toEndOf="@id/airport_box6_card"
 
-        app:layout_constraintStart_toStartOf="@id/box6_card"
-        app:layout_constraintTop_toTopOf="@id/box6_card"
+        app:layout_constraintStart_toStartOf="@id/airport_box6_card"
+        app:layout_constraintTop_toTopOf="@id/airport_box6_card"
         app:layout_constraintVertical_bias="0.337" />
 
     <TextView
-        android:id="@+id/cost_box6_card"
+        android:id="@+id/airport_cost_box6_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Τιμή : 228.00€"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@id/box6_card"
-        app:layout_constraintEnd_toEndOf="@id/box6_card"
-        app:layout_constraintStart_toStartOf="@id/box6_card"
-        app:layout_constraintTop_toTopOf="@id/box6_card"
+        app:layout_constraintBottom_toBottomOf="@id/airport_box6_card"
+        app:layout_constraintEnd_toEndOf="@id/airport_box6_card"
+        app:layout_constraintStart_toStartOf="@id/airport_box6_card"
+        app:layout_constraintTop_toTopOf="@id/airport_box6_card"
         app:layout_constraintVertical_bias="0.838" />
 
 
@@ -328,14 +328,14 @@
     <View
         android:id="@+id/divider_horizontal4_card"
         style="@style/Divider_Horizontal"
-        app:layout_constraintTop_toBottomOf="@id/box1_card"
+        app:layout_constraintTop_toBottomOf="@id/airport_box1_card"
         android:layout_width="match_parent"
         tools:ignore="MissingConstraints">
 
     </View>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/box4_card"
+        android:id="@+id/airport_box4_card"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="161dp"
         android:layout_height="106dp"
@@ -351,32 +351,32 @@
     </com.google.android.material.button.MaterialButton>
 
     <TextView
-        android:id="@+id/duration_box4_card"
+        android:id="@+id/airport_duration_box4_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="90 Ημερών"
         android:textAlignment="center"
         android:textColor="@color/athena_blue"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/box4_card"
-        app:layout_constraintEnd_toEndOf="@id/box4_card"
+        app:layout_constraintBottom_toBottomOf="@id/airport_box4_card"
+        app:layout_constraintEnd_toEndOf="@id/airport_box4_card"
 
-        app:layout_constraintStart_toStartOf="@id/box4_card"
-        app:layout_constraintTop_toTopOf="@id/box4_card"
+        app:layout_constraintStart_toStartOf="@id/airport_box4_card"
+        app:layout_constraintTop_toTopOf="@id/airport_box4_card"
         app:layout_constraintVertical_bias="0.337" />
 
     <TextView
-        android:id="@+id/cost_box4_card"
+        android:id="@+id/airport_cost_box4_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Τιμή : 129.00€"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@id/box4_card"
-        app:layout_constraintEnd_toEndOf="@id/box4_card"
-        app:layout_constraintStart_toStartOf="@id/box4_card"
-        app:layout_constraintTop_toTopOf="@id/box4_card"
+        app:layout_constraintBottom_toBottomOf="@id/airport_box4_card"
+        app:layout_constraintEnd_toEndOf="@id/airport_box4_card"
+        app:layout_constraintStart_toStartOf="@id/airport_box4_card"
+        app:layout_constraintTop_toTopOf="@id/airport_box4_card"
         app:layout_constraintVertical_bias="0.838" />
 
         <com.google.android.material.button.MaterialButton
@@ -392,7 +392,7 @@
             android:textAllCaps="false"
             android:textSize="20sp"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/box3_card"
+            app:layout_constraintTop_toBottomOf="@id/airport_box3_card"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -444,7 +444,7 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/box1_ticket"
+            android:id="@+id/airport_box1_ticket"
             style="?attr/materialButtonOutlinedStyle"
             app:strokeColor="@color/athena_blue"
             app:strokeWidth="2dp"
@@ -463,32 +463,32 @@
         </com.google.android.material.button.MaterialButton>
 
         <TextView
-            android:id="@+id/duration_box1_ticket"
+            android:id="@+id/airport_duration_box1_ticket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Λεωφοριακές\nΓραμμές Express"
             android:textAlignment="center"
             android:textColor="@color/athena_blue"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/box1_ticket"
-            app:layout_constraintEnd_toEndOf="@id/box1_ticket"
+            app:layout_constraintBottom_toBottomOf="@id/airport_box1_ticket"
+            app:layout_constraintEnd_toEndOf="@id/airport_box1_ticket"
 
-            app:layout_constraintStart_toStartOf="@id/box1_ticket"
-            app:layout_constraintTop_toTopOf="@id/box1_ticket"
+            app:layout_constraintStart_toStartOf="@id/airport_box1_ticket"
+            app:layout_constraintTop_toTopOf="@id/airport_box1_ticket"
             app:layout_constraintVertical_bias="0.337" />
 
         <TextView
-            android:id="@+id/cost_box1_ticket"
+            android:id="@+id/airport_cost_box1_ticket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Τιμή : 5.50€"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@id/box1_ticket"
-            app:layout_constraintEnd_toEndOf="@id/box1_ticket"
-            app:layout_constraintStart_toStartOf="@id/box1_ticket"
-            app:layout_constraintTop_toTopOf="@id/box1_ticket"
+            app:layout_constraintBottom_toBottomOf="@id/airport_box1_ticket"
+            app:layout_constraintEnd_toEndOf="@id/airport_box1_ticket"
+            app:layout_constraintStart_toStartOf="@id/airport_box1_ticket"
+            app:layout_constraintTop_toTopOf="@id/airport_box1_ticket"
             app:layout_constraintVertical_bias="0.838" />
 
 
@@ -499,14 +499,14 @@
         <View
             android:id="@+id/divider_horizontal1_ticket"
             style="@style/Divider_Horizontal"
-            app:layout_constraintTop_toBottomOf="@id/box1_ticket"
+            app:layout_constraintTop_toBottomOf="@id/airport_box1_ticket"
             android:layout_width="match_parent"
             tools:ignore="MissingConstraints">
 
         </View>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/box2_ticket"
+            android:id="@+id/airport_box2_ticket"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="161dp"
             android:layout_height="106dp"
@@ -522,32 +522,32 @@
         </com.google.android.material.button.MaterialButton>
 
         <TextView
-            android:id="@+id/duration_box2_ticket"
+            android:id="@+id/airport_duration_box2_ticket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="90 Λεπτών"
             android:textAlignment="center"
             android:textColor="@color/athena_blue"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/box2_ticket"
-            app:layout_constraintEnd_toEndOf="@id/box2_ticket"
+            app:layout_constraintBottom_toBottomOf="@id/airport_box2_ticket"
+            app:layout_constraintEnd_toEndOf="@id/airport_box2_ticket"
 
-            app:layout_constraintStart_toStartOf="@id/box2_ticket"
-            app:layout_constraintTop_toTopOf="@id/box2_ticket"
+            app:layout_constraintStart_toStartOf="@id/airport_box2_ticket"
+            app:layout_constraintTop_toTopOf="@id/airport_box2_ticket"
             app:layout_constraintVertical_bias="0.337" />
 
         <TextView
-            android:id="@+id/cost_box2_ticket"
+            android:id="@+id/airport_cost_box2_ticket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Τιμή : 9.00€"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@id/box2_ticket"
-            app:layout_constraintEnd_toEndOf="@id/box2_ticket"
-            app:layout_constraintStart_toStartOf="@id/box2_ticket"
-            app:layout_constraintTop_toTopOf="@id/box2_ticket"
+            app:layout_constraintBottom_toBottomOf="@id/airport_box2_ticket"
+            app:layout_constraintEnd_toEndOf="@id/airport_box2_ticket"
+            app:layout_constraintStart_toStartOf="@id/airport_box2_ticket"
+            app:layout_constraintTop_toTopOf="@id/airport_box2_ticket"
             app:layout_constraintVertical_bias="0.838" />
 
 
@@ -556,7 +556,7 @@
         <View
             android:id="@+id/divider_horizontal2_ticket"
             style="@style/Divider_Horizontal"
-            app:layout_constraintTop_toBottomOf="@id/box2_ticket"
+            app:layout_constraintTop_toBottomOf="@id/airport_box2_ticket"
             android:layout_width="match_parent"
             tools:ignore="MissingConstraints">
 
@@ -570,7 +570,7 @@
         <View
             android:id="@+id/divider_horizontal3_ticket"
             style="@style/Divider_Horizontal"
-            app:layout_constraintTop_toBottomOf="@id/box2_ticket"
+            app:layout_constraintTop_toBottomOf="@id/airport_box2_ticket"
             android:layout_width="match_parent"
             tools:ignore="MissingConstraints">
 
@@ -581,7 +581,7 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/box3_ticket"
+            android:id="@+id/airport_box3_ticket"
             style="?attr/materialButtonOutlinedStyle"
             app:strokeColor="@color/athena_blue"
             app:strokeWidth="2dp"
@@ -600,32 +600,32 @@
         </com.google.android.material.button.MaterialButton>
 
         <TextView
-            android:id="@+id/duration_box3_ticket"
+            android:id="@+id/airport_duration_box3_ticket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3 Ημερών\nΤουριστικό"
             android:textAlignment="center"
             android:textColor="@color/athena_blue"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/box3_ticket"
-            app:layout_constraintEnd_toEndOf="@id/box3_ticket"
+            app:layout_constraintBottom_toBottomOf="@id/airport_box3_ticket"
+            app:layout_constraintEnd_toEndOf="@id/airport_box3_ticket"
 
-            app:layout_constraintStart_toStartOf="@id/box3_ticket"
-            app:layout_constraintTop_toTopOf="@id/box3_ticket"
+            app:layout_constraintStart_toStartOf="@id/airport_box3_ticket"
+            app:layout_constraintTop_toTopOf="@id/airport_box3_ticket"
             app:layout_constraintVertical_bias="0.337" />
 
         <TextView
-            android:id="@+id/cost_box3_ticket"
+            android:id="@+id/airport_cost_box3_ticket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Τιμή : 20.00€"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@id/box3_ticket"
-            app:layout_constraintEnd_toEndOf="@id/box3_ticket"
-            app:layout_constraintStart_toStartOf="@id/box3_ticket"
-            app:layout_constraintTop_toTopOf="@id/box3_ticket"
+            app:layout_constraintBottom_toBottomOf="@id/airport_box3_ticket"
+            app:layout_constraintEnd_toEndOf="@id/airport_box3_ticket"
+            app:layout_constraintStart_toStartOf="@id/airport_box3_ticket"
+            app:layout_constraintTop_toTopOf="@id/airport_box3_ticket"
             app:layout_constraintVertical_bias="0.838" />
 
 
@@ -636,14 +636,14 @@
         <View
             android:id="@+id/divider_horizontal4_ticket"
             style="@style/Divider_Horizontal"
-            app:layout_constraintTop_toBottomOf="@id/box1_ticket"
+            app:layout_constraintTop_toBottomOf="@id/airport_box1_ticket"
             android:layout_width="match_parent"
             tools:ignore="MissingConstraints">
 
         </View>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/box4_ticket"
+            android:id="@+id/airport_box4_ticket"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="161dp"
             android:layout_height="106dp"
@@ -659,32 +659,32 @@
         </com.google.android.material.button.MaterialButton>
 
         <TextView
-            android:id="@+id/duration_box4_ticket"
+            android:id="@+id/airport_duration_box4_ticket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="90 Λεπτών\nΜετ'επιστροφής"
             android:textAlignment="center"
             android:textColor="@color/athena_blue"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/box4_ticket"
-            app:layout_constraintEnd_toEndOf="@id/box4_ticket"
+            app:layout_constraintBottom_toBottomOf="@id/airport_box4_ticket"
+            app:layout_constraintEnd_toEndOf="@id/airport_box4_ticket"
 
-            app:layout_constraintStart_toStartOf="@id/box4_ticket"
-            app:layout_constraintTop_toTopOf="@id/box4_ticket"
+            app:layout_constraintStart_toStartOf="@id/airport_box4_ticket"
+            app:layout_constraintTop_toTopOf="@id/airport_box4_ticket"
             app:layout_constraintVertical_bias="0.337" />
 
         <TextView
-            android:id="@+id/cost_box4_ticket"
+            android:id="@+id/airport_cost_box4_ticket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Τιμή : 16.00€"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@id/box4_ticket"
-            app:layout_constraintEnd_toEndOf="@id/box4_ticket"
-            app:layout_constraintStart_toStartOf="@id/box4_ticket"
-            app:layout_constraintTop_toTopOf="@id/box4_ticket"
+            app:layout_constraintBottom_toBottomOf="@id/airport_box4_ticket"
+            app:layout_constraintEnd_toEndOf="@id/airport_box4_ticket"
+            app:layout_constraintStart_toStartOf="@id/airport_box4_ticket"
+            app:layout_constraintTop_toTopOf="@id/airport_box4_ticket"
             app:layout_constraintVertical_bias="0.838" />
 
         <com.google.android.material.button.MaterialButton
@@ -700,7 +700,7 @@
             android:textAllCaps="false"
             android:textSize="20sp"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/box3_ticket"
+            app:layout_constraintTop_toBottomOf="@id/airport_box3_ticket"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">

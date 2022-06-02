@@ -3,10 +3,12 @@ package com.project.ticketmachine;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.support.v4.os.IResultReceiver;
 import android.util.Log;
 import android.view.View;
 import android.os.AsyncTask;
@@ -36,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String MainServerIp = "10.0.2.2";
     public static final int MainServerPort = 8080;
+    private String student = "";
+    public static Socket socket = null;
+    public static ObjectOutputStream objectOutputStream;
+    public static ObjectInputStream objectInputStream;
 
     @SuppressLint("ResourceType")
     @Override
@@ -69,9 +75,17 @@ public class MainActivity extends AppCompatActivity {
         TextInputEditText inputCode = (TextInputEditText) findViewById(R.id.card_barcode);
 
 
+
+
         ticketBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //get tickets from the server
+
+                GetSimpleTickets getSimpleTickets = new GetSimpleTickets();
+                getSimpleTickets.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
                 Intent myIntent = new Intent(MainActivity.this, ProductScreen.class);
                 myIntent.putExtra("key", "ticket");
                 MainActivity.this.startActivity(myIntent);
@@ -83,9 +97,21 @@ public class MainActivity extends AppCompatActivity {
         cardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(MainActivity.this, ProductScreen.class);
-                myIntent.putExtra("key", "card");
-                MainActivity.this.startActivity(myIntent);
+                if (student.equals("")){
+                    Context context = getApplicationContext();
+                    CharSequence message = "Παρακαλώ εισάγετε κωδικό κάρτας.";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, message, duration);
+                    toast.show();
+                }
+                else{
+                    Intent myIntent = new Intent(MainActivity.this, ProductScreen.class);
+                    myIntent.putExtra("key", "card");
+                    myIntent.putExtra("Student", Boolean.parseBoolean(student));
+                    MainActivity.this.startActivity(myIntent);
+                }
+
             }
         });
 
@@ -197,12 +223,28 @@ public class MainActivity extends AppCompatActivity {
 
                 //send to the server the barcode code
                 String[] params = new String[2];
-                params[0] = inputCode.toString();
-                CheckCode checkCode = new CheckCode();
-                checkCode.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+                params[0] = inputCode.getText().toString();
+
+                if (params[0].length() > 0){
+                    CheckCode checkCode = new CheckCode();
+                    checkCode.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+                }
+                else{
+                    Context context = getApplicationContext();
+                    CharSequence message = "Εισάγετε τον κωδικό της κάρτα σας.";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, message, duration);
+                    toast.show();
+                }
+
+
 
             }
         });
+
+
+
     }
 
     private void setAlphaForLanguageButtons(ImageButton[] imageButtons) {
@@ -211,27 +253,80 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class CheckCode extends AsyncTask<String, String, String>{
-        private Socket socket = null;
-        private ObjectOutputStream objectOutputStream;
-        private ObjectInputStream objectInputStream;
-
 
         @Override
         protected String doInBackground(String... strings) {
 
+            if (socket == null){
+                //connect to DB
+                try {
+                    socket = new Socket(MainServerIp , MainServerPort);
+                    objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                    objectInputStream = new ObjectInputStream(socket.getInputStream());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
             try {
-                socket = new Socket(MainServerIp , MainServerPort);
-
-                objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-                objectInputStream = new ObjectInputStream(socket.getInputStream());
-
                 objectOutputStream.writeUTF("check");
                 objectOutputStream.flush();
 
-//                int code = Integer.parseInt(strings[0]);
-//
-//                objectOutputStream.writeInt(code);
-//                objectOutputStream.flush();
+                String ID = strings[0];
+                Log.e("id" , ID);
+
+                objectOutputStream.writeUTF(ID);
+                objectOutputStream.flush();
+
+                String exists = objectInputStream.readUTF();
+                if (exists.equals("Pass")){
+                    student = objectInputStream.readUTF();
+                    Log.e("exists","In db. "+student);
+
+                }
+                else{
+                    Log.e("exists","Not in db.");
+                    Context context = getApplicationContext();
+                    CharSequence message = "Λάθος κωδικός.";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, message, duration);
+                    toast.show();
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+    }
+
+    private class GetSimpleTickets extends AsyncTask<String, String, String>{
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            if (socket == null){
+                //connect to DB
+                try {
+                    socket = new Socket(MainServerIp , MainServerPort);
+                    objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                    objectInputStream = new ObjectInputStream(socket.getInputStream());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+
+            try {
+                objectOutputStream.writeUTF("getSimpleTickets");
+                objectOutputStream.flush();
+
+                objectOutputStream.writeUTF("Ticket");
+                objectOutputStream.flush();
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -246,6 +341,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
     }
+
+
 
 }
 
