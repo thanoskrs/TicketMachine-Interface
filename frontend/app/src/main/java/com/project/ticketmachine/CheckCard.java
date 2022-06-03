@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.project.ticketmachine.databinding.ActivityProductScreenBinding;
 import com.project.ticketmachine.databinding.CheckCardBinding;
 
+import org.bson.Document;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -71,17 +73,9 @@ public class CheckCard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String[] params = new String[2];
-                params[0] = "";
-                params[1] = "connect";
-
-                CheckCode checkCode = new CheckCode();
-                checkCode.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
-
-
                 Intent myIntent = new Intent(CheckCard.this, ProductScreen.class);
-                myIntent.putExtra("Type", MainActivity.type);
-                myIntent.putExtra("Category", MainActivity.category);
+                myIntent.putExtra("Type", "Ticket");
+                myIntent.putExtra("Category", "null");
                 CheckCard.this.startActivity(myIntent);
             }
         });
@@ -140,35 +134,26 @@ public class CheckCard extends AppCompatActivity {
                     objectOutputStream.writeUTF("check");
                     objectOutputStream.flush();
 
-
-
                     objectOutputStream.writeUTF(ID);
                     objectOutputStream.flush();
 
                     String exists = objectInputStream.readUTF();
                     if (exists.equals("Pass")){
-                        MainActivity.category = objectInputStream.readUTF();
-                        MainActivity.type = objectInputStream.readUTF();
-                        Log.e("exists","In db. "+MainActivity.category +" "+MainActivity.type);
 
-                        if (Objects.equals(MainActivity.type, selected_box)){
-                            if (MainActivity.category.equals("Anonymus")){
-                                objectOutputStream.writeUTF("Ticket");
-                                objectOutputStream.flush();
-                            }
-                            else{
-                                objectOutputStream.writeUTF(MainActivity.type);
-                                objectOutputStream.flush();
-                            }
+                        MainActivity.user = (Document) objectInputStream.readObject();
 
+                        String category = (String) MainActivity.user.get("Category");
+                        String type = (String) MainActivity.user.get("Type");
+                        String userID = (String) MainActivity.user.get("UserID");
 
+                        Log.e("exists","In db. "+category +" "+type);
+
+                        if (Objects.equals(type, selected_box)){
                             Intent myIntent = new Intent(CheckCard.this, ProductScreen.class);
-                            myIntent.putExtra("Type", MainActivity.type);
-                            myIntent.putExtra("Category", MainActivity.category);
                             CheckCard.this.startActivity(myIntent);
                         }
                         else{
-                            Log.e("error not match" , MainActivity.type);
+                            Log.e("error not match" , type);
                         }
                     }
                     else{
@@ -184,7 +169,7 @@ public class CheckCard extends AppCompatActivity {
                 }
 
 
-            } catch (IOException e) {
+            } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
 

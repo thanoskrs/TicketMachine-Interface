@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.bson.Document;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     public static Socket socket = null;
     public static ObjectOutputStream objectOutputStream;
     public static ObjectInputStream objectInputStream;
+    public static Document user = null;
 
     @SuppressLint("ResourceType")
     @Override
@@ -197,10 +200,6 @@ public class MainActivity extends AppCompatActivity {
                 russiaBtn.setAlpha(1.0f);
             }
         });
-
-
-
-
 
     }
 

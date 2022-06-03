@@ -18,6 +18,7 @@
         android:textIsSelectable="false"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

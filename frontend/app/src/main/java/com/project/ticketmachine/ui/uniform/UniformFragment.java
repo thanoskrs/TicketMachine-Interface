@@ -36,7 +36,14 @@ public class UniformFragment extends Fragment {
         uniformViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         ProductScreen activity = (ProductScreen) getActivity();
-        String product_kind = activity.getProduct_kind();
+        String product_kind = null;
+
+        if (MainActivity.user == null){
+            product_kind = "Ticket";
+        }
+        else{
+            product_kind = (String) MainActivity.user.get("Type");
+        }
 
         if (product_kind.equals("ticket")){
             binding.cardView.setVisibility(View.INVISIBLE);

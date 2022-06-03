@@ -8,6 +8,9 @@ import org.bson.Document;
 
 import javax.print.Doc;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -47,11 +50,10 @@ public class AccessDB {
                 Server.objectOutputStream.writeUTF("Pass");
                 Server.objectOutputStream.flush();
 
-                Server.objectOutputStream.writeUTF((String) doc.get("Category"));
+                Server.objectOutputStream.writeObject((Document) doc);
                 Server.objectOutputStream.flush();
 
-                Server.objectOutputStream.writeUTF((String) doc.get("Type"));
-                Server.objectOutputStream.flush();
+
                 return true;
             }
         }

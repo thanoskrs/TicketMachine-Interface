@@ -117,7 +117,7 @@
                 android:id="@+id/kind_product_chosen_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Είδος : Ενιαίο"
+                android:text="Είδος : "
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -129,10 +129,10 @@
                 app:layout_constraintVertical_bias="0.188" />
 
             <TextView
-                android:id="@+id/product_chosen_text"
+                android:id="@+id/duration_product_chosen_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Διάρκεια: 90 Λεπτών"
+                android:text="Διάρκεια : "
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -147,7 +147,7 @@
                 android:id="@+id/product_price_chosen_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Τιμή : 1.20€"
+                android:text="Τιμή :"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="16sp"

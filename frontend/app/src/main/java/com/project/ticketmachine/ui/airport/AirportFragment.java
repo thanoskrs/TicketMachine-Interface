@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.project.ticketmachine.MainActivity;
 import com.project.ticketmachine.ProductScreen;
 import com.project.ticketmachine.databinding.FragmentAirportBinding;
 
@@ -25,7 +26,14 @@ public class AirportFragment extends Fragment {
         View root = binding.getRoot();
 
         ProductScreen activity = (ProductScreen) getActivity();
-        String product_kind = activity.getProduct_kind();
+        String product_kind = null;
+
+        if (MainActivity.user == null){
+            product_kind = "Ticket";
+        }
+        else{
+            product_kind = (String) MainActivity.user.get("Type");
+        }
 
         if (product_kind.equals("ticket")){
             binding.cardView.setVisibility(View.INVISIBLE);
