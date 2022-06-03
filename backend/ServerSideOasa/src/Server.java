@@ -66,18 +66,26 @@ public class Server extends Thread{
                 }
 
                 if (task.equals("Card")){
-
+                    
                     new AccessDB().getCardsorTickets(task);
                 }
                 if (task.equals("Ticket")){
 
                     new AccessDB().getCardsorTickets(task);
                 }
+                if (task.equals("Insert User")){
+
+                    new AccessDB().insertUser();
+                }
+                if (task.equals("LastProductScreen")){
+                    String id = objectInputStream.readUTF();
+                    new AccessDB().checkLastProduct(id);
+                }
             }
 
 
 
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 

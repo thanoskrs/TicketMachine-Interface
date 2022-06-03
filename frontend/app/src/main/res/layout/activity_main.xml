@@ -77,8 +77,8 @@
         android:id="@+id/cardButton"
         android:layout_width="260dp"
         android:layout_height="158dp"
-        android:adjustViewBounds="false"
         android:layout_marginTop="50dp"
+        android:adjustViewBounds="false"
         android:backgroundTint="@color/athena_blue"
         android:contextClickable="false"
         android:padding="7dp"
@@ -212,8 +212,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/greeceButton"
         app:layout_constraintStart_toEndOf="@id/saudiArabiaButton"
         app:srcCompat="@drawable/russia_square" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

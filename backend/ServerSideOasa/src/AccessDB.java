@@ -87,6 +87,32 @@ public class AccessDB {
 
     }
 
+    public void insertUser() throws IOException, ClassNotFoundException {
+
+        MongoCollection<Document> collection = database.getCollection("User");
+
+        Document new_user = (Document) Server.objectInputStream.readObject();
+
+        collection.insertOne(new_user);
+        System.out.println("Document inserted successfully");
+    }
+
+    public void checkLastProduct(String id) throws IOException, ClassNotFoundException {
+
+        MongoCollection<Document> collection = database.getCollection("Ticket");
+
+        FindIterable<Document> iterDoc = collection.find();
+        for (Document doc : iterDoc) {
+            if (doc.get("TicketID").equals(id)) {
+                System.out.println(doc);
+                Server.objectOutputStream.writeObject(doc);
+                Server.objectOutputStream.flush();
+                break;
+            }
+        }
+
+    }
+
 
     public void insert(){
         MongoCollection<Document> collection = database.getCollection("User");

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
 
-        android:text="Θέλετε να επαναφορτήσετε το εισητήριο σας;"
+        android:text="Επιλέξτε επιθυμητή ενέργεια."
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#100D0D"
@@ -28,28 +28,39 @@
 
     <Button
         android:id="@+id/no_recharge"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginStart="108dp"
+        android:layout_width="200dp"
+        android:layout_height="90dp"
 
+        android:textColor="@color/athena_blue"
         android:layout_marginTop="16dp"
-
-        android:backgroundTint="@color/red"
-        android:text="Οχι"
+        app:strokeColor="@color/athena_blue"
+        app:strokeWidth="2dp"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        app:cornerRadius="8dp"
+        android:backgroundTint="@color/lite_grey"
+        android:text="Αγορά νέου εισητηρίου"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/recharge_ticket" />
 
     <Button
         android:id="@+id/recharge"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_width="200dp"
+        android:layout_height="90dp"
+        app:cornerRadius="8dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="84dp"
-        android:backgroundTint="@color/green"
 
-        android:text="Ναι"
+        android:textSize="20sp"
+        android:backgroundTint="@color/lite_grey"
+        android:textColor="@color/athena_blue"
+        android:textAllCaps="false"
+        app:strokeColor="@color/athena_blue"
+        app:strokeWidth="2dp"
+        android:text="Επαναφόρτιση εισητηρίου"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recharge_ticket" />
+        app:layout_constraintTop_toBottomOf="@id/no_recharge" />
 
     <TextView
         android:id="@+id/ticketInfoText"
@@ -59,12 +70,12 @@
         android:text="Εισάγετε τον κωδικό του προιόντος σας."
         android:textAlignment="center"
         android:textAllCaps="false"
-
+        android:layout_marginTop="50dp"
         android:textColor="#100D0D"
         android:textIsSelectable="false"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +91,8 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ticketInfoText"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+       />
 
     <Button
         android:id="@+id/send_barcode"

@@ -2,7 +2,9 @@ package com.project.ticketmachine;
 
 import static com.project.ticketmachine.MainActivity.MainServerIp;
 import static com.project.ticketmachine.MainActivity.MainServerPort;
+import static com.project.ticketmachine.MainActivity.type;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.internal.NavigationMenuItemView;
 import com.project.ticketmachine.databinding.ActivityProductScreenBinding;
 import com.project.ticketmachine.ui.uniform.UniformFragment;
 
@@ -27,12 +30,18 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public class ProductScreen extends AppCompatActivity {
 
     private ActivityProductScreenBinding binding;
-    private String product_kind;
+    Document ticket = null;
+    String price = null;
+    String duration = null;
+    String kind = null;
+    public boolean notify = false;
+    public static ArrayList<Document> list = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,55 +51,64 @@ public class ProductScreen extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
+
         binding = ActivityProductScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        boolean showLastProductScreen = false;
+        String task = getIntent().getStringExtra("Type");
+        if (task.equals("Simple Ticket")){
 
-        if (MainActivity.user != null){
-            showLastProductScreen = (Boolean) MainActivity.user.get("LastProductScreen");
-        }
-        else{
-            Random random = new Random();
-            int id = random.nextInt(900) + 100;
-
-            MainActivity.user = new Document();
-            MainActivity.user.append("userID", id);
-            MainActivity.user.append("userName", "");
-            MainActivity.user.append("Student", false);
-            MainActivity.user.append("Unemployed", false);
-            MainActivity.user.append("LastProductScreen", false);
-
-
-           //
-        }
-
-
-        if (!showLastProductScreen){
             binding.softBackground.setVisibility(View.INVISIBLE);
             binding.repeatOrderLayout.setVisibility(View.INVISIBLE);
 
+            Random rand = new Random();
+            int id = rand.nextInt(900) + 100;
+
+            MainActivity.user = new Document();
+            MainActivity.user.append("userID",String.valueOf(id));
+            MainActivity.user.append("userName","");
+            MainActivity.user.append("Category","");
+            MainActivity.user.append("LastProductId","");
+            MainActivity.user.append("LastProductScreen",false);
+            MainActivity.user.append("Type","Ticket");
+
+
+
+
             String[] params = new String[3];
-
-            String category = (String) MainActivity.user.get("Category");
-            String type = (String) MainActivity.user.get("Type");
-            String userID = (String) MainActivity.user.get("userID");
-
-            params[0] = category;
-            params[1] = type;
-            params[2] = userID;
+            params[0] = (String) MainActivity.user.get("Category");
+            params[1] = (String) MainActivity.user.get("Type");
+            params[2] = (String) MainActivity.user.get("userID");
 
             GetTickets getTickets = new GetTickets();
             getTickets.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
-        } else {
-
-            String[] params = new String[1];
-            params[0] = String.valueOf(MainActivity.user.get("LastProductId"));
-
-            LoadInfoForLastProductScreen loadLastProductScreen = new LoadInfoForLastProductScreen();
-            loadLastProductScreen.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
         }
+        else{
+            boolean showLastProductScreen = (boolean) MainActivity.user.get("LastProductScreen");
+            String lastProductId = (String) MainActivity.user.get("LastProductId");
 
+            if (!showLastProductScreen || lastProductId.equals("")){
+                binding.softBackground.setVisibility(View.INVISIBLE);
+                binding.repeatOrderLayout.setVisibility(View.INVISIBLE);
+
+                String[] params = new String[3];
+                params[0] = (String) MainActivity.user.get("Category");
+                params[1] = (String) MainActivity.user.get("Type");
+                params[2] = (String) MainActivity.user.get("userID");
+
+                GetTickets getTickets = new GetTickets();
+                getTickets.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+            } else {
+
+                String[] params = new String[1];
+                params[0] = String.valueOf(MainActivity.user.get("LastProductId"));
+
+                LoadInfoForLastProductScreen loadLastProductScreen = new LoadInfoForLastProductScreen();
+                loadLastProductScreen.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+
+
+            }
+        }
 
         binding.cancelRepeat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,19 +116,12 @@ public class ProductScreen extends AppCompatActivity {
                 binding.softBackground.setVisibility(View.INVISIBLE);
 
                 String[] params = new String[3];
-
-                String category = (String) MainActivity.user.get("Category");
-                String type = (String) MainActivity.user.get("Type");
-                String userID = (String) MainActivity.user.get("UserID");
-
-                params[0] = category;
-                params[1] = type;
-                params[2] = userID;
+                params[0] = (String) MainActivity.user.get("Category");
+                params[1] = (String) MainActivity.user.get("Type");
+                params[2] = (String) MainActivity.user.get("userID");
 
                 GetTickets getTickets = new GetTickets();
                 getTickets.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
-
-
             }
         });
 
@@ -118,9 +129,16 @@ public class ProductScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent paymentScreen = new Intent(ProductScreen.this, Payment.class);
-                paymentScreen.putExtra("product", "90 Λεπτών");
-                paymentScreen.putExtra("price", "1.20$");
+                paymentScreen.putExtra("userID", MainActivity.user.get("userID").toString());
+                paymentScreen.putExtra("ticketID", ticket.get("TicketID").toString());
+                paymentScreen.putExtra("kind", kind);
+                paymentScreen.putExtra("duration", duration);
+                paymentScreen.putExtra("price", price);
+                paymentScreen.putExtra("Type", MainActivity.user.get("Type").toString());
+
                 ProductScreen.this.startActivity(paymentScreen);
+
+
             }
         });
 
@@ -148,7 +166,7 @@ public class ProductScreen extends AppCompatActivity {
 
             try {
 
-                if (socket == null){
+                if (MainActivity.socket == null){
                     //connect to DB
                     try {
                         socket = new Socket(MainActivity.MainServerIp , MainActivity.MainServerPort);
@@ -163,9 +181,9 @@ public class ProductScreen extends AppCompatActivity {
                 String type = strings[1];
                 String userid = strings[2];
 
-                Log.e("category" , category);
-                Log.e("type" , type);
-                Log.e("userID" , userid);
+                Log.e("category" , String.valueOf(category));
+                Log.e("type" , String.valueOf(type));
+                Log.e("userID" , String.valueOf(userid));
 
 
                 if (category.equals("Anonymus")){
@@ -177,31 +195,28 @@ public class ProductScreen extends AppCompatActivity {
                     objectOutputStream.flush();
                 }
 
-
-
                 int list_len = objectInputStream.readInt();
-                System.out.println(list_len);
-                MainActivity.list = new ArrayList<>();
+                ProductScreen.list = new ArrayList<>();
 
                 for (int i =0; i < list_len; i++){
-                    MainActivity.list.add((Document) objectInputStream.readObject());
+                    ProductScreen.list.add((Document) objectInputStream.readObject());
                 }
                 for (int i =0; i < list_len; i++){
-                    System.out.println(MainActivity.list.get(i));
+                    System.out.println(ProductScreen.list.get(i));
                 }
+
 
 
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
 
-
             return null;
         }
 
-
-
     }
+
+
 
 
     private class LoadInfoForLastProductScreen extends AsyncTask<String, String, String> {
@@ -210,15 +225,23 @@ public class ProductScreen extends AppCompatActivity {
         private ObjectOutputStream objectOutputStream;
         private ObjectInputStream objectInputStream;
 
+        @SuppressLint("SetTextI18n")
         @Override
         protected String doInBackground(String... strings) {
 
             String ticketId = strings[0];
 
             try {
-                socket = new Socket(MainServerIp , MainServerPort);
-
-                objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                if (MainActivity.socket == null){
+                    //connect to DB
+                    try {
+                        socket = new Socket(MainActivity.MainServerIp , MainActivity.MainServerPort);
+                        objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                        objectInputStream = new ObjectInputStream(socket.getInputStream());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
 
                 objectOutputStream.writeUTF("LastProductScreen");
                 objectOutputStream.flush();
@@ -226,32 +249,42 @@ public class ProductScreen extends AppCompatActivity {
                 objectOutputStream.writeUTF(ticketId);
                 objectOutputStream.flush();
 
-                Document ticket = (Document) objectInputStream.readObject();
-                String kind = (String) ticket.get("Kind");
-                String duration = (String) ticket.get("Name");
-                String price;
+                ticket = (Document) objectInputStream.readObject();
+                kind = (String) ticket.get("Kind");
+                duration = (String) ticket.get("Name");
 
-                if (MainActivity.user.get("Category").equals("Student")) {
+                if (Objects.equals(MainActivity.user.get("Category"), "Student")) {
                     price = (String) ticket.get("Student Price");
-                } else {
+                }
+                else {
                     price = (String) ticket.get("Standard Price");
                 }
 
-                if (kind.equals("Uniform"))
-                    binding.kindProductChosenText.setText(binding.kindProductChosenText.getText().toString() + "Ενιαίο");
-                else
-                    binding.kindProductChosenText.setText(binding.kindProductChosenText.getText().toString() + "Αεροδρόμιο");
+                publishProgress("Done!");
 
-                binding.durationProductChosenText.setText(binding.durationProductChosenText.getText().toString() + duration);
 
-                binding.productPriceChosenText.setText(binding.productPriceChosenText.getText().toString() + price + "€");
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
 
-
             return null;
+        }
+
+        @SuppressLint("SetTextI18n")
+        @Override
+        protected void onProgressUpdate(String... values) {
+            super.onProgressUpdate(values);
+
+            if (kind.equals("Uniform"))
+                binding.kindProductChosenText.setText(binding.kindProductChosenText.getText().toString() + "Ενιαίο");
+            else
+                binding.kindProductChosenText.setText(binding.kindProductChosenText.getText().toString() + "Αεροδρόμιο");
+
+            binding.durationProductChosenText.setText(binding.durationProductChosenText.getText().toString() + duration);
+
+            binding.productPriceChosenText.setText(binding.productPriceChosenText.getText().toString() + price + "€");
         }
     }
 
 }
+
