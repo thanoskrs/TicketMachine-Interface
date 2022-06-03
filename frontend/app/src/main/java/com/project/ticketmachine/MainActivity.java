@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /*import com.google.android.material.textfield.TextInputEditText;
 import com.mongodb.MongoClient;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     public static ObjectOutputStream objectOutputStream;
     public static ObjectInputStream objectInputStream;
     public static Document user = null;
+    public static ArrayList<Document> list = null;
 
     @SuppressLint("ResourceType")
     @Override

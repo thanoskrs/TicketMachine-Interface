@@ -20,6 +20,8 @@ import com.project.ticketmachine.databinding.ActivityProductScreenBinding;
 import com.project.ticketmachine.databinding.FragmentUniformBinding;
 import com.project.ticketmachine.ui.uniform.UniformFragment;
 
+import org.bson.Document;
+
 public class UniformFragment extends Fragment {
 
     private FragmentUniformBinding binding;
@@ -48,10 +50,40 @@ public class UniformFragment extends Fragment {
         if (product_kind.equals("ticket")){
             binding.cardView.setVisibility(View.INVISIBLE);
             binding.ticketView.setVisibility(View.VISIBLE);
+
+            // ticket - uniform
+            int i = 1;
+            for (Document document: MainActivity.list){
+                if (document.get("TicketID").equals("uniform_box"+i)){
+                    binding.uniformDurationBox1.setText((String)document.get("Name"));
+                    binding.uniformCostBox1.setText((String)document.get("Student Price"));
+                }
+                i++;
+            }
+
         }
         else{
             binding.ticketView.setVisibility(View.INVISIBLE);
             binding.cardView.setVisibility(View.VISIBLE);
+
+            // card - uniform
+            int i = 1;
+            for (Document document: MainActivity.list){
+                if (document.get("TicketID").equals("uniform_box"+i+"_card")){
+                    for (int j = 1; j <= 8; j++){
+                   //     if ()
+                    }
+                   // binding.
+                // /   binding.uniformDurationBox1.setText((String)document.get("Name"));
+                    if (MainActivity.user.get("Category") == "Student"){
+                        binding.uniformCostBox1.setText((String)document.get("Student Price"));
+                    }
+                    else{
+                        binding.uniformCostBox1.setText((String)document.get("Standard Price"));
+                    }
+                }
+                i++;
+            }
         }
 
 

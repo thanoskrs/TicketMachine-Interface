@@ -13,6 +13,8 @@ import com.project.ticketmachine.MainActivity;
 import com.project.ticketmachine.ProductScreen;
 import com.project.ticketmachine.databinding.FragmentAirportBinding;
 
+import org.bson.Document;
+
 public class AirportFragment extends Fragment {
 
     private FragmentAirportBinding binding;
@@ -42,6 +44,21 @@ public class AirportFragment extends Fragment {
         else{
             binding.ticketView.setVisibility(View.INVISIBLE);
             binding.cardView.setVisibility(View.VISIBLE);
+
+            // card - airport
+            int i = 1;
+            for (Document document: MainActivity.list){
+                if (document.get("TicketID").equals("uniform_box"+i+"_card")){
+                    binding.uniformDurationBox1.setText((String)document.get("Name"));
+                    if (MainActivity.user.get("Category") == "Student"){
+                        binding.uniformCostBox1.setText((String)document.get("Student Price"));
+                    }
+                    else{
+                        binding.uniformCostBox1.setText((String)document.get("Standard Price"));
+                    }
+                }
+                i++;
+            }
         }
 
 

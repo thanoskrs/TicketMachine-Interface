@@ -181,13 +181,13 @@ public class ProductScreen extends AppCompatActivity {
 
                 int list_len = objectInputStream.readInt();
                 System.out.println(list_len);
-                ArrayList<Document> list = new ArrayList<>();
+                MainActivity.list = new ArrayList<>();
 
                 for (int i =0; i < list_len; i++){
-                    list.add((Document) objectInputStream.readObject());
+                    MainActivity.list.add((Document) objectInputStream.readObject());
                 }
                 for (int i =0; i < list_len; i++){
-                    System.out.println(list.get(i));
+                    System.out.println(MainActivity.list.get(i));
                 }
 
 
