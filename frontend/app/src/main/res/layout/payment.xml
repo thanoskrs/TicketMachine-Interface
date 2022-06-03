@@ -82,7 +82,7 @@
         app:layout_constraintStart_toStartOf="@+id/total_price"
         app:layout_constraintTop_toTopOf="@+id/total_price" />
 
-    <com.google.android.material.button.MaterialButton
+     <com.google.android.material.button.MaterialButton
         android:id="@+id/pay_cash_button"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="220dp"

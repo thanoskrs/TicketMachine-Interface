@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CheckCard">
+
+    <TextView
+        android:id="@+id/recharge_ticket"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+
+        android:text="Θέλετε να επαναφορτήσετε το εισητήριο σας;"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#100D0D"
+        android:textIsSelectable="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/no_recharge"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="108dp"
+
+        android:layout_marginTop="16dp"
+
+        android:backgroundTint="@color/red"
+        android:text="Οχι"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recharge_ticket" />
+
+    <Button
+        android:id="@+id/recharge"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="84dp"
+        android:backgroundTint="@color/green"
+
+        android:text="Ναι"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recharge_ticket" />
+
+    <TextView
+        android:id="@+id/ticketInfoText"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="412dp"
+        android:text="Εισάγετε τον κωδικό του προιόντος σας."
+        android:textAlignment="center"
+        android:textAllCaps="false"
+
+        android:textColor="#100D0D"
+        android:textIsSelectable="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/card_barcode"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:visibility="invisible"
+        android:background="@color/lite_grey1"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ticketInfoText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/send_barcode"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:visibility="invisible"
+        android:backgroundTint="@color/athena_blue"
+        android:text="ok"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_barcode" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

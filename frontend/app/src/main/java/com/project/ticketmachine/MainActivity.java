@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.bson.Document;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -36,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String MainServerIp = "10.0.2.2";
     public static final int MainServerPort = 8080;
+    private String student = "";
+    private boolean checked = false;
+    public static String category = "";
+    public static String type = "";
+    public static Socket socket = null;
+    public static ObjectOutputStream objectOutputStream;
+    public static ObjectInputStream objectInputStream;
+    public static Document user;
 
     @SuppressLint("ResourceType")
     @Override
