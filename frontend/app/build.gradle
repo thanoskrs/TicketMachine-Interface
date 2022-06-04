@@ -39,8 +39,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
     implementation 'androidx.navigation:navigation-ui:2.3.5'
-    implementation files('C:\\Users\\thano\\Desktop\\AUEB\\3rd year\\6th Semester\\Human Computer Interaction\\mongo-java-driver-3.5.0')
-    implementation 'org.mongodb:bson:4.6.0'
+    implementation files('C:\\mongo-java-driver-3.5.0.jar')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

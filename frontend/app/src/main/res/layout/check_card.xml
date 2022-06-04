@@ -10,7 +10,7 @@
         android:id="@+id/recharge_ticket"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-
+        android:visibility="visible"
         android:text="Επιλέξτε επιθυμητή ενέργεια."
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -30,7 +30,7 @@
         android:id="@+id/no_recharge"
         android:layout_width="200dp"
         android:layout_height="90dp"
-
+        android:visibility="visible"
         android:textColor="@color/athena_blue"
         android:layout_marginTop="16dp"
         app:strokeColor="@color/athena_blue"
@@ -39,7 +39,7 @@
         android:textAllCaps="false"
         app:cornerRadius="8dp"
         android:backgroundTint="@color/lite_grey"
-        android:text="Αγορά νέου εισητηρίου"
+        android:text="Αγορά νέου εισιτηρίου"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/recharge_ticket" />
@@ -49,15 +49,15 @@
         android:layout_width="200dp"
         android:layout_height="90dp"
         app:cornerRadius="8dp"
+        android:visibility="visible"
         android:layout_marginTop="16dp"
-
         android:textSize="20sp"
         android:backgroundTint="@color/lite_grey"
         android:textColor="@color/athena_blue"
         android:textAllCaps="false"
         app:strokeColor="@color/athena_blue"
         app:strokeWidth="2dp"
-        android:text="Επαναφόρτιση εισητηρίου"
+        android:text="Επαναφόρτιση εισιτηρίου"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/no_recharge" />
@@ -67,10 +67,9 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:visibility="invisible"
-        android:text="Εισάγετε τον κωδικό του προιόντος σας."
+        android:text="Παρακαλώ τοποθετήστε την κάρτα σας."
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:layout_marginTop="50dp"
         android:textColor="#100D0D"
         android:textIsSelectable="false"
         android:textSize="20sp"
@@ -79,16 +78,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cancel_button"
         tools:ignore="MissingConstraints"
         />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/card_barcode"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
         android:visibility="invisible"
+        android:alpha="0.15"
         android:background="@color/lite_grey1"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ticketInfoText"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,30 +98,34 @@
     <Button
         android:id="@+id/send_barcode"
 
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
         android:visibility="invisible"
+        android:alpha="0.15"
         android:backgroundTint="@color/athena_blue"
         android:text="ok"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_barcode" />
+        app:layout_constraintStart_toStartOf="@id/card_barcode"
+        app:layout_constraintTop_toBottomOf="@id/card_barcode"
+        app:layout_constraintEnd_toEndOf="@id/card_barcode"
+        />
 
 
     <!--    loading . . . -->
+
     <RelativeLayout
         android:id="@+id/loadingPanel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:visibility="invisible"
-        android:gravity="center" >
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateDrawable="@drawable/prog_bar"
             android:indeterminate="true"
+            android:indeterminateDrawable="@drawable/prog_bar"
             android:indeterminateDuration="1500"
             android:progress="0" />
     </RelativeLayout>

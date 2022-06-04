@@ -28,33 +28,41 @@
     </com.google.android.material.button.MaterialButton>
 
     <TextView
+        android:id="@+id/kind_product_chosen_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:text="Είδος : "
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/productChosen"
+        app:layout_constraintTop_toTopOf="@id/productChosen"/>
+
+    <TextView
         android:id="@+id/product_chosen_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="Διάρκεια : "
         android:textAlignment="center"
-        android:textColor="@color/athena_blue"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/productChosen"
-        app:layout_constraintEnd_toEndOf="@id/productChosen"
-        app:layout_constraintStart_toStartOf="@id/productChosen"
-        app:layout_constraintTop_toTopOf="@id/productChosen"
-        app:layout_constraintVertical_bias="0.337" />
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/kind_product_chosen_text"
+        app:layout_constraintTop_toBottomOf="@id/kind_product_chosen_text" />
 
     <TextView
         android:id="@+id/product_price_chosen_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Τιμή : "
+        android:layout_marginTop="10dp"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/productChosen"
-        app:layout_constraintEnd_toEndOf="@id/productChosen"
-        app:layout_constraintStart_toStartOf="@id/productChosen"
-        app:layout_constraintTop_toTopOf="@id/productChosen"
-        app:layout_constraintVertical_bias="0.838" />
-
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/product_chosen_text"
+        app:layout_constraintTop_toBottomOf="@id/product_chosen_text"/>
 
     <View
         android:id="@+id/total_price"

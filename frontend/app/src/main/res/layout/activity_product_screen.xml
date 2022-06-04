@@ -111,24 +111,23 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.615" />
 
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/lastProductChosen"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="220dp"
                 android:layout_height="130dp"
-                android:layout_marginTop="55dp"
+                android:layout_marginTop="44dp"
                 android:clickable="false"
                 app:backgroundTint="#BBE5F3"
                 app:cornerRadius="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.484"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/divider"
                 app:strokeColor="@color/athena_blue"
                 app:strokeWidth="2dp">
 
             </com.google.android.material.button.MaterialButton>
-
 
             <TextView
                 android:id="@+id/kind_product_chosen_text"
@@ -141,8 +140,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@id/lastProductChosen"
-                app:layout_constraintTop_toTopOf="@id/lastProductChosen"
-                app:layout_constraintVertical_bias="0.169" />
+                app:layout_constraintTop_toTopOf="@id/lastProductChosen" />
 
             <TextView
                 android:id="@+id/duration_product_chosen_text"
@@ -164,7 +162,7 @@
                 android:layout_marginTop="10dp"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/duration_product_chosen_text"
                 app:layout_constraintTop_toBottomOf="@+id/duration_product_chosen_text" />
 

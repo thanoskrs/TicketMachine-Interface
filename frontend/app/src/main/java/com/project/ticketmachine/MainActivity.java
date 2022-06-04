@@ -33,7 +33,7 @@ import com.mongodb.client.MongoDatabase;*/
 public class MainActivity extends AppCompatActivity {
 
 
-    public static final String MainServerIp = "10.0.2.2";
+    public static final String MainServerIp = "192.168.1.46";
     public static final int MainServerPort = 8080;
     public static Socket socket = null;
     private String student = "";
@@ -210,9 +210,6 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < imageButtons.length; i++)
             imageButtons[i].setAlpha(0.5f);
     }
-
-
-
 
 
     @Override

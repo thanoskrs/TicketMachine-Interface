@@ -44,6 +44,7 @@ public class Payment extends AppCompatActivity {
         MaterialButton pay_cash = (MaterialButton) findViewById(R.id.pay_cash_button);
         MaterialButton pay_card = (MaterialButton) findViewById(R.id.pay_card_button);
 
+        TextView kindOfProductText = (TextView) findViewById(R.id.kind_product_chosen_text);
         TextView productText = (TextView) findViewById(R.id.product_chosen_text);
         TextView priceText = (TextView) findViewById(R.id.product_price_chosen_text);
         TextView totalPriceText = (TextView) findViewById(R.id.total_price_text);
@@ -52,6 +53,7 @@ public class Payment extends AppCompatActivity {
         String product = getIntent().getStringExtra("duration");
         String price_str = getIntent().getStringExtra("price");
         String price1 = price_str.replace("Τιμή : ", "");
+        String kind = getIntent().getStringExtra("kind");
         float price = Float.parseFloat(price1.replace(" €", ""));
 
         Log.e("get" , getIntent().getStringExtra("duration"));
@@ -65,7 +67,8 @@ public class Payment extends AppCompatActivity {
         ticketId = getIntent().getStringExtra("ticketID");
         userId = getIntent().getStringExtra("userID");
 
-        productText.setText(product);
+        kindOfProductText.setText(kindOfProductText.getText().toString() + kind);
+        productText.setText(productText.getText().toString() + product);
         priceText.setText(priceText.getText().toString() + String.format("%.2f", price)+"€");
         totalPriceText.setText(totalPriceText.getText().toString() + String.format("%.2f", price) +"€");
 
