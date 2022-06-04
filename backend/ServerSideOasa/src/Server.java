@@ -21,8 +21,9 @@ import java.util.Set;
 
 public class Server extends Thread{
 
-    ObjectInputStream objectInputStream;
-    ObjectOutputStream objectOutputStream;
+    public static ObjectInputStream objectInputStream;
+    public static ObjectOutputStream objectOutputStream;
+    private boolean HasAccess;
 
     public Server(Socket connectionSocket) {
         try {
@@ -41,10 +42,11 @@ public class Server extends Thread{
         myServerSocket = new ServerSocket(8080);
 
         System.out.println("Server starts with port 3000");
-        
+
+
         while (true){
             connectionSocket = myServerSocket.accept();
-            
+
             Thread server = new Server(connectionSocket);
             server.start();
         }
@@ -53,17 +55,40 @@ public class Server extends Thread{
 
     public void run(){
         try {
-            String task = objectInputStream.readUTF();
 
-            if (task.equals("check")){
+            while (true){
+                String task = objectInputStream.readUTF();
+                if (task.equals("check")){
 
-               // int code = objectInputStream.readInt();
+                    String ID = objectInputStream.readUTF();
+                    new AccessDB().CheckCode(ID);
+                }
 
-                AccessDB accessDB = new AccessDB();
-//                accessDB.CheckCode(code);
+                if (task.equals("Card")){
+
+                    new AccessDB().getCardsorTickets(task);
+                }
+                if (task.equals("Ticket")){
+
+                    new AccessDB().getCardsorTickets(task);
+                }
+                if (task.equals("Insert User")){
+
+                    new AccessDB().insertUser();
+                }
+                if (task.equals("Update User")){
+
+                    new AccessDB().updateUser();
+                }
+                if (task.equals("LastProductScreen")){
+                    String id = objectInputStream.readUTF();
+                    new AccessDB().checkLastProduct(id);
+                }
             }
 
-        } catch (IOException e) {
+
+
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
