@@ -1,9 +1,5 @@
 package com.project.ticketmachine;
 
-import static com.project.ticketmachine.MainActivity.MainServerIp;
-import static com.project.ticketmachine.MainActivity.MainServerPort;
-import static com.project.ticketmachine.MainActivity.objectInputStream;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,34 +14,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
 
+import org.bson.Document;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class Payment extends AppCompatActivity {
-
-    MaterialButton backBtn = (MaterialButton) findViewById(R.id.payment_back_button);
-    MaterialButton cancelBtn = (MaterialButton) findViewById(R.id.payment_cancel_button);
-    MaterialButton payCashBtn = (MaterialButton) findViewById(R.id.pay_cash_button);
-    MaterialButton payCardBtn = (MaterialButton) findViewById(R.id.pay_card_button);
-    ImageButton decreaseQuantityBtn = (ImageButton) findViewById(R.id.decrease_quantity_button);
-    ImageButton increaseQuantityBtn = (ImageButton) findViewById(R.id.increase_quantity_button);
-
-
-    TextView productText = (TextView) findViewById(R.id.product_chosen_text);
-    TextView priceText = (TextView) findViewById(R.id.product_price_chosen_text);
-    TextView totalPriceText = (TextView) findViewById(R.id.total_price_text);
-    TextView productQuantityText = (TextView) findViewById(R.id.product_quantity);
-
-    String product = getIntent().getStringExtra("product");
-    String price_str = getIntent().getStringExtra("price");
-    float price = Float.parseFloat(price_str.replace("$", ""));
-
-    String userId = null;
-    String ticketId = null;
-
-    String total_price = totalPriceText.getText().toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +32,41 @@ public class Payment extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
+        MaterialButton backBtn = (MaterialButton) findViewById(R.id.payment_back_button);
+        MaterialButton cancelBtn = (MaterialButton) findViewById(R.id.payment_cancel_button);
+        ImageButton decreaseQuantityBtn = (ImageButton) findViewById(R.id.decrease_quantity_button);
+        ImageButton increaseQuantityBtn = (ImageButton) findViewById(R.id.increase_quantity_button);
+        MaterialButton pay_cash = (MaterialButton) findViewById(R.id.pay_cash_button);
+        MaterialButton pay_card = (MaterialButton) findViewById(R.id.pay_card_button);
+
+        TextView productText = (TextView) findViewById(R.id.product_chosen_text);
+        TextView priceText = (TextView) findViewById(R.id.product_price_chosen_text);
+        TextView totalPriceText = (TextView) findViewById(R.id.total_price_text);
+        TextView productQuantityText = (TextView) findViewById(R.id.product_quantity);
+
+        String product = getIntent().getStringExtra("duration");
+        String price_str = getIntent().getStringExtra("price");
+        String price1 = price_str.replace("Τιμή : ", "");
+        float price = Float.parseFloat(price1.replace(" €", ""));
+
+        Log.e("get" , getIntent().getStringExtra("duration"));
+        Log.e("get" , getIntent().getStringExtra("userID"));
+        Log.e("get" , getIntent().getStringExtra("price"));
+        //   Log.e("get" , getIntent().getStringExtra("ticketID"));
+        Log.e("get" , getIntent().getStringExtra("kind"));
+
+        String total_price = totalPriceText.getText().toString();
+
         productText.setText(product);
-        priceText.setText(priceText.getText().toString() + price);
-        totalPriceText.setText(totalPriceText.getText().toString() + price);
+        priceText.setText(priceText.getText().toString() + String.format("%.2f", price)+"€");
+        totalPriceText.setText(totalPriceText.getText().toString() + String.format("%.2f", price) +"€");
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(Payment.this, ProductScreen.class);
                 myIntent.putExtra("key", "card");
+                myIntent.putExtra("Type", getIntent().getStringExtra("Type"));
                 Payment.this.startActivity(myIntent);
             }
         });
@@ -106,66 +108,74 @@ public class Payment extends AppCompatActivity {
             }
         });
 
-        payCashBtn.setOnClickListener(new View.OnClickListener() {
+        pay_cash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String[] params = new String[2];
-                params[0] = userId;
-                params[1] = ticketId;
-                UpdateUserInfoOnPayment updateUserInfo = new UpdateUserInfoOnPayment();
-                updateUserInfo.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+                if (MainActivity.user.get("Type").equals("Ticket") && MainActivity.user.get("userName").equals("") && MainActivity.user.get("Category").equals("")){
+                    Document[] paramsDoc = new Document[1];
+                    paramsDoc[0] = MainActivity.user;
+
+                    Payment.InsertUser insertUser = new Payment.InsertUser();
+                    insertUser.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, paramsDoc);
+                }
             }
         });
 
-        payCardBtn.setOnClickListener(new View.OnClickListener() {
+        pay_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String[] params = new String[2];
-                params[0] = userId;
-                params[1] = ticketId;
-                UpdateUserInfoOnPayment updateUserInfo = new UpdateUserInfoOnPayment();
-                updateUserInfo.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+
+                if (MainActivity.user.get("Type").equals("Ticket") && MainActivity.user.get("userName").equals("") && MainActivity.user.get("Category").equals("")){
+                    Document[] paramsDoc = new Document[1];
+                    paramsDoc[0] = MainActivity.user;
+
+                    Payment.InsertUser insertUser = new Payment.InsertUser();
+                    insertUser.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, paramsDoc);
+                }
+
             }
         });
-
     }
 
+    private class InsertUser extends AsyncTask<Document, Document, Document> {
 
-
-    private class UpdateUserInfoOnPayment extends AsyncTask<String, String, String> {
-
-        private Socket socket = null;
         private ObjectOutputStream objectOutputStream;
+        private ObjectInputStream objectInputStream;
+        private Socket socket = null;
+
 
         @Override
-        protected String doInBackground(String... strings) {
+        protected Document doInBackground(Document... documents) {
 
-            String userId = strings[0];
-            String ticketId = strings[1];
             try {
-                socket = new Socket(MainServerIp , MainServerPort);
 
-                objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                if (MainActivity.socket == null){
+                    //connect to DB
+                    try {
+                        socket = new Socket(MainActivity.MainServerIp , MainActivity.MainServerPort);
+                        objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                        objectInputStream = new ObjectInputStream(socket.getInputStream());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
 
-                objectOutputStream.writeUTF("Payment");
+                Document doc = documents[0];
+
+                objectOutputStream.writeUTF("Insert User");
                 objectOutputStream.flush();
 
-                objectOutputStream.writeUTF(userId);
-                objectOutputStream.writeUTF(ticketId);
+                objectOutputStream.writeObject(doc);
+                objectOutputStream.flush();
+
+
 
             } catch (IOException e) {
                 e.printStackTrace();
-            } finally {
-                try {
-                    objectOutputStream.close();
-                    objectInputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
-
 
             return null;
         }
+
     }
 }

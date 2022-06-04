@@ -59,7 +59,6 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/ticketButton"
         app:layout_constraintEnd_toEndOf="@+id/ticketButton"
-        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="@+id/ticketButton" />
 
     <ImageButton
@@ -77,8 +76,8 @@
         android:id="@+id/cardButton"
         android:layout_width="260dp"
         android:layout_height="158dp"
-        android:adjustViewBounds="false"
         android:layout_marginTop="50dp"
+        android:adjustViewBounds="false"
         android:backgroundTint="@color/athena_blue"
         android:contextClickable="false"
         android:padding="7dp"
@@ -121,7 +120,6 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/cardButton"
         app:layout_constraintEnd_toEndOf="@+id/cardButton"
-        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="@+id/cardButton" />
 
     <ImageButton
@@ -213,28 +211,5 @@
         app:layout_constraintStart_toEndOf="@id/saudiArabiaButton"
         app:srcCompat="@drawable/russia_square" />
 
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/card_barcode"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:background="@color/lite_grey1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/send_barcode"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="ok"
-        android:backgroundTint="@color/green"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_barcode"
-        app:layout_constraintBottom_toBottomOf="parent">
-    </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
