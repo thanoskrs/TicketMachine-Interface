@@ -4,6 +4,7 @@ import com.mongodb.*;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.UpdateResult;
 import org.bson.Document;
 
 import javax.print.Doc;
@@ -95,6 +96,36 @@ public class AccessDB {
 
         collection.insertOne(new_user);
         System.out.println("Document inserted successfully");
+    }
+
+    public void updateUser() throws IOException, ClassNotFoundException {
+
+        MongoCollection<Document> collection = database.getCollection("User");
+
+        String userID = Server.objectInputStream.readUTF();
+        String ticketID = Server.objectInputStream.readUTF();
+
+        FindIterable<Document> iterDoc = collection.find();
+        for (Document user : iterDoc) {
+            if (user.get("userID").equals(userID)) {
+                BasicDBObject query = new BasicDBObject();
+                query.put("LastProductId", user.get("LastProductId"));
+                query.put("LastProductScreen", user.get("LastProductScreen"));
+
+                BasicDBObject newDocument = new BasicDBObject();
+                newDocument.put("LastProductId", ticketID);
+                newDocument.put("LastProductScreen", true);
+
+                BasicDBObject updateObject = new BasicDBObject();
+                updateObject.put("$set", newDocument);
+
+                collection.updateOne(query, updateObject);
+
+                System.out.println("Document inserted successfully");
+                System.out.println(user);
+                break;
+            }
+        }
     }
 
     public void checkLastProduct(String id) throws IOException, ClassNotFoundException {

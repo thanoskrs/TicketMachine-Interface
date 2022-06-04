@@ -56,7 +56,6 @@ public class Server extends Thread{
     public void run(){
         try {
 
-
             while (true){
                 String task = objectInputStream.readUTF();
                 if (task.equals("check")){
@@ -76,6 +75,10 @@ public class Server extends Thread{
                 if (task.equals("Insert User")){
 
                     new AccessDB().insertUser();
+                }
+                if (task.equals("Update User")){
+
+                    new AccessDB().updateUser();
                 }
                 if (task.equals("LastProductScreen")){
                     String id = objectInputStream.readUTF();

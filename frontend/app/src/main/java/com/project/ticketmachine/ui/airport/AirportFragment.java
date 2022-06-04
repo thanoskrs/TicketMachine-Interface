@@ -143,7 +143,7 @@ public class AirportFragment extends Fragment {
                     paymentScreen.putExtra("userID", MainActivity.user.get("userID").toString());
                     paymentScreen.putExtra("duration", airport_card_arrayDuration[finalI].getText().toString());
                     paymentScreen.putExtra("price", airport_card_arrayCost[finalI].getText().toString());
-                 //   paymentScreen.putExtra("ticketID", airport_card_arrayBox[finalI].getAccessibilityClassName());
+                    paymentScreen.putExtra("ticketID", airport_card_arrayBox[finalI].getResources().getResourceEntryName(airport_card_arrayBox[finalI].getId()));
                     paymentScreen.putExtra("kind", "Airport");
                     paymentScreen.putExtra("Type", "Card");
 
@@ -165,11 +165,11 @@ public class AirportFragment extends Fragment {
                     paymentScreen.putExtra("userID", MainActivity.user.get("userID").toString());
                     paymentScreen.putExtra("duration", airport_ticket_arrayDuration[finalI].getText().toString());
                     paymentScreen.putExtra("price", airport_ticket_arrayCost[finalI].getText().toString());
-                 //   paymentScreen.putExtra("ticketID", airport_ticket_arrayBox[finalI].getId());
+                    paymentScreen.putExtra("ticketID", airport_ticket_arrayBox[finalI].getResources().getResourceEntryName(airport_ticket_arrayBox[finalI].getId()));
                     paymentScreen.putExtra("kind", "Airport");
                     paymentScreen.putExtra("Type", "Ticket");
 
-                  //  Log.e("send_ticket" , airport_ticket_arrayDuration[finalI].getText().toString());
+                    Log.e("send_ticket" , airport_ticket_arrayBox[finalI].getResources().getResourceEntryName(airport_ticket_arrayBox[finalI].getId()));
                     AirportFragment.this.startActivity(paymentScreen);
                 }
             });

@@ -25,6 +25,9 @@ import java.net.Socket;
 
 public class Payment extends AppCompatActivity {
 
+    private String ticketId = null;
+    private String userId = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,10 +57,13 @@ public class Payment extends AppCompatActivity {
         Log.e("get" , getIntent().getStringExtra("duration"));
         Log.e("get" , getIntent().getStringExtra("userID"));
         Log.e("get" , getIntent().getStringExtra("price"));
-     //   Log.e("get" , getIntent().getStringExtra("ticketID"));
+        Log.e("get" , getIntent().getStringExtra("ticketID"));
         Log.e("get" , getIntent().getStringExtra("kind"));
 
         String total_price = totalPriceText.getText().toString();
+
+        ticketId = getIntent().getStringExtra("ticketID");
+        userId = getIntent().getStringExtra("userID");
 
         productText.setText(product);
         priceText.setText(priceText.getText().toString() + String.format("%.2f", price)+"€");
@@ -121,6 +127,15 @@ public class Payment extends AppCompatActivity {
                     Payment.InsertUser insertUser = new Payment.InsertUser();
                     insertUser.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, paramsDoc);
                 }
+                else{
+                    //update last product
+                    String[] params = new String[2];
+                    params[0] = userId;
+                    params[1] = ticketId;
+
+                    UpdateUser updateUser = new UpdateUser();
+                    updateUser.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+                }
             }
         });
 
@@ -134,6 +149,15 @@ public class Payment extends AppCompatActivity {
 
                     Payment.InsertUser insertUser = new Payment.InsertUser();
                     insertUser.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, paramsDoc);
+                }
+                else{
+                    //update last product
+                    String[] params = new String[2];
+                    params[0] = userId;
+                    params[1] = ticketId;
+
+                    UpdateUser updateUser = new UpdateUser();
+                    updateUser.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
                 }
 
             }
@@ -172,6 +196,50 @@ public class Payment extends AppCompatActivity {
                 objectOutputStream.flush();
 
 
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+    }
+
+    private class UpdateUser extends AsyncTask<String, String, String> {
+
+        private ObjectOutputStream objectOutputStream;
+        private ObjectInputStream objectInputStream;
+        private Socket socket = null;
+
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            try {
+
+                if (MainActivity.socket == null){
+                    //connect to DB
+                    try {
+                        socket = new Socket(MainActivity.MainServerIp , MainActivity.MainServerPort);
+                        objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                        objectInputStream = new ObjectInputStream(socket.getInputStream());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                String userID = strings[0];
+                String ticketID = strings[1];
+
+                objectOutputStream.writeUTF("Update User");
+                objectOutputStream.flush();
+
+                objectOutputStream.writeUTF(userID);
+                objectOutputStream.flush();
+
+                objectOutputStream.writeUTF(ticketID);
+                objectOutputStream.flush();
 
             } catch (IOException e) {
                 e.printStackTrace();

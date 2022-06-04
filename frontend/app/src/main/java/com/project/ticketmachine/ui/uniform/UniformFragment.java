@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class UniformFragment extends Fragment {
 
-    private FragmentUniformBinding binding;
+    private static FragmentUniformBinding binding;
     private static MaterialButton[] uniform_ticket_arrayBox;
     private static MaterialButton[] uniform_card_arrayBox;
     private static TextView[] uniform_ticket_arrayDuration;
@@ -112,7 +112,6 @@ public class UniformFragment extends Fragment {
         uniform_card_arrayCost[6] = binding.uniformCostBox7Card;
         uniform_card_arrayCost[7] = binding.uniformCostBox8Card;
 
-        ProductScreen activity = (ProductScreen) getActivity();
         String product_kind = null;
 
         if (MainActivity.user == null){
@@ -125,25 +124,17 @@ public class UniformFragment extends Fragment {
                 product_kind = (String) MainActivity.user.get("Type");
         }
 
-        if (product_kind.equals("Ticket")){
-            binding.cardView.setVisibility(View.INVISIBLE);
-            binding.ticketView.setVisibility(View.VISIBLE);
-
+        if (Objects.equals(product_kind, "Ticket")){
             // ticket - uniform
             if (inited){
                 fill_tickets_uniform();
             }
         }
         else{
-            binding.ticketView.setVisibility(View.INVISIBLE);
-            binding.cardView.setVisibility(View.VISIBLE);
-
             // card - uniform
             if (inited){
                 fill_cards_uniform();
             }
-
-
         }
 
         for (int i = 0; i < uniform_card_arrayBox.length; i++){
@@ -158,7 +149,7 @@ public class UniformFragment extends Fragment {
                     paymentScreen.putExtra("userID", MainActivity.user.get("userID").toString());
                     paymentScreen.putExtra("duration", uniform_card_arrayDuration[finalI].getText().toString());
                     paymentScreen.putExtra("price", uniform_card_arrayCost[finalI].getText().toString());
-                    //   paymentScreen.putExtra("ticketID", airport_card_arrayBox[finalI].getAccessibilityClassName());
+                    paymentScreen.putExtra("ticketID", uniform_card_arrayBox[finalI].getResources().getResourceEntryName(uniform_card_arrayBox[finalI].getId()));
                     paymentScreen.putExtra("kind", "Uniform");
                     paymentScreen.putExtra("Type", "Card");
 
@@ -180,7 +171,7 @@ public class UniformFragment extends Fragment {
                     paymentScreen.putExtra("userID", MainActivity.user.get("userID").toString());
                     paymentScreen.putExtra("duration", uniform_ticket_arrayDuration[finalI].getText().toString());
                     paymentScreen.putExtra("price", uniform_ticket_arrayCost[finalI].getText().toString());
-                //    paymentScreen.putExtra("ticketID", uniform_ticket_arrayBox[finalI].getId());
+                    paymentScreen.putExtra("ticketID", uniform_ticket_arrayBox[finalI].getResources().getResourceEntryName(uniform_ticket_arrayBox[finalI].getId()));
                     paymentScreen.putExtra("kind", "Uniform");
                     paymentScreen.putExtra("Type", "Ticket");
 
@@ -217,17 +208,18 @@ public class UniformFragment extends Fragment {
 
     @SuppressLint("SetTextI18n")
     public static void fill_tickets_uniform(){
+        binding.cardView.setVisibility(View.INVISIBLE);
+        binding.ticketView.setVisibility(View.VISIBLE);
 
-
-            int i = 1;
-            for (Document document : ProductScreen.list) {
-                if (Objects.equals(document.get("TicketID"), "uniform_box" + i)) {
-                    uniform_ticket_arrayDuration[i - 1].setText((String) document.get("Name"));
-                    uniform_ticket_arrayCost[i - 1].setText("Τιμή : " + (String) document.get("Standard Price") + " €");
-                    i++;
-                }
+        int i = 1;
+        for (Document document : ProductScreen.list) {
+            if (Objects.equals(document.get("TicketID"), "uniform_box" + i)) {
+                uniform_ticket_arrayDuration[i - 1].setText((String) document.get("Name"));
+                uniform_ticket_arrayCost[i - 1].setText("Τιμή : " + (String) document.get("Standard Price") + " €");
+                i++;
             }
-            inited = true;
+        }
+        inited = true;
 
 
     }
@@ -235,29 +227,27 @@ public class UniformFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     public static void fill_cards_uniform(){
 
-
+        binding.ticketView.setVisibility(View.INVISIBLE);
+        binding.cardView.setVisibility(View.VISIBLE);
             // card - uniform
 
 
-            int i = 1;
-            for (Document document: ProductScreen.list){
-                if (Objects.equals(document.get("TicketID"), "uniform_box" + i + "_card")){
-                    uniform_card_arrayDuration[i-1].setText((String)document.get("Name"));
+        int i = 1;
+        for (Document document: ProductScreen.list){
+            if (Objects.equals(document.get("TicketID"), "uniform_box" + i + "_card")){
+                uniform_card_arrayDuration[i-1].setText((String)document.get("Name"));
 
-                    if (Objects.equals(MainActivity.user.get("Category"), "Student"))
-                        uniform_card_arrayCost[i-1].setText("Τιμή : "+(String)document.get("Student Price")+" €");
-                    else
-                        uniform_card_arrayCost[i-1].setText("Τιμή : "+(String)document.get("Standard Price")+" €");
+                if (Objects.equals(MainActivity.user.get("Category"), "Student"))
+                    uniform_card_arrayCost[i-1].setText("Τιμή : "+(String)document.get("Student Price")+" €");
+                else
+                    uniform_card_arrayCost[i-1].setText("Τιμή : "+(String)document.get("Standard Price")+" €");
 
-                    i++;
-                }
-
+                i++;
             }
 
-            inited = true;
+        }
 
-
-
+        inited = true;
 
     }
 

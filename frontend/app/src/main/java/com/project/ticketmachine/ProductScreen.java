@@ -2,6 +2,7 @@ package com.project.ticketmachine;
 
 import static com.project.ticketmachine.MainActivity.MainServerIp;
 import static com.project.ticketmachine.MainActivity.MainServerPort;
+import static com.project.ticketmachine.MainActivity.category;
 import static com.project.ticketmachine.MainActivity.type;
 
 import android.annotation.SuppressLint;
@@ -64,6 +65,8 @@ public class ProductScreen extends AppCompatActivity {
             binding.softBackground.setVisibility(View.INVISIBLE);
             binding.repeatOrderLayout.setVisibility(View.INVISIBLE);
 
+
+
             Random rand = new Random();
             int id = rand.nextInt(900) + 100;
 
@@ -86,7 +89,6 @@ public class ProductScreen extends AppCompatActivity {
                 getTickets.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
                 try {
                     processed.wait();
-                    Log.e("inited", String.valueOf(UniformFragment.inited));
 
                     UniformFragment.fill_cards_uniform();
                     UniformFragment.fill_tickets_uniform();
@@ -156,8 +158,14 @@ public class ProductScreen extends AppCompatActivity {
                     try {
                         processed.wait();
 
-                        UniformFragment.fill_cards_uniform();
-                        UniformFragment.fill_tickets_uniform();
+                        if (Objects.equals(MainActivity.user.get("Category"), "Anonymus") || Objects.equals(MainActivity.user.get("Category"), "")){
+                            UniformFragment.fill_cards_uniform();
+                            UniformFragment.fill_tickets_uniform();
+                        }
+                        else{
+                            UniformFragment.fill_tickets_uniform();
+                            UniformFragment.fill_cards_uniform();
+                        }
 
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -262,8 +270,8 @@ public class ProductScreen extends AppCompatActivity {
         }
 
 
-
     }
+
 
     private class LoadInfoForLastProductScreen extends AsyncTask<String, String, String> {
 
@@ -316,7 +324,12 @@ public class ProductScreen extends AppCompatActivity {
             return null;
         }
 
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
 
+            CheckCard.loading.setVisibility(View.GONE);
+        }
 
         @SuppressLint("SetTextI18n")
         @Override
