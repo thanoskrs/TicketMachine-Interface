@@ -24,12 +24,16 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 
+/*import com.google.android.material.textfield.TextInputEditText;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoDatabase;*/
 
 
 public class MainActivity extends AppCompatActivity {
 
 
-    public static final String MainServerIp = "192.168.1.46";
+    public static final String MainServerIp = "10.0.2.2";
     public static final int MainServerPort = 8080;
     public static Socket socket = null;
     private String student = "";
@@ -207,9 +211,15 @@ public class MainActivity extends AppCompatActivity {
             imageButtons[i].setAlpha(0.5f);
     }
 
+
+
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
     }
+
+
 
 }

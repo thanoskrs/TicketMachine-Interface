@@ -59,6 +59,7 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/ticketButton"
         app:layout_constraintEnd_toEndOf="@+id/ticketButton"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="@+id/ticketButton" />
 
     <ImageButton
@@ -66,7 +67,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="52dp"
+        app:layout_constraintBottom_toBottomOf="@id/ticketButton"
         android:backgroundTint="#80FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/ticketButton"
         app:layout_constraintTop_toTopOf="@+id/ticketButton"
@@ -120,6 +121,7 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/cardButton"
         app:layout_constraintEnd_toEndOf="@+id/cardButton"
+
         app:layout_constraintStart_toStartOf="@+id/cardButton" />
 
     <ImageButton
@@ -127,10 +129,11 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="52dp"
+
         android:backgroundTint="#80FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/cardButton"
         app:layout_constraintTop_toTopOf="@+id/cardButton"
+        app:layout_constraintBottom_toBottomOf="@id/cardButton"
         app:srcCompat="@drawable/info_icon" />
 
     <ImageButton

@@ -165,10 +165,11 @@
         android:textAlignment="textEnd"
         android:textColor="@color/black"
         app:cornerRadius="10dp"
+        app:strokeColor="#AD2717"
+        app:strokeWidth="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/payment_back_button"
-        app:strokeColor="#AD2717"
-        app:strokeWidth="2dp" />
+        />
 
     <View
         android:id="@+id/view"

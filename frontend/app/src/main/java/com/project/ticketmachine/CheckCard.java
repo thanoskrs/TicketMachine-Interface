@@ -7,6 +7,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +31,7 @@ public class CheckCard extends AppCompatActivity {
     public static ObjectInputStream objectInputStream;
     private CheckCardBinding binding;
     private String selected_box = null;
+    public static RelativeLayout loading = null;
 
 
     @SuppressLint("ResourceType")
@@ -44,6 +47,8 @@ public class CheckCard extends AppCompatActivity {
 
         binding = CheckCardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        loading = binding.loadingPanel;
 
         if (selected_box.equals("Card")){
             binding.rechargeTicket.setVisibility(View.INVISIBLE);
@@ -72,10 +77,19 @@ public class CheckCard extends AppCompatActivity {
         binding.noRecharge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                binding.rechargeTicket.setVisibility(View.INVISIBLE);
+                binding.recharge.setVisibility(View.INVISIBLE);
+                binding.noRecharge.setVisibility(View.INVISIBLE);
+                binding.cancelButton.setVisibility(View.INVISIBLE);
+                binding.cancelText1.setVisibility(View.INVISIBLE);
+
+                loading.setVisibility(View.VISIBLE);
 
                 Intent myIntent = new Intent(CheckCard.this, ProductScreen.class);
                 myIntent.putExtra("Type", "Simple Ticket");
                 CheckCard.this.startActivity(myIntent);
+
+
             }
         });
 
@@ -91,6 +105,15 @@ public class CheckCard extends AppCompatActivity {
                 params[1] = "check";
 
                 if (params[0].length() > 0){
+
+                    binding.ticketInfoText.setVisibility(View.GONE);
+                    binding.cardBarcode.setVisibility(View.GONE);
+                    binding.sendBarcode.setVisibility(View.GONE);
+                    binding.cancelButton.setVisibility(View.GONE);
+                    binding.cancelText1.setVisibility(View.GONE);
+
+                    loading.setVisibility(View.VISIBLE);
+
                     CheckCode checkCode = new CheckCode();
                     checkCode.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
                 }
@@ -102,6 +125,15 @@ public class CheckCard extends AppCompatActivity {
                     Toast toast = Toast.makeText(context, message, duration);
                     toast.show();
                 }
+            }
+        });
+
+        // on cancel button
+        binding.cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CheckCard.this,MainActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -173,10 +205,24 @@ public class CheckCard extends AppCompatActivity {
 
             return null;
         }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            loading.setVisibility(View.GONE);
+        }
+
         @SuppressLint("SetTextI18n")
         @Override
         protected void onProgressUpdate(String... values) {
             super.onProgressUpdate(values);
+
+            binding.ticketInfoText.setVisibility(View.VISIBLE);
+            binding.cardBarcode.setVisibility(View.VISIBLE);
+            binding.sendBarcode.setVisibility(View.VISIBLE);
+            binding.cancelButton.setVisibility(View.VISIBLE);
+            binding.cancelText1.setVisibility(View.VISIBLE);
 
             Context context = CheckCard.this;
             CharSequence message = "Λάθος κωδικός.";
@@ -186,5 +232,7 @@ public class CheckCard extends AppCompatActivity {
             toast.show();
         }
     }
+
+
 
 }

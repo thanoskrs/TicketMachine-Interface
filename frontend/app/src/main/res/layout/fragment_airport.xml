@@ -382,21 +382,35 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/cancel_button_card"
             style="?attr/materialButtonOutlinedStyle"
-            app:strokeColor="@color/white"
-            android:backgroundTint="@color/red"
-            app:strokeWidth="2dp"
-            android:layout_width="150dp"
-            android:layout_height="65dp"
-            app:cornerRadius="8dp"
+            android:layout_width="130dp"
+            android:layout_height="70dp"
+            android:textSize="16sp"
+            android:backgroundTint="#0DAD2717"
             android:text="Ακύρωση"
+
             android:textAllCaps="false"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/airport_box3_card"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            app:cornerRadius="10dp"
+            app:strokeColor="#AD2717"
+            app:strokeWidth="2dp"
+            android:layout_marginBottom="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+
+            >
+
         </com.google.android.material.button.MaterialButton>
+
+        <ImageView
+            android:id="@+id/cancel_text"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cancel_button_card"
+            app:layout_constraintStart_toStartOf="@+id/cancel_button_card"
+            app:layout_constraintTop_toTopOf="@+id/cancel_button_card"
+            app:srcCompat="@drawable/cancel" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -690,21 +704,35 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/cancel_button_ticket"
             style="?attr/materialButtonOutlinedStyle"
-            app:strokeColor="@color/white"
-            android:backgroundTint="@color/red"
-            app:strokeWidth="2dp"
-            android:layout_width="150dp"
-            android:layout_height="65dp"
-            app:cornerRadius="8dp"
+            android:layout_width="130dp"
+            android:layout_height="70dp"
+            android:textSize="16sp"
+            android:backgroundTint="#0DAD2717"
             android:text="Ακύρωση"
+
             android:textAllCaps="false"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/airport_box3_ticket"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            app:cornerRadius="10dp"
+            app:strokeColor="#AD2717"
+            app:strokeWidth="2dp"
+            android:layout_marginBottom="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+
+            >
+
         </com.google.android.material.button.MaterialButton>
+
+        <ImageView
+            android:id="@+id/cancel_text1"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cancel_button_ticket"
+            app:layout_constraintStart_toStartOf="@+id/cancel_button_ticket"
+            app:layout_constraintTop_toTopOf="@+id/cancel_button_ticket"
+            app:srcCompat="@drawable/cancel" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

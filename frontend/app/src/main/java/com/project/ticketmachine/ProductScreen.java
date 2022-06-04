@@ -2,6 +2,7 @@ package com.project.ticketmachine;
 
 import static com.project.ticketmachine.MainActivity.MainServerIp;
 import static com.project.ticketmachine.MainActivity.MainServerPort;
+import static com.project.ticketmachine.MainActivity.category;
 import static com.project.ticketmachine.MainActivity.type;
 
 import android.annotation.SuppressLint;
@@ -21,6 +22,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.internal.NavigationMenuItemView;
 import com.project.ticketmachine.databinding.ActivityProductScreenBinding;
+import com.project.ticketmachine.ui.airport.AirportFragment;
 import com.project.ticketmachine.ui.uniform.UniformFragment;
 
 import org.bson.Document;
@@ -32,6 +34,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ProductScreen extends AppCompatActivity {
 
@@ -40,8 +43,9 @@ public class ProductScreen extends AppCompatActivity {
     String price = null;
     String duration = null;
     String kind = null;
-    public boolean notify = false;
+    public volatile boolean notify = false;
     public static ArrayList<Document> list = null;
+    public static final AtomicBoolean processed = new AtomicBoolean(true) ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,8 @@ public class ProductScreen extends AppCompatActivity {
             binding.softBackground.setVisibility(View.INVISIBLE);
             binding.repeatOrderLayout.setVisibility(View.INVISIBLE);
 
+
+
             Random rand = new Random();
             int id = rand.nextInt(900) + 100;
 
@@ -73,15 +79,25 @@ public class ProductScreen extends AppCompatActivity {
             MainActivity.user.append("Type","Ticket");
 
 
-
-
             String[] params = new String[3];
             params[0] = (String) MainActivity.user.get("Category");
             params[1] = (String) MainActivity.user.get("Type");
             params[2] = (String) MainActivity.user.get("userID");
 
-            GetTickets getTickets = new GetTickets();
-            getTickets.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+            synchronized (processed){
+                GetTickets getTickets = new GetTickets();
+                getTickets.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+                try {
+                    processed.wait();
+
+                    UniformFragment.fill_cards_uniform();
+                    UniformFragment.fill_tickets_uniform();
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
         }
         else{
             boolean showLastProductScreen = (boolean) MainActivity.user.get("LastProductScreen");
@@ -96,8 +112,24 @@ public class ProductScreen extends AppCompatActivity {
                 params[1] = (String) MainActivity.user.get("Type");
                 params[2] = (String) MainActivity.user.get("userID");
 
-                GetTickets getTickets = new GetTickets();
-                getTickets.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+
+                synchronized (processed){
+                    GetTickets getTickets = new GetTickets();
+                    getTickets.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+                    try {
+                        processed.wait();
+
+                        UniformFragment.fill_cards_uniform();
+                        UniformFragment.fill_tickets_uniform();
+
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                Log.e("notify",String.valueOf(processed));
+
             } else {
 
                 String[] params = new String[1];
@@ -120,8 +152,26 @@ public class ProductScreen extends AppCompatActivity {
                 params[1] = (String) MainActivity.user.get("Type");
                 params[2] = (String) MainActivity.user.get("userID");
 
-                GetTickets getTickets = new GetTickets();
-                getTickets.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+                synchronized (processed){
+                    GetTickets getTickets = new GetTickets();
+                    getTickets.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+                    try {
+                        processed.wait();
+
+                        if (Objects.equals(MainActivity.user.get("Category"), "Anonymus") || Objects.equals(MainActivity.user.get("Category"), "")){
+                            UniformFragment.fill_cards_uniform();
+                            UniformFragment.fill_tickets_uniform();
+                        }
+                        else{
+                            UniformFragment.fill_tickets_uniform();
+                            UniformFragment.fill_cards_uniform();
+                        }
+
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
             }
         });
 
@@ -151,6 +201,7 @@ public class ProductScreen extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_product_screen);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+        navView.getMenu().getItem(0).setChecked(true);
 
     }
 
@@ -205,6 +256,10 @@ public class ProductScreen extends AppCompatActivity {
                     System.out.println(ProductScreen.list.get(i));
                 }
 
+                synchronized (processed){
+                    Log.e("proc" , String.valueOf(processed));
+                    processed.notifyAll();
+                }
 
 
             } catch (IOException | ClassNotFoundException e) {
@@ -214,9 +269,8 @@ public class ProductScreen extends AppCompatActivity {
             return null;
         }
 
+
     }
-
-
 
 
     private class LoadInfoForLastProductScreen extends AsyncTask<String, String, String> {
@@ -268,6 +322,13 @@ public class ProductScreen extends AppCompatActivity {
             }
 
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            CheckCard.loading.setVisibility(View.GONE);
         }
 
         @SuppressLint("SetTextI18n")

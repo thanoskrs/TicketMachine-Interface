@@ -16,7 +16,7 @@
         android:textAllCaps="false"
         android:textColor="#100D0D"
         android:textIsSelectable="false"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="50dp"
@@ -73,7 +73,7 @@
         android:layout_marginTop="50dp"
         android:textColor="#100D0D"
         android:textIsSelectable="false"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +88,7 @@
         android:layout_height="50dp"
         android:visibility="invisible"
         android:background="@color/lite_grey1"
-
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ticketInfoText"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,15 +96,66 @@
 
     <Button
         android:id="@+id/send_barcode"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
+
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:visibility="invisible"
         android:backgroundTint="@color/athena_blue"
         android:text="ok"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_barcode" />
+
+
+    <!--    loading . . . -->
+    <RelativeLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:gravity="center" >
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/prog_bar"
+            android:indeterminate="true"
+            android:indeterminateDuration="1500"
+            android:progress="0" />
+    </RelativeLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cancel_button"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:textSize="16sp"
+        android:backgroundTint="#0DAD2717"
+        android:text="Ακύρωση"
+
+        android:textAllCaps="false"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        app:cornerRadius="10dp"
+        app:strokeColor="#AD2717"
+        app:strokeWidth="2dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        >
+
+    </com.google.android.material.button.MaterialButton>
+
+    <ImageView
+        android:id="@+id/cancel_text1"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cancel_button"
+        app:layout_constraintStart_toStartOf="@+id/cancel_button"
+        app:layout_constraintTop_toTopOf="@+id/cancel_button"
+        app:srcCompat="@drawable/cancel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
