@@ -14,367 +14,367 @@
 
 
 
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:backgroundTint="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    
-    <View
-        android:id="@+id/divider"
-        style="@style/Divider"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="match_parent"
-        tools:ignore="MissingConstraints">
+        <TextView
+            android:id="@+id/text_home"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:backgroundTint="@color/lite_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </View>
+        <View
+            android:id="@+id/divider"
+            style="@style/Divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="match_parent"
+            tools:ignore="MissingConstraints">
 
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/box1"
-        style="?attr/materialButtonOutlinedStyle"
-        app:strokeColor="@color/athena_blue"
-        app:strokeWidth="2dp"
-
-        android:layout_width="161dp"
-        android:layout_height="106dp"
-
-        android:backgroundTint="@color/lite_grey"
-        app:layout_constraintTop_toBottomOf="@id/text_home"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintEnd_toEndOf="@id/divider"
-        app:cornerRadius="8dp"
-
-        tools:ignore="MissingConstraints">
-    </com.google.android.material.button.MaterialButton>
-
-    <TextView
-        android:id="@+id/duration_box1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="90 Λεπτά"
-        android:textAlignment="center"
-        android:textColor="@color/athena_blue"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/box1"
-        app:layout_constraintEnd_toEndOf="@id/box1"
-
-        app:layout_constraintStart_toStartOf="@id/box1"
-        app:layout_constraintTop_toTopOf="@id/box1"
-        app:layout_constraintVertical_bias="0.337" />
-
-    <TextView
-        android:id="@+id/cost_box1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Τιμή : 1.20€"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@id/box1"
-        app:layout_constraintEnd_toEndOf="@id/box1"
-        app:layout_constraintStart_toStartOf="@id/box1"
-        app:layout_constraintTop_toTopOf="@id/box1"
-        app:layout_constraintVertical_bias="0.838" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/box2"
-        style="?attr/materialButtonOutlinedStyle"
-        app:strokeColor="@color/athena_blue"
-        app:strokeWidth="2dp"
-        android:layout_width="161dp"
-        android:layout_height="106dp"
+        </View>
 
 
-        app:layout_constraintTop_toBottomOf="@id/text_home"
-        app:cornerRadius="8dp"
-        app:layout_constraintStart_toStartOf="@id/divider"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/uniform_box1"
+            style="?attr/materialButtonOutlinedStyle"
+            app:strokeColor="@color/athena_blue"
+            app:strokeWidth="2dp"
 
-        app:layout_constraintEnd_toEndOf="parent">
+            android:layout_width="161dp"
+            android:layout_height="106dp"
 
-    </com.google.android.material.button.MaterialButton>
+            android:backgroundTint="@color/lite_grey"
+            app:layout_constraintTop_toBottomOf="@id/text_home"
+            app:layout_constraintStart_toStartOf="parent"
 
+            app:layout_constraintEnd_toEndOf="@id/divider"
+            app:cornerRadius="8dp"
 
-<!--    First horizontal divider -->
+            tools:ignore="MissingConstraints">
+        </com.google.android.material.button.MaterialButton>
 
-    <View
-        android:id="@+id/divider_horizontal1"
-        style="@style/Divider_Horizontal"
-        app:layout_constraintTop_toBottomOf="@id/box1"
-        android:layout_width="match_parent"
-        tools:ignore="MissingConstraints">
+        <TextView
+            android:id="@+id/uniform_duration_box1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-    </View>
+            android:textAlignment="center"
+            android:textColor="@color/athena_blue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box1"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box1"
 
-    <TextView
-        android:id="@+id/duration_box2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2 Διαδρομές"
-        android:textAlignment="center"
-        android:textColor="@color/athena_blue"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/box2"
-        app:layout_constraintEnd_toEndOf="@id/box2"
+            app:layout_constraintStart_toStartOf="@id/uniform_box1"
+            app:layout_constraintTop_toTopOf="@id/uniform_box1"
+            app:layout_constraintVertical_bias="0.337" />
 
-        app:layout_constraintStart_toStartOf="@id/box2"
-        app:layout_constraintTop_toTopOf="@id/box2"
-        app:layout_constraintVertical_bias="0.337" />
+        <TextView
+            android:id="@+id/uniform_cost_box1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-    <TextView
-        android:id="@+id/cost_box2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Τιμή : 2.30€"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@id/box2"
-        app:layout_constraintEnd_toEndOf="@id/box2"
-        app:layout_constraintStart_toStartOf="@id/box2"
-        app:layout_constraintTop_toTopOf="@id/box1"
-        app:layout_constraintVertical_bias="0.838" />
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box1"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box1"
+            app:layout_constraintStart_toStartOf="@id/uniform_box1"
+            app:layout_constraintTop_toTopOf="@id/uniform_box1"
+            app:layout_constraintVertical_bias="0.838" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/box3"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="161dp"
-        android:layout_height="106dp"
-        app:backgroundTint="@android:color/transparent"
-        app:cornerRadius="8dp"
-        app:layout_constraintTop_toBottomOf="@id/divider_horizontal1"
-        app:rippleColor="#33AAAAAA"
-        app:strokeColor="@color/athena_blue"
-        app:strokeWidth="2dp"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintEnd_toEndOf="@id/divider"
-
-       >
-
-    </com.google.android.material.button.MaterialButton>
-
-    <TextView
-        android:id="@+id/duration_box3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="5 Διαδρομές"
-        android:textAlignment="center"
-        android:textColor="@color/athena_blue"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/box3"
-        app:layout_constraintEnd_toEndOf="@id/box3"
-
-        app:layout_constraintStart_toStartOf="@id/box3"
-        app:layout_constraintTop_toTopOf="@id/box3"
-        app:layout_constraintVertical_bias="0.337" />
-
-    <TextView
-        android:id="@+id/cost_box3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Τιμή : 8.20€"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@id/box3"
-        app:layout_constraintEnd_toEndOf="@id/box3"
-        app:layout_constraintStart_toStartOf="@id/box3"
-        app:layout_constraintTop_toTopOf="@id/box3"
-        app:layout_constraintVertical_bias="0.838" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/box4"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="161dp"
-        android:layout_height="106dp"
-        app:backgroundTint="@android:color/transparent"
-        app:cornerRadius="8dp"
-        app:layout_constraintTop_toBottomOf="@id/divider_horizontal1"
-        app:strokeColor="@color/athena_blue"
-        app:strokeWidth="2dp"
-        app:layout_constraintStart_toStartOf="@id/divider"
-
-        app:layout_constraintEnd_toEndOf="parent">
-
-    </com.google.android.material.button.MaterialButton>
-
-    <TextView
-        android:id="@+id/duration_box4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="24 Ωρών"
-        android:textAlignment="center"
-        android:textColor="@color/athena_blue"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/box4"
-        app:layout_constraintEnd_toEndOf="@id/box4"
-
-        app:layout_constraintStart_toStartOf="@id/box4"
-        app:layout_constraintTop_toTopOf="@id/box4"
-        app:layout_constraintVertical_bias="0.337" />
-
-    <TextView
-        android:id="@+id/cost_box4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Τιμή : 4.10€"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@id/box4"
-        app:layout_constraintEnd_toEndOf="@id/box4"
-        app:layout_constraintStart_toStartOf="@id/box4"
-        app:layout_constraintTop_toTopOf="@id/box4"
-        app:layout_constraintVertical_bias="0.838" />
-
-    <!--    Second horizontal divider -->
-
-    <View
-        android:id="@+id/divider_horizontal2"
-        style="@style/Divider_Horizontal"
-        app:layout_constraintTop_toBottomOf="@id/box4"
-        android:layout_width="match_parent"
-        tools:ignore="MissingConstraints">
-
-    </View>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/box5"
-        style="?attr/materialButtonOutlinedStyle"
-        app:strokeColor="@color/athena_blue"
-        app:strokeWidth="2dp"
-        android:layout_width="161dp"
-        android:layout_height="106dp"
-        app:backgroundTint="@android:color/transparent"
-        app:layout_constraintTop_toBottomOf="@id/divider_horizontal2"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintEnd_toEndOf="@id/divider"
-        app:cornerRadius="8dp"
-        >
-
-    </com.google.android.material.button.MaterialButton>
-
-    <TextView
-        android:id="@+id/duration_box5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="5 Ημερών"
-        android:textAlignment="center"
-        android:textColor="@color/athena_blue"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/box5"
-        app:layout_constraintEnd_toEndOf="@id/box5"
-
-        app:layout_constraintStart_toStartOf="@id/box5"
-        app:layout_constraintTop_toTopOf="@id/box5"
-        app:layout_constraintVertical_bias="0.337" />
-
-    <TextView
-        android:id="@+id/cost_box5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Τιμή : 8.20€"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@id/box5"
-        app:layout_constraintEnd_toEndOf="@id/box5"
-        app:layout_constraintStart_toStartOf="@id/box5"
-        app:layout_constraintTop_toTopOf="@id/box5"
-        app:layout_constraintVertical_bias="0.838" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/box6"
-        style="?attr/materialButtonOutlinedStyle"
-        app:strokeColor="@color/athena_blue"
-        app:strokeWidth="2dp"
-        android:layout_width="161dp"
-        android:layout_height="106dp"
-        app:backgroundTint="@android:color/transparent"
-        app:layout_constraintTop_toBottomOf="@id/divider_horizontal2"
-        app:cornerRadius="8dp"
-        app:layout_constraintStart_toStartOf="@id/divider"
-
-        app:layout_constraintEnd_toEndOf="parent">
-
-    </com.google.android.material.button.MaterialButton>
-
-    <TextView
-        android:id="@+id/duration_box6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="10+1\nΔιαδρομές"
-        android:textAlignment="center"
-        android:textColor="@color/athena_blue"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/box6"
-        app:layout_constraintEnd_toEndOf="@id/box6"
-
-        app:layout_constraintStart_toStartOf="@id/box6"
-        app:layout_constraintTop_toTopOf="@id/box6"
-        app:layout_constraintVertical_bias="0.337" />
-
-    <TextView
-        android:id="@+id/cost_box6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Τιμή : 12€"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@id/box6"
-        app:layout_constraintEnd_toEndOf="@id/box6"
-        app:layout_constraintStart_toStartOf="@id/box6"
-        app:layout_constraintTop_toTopOf="@id/box6"
-        app:layout_constraintVertical_bias="0.838" />
-
-    <!--    Third horizontal divider -->
-
-    <View
-        android:id="@+id/divider_horizontal3"
-        style="@style/Divider_Horizontal"
-        app:layout_constraintTop_toBottomOf="@id/box6"
-        android:layout_width="match_parent"
-        tools:ignore="MissingConstraints">
-
-    </View>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/uniform_box2"
+            style="?attr/materialButtonOutlinedStyle"
+            app:strokeColor="@color/athena_blue"
+            app:strokeWidth="2dp"
+            android:layout_width="161dp"
+            android:layout_height="106dp"
 
 
+            app:layout_constraintTop_toBottomOf="@id/text_home"
+            app:cornerRadius="8dp"
+            app:layout_constraintStart_toStartOf="@id/divider"
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/cancel_button"
-        style="?attr/materialButtonOutlinedStyle"
-        app:strokeColor="@color/white"
-        android:backgroundTint="@color/red"
-        app:strokeWidth="2dp"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        app:cornerRadius="8dp"
-        android:text="Ακύρωση"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/box6"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-        >
+        </com.google.android.material.button.MaterialButton>
 
-    </com.google.android.material.button.MaterialButton>
+
+        <!--    First horizontal divider -->
+
+        <View
+            android:id="@+id/divider_horizontal1"
+            style="@style/Divider_Horizontal"
+            app:layout_constraintTop_toBottomOf="@id/uniform_box1"
+            android:layout_width="match_parent"
+            tools:ignore="MissingConstraints">
+
+        </View>
+
+        <TextView
+            android:id="@+id/uniform_duration_box2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textAlignment="center"
+            android:textColor="@color/athena_blue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box2"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box2"
+
+            app:layout_constraintStart_toStartOf="@id/uniform_box2"
+            app:layout_constraintTop_toTopOf="@id/uniform_box2"
+            app:layout_constraintVertical_bias="0.337" />
+
+        <TextView
+            android:id="@+id/uniform_cost_box2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box2"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box2"
+            app:layout_constraintStart_toStartOf="@id/uniform_box2"
+            app:layout_constraintTop_toTopOf="@id/uniform_box1"
+            app:layout_constraintVertical_bias="0.838" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/uniform_box3"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="161dp"
+            android:layout_height="106dp"
+            app:backgroundTint="@color/lite_grey"
+            app:cornerRadius="8dp"
+            app:layout_constraintTop_toBottomOf="@id/divider_horizontal1"
+            app:rippleColor="#33AAAAAA"
+            app:strokeColor="@color/athena_blue"
+            app:strokeWidth="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintEnd_toEndOf="@id/divider"
+
+            >
+
+        </com.google.android.material.button.MaterialButton>
+
+        <TextView
+            android:id="@+id/uniform_duration_box3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textAlignment="center"
+            android:textColor="@color/athena_blue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box3"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box3"
+
+            app:layout_constraintStart_toStartOf="@id/uniform_box3"
+            app:layout_constraintTop_toTopOf="@id/uniform_box3"
+            app:layout_constraintVertical_bias="0.337" />
+
+        <TextView
+            android:id="@+id/uniform_cost_box3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box3"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box3"
+            app:layout_constraintStart_toStartOf="@id/uniform_box3"
+            app:layout_constraintTop_toTopOf="@id/uniform_box3"
+            app:layout_constraintVertical_bias="0.838" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/uniform_box4"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="161dp"
+            android:layout_height="106dp"
+            app:backgroundTint="@color/lite_grey"
+            app:cornerRadius="8dp"
+            app:layout_constraintTop_toBottomOf="@id/divider_horizontal1"
+            app:strokeColor="@color/athena_blue"
+            app:strokeWidth="2dp"
+            app:layout_constraintStart_toStartOf="@id/divider"
+
+            app:layout_constraintEnd_toEndOf="parent">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <TextView
+            android:id="@+id/uniform_duration_box4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textAlignment="center"
+            android:textColor="@color/athena_blue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box4"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box4"
+
+            app:layout_constraintStart_toStartOf="@id/uniform_box4"
+            app:layout_constraintTop_toTopOf="@id/uniform_box4"
+            app:layout_constraintVertical_bias="0.337" />
+
+        <TextView
+            android:id="@+id/uniform_cost_box4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box4"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box4"
+            app:layout_constraintStart_toStartOf="@id/uniform_box4"
+            app:layout_constraintTop_toTopOf="@id/uniform_box4"
+            app:layout_constraintVertical_bias="0.838" />
+
+        <!--    Second horizontal divider -->
+
+        <View
+            android:id="@+id/divider_horizontal2"
+            style="@style/Divider_Horizontal"
+            app:layout_constraintTop_toBottomOf="@id/uniform_box4"
+            android:layout_width="match_parent"
+            tools:ignore="MissingConstraints">
+
+        </View>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/uniform_box5"
+            style="?attr/materialButtonOutlinedStyle"
+            app:strokeColor="@color/athena_blue"
+            app:strokeWidth="2dp"
+            android:layout_width="161dp"
+            android:layout_height="106dp"
+            app:backgroundTint="@color/lite_grey"
+            app:layout_constraintTop_toBottomOf="@id/divider_horizontal2"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintEnd_toEndOf="@id/divider"
+            app:cornerRadius="8dp"
+            >
+
+        </com.google.android.material.button.MaterialButton>
+
+        <TextView
+            android:id="@+id/uniform_duration_box5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textAlignment="center"
+            android:textColor="@color/athena_blue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box5"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box5"
+
+            app:layout_constraintStart_toStartOf="@id/uniform_box5"
+            app:layout_constraintTop_toTopOf="@id/uniform_box5"
+            app:layout_constraintVertical_bias="0.337" />
+
+        <TextView
+            android:id="@+id/uniform_cost_box5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box5"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box5"
+            app:layout_constraintStart_toStartOf="@id/uniform_box5"
+            app:layout_constraintTop_toTopOf="@id/uniform_box5"
+            app:layout_constraintVertical_bias="0.838" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/uniform_box6"
+            style="?attr/materialButtonOutlinedStyle"
+            app:strokeColor="@color/athena_blue"
+            app:strokeWidth="2dp"
+            android:layout_width="161dp"
+            android:layout_height="106dp"
+            app:backgroundTint="@color/lite_grey"
+            app:layout_constraintTop_toBottomOf="@id/divider_horizontal2"
+            app:cornerRadius="8dp"
+            app:layout_constraintStart_toStartOf="@id/divider"
+
+            app:layout_constraintEnd_toEndOf="parent">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <TextView
+            android:id="@+id/uniform_duration_box6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textAlignment="center"
+            android:textColor="@color/athena_blue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box6"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box6"
+
+            app:layout_constraintStart_toStartOf="@id/uniform_box6"
+            app:layout_constraintTop_toTopOf="@id/uniform_box6"
+            app:layout_constraintVertical_bias="0.337" />
+
+        <TextView
+            android:id="@+id/uniform_cost_box6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box6"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box6"
+            app:layout_constraintStart_toStartOf="@id/uniform_box6"
+            app:layout_constraintTop_toTopOf="@id/uniform_box6"
+            app:layout_constraintVertical_bias="0.838" />
+
+        <!--    Third horizontal divider -->
+
+        <View
+            android:id="@+id/divider_horizontal3"
+            style="@style/Divider_Horizontal"
+            app:layout_constraintTop_toBottomOf="@id/uniform_box6"
+            android:layout_width="match_parent"
+            tools:ignore="MissingConstraints">
+
+        </View>
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancel_button"
+            style="?attr/materialButtonOutlinedStyle"
+            app:strokeColor="@color/white"
+            android:backgroundTint="@color/red"
+            app:strokeWidth="2dp"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            app:cornerRadius="8dp"
+            android:text="Ακύρωση"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/uniform_box6"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            >
+
+        </com.google.android.material.button.MaterialButton>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    card view -->
+    <!--    card view -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/card_view"
@@ -389,7 +389,7 @@
             android:layout_height="70dp"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:backgroundTint="@android:color/transparent"
+            app:backgroundTint="@color/lite_grey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -406,7 +406,7 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/box1_card"
+            android:id="@+id/uniform_box1_card"
             style="?attr/materialButtonOutlinedStyle"
             app:strokeColor="@color/athena_blue"
             app:strokeWidth="2dp"
@@ -425,32 +425,32 @@
         </com.google.android.material.button.MaterialButton>
 
         <TextView
-            android:id="@+id/duration_box1_card"
+            android:id="@+id/uniform_duration_box1_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="90 Λεπτά"
+
             android:textAlignment="center"
             android:textColor="@color/athena_blue"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/box1_card"
-            app:layout_constraintEnd_toEndOf="@id/box1_card"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box1_card"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box1_card"
 
-            app:layout_constraintStart_toStartOf="@id/box1_card"
-            app:layout_constraintTop_toTopOf="@id/box1_card"
+            app:layout_constraintStart_toStartOf="@id/uniform_box1_card"
+            app:layout_constraintTop_toTopOf="@id/uniform_box1_card"
             app:layout_constraintVertical_bias="0.337" />
 
         <TextView
-            android:id="@+id/cost_box1_card"
+            android:id="@+id/uniform_cost_box1_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Τιμή : 1.20€"
+
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@id/box1_card"
-            app:layout_constraintEnd_toEndOf="@id/box1_card"
-            app:layout_constraintStart_toStartOf="@id/box1_card"
-            app:layout_constraintTop_toTopOf="@id/box1_card"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box1_card"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box1_card"
+            app:layout_constraintStart_toStartOf="@id/uniform_box1_card"
+            app:layout_constraintTop_toTopOf="@id/uniform_box1_card"
             app:layout_constraintVertical_bias="0.838" />
 
 
@@ -461,18 +461,18 @@
         <View
             android:id="@+id/divider_horizontal1_card"
             style="@style/Divider_Horizontal"
-            app:layout_constraintTop_toBottomOf="@id/box1_card"
+            app:layout_constraintTop_toBottomOf="@id/uniform_box1_card"
             android:layout_width="match_parent"
             tools:ignore="MissingConstraints">
 
         </View>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/box2_card"
+            android:id="@+id/uniform_box2_card"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="161dp"
             android:layout_height="106dp"
-            app:backgroundTint="@android:color/transparent"
+            app:backgroundTint="@color/lite_grey"
             app:cornerRadius="8dp"
             app:layout_constraintTop_toBottomOf="@id/text_home_card"
             app:strokeColor="@color/athena_blue"
@@ -484,32 +484,32 @@
         </com.google.android.material.button.MaterialButton>
 
         <TextView
-            android:id="@+id/duration_box2_card"
+            android:id="@+id/uniform_duration_box2_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2 Διαδρομές"
+
             android:textAlignment="center"
             android:textColor="@color/athena_blue"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/box2_card"
-            app:layout_constraintEnd_toEndOf="@id/box2_card"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box2_card"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box2_card"
 
-            app:layout_constraintStart_toStartOf="@id/box2_card"
-            app:layout_constraintTop_toTopOf="@id/box2_card"
+            app:layout_constraintStart_toStartOf="@id/uniform_box2_card"
+            app:layout_constraintTop_toTopOf="@id/uniform_box2_card"
             app:layout_constraintVertical_bias="0.337" />
 
         <TextView
-            android:id="@+id/cost_box2_card"
+            android:id="@+id/uniform_cost_box2_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Τιμή : 2.30€"
+
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@id/box2_card"
-            app:layout_constraintEnd_toEndOf="@id/box2_card"
-            app:layout_constraintStart_toStartOf="@id/box2_card"
-            app:layout_constraintTop_toTopOf="@id/box2_card"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box2_card"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box2_card"
+            app:layout_constraintStart_toStartOf="@id/uniform_box2_card"
+            app:layout_constraintTop_toTopOf="@id/uniform_box2_card"
             app:layout_constraintVertical_bias="0.838" />
 
 
@@ -518,20 +518,20 @@
         <View
             android:id="@+id/divider_horizontal2_card"
             style="@style/Divider_Horizontal"
-            app:layout_constraintTop_toBottomOf="@id/box2_card"
+            app:layout_constraintTop_toBottomOf="@id/uniform_box2_card"
             android:layout_width="match_parent"
             tools:ignore="MissingConstraints">
 
         </View>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/box5_card"
+            android:id="@+id/uniform_box3_card"
             style="?attr/materialButtonOutlinedStyle"
             app:strokeColor="@color/athena_blue"
             app:strokeWidth="2dp"
             android:layout_width="161dp"
             android:layout_height="106dp"
-            app:backgroundTint="@android:color/transparent"
+            app:backgroundTint="@color/lite_grey"
             app:layout_constraintTop_toBottomOf="@id/divider_horizontal2_card"
             app:layout_constraintStart_toStartOf="parent"
 
@@ -542,43 +542,43 @@
         </com.google.android.material.button.MaterialButton>
 
         <TextView
-            android:id="@+id/duration_box5_card"
+            android:id="@+id/uniform_duration_box3_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="10+1\nΔιαδρομές"
+
             android:textAlignment="center"
             android:textColor="@color/athena_blue"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/box5_card"
-            app:layout_constraintEnd_toEndOf="@id/box5_card"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box3_card"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box3_card"
 
-            app:layout_constraintStart_toStartOf="@id/box5_card"
-            app:layout_constraintTop_toTopOf="@id/box5_card"
-            app:layout_constraintVertical_bias="0.158" />
+            app:layout_constraintStart_toStartOf="@id/uniform_box3_card"
+            app:layout_constraintTop_toTopOf="@id/uniform_box3_card"
+            app:layout_constraintVertical_bias="0.337" />
 
         <TextView
-            android:id="@+id/cost_box5_card"
+            android:id="@+id/uniform_cost_box3_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Τιμή : 12€"
+
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@id/box5_card"
-            app:layout_constraintEnd_toEndOf="@id/box5_card"
-            app:layout_constraintStart_toStartOf="@id/box5_card"
-            app:layout_constraintTop_toTopOf="@id/box5_card"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box3_card"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box3_card"
+            app:layout_constraintStart_toStartOf="@id/uniform_box3_card"
+            app:layout_constraintTop_toTopOf="@id/uniform_box3_card"
             app:layout_constraintVertical_bias="0.838" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/box6_card"
+            android:id="@+id/uniform_box4_card"
             style="?attr/materialButtonOutlinedStyle"
             app:strokeColor="@color/athena_blue"
             app:strokeWidth="2dp"
             android:layout_width="161dp"
             android:layout_height="106dp"
-            app:backgroundTint="@android:color/transparent"
+            app:backgroundTint="@color/lite_grey"
             app:layout_constraintTop_toBottomOf="@id/divider_horizontal2_card"
             app:cornerRadius="8dp"
             app:layout_constraintStart_toStartOf="@id/divider_card"
@@ -588,32 +588,32 @@
         </com.google.android.material.button.MaterialButton>
 
         <TextView
-            android:id="@+id/duration_box6_card"
+            android:id="@+id/uniform_duration_box4_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5 Διαδρομές"
+
             android:textAlignment="center"
             android:textColor="@color/athena_blue"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/box6_card"
-            app:layout_constraintEnd_toEndOf="@id/box6_card"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box4_card"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box4_card"
 
-            app:layout_constraintStart_toStartOf="@id/box6_card"
-            app:layout_constraintTop_toTopOf="@id/box6_card"
+            app:layout_constraintStart_toStartOf="@id/uniform_box4_card"
+            app:layout_constraintTop_toTopOf="@id/uniform_box4_card"
             app:layout_constraintVertical_bias="0.337" />
 
         <TextView
-            android:id="@+id/cost_box6_card"
+            android:id="@+id/uniform_cost_box4_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Τιμή : 5.70€"
+
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@id/box6_card"
-            app:layout_constraintEnd_toEndOf="@id/box6_card"
-            app:layout_constraintStart_toStartOf="@id/box6_card"
-            app:layout_constraintTop_toTopOf="@id/box6_card"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box4_card"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box4_card"
+            app:layout_constraintStart_toStartOf="@id/uniform_box4_card"
+            app:layout_constraintTop_toTopOf="@id/uniform_box4_card"
             app:layout_constraintVertical_bias="0.838" />
 
         <!--    Third horizontal divider -->
@@ -621,21 +621,21 @@
         <View
             android:id="@+id/divider_horizontal3_card"
             style="@style/Divider_Horizontal"
-            app:layout_constraintTop_toBottomOf="@id/box6_card"
+            app:layout_constraintTop_toBottomOf="@id/uniform_box4_card"
             android:layout_width="match_parent"
             tools:ignore="MissingConstraints">
 
         </View>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/box7_card"
+            android:id="@+id/uniform_box5_card"
             style="?attr/materialButtonOutlinedStyle"
             app:strokeColor="@color/athena_blue"
             app:strokeWidth="2dp"
             android:layout_width="161dp"
             android:layout_height="106dp"
             app:cornerRadius="8dp"
-            app:backgroundTint="@android:color/transparent"
+            app:backgroundTint="@color/lite_grey"
             app:layout_constraintTop_toBottomOf="@id/divider_horizontal3_card"
             app:layout_constraintStart_toStartOf="parent"
 
@@ -645,44 +645,44 @@
         </com.google.android.material.button.MaterialButton>
 
         <TextView
-            android:id="@+id/duration_box7_card"
+            android:id="@+id/uniform_duration_box5_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="30 Ημερών"
+
             android:textAlignment="center"
             android:textColor="@color/athena_blue"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/box7_card"
-            app:layout_constraintEnd_toEndOf="@id/box7_card"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box5_card"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box5_card"
 
 
-            app:layout_constraintStart_toStartOf="@id/box7_card"
-            app:layout_constraintTop_toTopOf="@id/box7_card"
+            app:layout_constraintStart_toStartOf="@id/uniform_box5_card"
+            app:layout_constraintTop_toTopOf="@id/uniform_box5_card"
             app:layout_constraintVertical_bias="0.337" />
 
         <TextView
-            android:id="@+id/cost_box7_ticket"
+            android:id="@+id/uniform_cost_box5_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Τιμή : 27€"
+
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@id/box7_card"
-            app:layout_constraintEnd_toEndOf="@id/box7_card"
-            app:layout_constraintStart_toStartOf="@id/box7_card"
-            app:layout_constraintTop_toTopOf="@id/box7_card"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box5_card"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box5_card"
+            app:layout_constraintStart_toStartOf="@id/uniform_box5_card"
+            app:layout_constraintTop_toTopOf="@id/uniform_box5_card"
             app:layout_constraintVertical_bias="0.838" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/box8_card"
+            android:id="@+id/uniform_box6_card"
             style="?attr/materialButtonOutlinedStyle"
             app:strokeColor="@color/athena_blue"
             app:strokeWidth="2dp"
             android:layout_width="161dp"
             android:layout_height="106dp"
             app:cornerRadius="8dp"
-            app:backgroundTint="@android:color/transparent"
+            app:backgroundTint="@color/lite_grey"
             app:layout_constraintTop_toBottomOf="@id/divider_horizontal3_card"
             app:layout_constraintStart_toStartOf="@id/divider_card"
 
@@ -691,33 +691,33 @@
         </com.google.android.material.button.MaterialButton>
 
         <TextView
-            android:id="@+id/duration_box8_card"
+            android:id="@+id/uniform_duration_box6_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="90 Ημερών"
+
             android:textAlignment="center"
             android:textColor="@color/athena_blue"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/box8_card"
-            app:layout_constraintEnd_toEndOf="@id/box8_card"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box6_card"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box6_card"
 
 
-            app:layout_constraintStart_toStartOf="@id/box8_card"
-            app:layout_constraintTop_toTopOf="@id/box8_card"
+            app:layout_constraintStart_toStartOf="@id/uniform_box6_card"
+            app:layout_constraintTop_toTopOf="@id/uniform_box6_card"
             app:layout_constraintVertical_bias="0.337" />
 
         <TextView
-            android:id="@+id/cost_box8_card"
+            android:id="@+id/uniform_cost_box6_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Τιμή : 78€"
+
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@id/box8_card"
-            app:layout_constraintEnd_toEndOf="@id/box8_card"
-            app:layout_constraintStart_toStartOf="@id/box8_card"
-            app:layout_constraintTop_toTopOf="@id/box8_card"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box6_card"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box6_card"
+            app:layout_constraintStart_toStartOf="@id/uniform_box6_card"
+            app:layout_constraintTop_toTopOf="@id/uniform_box6_card"
             app:layout_constraintVertical_bias="0.838" />
 
         <!--    Fourth horizontal divider -->
@@ -725,21 +725,21 @@
         <View
             android:id="@+id/divider_horizontal4_card"
             style="@style/Divider_Horizontal"
-            app:layout_constraintTop_toBottomOf="@id/box8_card"
+            app:layout_constraintTop_toBottomOf="@id/uniform_box6_card"
             android:layout_width="match_parent"
             tools:ignore="MissingConstraints">
 
         </View>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/box9_card"
+            android:id="@+id/uniform_box7_card"
             style="?attr/materialButtonOutlinedStyle"
             app:strokeColor="@color/athena_blue"
             app:strokeWidth="2dp"
             android:layout_width="161dp"
             android:layout_height="106dp"
             app:cornerRadius="8dp"
-            app:backgroundTint="@android:color/transparent"
+            app:backgroundTint="@color/lite_grey"
             app:layout_constraintTop_toBottomOf="@id/divider_horizontal4_card"
             app:layout_constraintStart_toStartOf="parent"
 
@@ -749,44 +749,44 @@
         </com.google.android.material.button.MaterialButton>
 
         <TextView
-            android:id="@+id/duration_box9_card"
+            android:id="@+id/uniform_duration_box7_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="180 Ημερών"
+
             android:textAlignment="center"
             android:textColor="@color/athena_blue"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/box9_card"
-            app:layout_constraintEnd_toEndOf="@id/box9_card"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box7_card"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box7_card"
 
 
-            app:layout_constraintStart_toStartOf="@id/box9_card"
-            app:layout_constraintTop_toTopOf="@id/box9_card"
+            app:layout_constraintStart_toStartOf="@id/uniform_box7_card"
+            app:layout_constraintTop_toTopOf="@id/uniform_box7_card"
             app:layout_constraintVertical_bias="0.337" />
 
         <TextView
-            android:id="@+id/cost_box9_ticket"
+            android:id="@+id/uniform_cost_box7_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Τιμή : 155€"
+
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@id/box9_card"
-            app:layout_constraintEnd_toEndOf="@id/box9_card"
-            app:layout_constraintStart_toStartOf="@id/box9_card"
-            app:layout_constraintTop_toTopOf="@id/box9_card"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box7_card"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box7_card"
+            app:layout_constraintStart_toStartOf="@id/uniform_box7_card"
+            app:layout_constraintTop_toTopOf="@id/uniform_box7_card"
             app:layout_constraintVertical_bias="0.838" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/box10_card"
+            android:id="@+id/uniform_box8_card"
             style="?attr/materialButtonOutlinedStyle"
             app:strokeColor="@color/athena_blue"
             app:strokeWidth="2dp"
             android:layout_width="161dp"
             android:layout_height="106dp"
             app:cornerRadius="8dp"
-            app:backgroundTint="@android:color/transparent"
+            app:backgroundTint="@color/lite_grey"
             app:layout_constraintTop_toBottomOf="@id/divider_horizontal4_card"
             app:layout_constraintStart_toStartOf="@id/divider_card"
 
@@ -795,33 +795,33 @@
         </com.google.android.material.button.MaterialButton>
 
         <TextView
-            android:id="@+id/duration_box10_card"
+            android:id="@+id/uniform_duration_box8_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="365 Ημερών"
+
             android:textAlignment="center"
             android:textColor="@color/athena_blue"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/box10_card"
-            app:layout_constraintEnd_toEndOf="@id/box10_card"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box8_card"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box8_card"
 
 
-            app:layout_constraintStart_toStartOf="@id/box10_card"
-            app:layout_constraintTop_toTopOf="@id/box10_card"
+            app:layout_constraintStart_toStartOf="@id/uniform_box8_card"
+            app:layout_constraintTop_toTopOf="@id/uniform_box8_card"
             app:layout_constraintVertical_bias="0.337" />
 
         <TextView
-            android:id="@+id/cost_box10_card"
+            android:id="@+id/uniform_cost_box8_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Τιμή : 300€"
+
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@id/box10_card"
-            app:layout_constraintEnd_toEndOf="@id/box10_card"
-            app:layout_constraintStart_toStartOf="@id/box10_card"
-            app:layout_constraintTop_toTopOf="@id/box10_card"
+            app:layout_constraintBottom_toBottomOf="@id/uniform_box8_card"
+            app:layout_constraintEnd_toEndOf="@id/uniform_box8_card"
+            app:layout_constraintStart_toStartOf="@id/uniform_box8_card"
+            app:layout_constraintTop_toTopOf="@id/uniform_box8_card"
             app:layout_constraintVertical_bias="0.838" />
 
         <com.google.android.material.button.MaterialButton
@@ -837,7 +837,7 @@
             android:textAllCaps="false"
             android:textSize="20sp"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/box10_card"
+            app:layout_constraintTop_toBottomOf="@id/uniform_box8_card"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
