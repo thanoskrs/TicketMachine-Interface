@@ -27,6 +27,13 @@ import java.util.Objects;
 public class AirportFragment extends Fragment {
 
     private FragmentAirportBinding binding;
+    public static boolean inited = false;
+    private static MaterialButton[] airport_ticket_arrayBox;
+    private static MaterialButton[] airport_card_arrayBox;
+    private static TextView[] airport_ticket_arrayDuration;
+    private static TextView[] airport_ticket_arrayCost;
+    private static TextView[] airport_card_arrayDuration;
+    private static TextView[] airport_card_arrayCost;
 
     @SuppressLint("SetTextI18n")
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -38,13 +45,13 @@ public class AirportFragment extends Fragment {
         View root = binding.getRoot();
 
         //boxes
-        MaterialButton[] airport_ticket_arrayBox = new MaterialButton[4];
+         airport_ticket_arrayBox = new MaterialButton[4];
         airport_ticket_arrayBox[0] = binding.airportBox1Ticket;
         airport_ticket_arrayBox[1] = binding.airportBox2Ticket;
         airport_ticket_arrayBox[2] = binding.airportBox3Ticket;
         airport_ticket_arrayBox[3] = binding.airportBox4Ticket;
 
-        MaterialButton[] airport_card_arrayBox = new MaterialButton[6];
+         airport_card_arrayBox = new MaterialButton[6];
         airport_card_arrayBox[0] = binding.airportBox1Card;
         airport_card_arrayBox[1] = binding.airportBox2Card;
         airport_card_arrayBox[2] = binding.airportBox3Card;
@@ -54,14 +61,14 @@ public class AirportFragment extends Fragment {
 
         //tickets
 
-        TextView[] airport_ticket_arrayDuration = new TextView[4];
+         airport_ticket_arrayDuration = new TextView[4];
         airport_ticket_arrayDuration[0] = binding.airportDurationBox1Ticket;
         airport_ticket_arrayDuration[1] = binding.airportDurationBox2Ticket;
         airport_ticket_arrayDuration[2] = binding.airportDurationBox3Ticket;
         airport_ticket_arrayDuration[3] = binding.airportDurationBox4Ticket;
 
 
-        TextView[] airport_ticket_arrayCost = new TextView[4];
+        airport_ticket_arrayCost = new TextView[4];
         airport_ticket_arrayCost[0] = binding.airportCostBox1Ticket;
         airport_ticket_arrayCost[1] = binding.airportCostBox2Ticket;
         airport_ticket_arrayCost[2] = binding.airportCostBox3Ticket;
@@ -70,7 +77,7 @@ public class AirportFragment extends Fragment {
 
         //cards
 
-        TextView[] airport_card_arrayDuration = new TextView[6];
+        airport_card_arrayDuration = new TextView[6];
         airport_card_arrayDuration[0] = binding.airportDurationBox1Card;
         airport_card_arrayDuration[1] = binding.airportDurationBox2Card;
         airport_card_arrayDuration[2] = binding.airportDurationBox3Card;
@@ -79,7 +86,7 @@ public class AirportFragment extends Fragment {
         airport_card_arrayDuration[5] = binding.airportDurationBox6Card;
 
 
-        TextView[] airport_card_arrayCost = new TextView[6];
+        airport_card_arrayCost = new TextView[6];
         airport_card_arrayCost[0] = binding.airportCostBox1Card;
         airport_card_arrayCost[1] = binding.airportCostBox2Card;
         airport_card_arrayCost[2] = binding.airportCostBox3Card;
@@ -105,18 +112,10 @@ public class AirportFragment extends Fragment {
             binding.cardView.setVisibility(View.INVISIBLE);
             binding.ticketView.setVisibility(View.VISIBLE);
 
-            if (ProductScreen.list != null){
-                // ticket - airport
-                int i = 1;
-                for (Document document: ProductScreen.list){
-                    if (Objects.equals(document.get("TicketID"), "airport_box" + i + "_ticket")){
-                        airport_ticket_arrayDuration[i-1].setText((String)document.get("Name"));
-                        airport_ticket_arrayCost[i-1].setText((String)document.get("Standard Price"));
-                        i++;
-                    }
+            // ticket - airport
 
-                }
-            }
+            fill_tickets_airport();
+
 
         }
         else{
@@ -124,24 +123,9 @@ public class AirportFragment extends Fragment {
             binding.cardView.setVisibility(View.VISIBLE);
 
 
-            if (ProductScreen.list != null){
-                // card - airport
-                int i = 1;
-                for (Document document: ProductScreen.list){
-                    if (Objects.equals(document.get("TicketID"), "airport_box" + i + "_card")){
+            // card - airport
 
-                        airport_card_arrayDuration[i-1].setText((String)document.get("Name"));
-
-                        if (Objects.equals(MainActivity.user.get("Category"), "Student"))
-                            airport_card_arrayCost[i - 1].setText("Τιμή : " + (String) document.get("Student Price") + " €");
-                        else
-                            airport_card_arrayCost[i-1].setText("Τιμή : "+(String)document.get("Standard Price")+" €");
-
-                        i++;
-                    }
-
-                }
-            }
+            fill_cards_airport();
 
         }
 
@@ -195,6 +179,7 @@ public class AirportFragment extends Fragment {
         binding.cancelButtonCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                UniformFragment.inited = false;
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
                 startActivity(intent);
             }
@@ -203,6 +188,7 @@ public class AirportFragment extends Fragment {
         binding.cancelButtonTicket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                UniformFragment.inited = false;
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
                 startActivity(intent);
             }
@@ -214,6 +200,52 @@ public class AirportFragment extends Fragment {
 //        final TextView textView = binding.textNotifications;
 //        airportViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
+    }
+
+
+    @SuppressLint("SetTextI18n")
+    public static void fill_tickets_airport(){
+
+            int i = 1;
+            for (Document document : ProductScreen.list) {
+                if (Objects.equals(document.get("TicketID"), "airport_box" + i+"_ticket")) {
+                    airport_ticket_arrayDuration[i - 1].setText((String) document.get("Name"));
+                    airport_ticket_arrayCost[i - 1].setText("Τιμή : " + (String) document.get("Standard Price") + " €");
+                    i++;
+                }
+            }
+            inited = true;
+
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    public static void fill_cards_airport(){
+
+
+            // card - uniform
+
+
+            int i = 1;
+            for (Document document: ProductScreen.list){
+                if (Objects.equals(document.get("TicketID"), "airport_box" + i + "_card")){
+                    airport_card_arrayDuration[i-1].setText((String)document.get("Name"));
+
+                    if (Objects.equals(MainActivity.user.get("Category"), "Student"))
+                        airport_card_arrayCost[i-1].setText("Τιμή : "+(String)document.get("Student Price")+" €");
+                    else
+                        airport_card_arrayCost[i-1].setText("Τιμή : "+(String)document.get("Standard Price")+" €");
+
+                    i++;
+                }
+
+            }
+
+            inited = true;
+
+
+
+
     }
 
     @Override

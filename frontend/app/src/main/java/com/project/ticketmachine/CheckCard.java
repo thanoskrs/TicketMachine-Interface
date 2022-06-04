@@ -105,6 +105,15 @@ public class CheckCard extends AppCompatActivity {
             }
         });
 
+        // on cancel button
+        binding.cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CheckCard.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private class CheckCode extends AsyncTask<String, String, String>{

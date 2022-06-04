@@ -16,7 +16,7 @@
         android:textAllCaps="false"
         android:textColor="#100D0D"
         android:textIsSelectable="false"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="50dp"
@@ -73,7 +73,7 @@
         android:layout_marginTop="50dp"
         android:textColor="#100D0D"
         android:textIsSelectable="false"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +88,7 @@
         android:layout_height="50dp"
         android:visibility="invisible"
         android:background="@color/lite_grey1"
-
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ticketInfoText"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,15 +96,34 @@
 
     <Button
         android:id="@+id/send_barcode"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
+
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:visibility="invisible"
         android:backgroundTint="@color/athena_blue"
         android:text="ok"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_barcode" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cancel_button"
+        style="?attr/materialButtonOutlinedStyle"
+        app:strokeColor="@color/white"
+        android:backgroundTint="@color/red"
+        app:strokeWidth="2dp"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        app:cornerRadius="8dp"
+        android:text="Ακύρωση"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+    </com.google.android.material.button.MaterialButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

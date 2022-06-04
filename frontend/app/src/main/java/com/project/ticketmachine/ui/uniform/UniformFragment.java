@@ -33,7 +33,13 @@ import java.util.Objects;
 public class UniformFragment extends Fragment {
 
     private FragmentUniformBinding binding;
-
+    private static MaterialButton[] uniform_ticket_arrayBox;
+    private static MaterialButton[] uniform_card_arrayBox;
+    private static TextView[] uniform_ticket_arrayDuration;
+    private static TextView[] uniform_ticket_arrayCost;
+    private static TextView[] uniform_card_arrayDuration;
+    private static TextView[] uniform_card_arrayCost;
+    public static boolean inited = false;
 
     @SuppressLint("SetTextI18n")
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -48,7 +54,7 @@ public class UniformFragment extends Fragment {
         uniformViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         //boxes
-        MaterialButton[] uniform_ticket_arrayBox = new MaterialButton[6];
+        uniform_ticket_arrayBox = new MaterialButton[6];
         uniform_ticket_arrayBox[0] = binding.uniformBox1;
         uniform_ticket_arrayBox[1] = binding.uniformBox2;
         uniform_ticket_arrayBox[2] = binding.uniformBox3;
@@ -56,7 +62,7 @@ public class UniformFragment extends Fragment {
         uniform_ticket_arrayBox[4] = binding.uniformBox5;
         uniform_ticket_arrayBox[5] = binding.uniformBox6;
 
-        MaterialButton[] uniform_card_arrayBox = new MaterialButton[8];
+        uniform_card_arrayBox = new MaterialButton[8];
         uniform_card_arrayBox[0] = binding.uniformBox1Card;
         uniform_card_arrayBox[1] = binding.uniformBox2Card;
         uniform_card_arrayBox[2] = binding.uniformBox3Card;
@@ -68,7 +74,7 @@ public class UniformFragment extends Fragment {
 
         //tickets
 
-        TextView[] uniform_ticket_arrayDuration = new TextView[6];
+        uniform_ticket_arrayDuration = new TextView[6];
         uniform_ticket_arrayDuration[0] = binding.uniformDurationBox1;
         uniform_ticket_arrayDuration[1] = binding.uniformDurationBox2;
         uniform_ticket_arrayDuration[2] = binding.uniformDurationBox3;
@@ -76,7 +82,7 @@ public class UniformFragment extends Fragment {
         uniform_ticket_arrayDuration[4] = binding.uniformDurationBox5;
         uniform_ticket_arrayDuration[5] = binding.uniformDurationBox6;
 
-        TextView[] uniform_ticket_arrayCost = new TextView[6];
+        uniform_ticket_arrayCost = new TextView[6];
         uniform_ticket_arrayCost[0] = binding.uniformCostBox1;
         uniform_ticket_arrayCost[1] = binding.uniformCostBox2;
         uniform_ticket_arrayCost[2] = binding.uniformCostBox3;
@@ -86,7 +92,7 @@ public class UniformFragment extends Fragment {
 
         //cards
 
-        TextView[] uniform_card_arrayDuration = new TextView[8];
+        uniform_card_arrayDuration = new TextView[8];
         uniform_card_arrayDuration[0] = binding.uniformDurationBox1Card;
         uniform_card_arrayDuration[1] = binding.uniformDurationBox2Card;
         uniform_card_arrayDuration[2] = binding.uniformDurationBox3Card;
@@ -96,7 +102,7 @@ public class UniformFragment extends Fragment {
         uniform_card_arrayDuration[6] = binding.uniformDurationBox7Card;
         uniform_card_arrayDuration[7] = binding.uniformDurationBox8Card;
 
-        TextView[] uniform_card_arrayCost = new TextView[8];
+        uniform_card_arrayCost = new TextView[8];
         uniform_card_arrayCost[0] = binding.uniformCostBox1Card;
         uniform_card_arrayCost[1] = binding.uniformCostBox2Card;
         uniform_card_arrayCost[2] = binding.uniformCostBox3Card;
@@ -123,42 +129,20 @@ public class UniformFragment extends Fragment {
             binding.cardView.setVisibility(View.INVISIBLE);
             binding.ticketView.setVisibility(View.VISIBLE);
 
-
-            if (ProductScreen.list != null){
-                int i = 1;
-                for (Document document: ProductScreen.list){
-                    if (Objects.equals(document.get("TicketID"), "uniform_box" + i)){
-                        uniform_ticket_arrayDuration[i-1].setText((String)document.get("Name"));
-                        uniform_ticket_arrayCost[i-1].setText("Τιμή : "+(String)document.get("Standard Price")+" €");
-                        i++;
-                    }
-                }
-            }
             // ticket - uniform
-
-
+            if (inited){
+                fill_tickets_uniform();
+            }
         }
         else{
             binding.ticketView.setVisibility(View.INVISIBLE);
             binding.cardView.setVisibility(View.VISIBLE);
 
-            if (ProductScreen.list != null){
-                // card - uniform
-                int i = 1;
-                for (Document document: ProductScreen.list){
-                    if (Objects.equals(document.get("TicketID"), "uniform_box" + i + "_card")){
-                        uniform_card_arrayDuration[i-1].setText((String)document.get("Name"));
-
-                        if (Objects.equals(MainActivity.user.get("Category"), "Student"))
-                            uniform_card_arrayCost[i-1].setText("Τιμή : "+(String)document.get("Student Price")+" €");
-                        else
-                            uniform_card_arrayCost[i-1].setText("Τιμή : "+(String)document.get("Standard Price")+" €");
-
-                        i++;
-                    }
-
-                }
+            // card - uniform
+            if (inited){
+                fill_cards_uniform();
             }
+
 
         }
 
@@ -211,6 +195,7 @@ public class UniformFragment extends Fragment {
         binding.cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                UniformFragment.inited = false;
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
                 startActivity(intent);
             }
@@ -220,6 +205,7 @@ public class UniformFragment extends Fragment {
         binding.cancelButtonCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                UniformFragment.inited = false;
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
                 startActivity(intent);
             }
@@ -228,6 +214,53 @@ public class UniformFragment extends Fragment {
 
         return root;
     }
+
+    @SuppressLint("SetTextI18n")
+    public static void fill_tickets_uniform(){
+
+
+            int i = 1;
+            for (Document document : ProductScreen.list) {
+                if (Objects.equals(document.get("TicketID"), "uniform_box" + i)) {
+                    uniform_ticket_arrayDuration[i - 1].setText((String) document.get("Name"));
+                    uniform_ticket_arrayCost[i - 1].setText("Τιμή : " + (String) document.get("Standard Price") + " €");
+                    i++;
+                }
+            }
+            inited = true;
+
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    public static void fill_cards_uniform(){
+
+
+            // card - uniform
+
+
+            int i = 1;
+            for (Document document: ProductScreen.list){
+                if (Objects.equals(document.get("TicketID"), "uniform_box" + i + "_card")){
+                    uniform_card_arrayDuration[i-1].setText((String)document.get("Name"));
+
+                    if (Objects.equals(MainActivity.user.get("Category"), "Student"))
+                        uniform_card_arrayCost[i-1].setText("Τιμή : "+(String)document.get("Student Price")+" €");
+                    else
+                        uniform_card_arrayCost[i-1].setText("Τιμή : "+(String)document.get("Standard Price")+" €");
+
+                    i++;
+                }
+
+            }
+
+            inited = true;
+
+
+
+
+    }
+
 
     @Override
     public void onDestroyView() {

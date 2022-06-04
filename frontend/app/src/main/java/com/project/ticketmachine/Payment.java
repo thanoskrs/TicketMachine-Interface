@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
+import com.project.ticketmachine.ui.airport.AirportFragment;
+import com.project.ticketmachine.ui.uniform.UniformFragment;
 
 import org.bson.Document;
 
@@ -74,6 +76,7 @@ public class Payment extends AppCompatActivity {
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                UniformFragment.inited = false;
                 Intent myIntent = new Intent(Payment.this, MainActivity.class);
                 Payment.this.startActivity(myIntent);
             }
