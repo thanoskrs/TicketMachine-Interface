@@ -67,7 +67,11 @@ public class Payment extends AppCompatActivity {
         ticketId = getIntent().getStringExtra("ticketID");
         userId = getIntent().getStringExtra("userID");
 
-        kindOfProductText.setText(kindOfProductText.getText().toString() + kind);
+        if (kind .equals("Airport"))
+            kindOfProductText.setText(kindOfProductText.getText().toString() + "Αεροδρόμιο");
+        else
+            kindOfProductText.setText(kindOfProductText.getText().toString() + "Ενιαίο");
+
         productText.setText(productText.getText().toString() + product);
         priceText.setText(priceText.getText().toString() + String.format("%.2f", price)+"€");
         totalPriceText.setText(totalPriceText.getText().toString() + String.format("%.2f", price) +"€");
