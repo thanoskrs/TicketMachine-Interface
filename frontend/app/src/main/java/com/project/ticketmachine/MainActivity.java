@@ -33,7 +33,7 @@ import com.mongodb.client.MongoDatabase;*/
 public class MainActivity extends AppCompatActivity {
 
 
-    public static final String MainServerIp = "192.168.1.9";
+    public static final String MainServerIp = "192.168.56.1";
     public static final int MainServerPort = 8080;
     public static Socket socket = null;
     private String student = "";
