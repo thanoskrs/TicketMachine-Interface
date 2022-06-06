@@ -28,6 +28,13 @@
             android:name=".ProductScreen"
             android:exported="false"
             android:label="@string/title_activity_product_screen" />
+
+        <activity
+
+            android:name=".CheckCard"
+            android:exported="false"
+            android:label="@string/title_check_card" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

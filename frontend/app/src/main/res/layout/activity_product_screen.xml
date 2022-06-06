@@ -21,6 +21,23 @@
         />
 
 
+    <!--    loading . . . -->
+    <RelativeLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:gravity="center" >
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/prog_bar"
+            android:indeterminate="true"
+            android:indeterminateDuration="1500"
+            android:progress="0" />
+    </RelativeLayout>
+
 
     <fragment
         android:id="@+id/nav_host_fragment_activity_product_screen"
@@ -94,17 +111,17 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.615" />
 
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/lastProductChosen"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="220dp"
                 android:layout_height="130dp"
-                android:layout_marginTop="55dp"
+                android:layout_marginTop="44dp"
                 android:clickable="false"
                 app:backgroundTint="#BBE5F3"
                 app:cornerRadius="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.484"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/divider"
                 app:strokeColor="@color/athena_blue"
@@ -112,50 +129,42 @@
 
             </com.google.android.material.button.MaterialButton>
 
-
             <TextView
                 android:id="@+id/kind_product_chosen_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Είδος : Ενιαίο"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="20dp"
+                android:text="Είδος : "
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@id/lastProductChosen"
-                app:layout_constraintEnd_toEndOf="@id/lastProductChosen"
-                app:layout_constraintHorizontal_bias="0.518"
                 app:layout_constraintStart_toStartOf="@id/lastProductChosen"
-                app:layout_constraintTop_toTopOf="@id/lastProductChosen"
-                app:layout_constraintVertical_bias="0.188" />
+                app:layout_constraintTop_toTopOf="@id/lastProductChosen" />
 
             <TextView
-                android:id="@+id/product_chosen_text"
+                android:id="@+id/duration_product_chosen_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Διάρκεια: 90 Λεπτών"
+                android:layout_marginTop="10dp"
+                android:text="Διάρκεια : "
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@id/lastProductChosen"
-                app:layout_constraintEnd_toEndOf="@id/lastProductChosen"
-                app:layout_constraintHorizontal_bias="0.553"
-                app:layout_constraintStart_toStartOf="@id/lastProductChosen"
-                app:layout_constraintTop_toTopOf="@id/lastProductChosen"
-                app:layout_constraintVertical_bias="0.509" />
+                app:layout_constraintStart_toStartOf="@+id/kind_product_chosen_text"
+                app:layout_constraintTop_toBottomOf="@+id/kind_product_chosen_text" />
 
             <TextView
                 android:id="@+id/product_price_chosen_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Τιμή : 1.20€"
+                android:text="Τιμή :"
+                android:layout_marginTop="10dp"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@id/lastProductChosen"
-                app:layout_constraintEnd_toEndOf="@id/lastProductChosen"
-                app:layout_constraintStart_toStartOf="@id/lastProductChosen"
-                app:layout_constraintTop_toTopOf="@id/lastProductChosen"
-                app:layout_constraintVertical_bias="0.838" />
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/duration_product_chosen_text"
+                app:layout_constraintTop_toBottomOf="@+id/duration_product_chosen_text" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/repeat_order"
