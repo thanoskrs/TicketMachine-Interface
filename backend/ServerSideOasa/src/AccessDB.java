@@ -1,12 +1,19 @@
 
 
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
-import com.mongodb.MongoCredential;
-import com.mongodb.MongoException;
+import com.mongodb.*;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.UpdateResult;
 import org.bson.Document;
+
+import javax.print.Doc;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 
 public class AccessDB {
@@ -23,16 +30,358 @@ public class AccessDB {
         // Accessing the database
         database = mongo.getDatabase("Oasa_Users");
 
-        InsertDocuments();
+//        InsertDocuments();
+//        insert();
     }
+
+    public boolean CheckCode(String id) throws IOException {
+        // Creating Credentials
+        MongoCredential credential;
+
+        MongoCollection<Document> collection =  database.getCollection("User");
+
+
+        BasicDBObject Query = new BasicDBObject();
+        Query.put("UserID", id);
+
+        FindIterable<Document> iterDoc = collection.find();
+        for (Document doc : iterDoc) {
+            System.out.println(doc);
+            if (doc.get("userID").equals(id)) {
+                Server.objectOutputStream.writeUTF("Pass");
+                Server.objectOutputStream.flush();
+
+                Server.objectOutputStream.writeObject((Document) doc);
+                Server.objectOutputStream.flush();
+
+
+                return true;
+            }
+        }
+        Server.objectOutputStream.writeUTF("Not-Pass");
+        Server.objectOutputStream.flush();
+        return false;
+
+
+    }
+
+    public void getCardsorTickets(String selected_genre) throws IOException {
+        MongoCollection<Document> collection =  database.getCollection("Ticket");
+
+        ArrayList<Document> list = new ArrayList<>();
+
+        FindIterable<Document> iterDoc = collection.find();
+        for (Document doc : iterDoc) {
+            if (doc.get("Genre").equals(selected_genre)) {
+                System.out.println(doc);
+                list.add(doc);
+            }
+        }
+
+        Server.objectOutputStream.writeInt(list.size());
+        Server.objectOutputStream.flush();
+
+        for (Document document: list){
+            Server.objectOutputStream.writeObject(document);
+            Server.objectOutputStream.flush();
+        }
+
+    }
+
+    public void insertUser() throws IOException, ClassNotFoundException {
+
+        MongoCollection<Document> collection = database.getCollection("User");
+
+        Document new_user = (Document) Server.objectInputStream.readObject();
+
+        collection.insertOne(new_user);
+        System.out.println("Document inserted successfully");
+    }
+
+    public void updateUser() throws IOException, ClassNotFoundException {
+
+        MongoCollection<Document> collection = database.getCollection("User");
+
+        String userID = Server.objectInputStream.readUTF();
+        String ticketID = Server.objectInputStream.readUTF();
+
+        FindIterable<Document> iterDoc = collection.find();
+        for (Document user : iterDoc) {
+            if (user.get("userID").equals(userID)) {
+                BasicDBObject query = new BasicDBObject();
+                query.put("LastProductId", user.get("LastProductId"));
+                query.put("LastProductScreen", user.get("LastProductScreen"));
+
+                BasicDBObject newDocument = new BasicDBObject();
+                newDocument.put("LastProductId", ticketID);
+                newDocument.put("LastProductScreen", true);
+
+                BasicDBObject updateObject = new BasicDBObject();
+                updateObject.put("$set", newDocument);
+
+                collection.updateOne(query, updateObject);
+
+                System.out.println("Document inserted successfully");
+                System.out.println(user);
+                break;
+            }
+        }
+    }
+
+    public void checkLastProduct(String id) throws IOException, ClassNotFoundException {
+
+        MongoCollection<Document> collection = database.getCollection("Ticket");
+
+        FindIterable<Document> iterDoc = collection.find();
+        for (Document doc : iterDoc) {
+            if (doc.get("TicketID").equals(id)) {
+                System.out.println(doc);
+                Server.objectOutputStream.writeObject(doc);
+                Server.objectOutputStream.flush();
+                break;
+            }
+        }
+
+    }
+
+
+    public void insert(){
+        MongoCollection<Document> collection = database.getCollection("User");
+        System.out.println("Collection "+ collection.getNamespace()+" selected successfully");
+
+        try{
+            Document document1 = new Document();
+            document1.append("userID", "000");
+            document1.append("userName", "Kouros Thanos");
+            document1.append("Student", true);
+            document1.append("Unemployed", false);
+            document1.append("LastProductScreen", false);
+
+
+            //Inserting document into the collection
+            collection.insertOne(document1);
+            System.out.println("Document inserted successfully");
+        }catch (MongoException mongoException){
+            System.err.println("Unable to insert due to an error: " + mongoException);
+        }
+
+        try{
+            Document document1 = new Document();
+            document1.append("userID", "111");
+            document1.append("userName", "Deligiannis Nikos");
+            document1.append("Student", false);
+            document1.append("Unemployed", true);
+            document1.append("LastProductScreen", false);
+
+
+            //Inserting document into the collection
+            collection.insertOne(document1);
+            System.out.println("Document inserted successfully");
+        }catch (MongoException mongoException){
+            System.err.println("Unable to insert due to an error: " + mongoException);
+        }
+
+        try{
+            Document document1 = new Document();
+            document1.append("userID", "222");
+            document1.append("userName", "Eleftherou Mirto");
+            document1.append("Student", true);
+            document1.append("Unemployed", false);
+            document1.append("LastProductScreen", false);
+
+
+            //Inserting document into the collection
+            collection.insertOne(document1);
+            System.out.println("Document inserted successfully");
+        }catch (MongoException mongoException){
+            System.err.println("Unable to insert due to an error: " + mongoException);
+        }
+    }
+
+
+
 
     public void InsertDocuments(){
         MongoCollection<Document> collection = database.getCollection("Ticket");
         System.out.println("Collection "+ collection.getNamespace()+" selected successfully");
 
+        // ticket - uniform
         try{
             Document document = new Document();
-            document.append("TicketID", "box1_card");
+            document.append("TicketID", "uniform_box1");
+            document.append("Name", "90 λεπτών");
+            document.append("Genre", "Ticket");
+            document.append("Kind", "Uniform");
+            document.append("Standard Price", "1.20");
+            document.append("Student Price", "");
+
+
+            //Inserting document into the collection
+            collection.insertOne(document);
+            System.out.println("Document inserted successfully");
+        }catch (MongoException mongoException){
+            System.err.println("Unable to insert due to an error: " + mongoException);
+        }
+
+        try{
+            Document document = new Document();
+            document.append("TicketID", "uniform_box2");
+            document.append("Name", "2 Διαδρομές");
+            document.append("Genre", "Ticket");
+            document.append("Kind", "Uniform");
+            document.append("Standard Price", "2.30");
+            document.append("Student Price", "");
+
+
+            //Inserting document into the collection
+            collection.insertOne(document);
+            System.out.println("Document inserted successfully");
+        }catch (MongoException mongoException){
+            System.err.println("Unable to insert due to an error: " + mongoException);
+        }
+
+        try{
+            Document document = new Document();
+            document.append("TicketID", "uniform_box3");
+            document.append("Name", "5 Διαδρομές");
+            document.append("Genre", "Ticket");
+            document.append("Kind", "Uniform");
+            document.append("Standard Price", "8.20");
+            document.append("Student Price", "");
+
+
+            //Inserting document into the collection
+            collection.insertOne(document);
+            System.out.println("Document inserted successfully");
+        }catch (MongoException mongoException){
+            System.err.println("Unable to insert due to an error: " + mongoException);
+        }
+
+        try{
+            Document document = new Document();
+            document.append("TicketID", "uniform_box4");
+            document.append("Name", "24 Ωρών");
+            document.append("Genre", "Ticket");
+            document.append("Kind", "Uniform");
+            document.append("Standard Price", "4.10");
+            document.append("Student Price", "");
+
+
+            //Inserting document into the collection
+            collection.insertOne(document);
+            System.out.println("Document inserted successfully");
+        }catch (MongoException mongoException){
+            System.err.println("Unable to insert due to an error: " + mongoException);
+        }
+
+        try{
+            Document document = new Document();
+            document.append("TicketID", "uniform_box5");
+            document.append("Name", "5 Ημερών");
+            document.append("Genre", "Ticket");
+            document.append("Kind", "Uniform");
+            document.append("Standard Price", "8.20");
+            document.append("Student Price", "");
+
+
+            //Inserting document into the collection
+            collection.insertOne(document);
+            System.out.println("Document inserted successfully");
+        }catch (MongoException mongoException){
+            System.err.println("Unable to insert due to an error: " + mongoException);
+        }
+
+        try{
+            Document document = new Document();
+            document.append("TicketID", "uniform_box6");
+            document.append("Name", "10+1 Διαδρομές");
+            document.append("Genre", "Ticket");
+            document.append("Kind", "Uniform");
+            document.append("Standard Price", "12.00");
+            document.append("Student Price", "");
+
+
+            //Inserting document into the collection
+            collection.insertOne(document);
+            System.out.println("Document inserted successfully");
+        }catch (MongoException mongoException){
+            System.err.println("Unable to insert due to an error: " + mongoException);
+        }
+
+        // ticket - airport
+
+        try{
+            Document document = new Document();
+            document.append("TicketID", "airport_box1_ticket");
+            document.append("Name", "Λεωφοριακές Γραμμές Express");
+            document.append("Genre", "Ticket");
+            document.append("Kind", "Airport");
+            document.append("Standard Price", "5.50");
+            document.append("Student Price", "");
+
+
+            //Inserting document into the collection
+            collection.insertOne(document);
+            System.out.println("Document inserted successfully");
+        }catch (MongoException mongoException){
+            System.err.println("Unable to insert due to an error: " + mongoException);
+        }
+
+        try{
+            Document document = new Document();
+            document.append("TicketID", "airport_box2_ticket");
+            document.append("Name", "90 Λεπτών");
+            document.append("Genre", "Ticket");
+            document.append("Kind", "Airport");
+            document.append("Standard Price", "9.00");
+            document.append("Student Price", "");
+
+
+            //Inserting document into the collection
+            collection.insertOne(document);
+            System.out.println("Document inserted successfully");
+        }catch (MongoException mongoException){
+            System.err.println("Unable to insert due to an error: " + mongoException);
+        }
+
+        try{
+            Document document = new Document();
+            document.append("TicketID", "airport_box3_ticket");
+            document.append("Name", "3 Ημερών Τουριστικό");
+            document.append("Genre", "Ticket");
+            document.append("Kind", "Airport");
+            document.append("Standard Price", "20.00");
+            document.append("Student Price", "");
+
+
+            //Inserting document into the collection
+            collection.insertOne(document);
+            System.out.println("Document inserted successfully");
+        }catch (MongoException mongoException){
+            System.err.println("Unable to insert due to an error: " + mongoException);
+        }
+
+        try{
+            Document document = new Document();
+            document.append("TicketID", "airport_box4_ticket");
+            document.append("Name", "90 Λεπτών Μετ'επιστροφής");
+            document.append("Genre", "Ticket");
+            document.append("Kind", "Airport");
+            document.append("Standard Price", "16.00");
+            document.append("Student Price", "");
+
+
+            //Inserting document into the collection
+            collection.insertOne(document);
+            System.out.println("Document inserted successfully");
+        }catch (MongoException mongoException){
+            System.err.println("Unable to insert due to an error: " + mongoException);
+        }
+
+        // card - uniform
+        try{
+            Document document = new Document();
+            document.append("TicketID", "uniform_box1_card");
             document.append("Name", "90 λεπτών");
             document.append("Genre", "Card");
             document.append("Kind", "Uniform");
@@ -65,7 +414,7 @@ public class AccessDB {
 
         try{
             Document document = new Document();
-            document.append("TicketID", "box2_card");
+            document.append("TicketID", "uniform_box2_card");
             document.append("Name", "2 Διαδρομές");
             document.append("Genre", "Card");
             document.append("Kind", "Uniform");
@@ -82,7 +431,7 @@ public class AccessDB {
 
         try{
             Document document = new Document();
-            document.append("TicketID", "box6_card");
+            document.append("TicketID", "uniform_box6_card");
             document.append("Name", "5 Διαδρομές");
             document.append("Genre", "Card");
             document.append("Kind", "Uniform");
@@ -99,7 +448,7 @@ public class AccessDB {
 
         try{
             Document document = new Document();
-            document.append("TicketID", "box5_card");
+            document.append("TicketID", "uniform_box5_card");
             document.append("Name", "10+1 Διαδρομές");
             document.append("Genre", "Card");
             document.append("Kind", "Uniform");
@@ -116,7 +465,7 @@ public class AccessDB {
 
         try{
             Document document = new Document();
-            document.append("TicketID", "box7_card");
+            document.append("TicketID", "uniform_box7_card");
             document.append("Name", "30 Ημερών");
             document.append("Genre", "Card");
             document.append("Kind", "Uniform");
@@ -133,7 +482,7 @@ public class AccessDB {
 
         try{
             Document document = new Document();
-            document.append("TicketID", "box8_card");
+            document.append("TicketID", "uniform_box8_card");
             document.append("Name", "90 Ημερών");
             document.append("Genre", "Card");
             document.append("Kind", "Uniform");
@@ -150,7 +499,7 @@ public class AccessDB {
 
         try{
             Document document = new Document();
-            document.append("TicketID", "box9_card");
+            document.append("TicketID", "uniform_box9_card");
             document.append("Name", "180 Ημερών");
             document.append("Genre", "Card");
             document.append("Kind", "Uniform");
@@ -167,7 +516,7 @@ public class AccessDB {
 
         try{
             Document document = new Document();
-            document.append("TicketID", "box10_card");
+            document.append("TicketID", "uniform_box10_card");
             document.append("Name", "365 Ημερών");
             document.append("Genre", "Card");
             document.append("Kind", "Uniform");
@@ -186,7 +535,7 @@ public class AccessDB {
 
         try{
             Document document = new Document();
-            document.append("TicketID", "box1_card");
+            document.append("TicketID", "airport_box1_card");
             document.append("Name", "Λεωφοριακές Γραμμές Express");
             document.append("Genre", "Card");
             document.append("Kind", "Airport");
@@ -203,7 +552,7 @@ public class AccessDB {
 
         try{
             Document document = new Document();
-            document.append("TicketID", "box2_card");
+            document.append("TicketID", "airport_box2_card");
             document.append("Name", "90 Λεπτών");
             document.append("Genre", "Card");
             document.append("Kind", "Airport");
@@ -220,7 +569,7 @@ public class AccessDB {
 
         try{
             Document document = new Document();
-            document.append("TicketID", "box3_card");
+            document.append("TicketID", "airport_box3_card");
             document.append("Name", "30 Ημερών");
             document.append("Genre", "Card");
             document.append("Kind", "Airport");
@@ -237,7 +586,7 @@ public class AccessDB {
 
         try{
             Document document = new Document();
-            document.append("TicketID", "box4_card");
+            document.append("TicketID", "airport_box4_card");
             document.append("Name", "90 Ημερών");
             document.append("Genre", "Card");
             document.append("Kind", "Airport");
@@ -254,7 +603,7 @@ public class AccessDB {
 
         try{
             Document document = new Document();
-            document.append("TicketID", "box5_card");
+            document.append("TicketID", "airport_box5_card");
             document.append("Name", "365 Ημερών");
             document.append("Genre", "Card");
             document.append("Kind", "Airport");
@@ -271,7 +620,7 @@ public class AccessDB {
 
         try{
             Document document = new Document();
-            document.append("TicketID", "box6_card");
+            document.append("TicketID", "airport_box6_card");
             document.append("Name", "180 Ημερών");
             document.append("Genre", "Card");
             document.append("Kind", "Airport");
@@ -288,15 +637,5 @@ public class AccessDB {
 
     }
 
-    public void CheckCode(int code){
-        // Creating Credentials
-        MongoCredential credential;
 
-        MongoCollection<Document> collection = database.getCollection("User");
-
-//        for (Document document: collection.)
-//        if (code == )
-
-
-    }
 }
