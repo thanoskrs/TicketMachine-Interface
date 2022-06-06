@@ -17,6 +17,9 @@ public class CardPayment extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        binding = CardPaymentBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         binding.paymentBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,7 +36,12 @@ public class CardPayment extends AppCompatActivity {
             }
         });
 
-
+        binding.completePayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Payment.doInPayment();
+            }
+        });
 
     }
 

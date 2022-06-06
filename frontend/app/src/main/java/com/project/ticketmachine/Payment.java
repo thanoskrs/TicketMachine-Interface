@@ -25,8 +25,8 @@ import java.net.Socket;
 
 public class Payment extends AppCompatActivity {
 
-    private String ticketId = null;
-    private String userId = null;
+    protected static String ticketId = null;
+    protected static String userId = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +127,10 @@ public class Payment extends AppCompatActivity {
         pay_cash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent myIntent = new Intent(Payment.this, CashPayment.class);
+                Payment.this.startActivity(myIntent);
+
                 if (MainActivity.user.get("Type").equals("Ticket") && MainActivity.user.get("userName").equals("") && MainActivity.user.get("Category").equals("")){
                     Document[] paramsDoc = new Document[1];
                     paramsDoc[0] = MainActivity.user;
@@ -150,6 +154,9 @@ public class Payment extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                Intent myIntent = new Intent(Payment.this, CardPayment.class);
+                Payment.this.startActivity(myIntent);
+
                 if (MainActivity.user.get("Type").equals("Ticket") && MainActivity.user.get("userName").equals("") && MainActivity.user.get("Category").equals("")){
                     Document[] paramsDoc = new Document[1];
                     paramsDoc[0] = MainActivity.user;
@@ -169,9 +176,30 @@ public class Payment extends AppCompatActivity {
 
             }
         });
+
     }
 
-    private class InsertUser extends AsyncTask<Document, Document, Document> {
+    protected static void doInPayment() {
+        if (MainActivity.user.get("Type").equals("Ticket") && MainActivity.user.get("userName").equals("") && MainActivity.user.get("Category").equals("")){
+            Document[] paramsDoc = new Document[1];
+            paramsDoc[0] = MainActivity.user;
+
+            Payment.InsertUser insertUser = new Payment.InsertUser();
+            insertUser.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, paramsDoc);
+        }
+        else{
+            //update last product
+            String[] params = new String[2];
+            params[0] = userId;
+            params[1] = ticketId;
+
+            UpdateUser updateUser = new UpdateUser();
+            updateUser.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+        }
+    }
+
+
+    private static class InsertUser extends AsyncTask<Document, Document, Document> {
 
         private ObjectOutputStream objectOutputStream;
         private ObjectInputStream objectInputStream;
@@ -213,7 +241,7 @@ public class Payment extends AppCompatActivity {
 
     }
 
-    private class UpdateUser extends AsyncTask<String, String, String> {
+    private static class UpdateUser extends AsyncTask<String, String, String> {
 
         private ObjectOutputStream objectOutputStream;
         private ObjectInputStream objectInputStream;
