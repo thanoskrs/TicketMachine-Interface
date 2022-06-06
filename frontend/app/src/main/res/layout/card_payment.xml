@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="@+id/view" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/MachineImageView"
         android:layout_width="375dp"
         android:layout_height="347dp"
         android:layout_marginTop="35dp"
@@ -56,7 +56,7 @@
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/MachineImageView"
         app:layout_constraintVertical_bias="0.718"
         app:strokeColor="#E2AD1D"
         app:strokeWidth="2dp" />
@@ -115,14 +115,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Εισαγωγή κάρτας στο σημείο 1\nΑνέπαφη πληρωμή στο σημείο 2"
+        android:text="Σημείο 1: Εισαγωγή κάρτας\nΣημείο 2: Ανέπαφη πληρωμή"
         android:textAlignment="viewStart"
         android:textColor="#000000"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/insertCardText" />
 
+    <Button
+        android:id="@+id/complete_payment"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:alpha="0.10"
+        android:backgroundTint="@color/athena_blue"
+        android:text="ok"
+        app:layout_constraintTop_toBottomOf="@+id/MachineImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
