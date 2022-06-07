@@ -102,6 +102,40 @@ public class AccessDB {
         }
     }
 
+    public void WalletAccess() throws IOException {
+        MongoCollection<Document> collection = database.getCollection("User");
+
+        String userID = Server.objectInputStream.readUTF();
+
+        FindIterable<Document> iterDoc = collection.find();
+        for (Document user : iterDoc) {
+            if (user.get("userID").equals(userID)) {
+
+                 // update
+                String new_amount = Server.objectInputStream.readUTF();
+
+                float sum = Float.parseFloat(user.get("Wallet").toString()) + Float.parseFloat(new_amount);
+
+                BasicDBObject query = new BasicDBObject();
+                query.put("Wallet", user.get("Wallet"));
+
+                BasicDBObject newDocument = new BasicDBObject();
+                newDocument.put("Wallet", String.valueOf(sum));
+
+                BasicDBObject updateObject = new BasicDBObject();
+                updateObject.put("$set", newDocument);
+
+                collection.updateOne(query, updateObject);
+
+                System.out.println("Document updated successfully");
+                System.out.println(user);
+
+                break;
+
+            }
+        }
+    }
+
     public void insertUser() throws IOException, ClassNotFoundException {
 
         MongoCollection<Document> collection = database.getCollection("User");

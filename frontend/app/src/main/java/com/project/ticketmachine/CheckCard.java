@@ -51,10 +51,12 @@ public class CheckCard extends AppCompatActivity {
 
         if (selected_box.equals("info"))
             usage = "info";
+        else if (selected_box.equals("e-wallet"))
+            usage = "e-wallet";
         else
             usage = "other";
 
-        if (selected_box.equals("Card") || selected_box.equals("info")){
+        if (selected_box.equals("Card") || selected_box.equals("info") || selected_box.equals("e-wallet")){
             binding.rechargeTicket.setVisibility(View.INVISIBLE);
             binding.recharge.setVisibility(View.INVISIBLE);
             binding.noRecharge.setVisibility(View.INVISIBLE);
@@ -185,6 +187,10 @@ public class CheckCard extends AppCompatActivity {
 
                         if (usage.equals("info")){
                             Intent myIntent = new Intent(CheckCard.this, CardInfo.class);
+                            CheckCard.this.startActivity(myIntent);
+                        }
+                        else if (usage.equals("e-wallet")){
+                            Intent myIntent = new Intent(CheckCard.this, Ewallet.class);
                             CheckCard.this.startActivity(myIntent);
                         }
                         else{

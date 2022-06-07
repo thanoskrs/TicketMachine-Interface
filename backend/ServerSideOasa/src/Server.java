@@ -88,6 +88,9 @@ public class Server extends Thread{
                     String ticket_id = objectInputStream.readUTF();
                     new AccessDB().getTicketName(ticket_id);
                 }
+                if (task.equals("UpdateWallet")){
+                    new AccessDB().WalletAccess();
+                }
 
             }
 

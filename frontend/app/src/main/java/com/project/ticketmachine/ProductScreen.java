@@ -70,6 +70,7 @@ public class ProductScreen extends AppCompatActivity {
             MainActivity.user.append("LastProductId","");
             MainActivity.user.append("LastProductScreen",false);
             MainActivity.user.append("Type","Ticket");
+            MainActivity.user.append("Wallet","0");
 
 
             String[] params = new String[3];

@@ -39,7 +39,8 @@ public class MoreScreen extends AppCompatActivity {
         });
 
         binding.eWalletBox.setOnClickListener(view -> {
-            Intent myIntent = new Intent(MoreScreen.this, Ewallet.class);
+            Intent myIntent = new Intent(MoreScreen.this, CheckCard.class);
+            myIntent.putExtra("key" , "e-wallet");
             MoreScreen.this.startActivity(myIntent);
         });
 

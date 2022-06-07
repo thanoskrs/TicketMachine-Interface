@@ -115,6 +115,7 @@ public class CardInfo extends AppCompatActivity {
             binding.name.setText(MainActivity.user.get("userName").toString());
             binding.type.setText(MainActivity.user.get("Type").toString());
             binding.lastProduct.setText((ticket_name).replace("\n", " "));
+            binding.ewallet.setText(("Ποσό : "+ MainActivity.user.get("Wallet") + "€"));
         }
 
 

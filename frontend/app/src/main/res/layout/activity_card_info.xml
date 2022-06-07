@@ -179,14 +179,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:text="Ημερομηνία αγοράς"
+        android:text="Ηλεκτρονικό πορτοφόλι"
         android:textColor="@color/athena_blue"
 
-        app:layout_constraintStart_toStartOf="@+id/last_product_date"
-        app:layout_constraintBottom_toTopOf="@+id/last_product_date"/>
+        app:layout_constraintStart_toStartOf="@+id/ewallet"
+        app:layout_constraintBottom_toTopOf="@+id/ewallet"/>
 
     <TextView
-        android:id="@+id/last_product_date"
+        android:id="@+id/ewallet"
         android:layout_width="370dp"
 
         android:layout_height="50dp"
@@ -221,7 +221,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="40dp"
-        app:layout_constraintTop_toBottomOf="@id/last_product_date"
+        app:layout_constraintTop_toBottomOf="@id/ewallet"
         app:strokeColor="#E2AD1D"
         app:strokeWidth="2dp" />
 
