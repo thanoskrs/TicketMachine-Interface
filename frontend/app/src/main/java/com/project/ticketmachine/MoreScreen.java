@@ -39,12 +39,17 @@ public class MoreScreen extends AppCompatActivity {
         });
 
         binding.eWalletBox.setOnClickListener(view -> {
-
+            Intent myIntent = new Intent(MoreScreen.this, Ewallet.class);
+            MoreScreen.this.startActivity(myIntent);
         });
 
         binding.backButton.setOnClickListener(view -> {
             Intent myIntent = new Intent(MoreScreen.this, MainActivity.class);
             MoreScreen.this.startActivity(myIntent);
+        });
+
+        binding.studentBox.setOnClickListener(view -> {
+
         });
 
     }

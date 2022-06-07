@@ -6,4 +6,7 @@
     <string name="title_check_card">CheckCard</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_cash_payment">CashPayment</string>
+    <string name="title_card_payment">CardPayment</string>
+    <string name="title_on_post_payment">OnPostPayment</string>
 </resources>

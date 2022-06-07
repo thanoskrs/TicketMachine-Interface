@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
+    tools:context=".CashPayment">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:background="@color/athena_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Πληρωμή"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@id/view"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+
+    <ImageView
+        android:id="@+id/MachineImageView"
+        android:layout_width="370dp"
+        android:layout_height="290dp"
+        android:layout_marginTop="28dp"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waysToInsertCashText"
+        app:srcCompat="@drawable/machine_icon_pay_cash" />
+
+    <View
+        android:id="@+id/remaining_money"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/lite_grey0"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MachineImageView" />
+
+    <TextView
+        android:id="@+id/remaining_money_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Υπόλοιπο: "
+        android:textAlignment="center"
+        android:textColor="@color/athena_blue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/remaining_money"
+        app:layout_constraintEnd_toEndOf="@+id/remaining_money"
+        app:layout_constraintStart_toStartOf="@+id/remaining_money"
+        app:layout_constraintTop_toTopOf="@+id/remaining_money" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/payment_back_button"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="#0DE2AD1D"
+        android:text="ΠΙΣΩ"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/remaining_money"
+        app:layout_constraintVertical_bias="0.779"
+        app:strokeColor="#E2AD1D"
+        app:strokeWidth="2dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/payment_cancel_button"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#0DAD2717"
+        android:text="Ακυρωση"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/payment_back_button"
+        app:strokeColor="#AD2717"
+        app:strokeWidth="2dp" />
+
+    <ImageView
+        android:id="@+id/payment_back_text"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/payment_back_button"
+        app:layout_constraintStart_toStartOf="@+id/payment_back_button"
+        app:layout_constraintTop_toTopOf="@+id/payment_back_button"
+        app:srcCompat="@drawable/back" />
+
+    <ImageView
+        android:id="@+id/paymrnt_cancel_text"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/payment_cancel_button"
+        app:layout_constraintStart_toStartOf="@+id/payment_cancel_button"
+        app:layout_constraintTop_toTopOf="@+id/payment_cancel_button"
+        app:srcCompat="@drawable/cancel" />
+
+    <TextView
+        android:id="@+id/insertCashText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Παρακαλώ τοποθετήστε τα χρήματά σας:"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <TextView
+        android:id="@+id/pointWaysToInsertCashText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="1\n2"
+        android:textAlignment="viewStart"
+        android:textColor="@color/red"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/insertCashText" />
+
+    <TextView
+        android:id="@+id/waysToInsertCashText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=": Κέρματα\n: Χαρτονομίσματα"
+        android:textAlignment="viewStart"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pointWaysToInsertCashText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/pointWaysToInsertCashText"
+        app:layout_constraintTop_toTopOf="@+id/pointWaysToInsertCashText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/complete_payment"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:alpha="0.10"
+        android:backgroundTint="@color/athena_blue"
+        android:text="ok"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/insertMoneyEditText"
+        app:layout_constraintStart_toStartOf="@+id/insertMoneyEditText"
+        app:layout_constraintTop_toBottomOf="@+id/insertMoneyEditText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/insertMoneyEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:hint="€"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/remaining_money" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

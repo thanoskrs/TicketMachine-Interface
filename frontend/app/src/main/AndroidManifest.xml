@@ -49,6 +49,27 @@
 
         <activity
 
+            android:name=".Ewallet"
+            android:exported="false"
+            />
+
+        <activity
+            android:name=".CashPayment"
+            android:exported="false"
+            android:label="@string/title_cash_payment" />
+
+        <activity
+            android:name=".CardPayment"
+            android:exported="false"
+            android:label="@string/title_card_payment" />
+
+        <activity
+            android:name=".OnPostPayment"
+            android:exported="false"
+            android:label="@string/title_on_post_payment" />
+
+        <activity
+
             android:name=".RechargeCode"
             android:exported="false"
             />
