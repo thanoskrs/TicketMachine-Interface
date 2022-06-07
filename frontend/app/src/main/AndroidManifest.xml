@@ -49,6 +49,11 @@
             android:label="@string/title_on_post_payment" />
 
         <activity
+            android:name=".TicketsInfo"
+            android:exported="false"
+            android:label="@string/title_tickets_info" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
