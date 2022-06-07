@@ -10,7 +10,7 @@
         android:id="@+id/ticket_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="invisible">
+        android:visibility="visible">
 
 
 
@@ -350,39 +350,6 @@
 
 
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/cancel_button"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="130dp"
-            android:layout_height="70dp"
-            android:textSize="16sp"
-            android:backgroundTint="#0DAD2717"
-            android:text="Ακύρωση"
-
-            android:textAllCaps="false"
-            android:textAlignment="textEnd"
-            android:textColor="@color/black"
-            app:cornerRadius="10dp"
-            app:strokeColor="#AD2717"
-            app:strokeWidth="2dp"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-
-            >
-
-        </com.google.android.material.button.MaterialButton>
-
-        <ImageView
-            android:id="@+id/cancel_text1"
-            android:layout_width="30dp"
-            android:layout_height="50dp"
-            app:layout_constraintBottom_toBottomOf="@+id/cancel_button"
-            app:layout_constraintStart_toStartOf="@+id/cancel_button"
-            app:layout_constraintTop_toTopOf="@+id/cancel_button"
-            app:srcCompat="@drawable/cancel" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--    card view -->
@@ -391,7 +358,7 @@
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:visibility="invisible">
 
 
         <TextView
@@ -835,39 +802,98 @@
             app:layout_constraintTop_toTopOf="@id/uniform_box8_card"
             app:layout_constraintVertical_bias="0.838" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/cancel_button_card"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="130dp"
-            android:layout_height="70dp"
-            android:textSize="16sp"
-            android:backgroundTint="#0DAD2717"
-            android:text="Ακύρωση"
-
-            android:textAllCaps="false"
-            android:textAlignment="textEnd"
-            android:textColor="@color/black"
-            app:cornerRadius="10dp"
-            app:strokeColor="#AD2717"
-            app:strokeWidth="2dp"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-
-            >
-
-        </com.google.android.material.button.MaterialButton>
-
-        <ImageView
-            android:id="@+id/cancel_text"
-            android:layout_width="30dp"
-            android:layout_height="50dp"
-            app:layout_constraintBottom_toBottomOf="@+id/cancel_button_card"
-            app:layout_constraintStart_toStartOf="@+id/cancel_button_card"
-            app:layout_constraintTop_toTopOf="@+id/cancel_button_card"
-            app:srcCompat="@drawable/cancel" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    cancel button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cancel_button"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:textSize="16sp"
+        android:backgroundTint="#0DAD2717"
+        android:text="Ακύρωση"
+
+        android:textAllCaps="false"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        app:cornerRadius="10dp"
+        app:strokeColor="#AD2717"
+        app:strokeWidth="2dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        >
+
+    </com.google.android.material.button.MaterialButton>
+
+    <ImageView
+        android:id="@+id/cancel_text"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cancel_button"
+        app:layout_constraintStart_toStartOf="@+id/cancel_button"
+        app:layout_constraintTop_toTopOf="@+id/cancel_button"
+        app:srcCompat="@drawable/cancel" />
+
+    <!--    info button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/info_button"
+        style="?attr/materialButtonOutlinedStyle"
+        app:strokeColor="@color/athena_blue"
+        app:strokeWidth="2dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/lite_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cancel_button"
+        app:cornerRadius="8dp"
+
+        tools:ignore="MissingConstraints">
+    </com.google.android.material.button.MaterialButton>
+
+    <TextView
+        android:id="@+id/more_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Πληροφορίες"
+        android:textAlignment="center"
+        android:textColor="@color/athena_blue"
+        android:textSize="20sp"
+
+        app:layout_constraintBottom_toBottomOf="@id/info_button"
+        app:layout_constraintEnd_toEndOf="@id/info_button"
+        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintStart_toStartOf="@id/info_button"
+        app:layout_constraintTop_toTopOf="@id/info_button"
+        />
+
+    <ImageView
+        android:id="@+id/more_img1"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/info_button"
+
+        app:layout_constraintStart_toStartOf="@+id/info_button"
+        app:layout_constraintEnd_toEndOf="@+id/info_button"
+        app:layout_constraintTop_toTopOf="@+id/info_button"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+    <ImageView
+        android:id="@+id/more_img2"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/info_button"
+
+        app:layout_constraintStart_toStartOf="@+id/info_button"
+        app:layout_constraintEnd_toEndOf="@+id/info_button"
+        app:layout_constraintTop_toTopOf="@+id/info_button"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

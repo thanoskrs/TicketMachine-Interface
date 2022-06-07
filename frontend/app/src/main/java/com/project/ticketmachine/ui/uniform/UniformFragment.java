@@ -28,6 +28,8 @@ import com.project.ticketmachine.ui.uniform.UniformFragment;
 
 import org.bson.Document;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class UniformFragment extends Fragment {
@@ -40,6 +42,8 @@ public class UniformFragment extends Fragment {
     private static TextView[] uniform_card_arrayDuration;
     private static TextView[] uniform_card_arrayCost;
     public static boolean inited = false;
+
+    String product_kind = null;
 
     @SuppressLint("SetTextI18n")
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -112,7 +116,6 @@ public class UniformFragment extends Fragment {
         uniform_card_arrayCost[6] = binding.uniformCostBox7Card;
         uniform_card_arrayCost[7] = binding.uniformCostBox8Card;
 
-        String product_kind = null;
 
         if (MainActivity.user == null){
             product_kind = "Ticket";
@@ -192,12 +195,24 @@ public class UniformFragment extends Fragment {
             }
         });
 
-        // on cancel button
-        binding.cancelButtonCard.setOnClickListener(new View.OnClickListener() {
+        binding.infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UniformFragment.inited = false;
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
+
+                List<String> products = new ArrayList<>();
+
+                if (product_kind.equals("Ticket")) {
+                    for (int i = 0; i < uniform_ticket_arrayDuration.length; i++) {
+                        products.add(uniform_ticket_arrayDuration[i].getText().toString());
+                    }
+                } else {
+                    for (int i = 0; i < uniform_card_arrayDuration.length; i++) {
+                        products.add(uniform_card_arrayDuration[i].getText().toString());
+                    }
+                }
+
+                intent.putExtra("Products", products.toArray());
                 startActivity(intent);
             }
         });

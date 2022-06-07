@@ -22,6 +22,8 @@ import com.project.ticketmachine.ui.uniform.UniformFragment;
 
 import org.bson.Document;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class AirportFragment extends Fragment {
@@ -34,6 +36,8 @@ public class AirportFragment extends Fragment {
     private static TextView[] airport_ticket_arrayCost;
     private static TextView[] airport_card_arrayDuration;
     private static TextView[] airport_card_arrayCost;
+
+    String product_kind = null;
 
     @SuppressLint("SetTextI18n")
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -96,7 +100,6 @@ public class AirportFragment extends Fragment {
 
 
         ProductScreen activity = (ProductScreen) getActivity();
-        String product_kind = null;
 
         if (MainActivity.user == null){
             product_kind = "Ticket";
@@ -175,8 +178,30 @@ public class AirportFragment extends Fragment {
             });
         }
 
+        binding.infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
+
+                List<String> products = new ArrayList<>();
+
+                if (product_kind.equals("Ticket")) {
+                    for (int i = 0; i < airport_ticket_arrayDuration.length; i++) {
+                        products.add(airport_ticket_arrayDuration[i].getText().toString());
+                    }
+                } else {
+                    for (int i = 0; i < airport_card_arrayDuration.length; i++) {
+                        products.add(airport_card_arrayDuration[i].getText().toString());
+                    }
+                }
+
+                intent.putExtra("Products", products.toArray());
+                startActivity(intent);
+            }
+        });
+
         // on cancel button
-        binding.cancelButtonCard.setOnClickListener(new View.OnClickListener() {
+        binding.cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 UniformFragment.inited = false;
@@ -184,16 +209,6 @@ public class AirportFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-        binding.cancelButtonTicket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                UniformFragment.inited = false;
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
 
 
 
