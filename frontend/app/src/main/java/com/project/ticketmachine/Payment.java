@@ -83,10 +83,11 @@ public class Payment extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(Payment.this, ProductScreen.class);
+                finish();
+                /*Intent myIntent = new Intent(Payment.this, ProductScreen.class);
                 myIntent.putExtra("key", "card");
                 myIntent.putExtra("Type", getIntent().getStringExtra("Type"));
-                Payment.this.startActivity(myIntent);
+                Payment.this.startActivity(myIntent);*/
             }
         });
 

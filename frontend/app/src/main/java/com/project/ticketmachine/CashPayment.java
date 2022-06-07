@@ -40,8 +40,7 @@ public class CashPayment extends AppCompatActivity {
         binding.paymentBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(CashPayment.this, Payment.class);
-                CashPayment.this.startActivity(myIntent);
+                finish();
             }
         });
 

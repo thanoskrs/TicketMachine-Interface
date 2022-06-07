@@ -28,8 +28,7 @@ public class CardPayment extends AppCompatActivity {
         binding.paymentBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(CardPayment.this, Payment.class);
-                CardPayment.this.startActivity(myIntent);
+                finish();
             }
         });
 
@@ -46,8 +45,8 @@ public class CardPayment extends AppCompatActivity {
         binding.completePayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Payment.doInPayment();
+                Intent myIntent = new Intent(CardPayment.this, OnPostPayment.class);
+                CardPayment.this.startActivity(myIntent);
             }
         });
 
