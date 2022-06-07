@@ -84,10 +84,6 @@ public class Payment extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                /*Intent myIntent = new Intent(Payment.this, ProductScreen.class);
-                myIntent.putExtra("key", "card");
-                myIntent.putExtra("Type", getIntent().getStringExtra("Type"));
-                Payment.this.startActivity(myIntent);*/
             }
         });
 
