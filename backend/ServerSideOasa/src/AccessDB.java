@@ -88,6 +88,20 @@ public class AccessDB {
 
     }
 
+    public void getTicketName(String id) throws IOException {
+        MongoCollection<Document> collection =  database.getCollection("Ticket");
+
+        FindIterable<Document> iterDoc = collection.find();
+        for (Document doc : iterDoc) {
+            if (doc.get("TicketID").equals(id)) {
+
+                Server.objectOutputStream.writeUTF((String) doc.get("Name"));
+                Server.objectOutputStream.flush();
+                break;
+            }
+        }
+    }
+
     public void insertUser() throws IOException, ClassNotFoundException {
 
         MongoCollection<Document> collection = database.getCollection("User");
@@ -247,7 +261,7 @@ public class AccessDB {
             document.append("Genre", "Ticket");
             document.append("Kind", "Uniform");
             document.append("Standard Price", "8.20");
-             document.append("Student Price", "");
+            document.append("Student Price", "");
 
 
             //Inserting document into the collection
@@ -264,7 +278,7 @@ public class AccessDB {
             document.append("Genre", "Ticket");
             document.append("Kind", "Uniform");
             document.append("Standard Price", "4.10");
-             document.append("Student Price", "");
+            document.append("Student Price", "");
 
 
             //Inserting document into the collection
@@ -281,7 +295,7 @@ public class AccessDB {
             document.append("Genre", "Ticket");
             document.append("Kind", "Uniform");
             document.append("Standard Price", "8.20");
-             document.append("Student Price", "");
+            document.append("Student Price", "");
 
 
             //Inserting document into the collection

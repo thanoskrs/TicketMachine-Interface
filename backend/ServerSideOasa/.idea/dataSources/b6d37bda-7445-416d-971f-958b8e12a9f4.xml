@@ -45,15 +45,15 @@
     <column id="16" parent="6" name="Type">
       <DataType>String(0)|12s</DataType>
     </column>
-    <column id="17" parent="6" name="LastProductScreen">
-      <Position>1</Position>
-      <DataType>Boolean|12s</DataType>
-    </column>
-    <column id="18" parent="6" name="userID">
+    <column id="17" parent="6" name="Category">
       <Position>1</Position>
       <DataType>String(0)|12s</DataType>
     </column>
-    <column id="19" parent="6" name="Category">
+    <column id="18" parent="6" name="LastProductScreen">
+      <Position>1</Position>
+      <DataType>Boolean|12s</DataType>
+    </column>
+    <column id="19" parent="6" name="userID">
       <Position>1</Position>
       <DataType>String(0)|12s</DataType>
     </column>

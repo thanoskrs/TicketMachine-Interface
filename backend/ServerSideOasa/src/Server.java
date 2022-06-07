@@ -43,10 +43,10 @@ public class Server extends Thread{
 
         System.out.println("Server starts with port 3000");
 
-        
+
         while (true){
             connectionSocket = myServerSocket.accept();
-            
+
             Thread server = new Server(connectionSocket);
             server.start();
         }
@@ -65,7 +65,7 @@ public class Server extends Thread{
                 }
 
                 if (task.equals("Card")){
-                    
+
                     new AccessDB().getCardsorTickets(task);
                 }
                 if (task.equals("Ticket")){
@@ -84,6 +84,11 @@ public class Server extends Thread{
                     String id = objectInputStream.readUTF();
                     new AccessDB().checkLastProduct(id);
                 }
+                if (task.equals("GetTicketName")){
+                    String ticket_id = objectInputStream.readUTF();
+                    new AccessDB().getTicketName(ticket_id);
+                }
+
             }
 
 
