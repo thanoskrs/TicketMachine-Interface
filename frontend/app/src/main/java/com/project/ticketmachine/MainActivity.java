@@ -3,26 +3,22 @@ package com.project.ticketmachine;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.os.AsyncTask;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.project.ticketmachine.databinding.ActivityMainBinding;
 
 import org.bson.Document;
 
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
 
 /*import com.google.android.material.textfield.TextInputEditText;
 import com.mongodb.MongoClient;
@@ -40,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean checked = false;
     public static String category = "";
     public static String type = "";
+    ActivityMainBinding binding;
 
     public static ObjectOutputStream objectOutputStream;
     public static ObjectInputStream objectInputStream;
@@ -52,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         ImageButton ticketBtn = (ImageButton) findViewById(R.id.ticketButton);
         ImageButton cardBtn = (ImageButton) findViewById(R.id.cardButton);
@@ -80,42 +80,33 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        ticketBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        ticketBtn.setOnClickListener(view ->{
+
                 Intent myIntent = new Intent(MainActivity.this, CheckCard.class);
                 myIntent.putExtra("key", "Ticket");
                 MainActivity.this.startActivity(myIntent);
-            }
         });
 
-        cardBtn.setId(45);
 
-        cardBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        cardBtn.setOnClickListener(view -> {
 
-                Intent myIntent = new Intent(MainActivity.this, CheckCard.class);
-                myIntent.putExtra("key", "Card");
-                MainActivity.this.startActivity(myIntent);
+            Intent myIntent = new Intent(MainActivity.this, CheckCard.class);
+            myIntent.putExtra("key", "Card");
+            MainActivity.this.startActivity(myIntent);
 
-            }
         });
 
-        ticketInfoBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e("ID", String.valueOf(cardBtn.getId()));
-                if (ticketInfoText.getVisibility() == View.INVISIBLE) {
-                    ticketInfoText.setVisibility(View.VISIBLE);
-                    ticketRechargeText.setVisibility(View.INVISIBLE);
-                    ticketInfoBtn.setImageResource(R.drawable.info_pressed_icon);
-                }
-                else {
-                    ticketInfoText.setVisibility(View.INVISIBLE);
-                    ticketRechargeText.setVisibility(View.VISIBLE);
-                    ticketInfoBtn.setImageResource(R.drawable.info_icon);
-                }
+        ticketInfoBtn.setOnClickListener(view -> {
+            Log.e("ID", String.valueOf(cardBtn.getId()));
+            if (ticketInfoText.getVisibility() == View.INVISIBLE) {
+                ticketInfoText.setVisibility(View.VISIBLE);
+                ticketRechargeText.setVisibility(View.INVISIBLE);
+                ticketInfoBtn.setImageResource(R.drawable.info_pressed_icon);
+            }
+            else {
+                ticketInfoText.setVisibility(View.INVISIBLE);
+                ticketRechargeText.setVisibility(View.VISIBLE);
+                ticketInfoBtn.setImageResource(R.drawable.info_icon);
             }
         });
 
@@ -134,6 +125,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        binding.moreBox.setOnClickListener(view -> {
+            Log.i("click" , "more button");
+
+            Intent myIntent = new Intent(MainActivity.this, MoreScreen.class);
+         //   myIntent.putExtra("key", "Card");
+            MainActivity.this.startActivity(myIntent);
+        });
+
+
 
         ukBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -212,9 +213,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -223,4 +221,3 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
-

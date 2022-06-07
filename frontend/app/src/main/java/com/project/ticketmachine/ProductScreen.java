@@ -1,10 +1,5 @@
 package com.project.ticketmachine;
 
-import static com.project.ticketmachine.MainActivity.MainServerIp;
-import static com.project.ticketmachine.MainActivity.MainServerPort;
-import static com.project.ticketmachine.MainActivity.category;
-import static com.project.ticketmachine.MainActivity.type;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -20,9 +15,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.google.android.material.internal.NavigationMenuItemView;
 import com.project.ticketmachine.databinding.ActivityProductScreenBinding;
-import com.project.ticketmachine.ui.airport.AirportFragment;
 import com.project.ticketmachine.ui.uniform.UniformFragment;
 
 import org.bson.Document;
@@ -328,7 +321,8 @@ public class ProductScreen extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-            CheckCard.loading.setVisibility(View.GONE);
+            if (CheckCard.loading != null)
+                CheckCard.loading.setVisibility(View.GONE);
         }
 
         @SuppressLint("SetTextI18n")
@@ -348,4 +342,3 @@ public class ProductScreen extends AppCompatActivity {
     }
 
 }
-

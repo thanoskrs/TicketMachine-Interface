@@ -175,7 +175,7 @@ public class UniformFragment extends Fragment {
                     paymentScreen.putExtra("kind", "Uniform");
                     paymentScreen.putExtra("Type", "Ticket");
 
-                //   Log.e("send_ticket" , uniform_ticket_arrayDuration[finalI].getText().toString());
+                    //   Log.e("send_ticket" , uniform_ticket_arrayDuration[finalI].getText().toString());
                     UniformFragment.this.startActivity(paymentScreen);
                 }
             });
@@ -229,7 +229,7 @@ public class UniformFragment extends Fragment {
 
         binding.ticketView.setVisibility(View.INVISIBLE);
         binding.cardView.setVisibility(View.VISIBLE);
-            // card - uniform
+        // card - uniform
 
 
         int i = 1;

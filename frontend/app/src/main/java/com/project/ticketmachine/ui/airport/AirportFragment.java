@@ -45,13 +45,13 @@ public class AirportFragment extends Fragment {
         View root = binding.getRoot();
 
         //boxes
-         airport_ticket_arrayBox = new MaterialButton[4];
+        airport_ticket_arrayBox = new MaterialButton[4];
         airport_ticket_arrayBox[0] = binding.airportBox1Ticket;
         airport_ticket_arrayBox[1] = binding.airportBox2Ticket;
         airport_ticket_arrayBox[2] = binding.airportBox3Ticket;
         airport_ticket_arrayBox[3] = binding.airportBox4Ticket;
 
-         airport_card_arrayBox = new MaterialButton[6];
+        airport_card_arrayBox = new MaterialButton[6];
         airport_card_arrayBox[0] = binding.airportBox1Card;
         airport_card_arrayBox[1] = binding.airportBox2Card;
         airport_card_arrayBox[2] = binding.airportBox3Card;
@@ -61,7 +61,7 @@ public class AirportFragment extends Fragment {
 
         //tickets
 
-         airport_ticket_arrayDuration = new TextView[4];
+        airport_ticket_arrayDuration = new TextView[4];
         airport_ticket_arrayDuration[0] = binding.airportDurationBox1Ticket;
         airport_ticket_arrayDuration[1] = binding.airportDurationBox2Ticket;
         airport_ticket_arrayDuration[2] = binding.airportDurationBox3Ticket;
@@ -147,7 +147,7 @@ public class AirportFragment extends Fragment {
                     paymentScreen.putExtra("kind", "Airport");
                     paymentScreen.putExtra("Type", "Card");
 
-                  //  Log.e("send_card_ticket" , String.valueOf(airport_card_arrayBox[finalI].getAccessibilityClassName()));
+                    //  Log.e("send_card_ticket" , String.valueOf(airport_card_arrayBox[finalI].getAccessibilityClassName()));
                     AirportFragment.this.startActivity(paymentScreen);
                 }
             });
@@ -206,15 +206,15 @@ public class AirportFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     public static void fill_tickets_airport(){
 
-            int i = 1;
-            for (Document document : ProductScreen.list) {
-                if (Objects.equals(document.get("TicketID"), "airport_box" + i+"_ticket")) {
-                    airport_ticket_arrayDuration[i - 1].setText((String) document.get("Name"));
-                    airport_ticket_arrayCost[i - 1].setText("Τιμή : " + (String) document.get("Standard Price") + " €");
-                    i++;
-                }
+        int i = 1;
+        for (Document document : ProductScreen.list) {
+            if (Objects.equals(document.get("TicketID"), "airport_box" + i+"_ticket")) {
+                airport_ticket_arrayDuration[i - 1].setText((String) document.get("Name"));
+                airport_ticket_arrayCost[i - 1].setText("Τιμή : " + (String) document.get("Standard Price") + " €");
+                i++;
             }
-            inited = true;
+        }
+        inited = true;
 
 
     }
@@ -223,25 +223,25 @@ public class AirportFragment extends Fragment {
     public static void fill_cards_airport(){
 
 
-            // card - uniform
+        // card - uniform
 
 
-            int i = 1;
-            for (Document document: ProductScreen.list){
-                if (Objects.equals(document.get("TicketID"), "airport_box" + i + "_card")){
-                    airport_card_arrayDuration[i-1].setText((String)document.get("Name"));
+        int i = 1;
+        for (Document document: ProductScreen.list){
+            if (Objects.equals(document.get("TicketID"), "airport_box" + i + "_card")){
+                airport_card_arrayDuration[i-1].setText((String)document.get("Name"));
 
-                    if (Objects.equals(MainActivity.user.get("Category"), "Student"))
-                        airport_card_arrayCost[i-1].setText("Τιμή : "+(String)document.get("Student Price")+" €");
-                    else
-                        airport_card_arrayCost[i-1].setText("Τιμή : "+(String)document.get("Standard Price")+" €");
+                if (Objects.equals(MainActivity.user.get("Category"), "Student"))
+                    airport_card_arrayCost[i-1].setText("Τιμή : "+(String)document.get("Student Price")+" €");
+                else
+                    airport_card_arrayCost[i-1].setText("Τιμή : "+(String)document.get("Standard Price")+" €");
 
-                    i++;
-                }
-
+                i++;
             }
 
-            inited = true;
+        }
+
+        inited = true;
 
 
 

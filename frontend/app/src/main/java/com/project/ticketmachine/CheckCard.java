@@ -7,13 +7,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.project.ticketmachine.databinding.ActivityProductScreenBinding;
 import com.project.ticketmachine.databinding.CheckCardBinding;
 
 import org.bson.Document;
@@ -30,6 +28,7 @@ public class CheckCard extends AppCompatActivity {
     public static ObjectOutputStream objectOutputStream;
     public static ObjectInputStream objectInputStream;
     private CheckCardBinding binding;
+    private String usage = null;
     private String selected_box = null;
     public static RelativeLayout loading = null;
 
@@ -50,7 +49,12 @@ public class CheckCard extends AppCompatActivity {
 
         loading = binding.loadingPanel;
 
-        if (selected_box.equals("Card")){
+        if (selected_box.equals("info"))
+            usage = "info";
+        else
+            usage = "other";
+
+        if (selected_box.equals("Card") || selected_box.equals("info")){
             binding.rechargeTicket.setVisibility(View.INVISIBLE);
             binding.recharge.setVisibility(View.INVISIBLE);
             binding.noRecharge.setVisibility(View.INVISIBLE);
@@ -132,7 +136,7 @@ public class CheckCard extends AppCompatActivity {
         binding.cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CheckCard.this,MainActivity.class);
+                Intent intent = new Intent(CheckCard.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -179,16 +183,23 @@ public class CheckCard extends AppCompatActivity {
 
                         Log.e("exists","In db. "+category +" "+type);
 
-                        if (Objects.equals(type, selected_box)){
-                            //Log.e(" match" , type);
-                            Intent myIntent = new Intent(CheckCard.this, ProductScreen.class);
-                            myIntent.putExtra("Type", type);
+                        if (usage.equals("info")){
+                            Intent myIntent = new Intent(CheckCard.this, CardInfo.class);
                             CheckCard.this.startActivity(myIntent);
                         }
                         else{
-                            Log.e("error not match" , type);
-                            publishProgress("Done!");
+                            if (Objects.equals(type, selected_box)){
+                                Intent myIntent = new Intent(CheckCard.this, ProductScreen.class);
+                                myIntent.putExtra("Type", type);
+                                CheckCard.this.startActivity(myIntent);
+                            }
+                            else{
+                                Log.e("error not match" , type);
+                                publishProgress("Done!");
+                            }
                         }
+
+
                     }
                     else{
                         Log.e("exists","Not in db.");

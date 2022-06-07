@@ -9,7 +9,6 @@
 
 
     <application
-        android:hardwareAccelerated="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -21,11 +20,6 @@
         tools:targetApi="31">
         <activity
 
-            android:name=".CheckCard"
-            android:exported="false"
-            android:label="CheckCardScreen" />
-        <activity
-
             android:name=".Payment"
             android:exported="false"
             android:label="@string/title_payment" />
@@ -34,6 +28,31 @@
             android:name=".ProductScreen"
             android:exported="false"
             android:label="@string/title_activity_product_screen" />
+
+        <activity
+
+            android:name=".CheckCard"
+            android:exported="false"
+            android:label="@string/title_check_card" />
+
+        <activity
+
+            android:name=".MoreScreen"
+            android:exported="false"
+            android:label="Περισσότερα" />
+
+        <activity
+
+            android:name=".CardInfo"
+            android:exported="false"
+             />
+
+        <activity
+
+            android:name=".RechargeCode"
+            android:exported="false"
+            />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
