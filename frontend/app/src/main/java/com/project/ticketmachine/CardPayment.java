@@ -17,9 +17,14 @@ public class CardPayment extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         binding = CardPaymentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // previous screen
         binding.paymentBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,6 +33,7 @@ public class CardPayment extends AppCompatActivity {
             }
         });
 
+        // cancel transaction
         binding.paymentCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,9 +42,11 @@ public class CardPayment extends AppCompatActivity {
             }
         });
 
+        // pay and update database
         binding.completePayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Payment.doInPayment();
             }
         });

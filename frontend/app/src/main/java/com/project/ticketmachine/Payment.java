@@ -27,6 +27,9 @@ public class Payment extends AppCompatActivity {
 
     protected static String ticketId = null;
     protected static String userId = null;
+    protected static String type;
+
+    private int quantity = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,7 @@ public class Payment extends AppCompatActivity {
 
         ticketId = getIntent().getStringExtra("ticketID");
         userId = getIntent().getStringExtra("userID");
+        type = getIntent().getStringExtra("Type");
 
         if (kind .equals("Airport"))
             kindOfProductText.setText(kindOfProductText.getText().toString() + "Αεροδρόμιο");
@@ -98,7 +102,7 @@ public class Payment extends AppCompatActivity {
         decreaseQuantityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int quantity = Integer.parseInt(productQuantityText.getText().toString());
+                quantity = Integer.parseInt(productQuantityText.getText().toString());
                 if (quantity > 1) {
                     productQuantityText.setText(String.valueOf(--quantity));
                     totalPriceText.setText(total_price + String.format("%.2f", price*quantity) + "€");
@@ -112,7 +116,7 @@ public class Payment extends AppCompatActivity {
         increaseQuantityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int quantity = Integer.parseInt(productQuantityText.getText().toString());
+                quantity = Integer.parseInt(productQuantityText.getText().toString());
                 Log.e("quantity", String.valueOf(quantity));
                 if (quantity < 10) {
                     productQuantityText.setText(String.valueOf(++quantity));
@@ -129,24 +133,9 @@ public class Payment extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent myIntent = new Intent(Payment.this, CashPayment.class);
+                myIntent.putExtra("demandedPrice", String.format("%.2f", price*quantity));
                 Payment.this.startActivity(myIntent);
 
-                if (MainActivity.user.get("Type").equals("Ticket") && MainActivity.user.get("userName").equals("") && MainActivity.user.get("Category").equals("")){
-                    Document[] paramsDoc = new Document[1];
-                    paramsDoc[0] = MainActivity.user;
-
-                    Payment.InsertUser insertUser = new Payment.InsertUser();
-                    insertUser.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, paramsDoc);
-                }
-                else{
-                    //update last product
-                    String[] params = new String[2];
-                    params[0] = userId;
-                    params[1] = ticketId;
-
-                    UpdateUser updateUser = new UpdateUser();
-                    updateUser.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
-                }
             }
         });
 
@@ -156,23 +145,6 @@ public class Payment extends AppCompatActivity {
 
                 Intent myIntent = new Intent(Payment.this, CardPayment.class);
                 Payment.this.startActivity(myIntent);
-
-                if (MainActivity.user.get("Type").equals("Ticket") && MainActivity.user.get("userName").equals("") && MainActivity.user.get("Category").equals("")){
-                    Document[] paramsDoc = new Document[1];
-                    paramsDoc[0] = MainActivity.user;
-
-                    Payment.InsertUser insertUser = new Payment.InsertUser();
-                    insertUser.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, paramsDoc);
-                }
-                else{
-                    //update last product
-                    String[] params = new String[2];
-                    params[0] = userId;
-                    params[1] = ticketId;
-
-                    UpdateUser updateUser = new UpdateUser();
-                    updateUser.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
-                }
 
             }
         });

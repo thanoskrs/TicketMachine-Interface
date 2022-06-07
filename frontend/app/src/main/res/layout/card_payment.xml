@@ -31,12 +31,11 @@
 
     <ImageView
         android:id="@+id/MachineImageView"
-        android:layout_width="375dp"
-        android:layout_height="347dp"
+        android:layout_width="370dp"
+        android:layout_height="290dp"
         android:layout_marginTop="35dp"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/waysToInsertCardText"
         app:srcCompat="@drawable/machine_icon_pay_card" />
@@ -88,7 +87,7 @@
         app:srcCompat="@drawable/back" />
 
     <ImageView
-        android:id="@+id/paymrnt_cancel_text"
+        android:id="@+id/payment_cancel_text"
         android:layout_width="30dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="@+id/payment_cancel_button"
@@ -111,17 +110,34 @@
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <TextView
+        android:id="@+id/pointWaysToInsertCardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="32dp"
+        android:text="1\n2"
+        android:textAlignment="viewStart"
+        android:textColor="@color/red"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/insertCardText" />
+
+    <TextView
         android:id="@+id/waysToInsertCardText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Σημείο 1: Εισαγωγή κάρτας\nΣημείο 2: Ανέπαφη πληρωμή"
+        android:text=": Εισαγωγή κάρτας\n: Ανέπαφη πληρωμή"
         android:textAlignment="viewStart"
         android:textColor="#000000"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pointWaysToInsertCardText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/insertCardText" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/pointWaysToInsertCardText"
+        app:layout_constraintTop_toTopOf="@+id/pointWaysToInsertCardText"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/complete_payment"
@@ -130,9 +146,11 @@
         android:alpha="0.10"
         android:backgroundTint="@color/athena_blue"
         android:text="ok"
-        app:layout_constraintTop_toBottomOf="@+id/MachineImageView"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MachineImageView"
+        app:layout_constraintVertical_bias="0.86" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

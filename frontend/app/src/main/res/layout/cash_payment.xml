@@ -29,28 +29,27 @@
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view" />
 
+
     <ImageView
         android:id="@+id/MachineImageView"
-        android:layout_width="371dp"
-        android:layout_height="286dp"
-        android:layout_marginTop="35dp"
+        android:layout_width="370dp"
+        android:layout_height="290dp"
+        android:layout_marginTop="28dp"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/waysToInsertCardText"
+        app:layout_constraintTop_toBottomOf="@+id/waysToInsertCashText"
         app:srcCompat="@drawable/machine_icon_pay_cash" />
-
 
     <View
         android:id="@+id/remaining_money"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:background="@color/lite_grey0"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MachineImageView" />
 
@@ -83,8 +82,8 @@
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MachineImageView"
-        app:layout_constraintVertical_bias="0.879"
+        app:layout_constraintTop_toBottomOf="@+id/remaining_money"
+        app:layout_constraintVertical_bias="0.779"
         app:strokeColor="#E2AD1D"
         app:strokeWidth="2dp" />
 
@@ -124,7 +123,7 @@
         app:srcCompat="@drawable/cancel" />
 
     <TextView
-        android:id="@+id/insertCardText"
+        android:id="@+id/insertCashText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -138,30 +137,57 @@
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <TextView
-        android:id="@+id/waysToInsertCardText"
+        android:id="@+id/pointWaysToInsertCashText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Σημείο 1: Τοποθέτηση κερμάτων\nΣημείο 2: Τοποθέτηση χαρτονομισμάτων"
+        android:layout_marginTop="32dp"
+        android:text="1\n2"
+        android:textAlignment="viewStart"
+        android:textColor="@color/red"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/insertCashText" />
+
+    <TextView
+        android:id="@+id/waysToInsertCashText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=": Κέρματα\n: Χαρτονομίσματα"
         android:textAlignment="viewStart"
         android:textColor="#000000"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pointWaysToInsertCashText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/insertCardText" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/pointWaysToInsertCashText"
+        app:layout_constraintTop_toTopOf="@+id/pointWaysToInsertCashText"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/complete_payment"
         android:layout_width="60dp"
         android:layout_height="40dp"
-        android:layout_marginTop="112dp"
         android:alpha="0.10"
         android:backgroundTint="@color/athena_blue"
         android:text="ok"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/insertMoneyEditText"
+        app:layout_constraintStart_toStartOf="@+id/insertMoneyEditText"
+        app:layout_constraintTop_toBottomOf="@+id/insertMoneyEditText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/insertMoneyEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:hint="€"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MachineImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/remaining_money" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
