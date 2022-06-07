@@ -212,7 +212,7 @@ public class UniformFragment extends Fragment {
                     }
                 }
 
-                intent.putExtra("Products", products.toArray());
+                intent.putStringArrayListExtra("Products", (ArrayList<String>) products);
                 startActivity(intent);
             }
         });

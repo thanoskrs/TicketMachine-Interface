@@ -183,7 +183,7 @@ public class AirportFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
 
-                List<String> products = new ArrayList<>();
+                List<String> products = new ArrayList<String>();
 
                 if (product_kind.equals("Ticket")) {
                     for (int i = 0; i < airport_ticket_arrayDuration.length; i++) {
@@ -195,7 +195,7 @@ public class AirportFragment extends Fragment {
                     }
                 }
 
-                intent.putExtra("Products", products.toArray());
+                intent.putStringArrayListExtra("Products", (ArrayList<String>) products);
                 startActivity(intent);
             }
         });
