@@ -9,4 +9,5 @@
     <string name="title_cash_payment">CashPayment</string>
     <string name="title_card_payment">CardPayment</string>
     <string name="title_on_post_payment">OnPostPayment</string>
+    <string name="title_tickets_info">TicketsInfo</string>
 </resources>

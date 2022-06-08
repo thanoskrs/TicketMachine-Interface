@@ -12,10 +12,7 @@ import org.bson.Document;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.InetSocketAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.UnknownHostException;
+import java.net.*;
 import java.util.List;
 import java.util.Set;
 
@@ -41,7 +38,8 @@ public class Server extends Thread{
 
         myServerSocket = new ServerSocket(8080);
 
-        System.out.println("Server starts with port 3000");
+        System.out.println(getIP());
+        System.out.println("Server starts with port 8080");
 
 
         while (true){
@@ -93,6 +91,18 @@ public class Server extends Thread{
         }
 
 
+    }
+
+    private static String getIP()
+    {
+        String ip = "";
+        try(final DatagramSocket socket = new DatagramSocket()){
+            socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
+            ip = socket.getLocalAddress().getHostAddress();
+        } catch (UnknownHostException | SocketException e) {
+            e.printStackTrace();
+        }
+        return ip;
     }
 
 
