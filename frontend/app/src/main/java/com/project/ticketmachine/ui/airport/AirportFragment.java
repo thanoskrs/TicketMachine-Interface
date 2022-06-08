@@ -178,24 +178,14 @@ public class AirportFragment extends Fragment {
             });
         }
 
+
         binding.infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
 
                 List<String> products = new ArrayList<String>();
-
-                if (product_kind.equals("Ticket")) {
-                    for (int i = 0; i < airport_ticket_arrayDuration.length; i++) {
-                        products.add(airport_ticket_arrayDuration[i].getText().toString());
-                    }
-                } else {
-                    for (int i = 0; i < airport_card_arrayDuration.length; i++) {
-                        products.add(airport_card_arrayDuration[i].getText().toString());
-                    }
-                }
-
-                intent.putStringArrayListExtra("Products", (ArrayList<String>) products);
+                intent.putExtra("kind", "Airport");
                 startActivity(intent);
             }
         });

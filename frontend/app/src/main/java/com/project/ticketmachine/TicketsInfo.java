@@ -4,44 +4,43 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.button.MaterialButton;
+
+import org.bson.Document;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class TicketsInfo extends AppCompatActivity {
 
-    List<String> groupList;
-    List<String> childList;
-    Map<String, String> ticketCollection;
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
+    List<String> groupList;
+    HashMap<String, List<String>> expandableDetailList;
+    String kind;
+
+    MaterialButton backBtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tickets_info);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        backBtn = (MaterialButton) findViewById(R.id.info_back_button);
 
-        groupList = new ArrayList<>(getIntent().getStringArrayListExtra("Products"));
-        ticketCollection = new HashMap<String, String>();
-        childList = new ArrayList<String>();
+        groupList = new ArrayList<>();
+        kind = getIntent().getStringExtra("kind");
+        expandableDetailList = new HashMap<String, List<String>>();
 
-        for (int i =0; i < groupList.size(); i++) {
-            childList.add("asddsadsa");
-        }
+        initExpandableDetailList();
 
-
-        expandableListView = findViewById(R.id.ticketsExpandableListView);
-        expandableListAdapter = new MyExpandableListAdapter(this, groupList, ticketCollection);
+        expandableListView = (ExpandableListView) findViewById(R.id.ticketsExpandableListView);
+        expandableListAdapter = new MyExpandableListAdapter(this, groupList, expandableDetailList);
         expandableListView.setAdapter(expandableListAdapter);
 
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
@@ -62,7 +61,37 @@ public class TicketsInfo extends AppCompatActivity {
                 return false;
             }
         });
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
+    private void initExpandableDetailList() {
 
+        for (Document document : ProductScreen.list) {
+            if (!((String) document.get("Kind")).equals(kind))
+                continue;
+
+            String name = (String) document.get("Name");
+            String description = document.get("Description").toString();
+
+            ArrayList childList = new ArrayList<String>();
+            childList.add(description);
+
+            groupList.add(name);
+            expandableDetailList.put(name, childList);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }
+
+
+

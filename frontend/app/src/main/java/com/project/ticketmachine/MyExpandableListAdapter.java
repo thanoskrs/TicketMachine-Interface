@@ -14,10 +14,10 @@ import java.util.Map;
 public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
-    private Map<String, String> ticketCollection;
+    private Map<String, List<String>> ticketCollection;
     private List<String> groupList;
 
-    public MyExpandableListAdapter(Context context, List<String> groupList, Map<String, String> ticketCollection) {
+    public MyExpandableListAdapter(Context context, List<String> groupList, Map<String, List<String>> ticketCollection) {
         this.context = context;
         this.groupList = groupList;
         this.ticketCollection = ticketCollection;
@@ -40,7 +40,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int i, int i1) {
-        return ticketCollection.get(groupList.get(i));
+        return ticketCollection.get(groupList.get(i)).get(i1);
     }
 
     @Override
