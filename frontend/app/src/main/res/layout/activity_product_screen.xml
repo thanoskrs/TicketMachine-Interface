@@ -11,14 +11,15 @@
         android:id="@+id/nav_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/athena_blue"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        app:itemIconTint="@drawable/bottom_nav_item_color"
+        app:itemTextAppearanceActive="@dimen/design_bottom_navigation_active_text_size"
+        app:itemTextAppearanceInactive="@dimen/design_bottom_navigation_text_size"
+        app:itemTextColor="@drawable/bottom_nav_item_color"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:itemTextColor="@drawable/bottom_nav_item_color"
-        app:itemIconTint="@drawable/bottom_nav_item_color"
-        app:menu="@menu/bottom_nav_menu"
-        />
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
 
     <!--    loading . . . -->
@@ -135,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="20dp"
-                android:text="Είδος : "
+                android:text="Είδος: "
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -147,7 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Διάρκεια : "
+                android:text="Διάρκεια: "
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -158,7 +159,7 @@
                 android:id="@+id/product_price_chosen_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Τιμή :"
+                android:text="Τιμή: "
                 android:layout_marginTop="10dp"
                 android:textAlignment="center"
                 android:textColor="@color/black"
