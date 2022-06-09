@@ -48,18 +48,17 @@ public class CardInfo extends AppCompatActivity {
             loadTicketName.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
         }
         else{
-            binding.code.setText(MainActivity.user.get("userID").toString());
-            binding.category.setText(MainActivity.user.get("Category").toString());
-            binding.name.setText(MainActivity.user.get("userName").toString());
-            binding.type.setText(MainActivity.user.get("Type").toString());
+            binding.type.setText("Εισητήριο");
+
+            if (MainActivity.user.get("Category").toString().equals("")){
+                binding.category.setText("-");
+            }
+            if (MainActivity.user.get("LastProductId").toString().equals("")){
+                binding.lastProduct.setText("-");
+            }
+            binding.ewallet.setText(("Ποσό : "+ MainActivity.user.get("Wallet") + "€"));
 
         }
-
-
-
-
-
-
 
     }
 
@@ -110,11 +109,36 @@ public class CardInfo extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            binding.code.setText(MainActivity.user.get("userID").toString());
-            binding.category.setText(MainActivity.user.get("Category").toString());
-            binding.name.setText(MainActivity.user.get("userName").toString());
-            binding.type.setText(MainActivity.user.get("Type").toString());
-            binding.lastProduct.setText((ticket_name).replace("\n", " "));
+
+            String ticket_status = "";
+
+            if (MainActivity.user.get("Category").toString().equals("")){
+                binding.category.setText("-");
+            }
+            if (MainActivity.user.get("LastProductId").toString().equals("")){
+                binding.category.setText("-");
+            }
+            if (MainActivity.user.get("Wallet").toString().equals("")){
+                binding.category.setText("-");
+            }
+
+            if (MainActivity.user.get("Category").toString().equals("Student")){
+                binding.category.setText("Φοιτητικό");
+            }
+            else if (MainActivity.user.get("Category").toString().equals("Anonymus")){
+                binding.category.setText("Ανώνυμο");
+            }
+            if (MainActivity.user.get("Type").toString().equals("Card")){
+                ticket_status = "Επαναφόρτιση κάρτας : ";
+                if (MainActivity.user.get("Category").toString().equals("Student"))
+                    binding.type.setText("Προσωποποιημένη κάρτα");
+                else if (MainActivity.user.get("Category").toString().equals("Anonymus"))
+                    binding.type.setText("Μη προσωποποιημένη κάρτα");
+            }
+            else{
+
+            }
+            binding.lastProduct.setText((ticket_status + ticket_name).replace("\n", " "));
             binding.ewallet.setText(("Ποσό : "+ MainActivity.user.get("Wallet") + "€"));
         }
 

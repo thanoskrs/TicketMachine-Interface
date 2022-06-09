@@ -30,7 +30,7 @@ import java.util.HashMap;
 public class MainActivity extends AppCompatActivity {
 
 
-    public static final String MainServerIp = "192.168.1.9";
+    public static final String MainServerIp = "10.0.2.2";
     public static final int MainServerPort = 8080;
     public static Socket socket = null;
     private String student = "";
@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     public static Document user = null;
 
     public static HashMap<String , String> ProductCodes;
-
 
     @SuppressLint("ResourceType")
     @Override
