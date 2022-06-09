@@ -77,7 +77,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box1"
             app:layout_constraintEnd_toEndOf="@id/uniform_box1"
             app:layout_constraintStart_toStartOf="@id/uniform_box1"
@@ -135,7 +135,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box2"
             app:layout_constraintEnd_toEndOf="@id/uniform_box2"
             app:layout_constraintStart_toStartOf="@id/uniform_box2"
@@ -183,7 +183,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box3"
             app:layout_constraintEnd_toEndOf="@id/uniform_box3"
             app:layout_constraintStart_toStartOf="@id/uniform_box3"
@@ -228,7 +228,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box4"
             app:layout_constraintEnd_toEndOf="@id/uniform_box4"
             app:layout_constraintStart_toStartOf="@id/uniform_box4"
@@ -285,7 +285,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box5"
             app:layout_constraintEnd_toEndOf="@id/uniform_box5"
             app:layout_constraintStart_toStartOf="@id/uniform_box5"
@@ -330,7 +330,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box6"
             app:layout_constraintEnd_toEndOf="@id/uniform_box6"
             app:layout_constraintStart_toStartOf="@id/uniform_box6"
@@ -424,7 +424,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box1_card"
             app:layout_constraintEnd_toEndOf="@id/uniform_box1_card"
             app:layout_constraintStart_toStartOf="@id/uniform_box1_card"
@@ -483,7 +483,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box2_card"
             app:layout_constraintEnd_toEndOf="@id/uniform_box2_card"
             app:layout_constraintStart_toStartOf="@id/uniform_box2_card"
@@ -542,7 +542,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box3_card"
             app:layout_constraintEnd_toEndOf="@id/uniform_box3_card"
             app:layout_constraintStart_toStartOf="@id/uniform_box3_card"
@@ -587,7 +587,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box4_card"
             app:layout_constraintEnd_toEndOf="@id/uniform_box4_card"
             app:layout_constraintStart_toStartOf="@id/uniform_box4_card"
@@ -645,7 +645,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box5_card"
             app:layout_constraintEnd_toEndOf="@id/uniform_box5_card"
             app:layout_constraintStart_toStartOf="@id/uniform_box5_card"
@@ -691,7 +691,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box6_card"
             app:layout_constraintEnd_toEndOf="@id/uniform_box6_card"
             app:layout_constraintStart_toStartOf="@id/uniform_box6_card"
@@ -749,7 +749,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box7_card"
             app:layout_constraintEnd_toEndOf="@id/uniform_box7_card"
             app:layout_constraintStart_toStartOf="@id/uniform_box7_card"
@@ -795,7 +795,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box8_card"
             app:layout_constraintEnd_toEndOf="@id/uniform_box8_card"
             app:layout_constraintStart_toStartOf="@id/uniform_box8_card"

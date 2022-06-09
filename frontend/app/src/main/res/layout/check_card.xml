@@ -62,12 +62,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/no_recharge" />
 
+
     <TextView
         android:id="@+id/ticketInfoText"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:visibility="invisible"
-        android:text="Παρακαλώ τοποθετήστε την κάρτα σας."
+        android:text="Παρακαλώ τοποθετήστε το εισιτήριό σας."
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#100D0D"
@@ -76,11 +77,24 @@
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/cancel_button"
         tools:ignore="MissingConstraints"
         />
+
+
+    <ImageView
+        android:id="@+id/MachineImageView"
+        android:layout_width="370dp"
+        android:layout_height="290dp"
+        android:visibility="invisible"
+        android:scaleType="centerInside"
+        android:layout_marginTop="100dp"
+        app:srcCompat="@drawable/machine_icon_insert_card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ticketInfoText"/>
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/card_barcode"
@@ -91,7 +105,7 @@
         android:background="@color/lite_grey1"
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ticketInfoText"
+        app:layout_constraintTop_toBottomOf="@+id/MachineImageView"
         app:layout_constraintStart_toStartOf="parent"
         />
 

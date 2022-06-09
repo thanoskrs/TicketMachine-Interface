@@ -84,7 +84,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/airport_box1_card"
             app:layout_constraintEnd_toEndOf="@id/airport_box1_card"
             app:layout_constraintStart_toStartOf="@id/airport_box1_card"
@@ -143,7 +143,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/airport_box2_card"
             app:layout_constraintEnd_toEndOf="@id/airport_box2_card"
             app:layout_constraintStart_toStartOf="@id/airport_box2_card"
@@ -203,7 +203,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/airport_box3_card"
             app:layout_constraintEnd_toEndOf="@id/airport_box3_card"
             app:layout_constraintStart_toStartOf="@id/airport_box3_card"
@@ -262,7 +262,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/airport_box5_card"
             app:layout_constraintEnd_toEndOf="@id/airport_box5_card"
             app:layout_constraintStart_toStartOf="@id/airport_box5_card"
@@ -313,7 +313,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/airport_box6_card"
             app:layout_constraintEnd_toEndOf="@id/airport_box6_card"
             app:layout_constraintStart_toStartOf="@id/airport_box6_card"
@@ -372,7 +372,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/airport_box4_card"
             app:layout_constraintEnd_toEndOf="@id/airport_box4_card"
             app:layout_constraintStart_toStartOf="@id/airport_box4_card"
@@ -465,7 +465,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/airport_box1_ticket"
             app:layout_constraintEnd_toEndOf="@id/airport_box1_ticket"
             app:layout_constraintStart_toStartOf="@id/airport_box1_ticket"
@@ -524,7 +524,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/airport_box2_ticket"
             app:layout_constraintEnd_toEndOf="@id/airport_box2_ticket"
             app:layout_constraintStart_toStartOf="@id/airport_box2_ticket"
@@ -602,7 +602,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/airport_box3_ticket"
             app:layout_constraintEnd_toEndOf="@id/airport_box3_ticket"
             app:layout_constraintStart_toStartOf="@id/airport_box3_ticket"
@@ -661,7 +661,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/airport_box4_ticket"
             app:layout_constraintEnd_toEndOf="@id/airport_box4_ticket"
             app:layout_constraintStart_toStartOf="@id/airport_box4_ticket"

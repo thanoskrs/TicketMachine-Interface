@@ -55,9 +55,11 @@ public class CheckCard extends AppCompatActivity {
             binding.recharge.setVisibility(View.INVISIBLE);
             binding.noRecharge.setVisibility(View.INVISIBLE);
 
+            binding.ticketInfoText.setText("Παρακαλώ τοποθετήστε την κάρτα σας.");
             binding.ticketInfoText.setVisibility(View.VISIBLE);
             binding.cardBarcode.setVisibility(View.VISIBLE);
             binding.sendBarcode.setVisibility(View.VISIBLE);
+            binding.MachineImageView.setVisibility(View.VISIBLE);
         }
 
         binding.recharge.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +72,7 @@ public class CheckCard extends AppCompatActivity {
                 binding.ticketInfoText.setVisibility(View.VISIBLE);
                 binding.cardBarcode.setVisibility(View.VISIBLE);
                 binding.sendBarcode.setVisibility(View.VISIBLE);
+                binding.MachineImageView.setVisibility(View.VISIBLE);
 
             }
         });
