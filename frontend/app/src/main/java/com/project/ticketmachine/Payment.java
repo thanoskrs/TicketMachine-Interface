@@ -108,6 +108,7 @@ public class Payment extends AppCompatActivity {
                 UniformFragment.inited = false;
                 Intent myIntent = new Intent(Payment.this, MainActivity.class);
                 Payment.this.startActivity(myIntent);
+                finish();
             }
         });
 

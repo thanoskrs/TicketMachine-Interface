@@ -108,6 +108,7 @@ public class RechargeCode extends AppCompatActivity {
         binding.cancelButton.setOnClickListener(view -> {
             Intent myIntent = new Intent(RechargeCode.this, MainActivity.class);
             RechargeCode.this.startActivity(myIntent);
+            finish();
         });
 
         binding.backButton.setOnClickListener(view -> {

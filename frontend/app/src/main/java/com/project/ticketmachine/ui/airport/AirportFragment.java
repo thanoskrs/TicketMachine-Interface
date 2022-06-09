@@ -177,7 +177,8 @@ public class AirportFragment extends Fragment {
             });
         }
 
-        binding.infoButton.setOnClickListener(new View.OnClickListener() {
+
+        binding.cardInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
@@ -186,6 +187,24 @@ public class AirportFragment extends Fragment {
             }
         });
 
+        binding.ticketInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
+                intent.putExtra("kind", "Airport");
+                startActivity(intent);
+            }
+        });
+
+        /*binding.infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
+                intent.putExtra("kind", "Airport");
+                startActivity(intent);
+            }
+        });*/
+
         // on cancel button
         binding.cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,6 +212,11 @@ public class AirportFragment extends Fragment {
                 UniformFragment.inited = false;
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
                 startActivity(intent);
+                try {
+                    finalize();
+                } catch (Throwable e) {
+                    e.printStackTrace();
+                }
             }
         });
 

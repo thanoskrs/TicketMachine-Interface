@@ -75,7 +75,7 @@ public class ProductScreen extends AppCompatActivity {
             MainActivity.user.append("userName","");
             MainActivity.user.append("Category","");
             MainActivity.user.append("LastProductId","");
-            MainActivity.user.append("LastProductScreen",false);
+            MainActivity.user.append("LastProductScreen",true);
             MainActivity.user.append("Type","Ticket");
 
             MainActivity.user.append("Wallet","0");

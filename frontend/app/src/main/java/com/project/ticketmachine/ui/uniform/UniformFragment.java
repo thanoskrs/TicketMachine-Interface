@@ -185,11 +185,16 @@ public class UniformFragment extends Fragment {
                 UniformFragment.inited = false;
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
                 startActivity(intent);
+
+                try {
+                    finalize();
+                } catch (Throwable e) {
+                    e.printStackTrace();
+                }
             }
         });
 
-
-        binding.infoButton.setOnClickListener(new View.OnClickListener() {
+        binding.cardInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
@@ -197,6 +202,24 @@ public class UniformFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        binding.ticketInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
+                intent.putExtra("kind", "Uniform");
+                startActivity(intent);
+            }
+        });
+
+        /*binding.infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
+                intent.putExtra("kind", "Uniform");
+                startActivity(intent);
+            }
+        });*/
 
 
         return root;

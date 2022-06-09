@@ -50,6 +50,7 @@ public class CardPayment extends AppCompatActivity {
             public void onClick(View view) {
                 Intent myIntent = new Intent(CardPayment.this, MainActivity.class);
                 CardPayment.this.startActivity(myIntent);
+                finish();
             }
         });
 

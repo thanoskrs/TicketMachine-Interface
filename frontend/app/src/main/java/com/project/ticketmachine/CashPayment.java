@@ -58,6 +58,7 @@ public class CashPayment extends AppCompatActivity {
             public void onClick(View view) {
                 Intent myIntent = new Intent(CashPayment.this, MainActivity.class);
                 CashPayment.this.startActivity(myIntent);
+                finish();
             }
         });
 

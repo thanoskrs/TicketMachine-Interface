@@ -77,6 +77,7 @@ public class Ewallet extends AppCompatActivity {
         binding.cancelButton.setOnClickListener(view -> {
             Intent myIntent = new Intent(Ewallet.this, MainActivity.class);
             Ewallet.this.startActivity(myIntent);
+            finish();
         });
 
         binding.backButton.setOnClickListener(view -> {

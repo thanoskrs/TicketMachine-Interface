@@ -1,6 +1,8 @@
 package com.project.ticketmachine;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -14,6 +16,7 @@ import java.util.Timer;
 public class OnPostPayment extends AppCompatActivity {
 
     OnPostPaymentBinding binding;
+    private static int TIME_OUT = 4000; //Time to launch the another activity
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,6 +51,15 @@ public class OnPostPayment extends AppCompatActivity {
             }
 
         }
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(OnPostPayment.this, MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+        }, TIME_OUT);
 
     }
 

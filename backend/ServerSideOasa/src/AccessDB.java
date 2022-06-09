@@ -175,11 +175,11 @@ public class AccessDB {
             if (user.get("userID").equals(userID)) {
                 BasicDBObject query = new BasicDBObject();
                 query.put("LastProductId", user.get("LastProductId"));
-                query.put("LastProductScreen", user.get("LastProductScreen"));
+                //query.put("LastProductScreen", user.get("LastProductScreen"));
 
                 BasicDBObject newDocument = new BasicDBObject();
                 newDocument.put("LastProductId", ticketID);
-                newDocument.put("LastProductScreen", true);
+                //newDocument.put("LastProductScreen", true);
 
                 BasicDBObject updateObject = new BasicDBObject();
                 updateObject.put("$set", newDocument);
@@ -210,6 +210,7 @@ public class AccessDB {
     }
 
     public void deactivateLstProductScreen(String userId) {
+        System.out.println("Deactivate LastProductScreen");
         MongoCollection<Document> collection = database.getCollection("User");
 
         FindIterable<Document> iterDoc = collection.find();
@@ -225,6 +226,8 @@ public class AccessDB {
                 updateObject.put("$set", newDocument);
 
                 collection.updateOne(query, updateObject);
+                System.out.println("Deactivated");
+                System.out.println(String.valueOf(user.get("LastProductScreen")));
                 break;
             }
         }
