@@ -19,6 +19,7 @@ import org.bson.Document;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.HashMap;
 
 /*import com.google.android.material.textfield.TextInputEditText;
 import com.mongodb.MongoClient;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     public static ObjectOutputStream objectOutputStream;
     public static ObjectInputStream objectInputStream;
     public static Document user = null;
+    public static HashMap<String , String> ProductCodes;
 
 
     @SuppressLint("ResourceType")
@@ -52,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        ProductCodes = new HashMap<>();
+        ProductCodes.put("12345678" , "airport_box2_card");
+        ProductCodes.put("87654321" , "uniform_box4_card");
 
         ImageButton ticketBtn = (ImageButton) findViewById(R.id.ticketButton);
         ImageButton cardBtn = (ImageButton) findViewById(R.id.cardButton);

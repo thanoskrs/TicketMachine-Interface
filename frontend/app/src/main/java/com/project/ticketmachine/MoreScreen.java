@@ -35,7 +35,9 @@ public class MoreScreen extends AppCompatActivity {
 
         binding.codeRechargeBox.setOnClickListener(view -> {
             Intent myIntent = new Intent(MoreScreen.this, RechargeCode.class);
+
             MoreScreen.this.startActivity(myIntent);
+
         });
 
         binding.eWalletBox.setOnClickListener(view -> {
@@ -49,9 +51,9 @@ public class MoreScreen extends AppCompatActivity {
             MoreScreen.this.startActivity(myIntent);
         });
 
-        binding.studentBox.setOnClickListener(view -> {
-
-        });
+//        binding.studentBox.setOnClickListener(view -> {
+//
+//        });
 
     }
 }
