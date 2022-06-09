@@ -4,7 +4,6 @@ import static com.project.ticketmachine.MainActivity.MainServerIp;
 import static com.project.ticketmachine.MainActivity.MainServerPort;
 import static com.project.ticketmachine.MainActivity.category;
 import static com.project.ticketmachine.MainActivity.type;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -79,6 +78,8 @@ public class ProductScreen extends AppCompatActivity {
             MainActivity.user.append("LastProductScreen",false);
             MainActivity.user.append("Type","Ticket");
 
+            MainActivity.user.append("Wallet","0");
+
 
             String[] params = new String[3];
             params[0] = (String) MainActivity.user.get("Category");
@@ -98,7 +99,6 @@ public class ProductScreen extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-
         }
         else{
             boolean showLastProductScreen = (boolean) MainActivity.user.get("LastProductScreen");
@@ -122,8 +122,8 @@ public class ProductScreen extends AppCompatActivity {
                     try {
                         processed.wait();
 
-                        UniformFragment.fill_cards_uniform();
                         UniformFragment.fill_tickets_uniform();
+                        UniformFragment.fill_cards_uniform();
 
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -356,7 +356,8 @@ public class ProductScreen extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-            CheckCard.loading.setVisibility(View.GONE);
+            if (CheckCard.loading != null)
+                CheckCard.loading.setVisibility(View.GONE);
         }
 
         @SuppressLint("SetTextI18n")
@@ -419,8 +420,6 @@ public class ProductScreen extends AppCompatActivity {
 
             return null;
         }
-
-
     }
 
 }

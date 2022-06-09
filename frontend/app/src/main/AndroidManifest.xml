@@ -34,6 +34,23 @@
             android:label="@string/title_check_card" />
 
         <activity
+            android:name=".MoreScreen"
+            android:exported="false"
+            android:label="Περισσότερα" />
+
+        <activity
+
+            android:name=".CardInfo"
+            android:exported="false"
+             />
+
+        <activity
+
+            android:name=".Ewallet"
+            android:exported="false"
+            />
+
+        <activity
             android:name=".CashPayment"
             android:exported="false"
             android:label="@string/title_cash_payment" />
@@ -52,6 +69,11 @@
             android:name=".TicketsInfo"
             android:exported="false"
             android:label="@string/title_tickets_info" />
+
+        <activity
+            android:name=".RechargeCode"
+            android:exported="false"
+            />
 
         <activity
             android:name=".MainActivity"

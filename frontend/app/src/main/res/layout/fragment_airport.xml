@@ -42,8 +42,6 @@
         <!--    android:background="@android:color/darker_gray"-->
         <!--    app:layout_constraintTop_toBottomOf="@id/text_home">-->
         <!--    </View>-->
-
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/airport_box1_card"
             style="?attr/materialButtonOutlinedStyle"

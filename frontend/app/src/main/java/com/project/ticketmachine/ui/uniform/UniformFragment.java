@@ -3,13 +3,10 @@ package com.project.ticketmachine.ui.uniform;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -20,11 +17,7 @@ import com.project.ticketmachine.MainActivity;
 import com.project.ticketmachine.Payment;
 import com.project.ticketmachine.ProductScreen;
 
-import com.project.ticketmachine.R;
-import com.project.ticketmachine.databinding.ActivityProductScreenBinding;
 import com.project.ticketmachine.databinding.FragmentUniformBinding;
-import com.project.ticketmachine.ui.airport.AirportFragment;
-import com.project.ticketmachine.ui.uniform.UniformFragment;
 
 import org.bson.Document;
 
@@ -200,8 +193,6 @@ public class UniformFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
-
-                List<String> products = new ArrayList<String>();
                 intent.putExtra("kind", "Uniform");
                 startActivity(intent);
             }

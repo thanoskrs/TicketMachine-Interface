@@ -38,7 +38,6 @@ public class AirportFragment extends Fragment {
     private static TextView[] airport_card_arrayCost;
 
     String product_kind = null;
-
     @SuppressLint("SetTextI18n")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -178,13 +177,10 @@ public class AirportFragment extends Fragment {
             });
         }
 
-
         binding.infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
-
-                List<String> products = new ArrayList<String>();
                 intent.putExtra("kind", "Airport");
                 startActivity(intent);
             }
@@ -199,7 +195,6 @@ public class AirportFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
 
 
 //        final TextView textView = binding.textNotifications;

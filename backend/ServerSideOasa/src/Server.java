@@ -1,20 +1,9 @@
 
-import com.mongodb.ConnectionString;
-import com.mongodb.DB;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
-import com.mongodb.MongoCredential;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-
-import org.bson.Document;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.*;
-import java.util.List;
-import java.util.Set;
 
 public class Server extends Thread{
 
@@ -87,8 +76,20 @@ public class Server extends Thread{
                     String id = objectInputStream.readUTF();
                     new AccessDB().deactivateLstProductScreen(id);
                 }
-            }
+                if (task.equals("getTicket")){
+                    String ID = objectInputStream.readUTF();
+                    new AccessDB().getTicket(ID);
+                }
 
+                if (task.equals("GetTicketName")){
+                    String ticket_id = objectInputStream.readUTF();
+                    new AccessDB().getTicketName(ticket_id);
+                }
+                if (task.equals("UpdateWallet")){
+                    new AccessDB().WalletAccess();
+                }
+
+            }
 
 
         } catch (IOException | ClassNotFoundException e) {
@@ -109,6 +110,5 @@ public class Server extends Thread{
         }
         return ip;
     }
-
 
 }

@@ -26,19 +26,29 @@ public class OnPostPayment extends AppCompatActivity {
         binding = OnPostPaymentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Payment.doInPayment();
+        if (getIntent().getStringExtra("act").equals("pay"))
+            Payment.doInPayment();
 
         binding.loadingPanel.setVisibility(View.INVISIBLE);
         binding.info.setVisibility(View.VISIBLE);
 
-        if (Payment.type.equals("Card")) {
-            binding.receiveTicketText.setText("Παρακαλώ παραλάβετε την κάρτα και την απόδειξή σας");
-        } else {
+        if (getIntent().getStringExtra("act").equals("recharge")){
             binding.receiveTicketText.setText("Παρακαλώ παραλάβετε το εισιτήριο και την απόδειξή σας");
         }
+        else{
+            if (Payment.type == null){
+                binding.receiveTicketText.setText("Παρακαλώ παραλάβετε την κάρτα και την απόδειξή σας");
+            }
+            else{
+                if (Payment.type.equals("Card")) {
+                    binding.receiveTicketText.setText("Παρακαλώ παραλάβετε την κάρτα και την απόδειξή σας");
+                } else {
+                    binding.receiveTicketText.setText("Παρακαλώ παραλάβετε το εισιτήριο και την απόδειξή σας");
+                }
+            }
 
+        }
 
     }
-
 
 }
