@@ -114,6 +114,7 @@ public class CheckCard extends AppCompatActivity {
                     binding.sendBarcode.setVisibility(View.GONE);
                     binding.cancelButton.setVisibility(View.GONE);
                     binding.cancelText1.setVisibility(View.GONE);
+                    binding.MachineImageView.setVisibility(View.GONE);
 
                     loading.setVisibility(View.VISIBLE);
 

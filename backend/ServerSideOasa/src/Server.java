@@ -82,6 +82,11 @@ public class Server extends Thread{
                     String id = objectInputStream.readUTF();
                     new AccessDB().checkLastProduct(id);
                 }
+
+                if (task.equals("DeactivateLastProductScreen")) {
+                    String id = objectInputStream.readUTF();
+                    new AccessDB().deactivateLstProductScreen(id);
+                }
             }
 
 

@@ -120,9 +120,6 @@ public class AccessDB {
                 updateObject.put("$set", newDocument);
 
                 collection.updateOne(query, updateObject);
-
-                System.out.println("Document inserted successfully");
-                System.out.println(user);
                 break;
             }
         }
@@ -142,6 +139,27 @@ public class AccessDB {
             }
         }
 
+    }
+
+    public void deactivateLstProductScreen(String userId) {
+        MongoCollection<Document> collection = database.getCollection("User");
+
+        FindIterable<Document> iterDoc = collection.find();
+        for (Document user : iterDoc) {
+            if (user.get("userID").equals(userId)) {
+                BasicDBObject query = new BasicDBObject();
+                query.put("LastProductScreen", user.get("LastProductScreen"));
+
+                BasicDBObject newDocument = new BasicDBObject();
+                newDocument.put("LastProductScreen", false);
+
+                BasicDBObject updateObject = new BasicDBObject();
+                updateObject.put("$set", newDocument);
+
+                collection.updateOne(query, updateObject);
+                break;
+            }
+        }
     }
 
 

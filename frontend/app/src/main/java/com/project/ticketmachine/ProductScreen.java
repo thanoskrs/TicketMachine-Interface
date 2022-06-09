@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -104,8 +105,10 @@ public class ProductScreen extends AppCompatActivity {
             String lastProductId = (String) MainActivity.user.get("LastProductId");
 
             if (!showLastProductScreen || lastProductId.equals("")){
-                binding.softBackground.setVisibility(View.INVISIBLE);
+
+                Log.e("here", "1");
                 binding.repeatOrderLayout.setVisibility(View.INVISIBLE);
+                binding.softBackground.setVisibility(View.INVISIBLE);
 
                 String[] params = new String[3];
                 params[0] = (String) MainActivity.user.get("Category");
@@ -132,6 +135,8 @@ public class ProductScreen extends AppCompatActivity {
 
             } else {
 
+                Log.e("here", "2");
+
                 String[] params = new String[1];
                 params[0] = String.valueOf(MainActivity.user.get("LastProductId"));
 
@@ -139,8 +144,31 @@ public class ProductScreen extends AppCompatActivity {
                 loadLastProductScreen.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
 
 
+
+
             }
         }
+
+
+        binding.lastproductscreenCheckbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean checked = ((CheckBox) view).isChecked();
+                // Check which checkbox was clicked
+                if (checked){
+                    String[] params = new String[1];
+                    params[0] = (String) MainActivity.user.get("userID");
+
+                    DeactivateLastProductScreen deactivateLastProductScreen = new DeactivateLastProductScreen();
+                    deactivateLastProductScreen.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+
+                }
+                else{
+                    // Do your coding
+                }
+
+            }
+        });
 
         binding.cancelRepeat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -345,6 +373,54 @@ public class ProductScreen extends AppCompatActivity {
 
             binding.productPriceChosenText.setText(binding.productPriceChosenText.getText().toString() + price + "€");
         }
+    }
+
+
+    private class DeactivateLastProductScreen extends AsyncTask<String, String, String> {
+
+        private ObjectOutputStream objectOutputStream;
+        private Socket socket = null;
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            try {
+
+                if (MainActivity.socket == null){
+                    //connect to DB
+                    try {
+                        socket = new Socket(MainActivity.MainServerIp , MainActivity.MainServerPort);
+                        objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                String userid = strings[0];
+
+                Log.e("userID" , String.valueOf(userid));
+
+                objectOutputStream.writeUTF("DeactivateLastProductScreen");
+                objectOutputStream.flush();
+
+                objectOutputStream.writeUTF(userid);
+                objectOutputStream.flush();
+
+
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            } finally {
+                try {
+                    objectOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            return null;
+        }
+
+
     }
 
 }
