@@ -30,6 +30,7 @@ public class Payment extends AppCompatActivity {
     protected static String type;
 
     private int quantity = 1;
+    protected String selected_activity = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,8 @@ public class Payment extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+
 
         MaterialButton backBtn = (MaterialButton) findViewById(R.id.payment_back_button);
         MaterialButton cancelBtn = (MaterialButton) findViewById(R.id.payment_cancel_button);
@@ -53,6 +56,12 @@ public class Payment extends AppCompatActivity {
         TextView totalPriceText = (TextView) findViewById(R.id.total_price_text);
         TextView productQuantityText = (TextView) findViewById(R.id.product_quantity);
 
+        String selected = getIntent().getStringExtra("activity");
+        if (selected != null)
+            selected_activity = selected;
+        else
+            selected_activity = "";
+
         String product = getIntent().getStringExtra("duration");
         String price_str = getIntent().getStringExtra("price");
         String price1 = price_str.replace("Τιμή : ", "");
@@ -64,6 +73,7 @@ public class Payment extends AppCompatActivity {
         Log.e("get" , getIntent().getStringExtra("price"));
         Log.e("get" , getIntent().getStringExtra("ticketID"));
         Log.e("get" , getIntent().getStringExtra("kind"));
+
 
         String total_price = totalPriceText.getText().toString();
 
@@ -83,10 +93,13 @@ public class Payment extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(Payment.this, ProductScreen.class);
-                myIntent.putExtra("key", "card");
-                myIntent.putExtra("Type", getIntent().getStringExtra("Type"));
-                Payment.this.startActivity(myIntent);
+                if (selected_activity.equals("e-wallet")){
+                    Intent myIntent = new Intent(Payment.this, Ewallet.class);
+                    Payment.this.startActivity(myIntent);
+                }
+                else{
+                    finish();
+                }
             }
         });
 
@@ -133,6 +146,7 @@ public class Payment extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent myIntent = new Intent(Payment.this, CashPayment.class);
+                myIntent.putExtra("Activity", "pay");
                 myIntent.putExtra("demandedPrice", String.format("%.2f", price*quantity));
                 Payment.this.startActivity(myIntent);
 

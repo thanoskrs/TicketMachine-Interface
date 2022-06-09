@@ -63,6 +63,10 @@ public class Server extends Thread{
                     String ID = objectInputStream.readUTF();
                     new AccessDB().CheckCode(ID);
                 }
+                if (task.equals("getTicket")){
+                    String ID = objectInputStream.readUTF();
+                    new AccessDB().getTicket(ID);
+                }
 
                 if (task.equals("Card")){
 

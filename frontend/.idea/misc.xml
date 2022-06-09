@@ -3,6 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
+=======
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/app/src/main/res/layout/activity_main.xml" value="0.19655797101449277" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/app/src/main/res/layout/activity_product_screen.xml" value="0.25" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/app/src/main/res/layout/fragment_airport.xml" value="0.25" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/app/src/main/res/layout/fragment_uniform.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/app/src/main/res/layout/payment.xml" value="0.2359375" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/frontend/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.1895" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/frontend/app/src/main/res/drawable/ic_baseline_check_box_24.xml" value="0.1895" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/frontend/app/src/main/res/drawable/prog_bar.xml" value="0.1905" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/frontend/app/src/main/res/layout/activity_card_info.xml" value="0.15081521739130435" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/frontend/app/src/main/res/layout/activity_main.xml" value="0.2375" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/frontend/app/src/main/res/layout/activity_more_screen.xml" value="0.13601823708206687" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/frontend/app/src/main/res/layout/activity_product_screen.xml" value="0.19324324324324324" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/frontend/app/src/main/res/layout/card_payment.xml" value="0.19701086956521738" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/frontend/app/src/main/res/layout/cash_payment.xml" value="0.19701086956521738" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/frontend/app/src/main/res/layout/check_card.xml" value="0.2" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/frontend/app/src/main/res/layout/code_recharge.xml" value="0.2" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/frontend/app/src/main/res/layout/e_wallet.xml" value="0.19701086956521738" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/frontend/app/src/main/res/layout/fragment_airport.xml" value="0.22" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/frontend/app/src/main/res/layout/fragment_uniform.xml" value="0.2" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/frontend/app/src/main/res/layout/on_post_payment.xml" value="0.19701086956521738" />
+        <entry key="..\:/Users/User/Desktop/ALLILEPIDRASI/android/TicketMachine-Interface/frontend/app/src/main/res/layout/payment.xml" value="0.22297297297297297" />
+>>>>>>> 508c5f16d099eea528721c19bffd138472ebd113
         <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/drawable/back.xml" value="0.3725" />
         <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/drawable/background_rectangle_info.xml" value="0.1985" />
         <entry key="..\:/Users/thano/Desktop/AUEB/3rd year/6th Semester/Human Computer Interaction/TicketMachine/app/src/main/res/drawable/bottom_nav_item_color.xml" value="0.106" />

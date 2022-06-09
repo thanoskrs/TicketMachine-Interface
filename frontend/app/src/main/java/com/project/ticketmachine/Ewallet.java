@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,8 +21,8 @@ import java.util.MissingFormatArgumentException;
 public class Ewallet extends AppCompatActivity {
 
     protected static EWalletBinding binding;
-    protected static float final_s = 0;
-
+    Button[] arrayOfButtons;
+    public static String amount = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,8 +35,44 @@ public class Ewallet extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
-        final_s = Float.parseFloat(MainActivity.user.get("Wallet").toString());
-        binding.summaryMoneyText.setText("Σύνολο: "+MainActivity.user.get("Wallet").toString() + "€");
+        arrayOfButtons = new Button[10];
+        arrayOfButtons[0] = binding.zero;
+        arrayOfButtons[1] = binding.one;
+        arrayOfButtons[2] = binding.two;
+        arrayOfButtons[3] = binding.three;
+        arrayOfButtons[4] = binding.four;
+        arrayOfButtons[5] = binding.five;
+        arrayOfButtons[6] = binding.six;
+        arrayOfButtons[7] = binding.seven;
+        arrayOfButtons[8] = binding.eight;
+        arrayOfButtons[9] = binding.nine;
+
+
+
+
+        for (int i = 0; i < arrayOfButtons.length; i++){
+            final int num = i;
+            arrayOfButtons[i].setOnClickListener(view -> {
+                binding.amount.setText(binding.amount.getText().toString().replace("€","") + String.valueOf(num) + "€");
+
+            });
+        }
+
+        binding.delete.setOnClickListener(view -> {
+            if (binding.amount.getText().toString().length() > 1){
+                StringBuilder updatedCode;
+                if (binding.amount.getText().toString().length() == 2){
+                    updatedCode = new StringBuilder("");;
+                    binding.amount.setText(updatedCode);
+                }
+                else{
+                    updatedCode = new StringBuilder(binding.amount.getText().toString());
+                    updatedCode.deleteCharAt(updatedCode.length()-2);
+                }
+                binding.amount.setText(updatedCode);
+            }
+
+        });
 
         binding.cancelButton.setOnClickListener(view -> {
             Intent myIntent = new Intent(Ewallet.this, MainActivity.class);
@@ -43,13 +80,12 @@ public class Ewallet extends AppCompatActivity {
         });
 
         binding.backButton.setOnClickListener(view -> {
-            if (binding.cashLayout.getVisibility() == View.VISIBLE || binding.cardLayout.getVisibility() == View.VISIBLE){
-                binding.cashBox.setVisibility(View.VISIBLE);
-                binding.cardBox.setVisibility(View.VISIBLE);
-                binding.choose.setVisibility(View.VISIBLE);
+            if (binding.cashBox.getVisibility() == View.VISIBLE){
+                binding.mainLayout.setVisibility(View.VISIBLE);
+                binding.choose.setVisibility(View.INVISIBLE);
 
-                binding.cashLayout.setVisibility(View.INVISIBLE);
-                binding.cardLayout.setVisibility(View.INVISIBLE);
+                binding.cashBox.setVisibility(View.INVISIBLE);
+                binding.cardBox.setVisibility(View.INVISIBLE);
             }
             else{
                 Intent myIntent = new Intent(Ewallet.this, MoreScreen.class);
@@ -59,34 +95,33 @@ public class Ewallet extends AppCompatActivity {
         });
 
         binding.cashBox.setOnClickListener(view -> {
-            binding.cashBox.setVisibility(View.INVISIBLE);
-            binding.cardBox.setVisibility(View.INVISIBLE);
-            binding.choose.setVisibility(View.INVISIBLE);
+            Intent myIntent = new Intent(Ewallet.this, CashPayment.class);
+            myIntent.putExtra("Activity", "e-wallet");
+            myIntent.putExtra("amount", binding.amount.getText().toString().replace("€",""));
 
-            binding.cardLayout.setVisibility(View.INVISIBLE);
-            binding.cashLayout.setVisibility(View.VISIBLE);
+            myIntent.putExtra("demandedPrice",  binding.amount.getText().toString().replace("€",""));
+            Ewallet.this.startActivity(myIntent);
+
+
 
         });
 
         binding.cardBox.setOnClickListener(view -> {
-            binding.cashBox.setVisibility(View.INVISIBLE);
-            binding.cardBox.setVisibility(View.INVISIBLE);
-            binding.choose.setVisibility(View.INVISIBLE);
-
-            binding.cashLayout.setVisibility(View.INVISIBLE);
-            binding.cardLayout.setVisibility(View.VISIBLE);
+            Intent myIntent = new Intent(Ewallet.this, CardPayment.class);
+            myIntent.putExtra("Activity", "e-wallet");
+            myIntent.putExtra("amount", binding.amount.getText().toString().replace("€",""));
+            Ewallet.this.startActivity(myIntent);
 
         });
 
-        binding.completePayment.setOnClickListener(view -> {
-            if (binding.insertMoneyEditText.length() > 0){
+        binding.enter.setOnClickListener(view -> {
+            if (binding.amount.length() > 0){
 
-                String[] params = new String[2];
-                params[0] = MainActivity.user.get("userID").toString();
-                params[1] = binding.insertMoneyEditText.getText().toString();
+                binding.mainLayout.setVisibility(View.INVISIBLE);
+                binding.choose.setVisibility(View.VISIBLE);
 
-                UpdateWallet updateWallet = new UpdateWallet();
-                updateWallet.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+                binding.cashBox.setVisibility(View.VISIBLE);
+                binding.cardBox.setVisibility(View.VISIBLE);
 
 
             }
@@ -94,56 +129,5 @@ public class Ewallet extends AppCompatActivity {
     }
 
 
-    private static class UpdateWallet extends AsyncTask<String, String, String> {
 
-        private ObjectOutputStream objectOutputStream;
-        private ObjectInputStream objectInputStream;
-        private Socket socket = null;
-        private String new_s = "";
-
-        @Override
-        protected String doInBackground(String... strings) {
-
-            try {
-
-                if (MainActivity.socket == null){
-                    //connect to DB
-                    try {
-                        socket = new Socket(MainActivity.MainServerIp , MainActivity.MainServerPort);
-                        objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-                        objectInputStream = new ObjectInputStream(socket.getInputStream());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                String userID = strings[0];
-                new_s = strings[1];
-
-                objectOutputStream.writeUTF("UpdateWallet");
-                objectOutputStream.flush();
-
-                objectOutputStream.writeUTF(userID);
-                objectOutputStream.flush();
-
-                objectOutputStream.writeUTF(new_s);
-                objectOutputStream.flush();
-
-
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            final_s += Float.parseFloat(new_s);
-            binding.summaryMoneyText.setText("Σύνολο: "+final_s + "€");
-        }
-    }
 }

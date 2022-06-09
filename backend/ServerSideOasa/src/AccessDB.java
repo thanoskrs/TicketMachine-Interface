@@ -88,6 +88,23 @@ public class AccessDB {
 
     }
 
+    public void getTicket(String id) throws IOException {
+        MongoCollection<Document> collection =  database.getCollection("Ticket");
+
+        ArrayList<Document> list = new ArrayList<>();
+
+        FindIterable<Document> iterDoc = collection.find();
+        for (Document doc : iterDoc) {
+            if (doc.get("TicketID").equals(id)) {
+                System.out.println(doc);
+                Server.objectOutputStream.writeObject(doc);
+                Server.objectOutputStream.flush();
+                break;
+
+            }
+        }
+    }
+
     public void getTicketName(String id) throws IOException {
         MongoCollection<Document> collection =  database.getCollection("Ticket");
 
@@ -115,7 +132,7 @@ public class AccessDB {
                 String new_amount = Server.objectInputStream.readUTF();
 
                 float sum = Float.parseFloat(user.get("Wallet").toString()) + Float.parseFloat(new_amount);
-
+                System.out.println(new_amount);
                 BasicDBObject query = new BasicDBObject();
                 query.put("Wallet", user.get("Wallet"));
 

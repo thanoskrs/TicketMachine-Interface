@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.project.ticketmachine.databinding.CodeRechargeBinding;
+import com.project.ticketmachine.ui.uniform.UniformFragment;
 
 import org.bson.Document;
 
@@ -26,7 +27,7 @@ import java.util.Objects;
 
 public class RechargeCode extends AppCompatActivity {
     Button[] arrayOfButtons;
-    CodeRechargeBinding binding;
+    public static CodeRechargeBinding binding;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -70,25 +71,36 @@ public class RechargeCode extends AppCompatActivity {
 
         binding.enter.setOnClickListener(view -> {
             //send to the server the barcode code
-            String[] params = new String[2];
-            params[0] = binding.cardBarcode.getText().toString();
-            params[1] = "check";
 
-            if (params[0].length() > 0){
 
-                binding.keyboard.setVisibility(View.INVISIBLE);
-                binding.delete.setVisibility(View.INVISIBLE);
-                binding.enter.setVisibility(View.INVISIBLE);
-                binding.textRecharge.setVisibility(View.INVISIBLE);
-                binding.cardBarcode.setVisibility(View.INVISIBLE);
-                binding.loadingPanel.setVisibility(View.VISIBLE);
-                binding.cancelButton.setVisibility(View.INVISIBLE);
-                binding.backButton.setVisibility(View.INVISIBLE);
-                binding.cancelText.setVisibility(View.INVISIBLE);
-                binding.backText.setVisibility(View.INVISIBLE);
+            if (binding.cardBarcode.getText().toString().length() > 0){
 
-                CheckCode checkCode = new CheckCode();
-                checkCode.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+                if (MainActivity.ProductCodes.containsKey(binding.cardBarcode.getText().toString())){
+
+                    binding.keyboard.setVisibility(View.INVISIBLE);
+                    binding.textRecharge.setVisibility(View.INVISIBLE);
+                    binding.cardBarcode.setVisibility(View.INVISIBLE);
+                    binding.loadingPanel.setVisibility(View.VISIBLE);
+                    binding.cancelButton.setVisibility(View.INVISIBLE);
+                    binding.backButton.setVisibility(View.INVISIBLE);
+                    binding.cancelText.setVisibility(View.INVISIBLE);
+                    binding.backText.setVisibility(View.INVISIBLE);
+
+                    Intent myIntent = new Intent(RechargeCode.this, OnPostPayment.class);
+                    myIntent.putExtra("act" , "recharge");
+                    RechargeCode.this.startActivity(myIntent);
+
+
+                }
+                else{
+                    Context context = RechargeCode.this;
+                    CharSequence message = "Λάθος κωδικός.";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, message, duration);
+                    toast.show();
+                }
+
             }
 
         });
@@ -104,100 +116,6 @@ public class RechargeCode extends AppCompatActivity {
         });
     }
 
-    private class CheckCode extends AsyncTask<String, String, String> {
-
-        private Socket socket = null;
-        private ObjectOutputStream objectOutputStream;
-        private ObjectInputStream objectInputStream;
-
-        @Override
-        protected String doInBackground(String... strings) {
-
-            if (MainActivity.socket == null){
-                //connect to DB
-                try {
-                    socket = new Socket(MainActivity.MainServerIp , MainActivity.MainServerPort);
-                    objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-                    objectInputStream = new ObjectInputStream(socket.getInputStream());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            try {
-                String ID = strings[0];
-                String task = strings[1];
-
-                if (task.equals("check")){
-                    Log.e("id" , ID);
-
-                    objectOutputStream.writeUTF("check");
-                    objectOutputStream.flush();
-
-                    objectOutputStream.writeUTF(ID);
-                    objectOutputStream.flush();
-
-                    String exists = objectInputStream.readUTF();
-                    if (exists.equals("Pass")){
-
-                        MainActivity.user = (Document) objectInputStream.readObject();
-
-                        String category = (String) MainActivity.user.get("Category");
-                        String type = (String) MainActivity.user.get("Type");
-                        String userID = (String) MainActivity.user.get("UserID");
-
-                        Log.e("exists","In db. "+category +" "+type);
-
-                        Intent myIntent = new Intent(RechargeCode.this, ProductScreen.class);
-                        myIntent.putExtra("Type", type);
-                        RechargeCode.this.startActivity(myIntent);
-
-                    }
-                    else{
-                        Log.e("exists","Not in db.");
-                        publishProgress("Done!");
-                    }
-
-                }
 
 
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-
-            binding.loadingPanel.setVisibility(View.GONE);
-        }
-
-        @SuppressLint("SetTextI18n")
-        @Override
-        protected void onProgressUpdate(String... values) {
-            super.onProgressUpdate(values);
-
-            binding.keyboard.setVisibility(View.VISIBLE);
-            binding.delete.setVisibility(View.VISIBLE);
-            binding.enter.setVisibility(View.VISIBLE);
-            binding.textRecharge.setVisibility(View.VISIBLE);
-            binding.cardBarcode.setVisibility(View.VISIBLE);
-            binding.loadingPanel.setVisibility(View.INVISIBLE);
-            binding.cancelButton.setVisibility(View.VISIBLE);
-            binding.backButton.setVisibility(View.VISIBLE);
-            binding.cancelText.setVisibility(View.VISIBLE);
-            binding.backText.setVisibility(View.VISIBLE);
-
-            Context context = RechargeCode.this;
-            CharSequence message = "Λάθος κωδικός.";
-            int duration = Toast.LENGTH_SHORT;
-
-            Toast toast = Toast.makeText(context, message, duration);
-            toast.show();
-        }
-    }
 }

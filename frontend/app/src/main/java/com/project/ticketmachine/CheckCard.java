@@ -53,10 +53,12 @@ public class CheckCard extends AppCompatActivity {
             usage = "info";
         else if (selected_box.equals("e-wallet"))
             usage = "e-wallet";
+        else if (selected_box.equals("recharge"))
+            usage = "recharge";
         else
             usage = "other";
 
-        if (selected_box.equals("Card") || selected_box.equals("info") || selected_box.equals("e-wallet")){
+        if (selected_box.equals("Card") || selected_box.equals("info") || selected_box.equals("e-wallet") || selected_box.equals("recharge")){
             binding.rechargeTicket.setVisibility(View.INVISIBLE);
             binding.recharge.setVisibility(View.INVISIBLE);
             binding.noRecharge.setVisibility(View.INVISIBLE);
@@ -185,24 +187,33 @@ public class CheckCard extends AppCompatActivity {
 
                         Log.e("exists","In db. "+category +" "+type);
 
-                        if (usage.equals("info")){
-                            Intent myIntent = new Intent(CheckCard.this, CardInfo.class);
-                            CheckCard.this.startActivity(myIntent);
-                        }
-                        else if (usage.equals("e-wallet")){
-                            Intent myIntent = new Intent(CheckCard.this, Ewallet.class);
-                            CheckCard.this.startActivity(myIntent);
-                        }
-                        else{
-                            if (Objects.equals(type, selected_box)){
-                                Intent myIntent = new Intent(CheckCard.this, ProductScreen.class);
-                                myIntent.putExtra("Type", type);
+                        switch (usage) {
+                            case "info": {
+                                Intent myIntent = new Intent(CheckCard.this, CardInfo.class);
                                 CheckCard.this.startActivity(myIntent);
+                                break;
                             }
-                            else{
-                                Log.e("error not match" , type);
-                                publishProgress("Done!");
+                            case "e-wallet": {
+                                Intent myIntent = new Intent(CheckCard.this, Ewallet.class);
+                                CheckCard.this.startActivity(myIntent);
+                                break;
                             }
+                            case "recharge":
+                                if (type.equals("Card")) {
+                                    Intent myIntent = new Intent(CheckCard.this, RechargeCode.class);
+                                    CheckCard.this.startActivity(myIntent);
+                                }
+                                break;
+                            default:
+                                if (Objects.equals(type, selected_box)) {
+                                    Intent myIntent = new Intent(CheckCard.this, ProductScreen.class);
+                                    myIntent.putExtra("Type", type);
+                                    CheckCard.this.startActivity(myIntent);
+                                } else {
+                                    Log.e("error not match", type);
+                                    publishProgress("Done!");
+                                }
+                                break;
                         }
 
 
