@@ -19,6 +19,7 @@ import com.project.ticketmachine.InitializeTextToSpeach;
 import com.project.ticketmachine.MainActivity;
 import com.project.ticketmachine.Payment;
 import com.project.ticketmachine.ProductScreen;
+import com.project.ticketmachine.TicketsInfo;
 import com.project.ticketmachine.databinding.FragmentAirportBinding;
 import com.project.ticketmachine.ui.uniform.UniformFragment;
 
@@ -198,29 +199,18 @@ public class AirportFragment extends Fragment {
         binding.cardInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
-                intent.putExtra("kind", "Airport");
-                startActivity(intent);
+                new TicketsInfo().createInfoTicketDialog(getContext(), getLayoutInflater(), "Airport");
             }
         });
 
         binding.ticketInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
-                intent.putExtra("kind", "Airport");
-                startActivity(intent);
+                new TicketsInfo().createInfoTicketDialog(getContext(), getLayoutInflater(), "Airport");
             }
         });
 
-        /*binding.infoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
-                intent.putExtra("kind", "Airport");
-                startActivity(intent);
-            }
-        });*/
+
 
         // on cancel button
         binding.cancelButton.setOnClickListener(new View.OnClickListener() {
