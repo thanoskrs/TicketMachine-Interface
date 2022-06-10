@@ -106,7 +106,6 @@ public class ProductScreen extends AppCompatActivity {
 
             if (!showLastProductScreen || lastProductId.equals("")){
 
-                Log.e("here", "1");
                 binding.repeatOrderLayout.setVisibility(View.INVISIBLE);
                 binding.softBackground.setVisibility(View.INVISIBLE);
 
@@ -122,8 +121,10 @@ public class ProductScreen extends AppCompatActivity {
                     try {
                         processed.wait();
 
-                        UniformFragment.fill_tickets_uniform();
-                        UniformFragment.fill_cards_uniform();
+                        if (params[1].equals("Ticket"))
+                            UniformFragment.fill_tickets_uniform();
+                        else
+                            UniformFragment.fill_cards_uniform();
 
                     } catch (InterruptedException e) {
                         e.printStackTrace();

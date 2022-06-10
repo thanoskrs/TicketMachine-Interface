@@ -406,7 +406,7 @@
 
             android:layout_width="161dp"
             android:layout_height="106dp"
-
+            android:layout_marginTop="20dp"
             android:backgroundTint="@color/lite_grey"
             app:layout_constraintTop_toBottomOf="@id/text_home_card"
             app:layout_constraintStart_toStartOf="parent"
@@ -467,6 +467,7 @@
             android:layout_height="106dp"
             app:backgroundTint="@color/lite_grey"
             app:cornerRadius="8dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintTop_toBottomOf="@id/text_home_card"
             app:strokeColor="@color/athena_blue"
             app:strokeWidth="2dp"
