@@ -38,7 +38,6 @@ public class AirportFragment extends Fragment {
     private static TextView[] airport_card_arrayCost;
 
     String product_kind = null;
-
     @SuppressLint("SetTextI18n")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -179,16 +178,32 @@ public class AirportFragment extends Fragment {
         }
 
 
-        binding.infoButton.setOnClickListener(new View.OnClickListener() {
+        binding.cardInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
-
-                List<String> products = new ArrayList<String>();
                 intent.putExtra("kind", "Airport");
                 startActivity(intent);
             }
         });
+
+        binding.ticketInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
+                intent.putExtra("kind", "Airport");
+                startActivity(intent);
+            }
+        });
+
+        /*binding.infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
+                intent.putExtra("kind", "Airport");
+                startActivity(intent);
+            }
+        });*/
 
         // on cancel button
         binding.cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -197,9 +212,13 @@ public class AirportFragment extends Fragment {
                 UniformFragment.inited = false;
                 Intent intent = new Intent(getActivity(),com.project.ticketmachine.MainActivity.class);
                 startActivity(intent);
+                try {
+                    finalize();
+                } catch (Throwable e) {
+                    e.printStackTrace();
+                }
             }
         });
-
 
 
 //        final TextView textView = binding.textNotifications;

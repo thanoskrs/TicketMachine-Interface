@@ -77,7 +77,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box1"
             app:layout_constraintEnd_toEndOf="@id/uniform_box1"
             app:layout_constraintStart_toStartOf="@id/uniform_box1"
@@ -135,7 +135,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box2"
             app:layout_constraintEnd_toEndOf="@id/uniform_box2"
             app:layout_constraintStart_toStartOf="@id/uniform_box2"
@@ -183,7 +183,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box3"
             app:layout_constraintEnd_toEndOf="@id/uniform_box3"
             app:layout_constraintStart_toStartOf="@id/uniform_box3"
@@ -228,7 +228,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box4"
             app:layout_constraintEnd_toEndOf="@id/uniform_box4"
             app:layout_constraintStart_toStartOf="@id/uniform_box4"
@@ -285,7 +285,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box5"
             app:layout_constraintEnd_toEndOf="@id/uniform_box5"
             app:layout_constraintStart_toStartOf="@id/uniform_box5"
@@ -330,23 +330,38 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box6"
             app:layout_constraintEnd_toEndOf="@id/uniform_box6"
             app:layout_constraintStart_toStartOf="@id/uniform_box6"
             app:layout_constraintTop_toTopOf="@id/uniform_box6"
             app:layout_constraintVertical_bias="0.838" />
 
-        <!--    Third horizontal divider -->
+        <TextView
+            android:id="@+id/ticket_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/athena_blue"
+            android:layout_marginTop="10dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="Πληροφορίες εισιτηρίων"
+            app:layout_constraintTop_toBottomOf="@id/uniform_box6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            />
 
         <View
-            android:id="@+id/divider_horizontal3"
-            style="@style/Divider_Horizontal"
-            app:layout_constraintTop_toBottomOf="@id/uniform_box6"
-            android:layout_width="match_parent"
-            tools:ignore="MissingConstraints">
+            android:layout_width="210dp"
+            android:layout_height="1dp"
+            android:background="@color/athena_blue"
+            android:backgroundTint="@color/athena_blue"
+            app:layout_constraintStart_toStartOf="@+id/ticket_info"
+            app:layout_constraintEnd_toEndOf="@id/ticket_info"
+            app:layout_constraintTop_toBottomOf="@id/ticket_info"/>
 
-        </View>
+        <!--    Third horizontal divider -->
 
 
 
@@ -424,7 +439,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box1_card"
             app:layout_constraintEnd_toEndOf="@id/uniform_box1_card"
             app:layout_constraintStart_toStartOf="@id/uniform_box1_card"
@@ -483,7 +498,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box2_card"
             app:layout_constraintEnd_toEndOf="@id/uniform_box2_card"
             app:layout_constraintStart_toStartOf="@id/uniform_box2_card"
@@ -542,7 +557,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box3_card"
             app:layout_constraintEnd_toEndOf="@id/uniform_box3_card"
             app:layout_constraintStart_toStartOf="@id/uniform_box3_card"
@@ -587,7 +602,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box4_card"
             app:layout_constraintEnd_toEndOf="@id/uniform_box4_card"
             app:layout_constraintStart_toStartOf="@id/uniform_box4_card"
@@ -645,7 +660,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box5_card"
             app:layout_constraintEnd_toEndOf="@id/uniform_box5_card"
             app:layout_constraintStart_toStartOf="@id/uniform_box5_card"
@@ -691,7 +706,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box6_card"
             app:layout_constraintEnd_toEndOf="@id/uniform_box6_card"
             app:layout_constraintStart_toStartOf="@id/uniform_box6_card"
@@ -749,7 +764,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box7_card"
             app:layout_constraintEnd_toEndOf="@id/uniform_box7_card"
             app:layout_constraintStart_toStartOf="@id/uniform_box7_card"
@@ -795,12 +810,36 @@
 
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/uniform_box8_card"
             app:layout_constraintEnd_toEndOf="@id/uniform_box8_card"
             app:layout_constraintStart_toStartOf="@id/uniform_box8_card"
             app:layout_constraintTop_toTopOf="@id/uniform_box8_card"
             app:layout_constraintVertical_bias="0.838" />
+
+        <TextView
+            android:id="@+id/card_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/athena_blue"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="25dp"
+            android:text="Πληροφορίες εισιτηρίων"
+            app:layout_constraintTop_toBottomOf="@id/uniform_cost_box8_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            />
+
+        <View
+            android:layout_width="210dp"
+            android:layout_height="1dp"
+            android:background="@color/athena_blue"
+            android:backgroundTint="@color/athena_blue"
+            app:layout_constraintStart_toStartOf="@+id/card_info"
+            app:layout_constraintEnd_toEndOf="@id/card_info"
+            app:layout_constraintTop_toBottomOf="@id/card_info"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -823,9 +862,7 @@
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        >
+        app:layout_constraintEnd_toEndOf="parent">
 
     </com.google.android.material.button.MaterialButton>
 
@@ -838,7 +875,7 @@
         app:layout_constraintTop_toTopOf="@+id/cancel_button"
         app:srcCompat="@drawable/cancel" />
 
-    <!--    info button -->
+    <!--    info button
     <com.google.android.material.button.MaterialButton
         android:id="@+id/info_button"
         style="?attr/materialButtonOutlinedStyle"
@@ -894,6 +931,7 @@
         app:layout_constraintEnd_toEndOf="@+id/info_button"
         app:layout_constraintTop_toTopOf="@+id/info_button"
         app:layout_constraintHorizontal_bias="0.99"
-        app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+        app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

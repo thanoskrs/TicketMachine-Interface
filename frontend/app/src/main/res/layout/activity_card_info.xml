@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CardInfo">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:background="@color/athena_blue"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Πληροφορίες Προιόντος"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@id/view"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.695" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Tύπος προιόντος"
+        android:textColor="@color/athena_blue"
+
+        app:layout_constraintStart_toStartOf="@+id/type"
+        app:layout_constraintBottom_toTopOf="@+id/type">
+    </TextView>
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="370dp"
+
+        android:layout_height="40dp"
+
+        android:layout_marginTop="50dp"
+        android:paddingTop="15dp"
+        android:paddingLeft="2dp"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#C4E3E3E3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Κατηγορία"
+        android:textColor="@color/athena_blue"
+
+        app:layout_constraintStart_toStartOf="@+id/category"
+        app:layout_constraintBottom_toTopOf="@+id/category">
+    </TextView>
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="370dp"
+
+        android:layout_height="50dp"
+
+        android:layout_marginTop="30dp"
+        android:paddingTop="15dp"
+        android:paddingLeft="2dp"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#C4E3E3E3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Τελευταία αγορά"
+        android:textColor="@color/athena_blue"
+
+        app:layout_constraintStart_toStartOf="@+id/last_product"
+        app:layout_constraintBottom_toTopOf="@+id/last_product"/>
+
+
+    <TextView
+        android:id="@+id/last_product"
+        android:layout_width="370dp"
+
+        android:layout_height="50dp"
+
+        android:layout_marginTop="30dp"
+        android:paddingTop="15dp"
+        android:paddingLeft="2dp"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#C4E3E3E3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Ηλεκτρονικό πορτοφόλι"
+        android:textColor="@color/athena_blue"
+
+        app:layout_constraintStart_toStartOf="@+id/ewallet"
+        app:layout_constraintBottom_toTopOf="@+id/ewallet"/>
+
+    <TextView
+        android:id="@+id/ewallet"
+        android:layout_width="370dp"
+
+        android:layout_height="50dp"
+
+        android:layout_marginTop="30dp"
+        android:paddingTop="15dp"
+        android:paddingLeft="2dp"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#C4E3E3E3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/last_product" />
+
+
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/back_button"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+
+        android:backgroundTint="#0DE2AD1D"
+        android:text="ΠΙΣΩ"
+
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:cornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:strokeColor="#E2AD1D"
+        app:strokeWidth="2dp" />
+
+    <ImageView
+        android:id="@+id/back_text"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/back_button"
+        app:layout_constraintStart_toStartOf="@+id/back_button"
+        app:layout_constraintTop_toTopOf="@+id/back_button"
+        app:srcCompat="@drawable/back" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
