@@ -30,7 +30,7 @@ public class RechargeCode extends AppCompatActivity {
     Button[] arrayOfButtons;
     public static CodeRechargeBinding binding;
 
-    InitializeTextToSpeach initializeTextToSpeach
+    InitializeTextToSpeach initializeTextToSpeach;
 
     @SuppressLint("SetTextI18n")
     @Override
