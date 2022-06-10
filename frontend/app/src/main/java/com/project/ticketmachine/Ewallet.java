@@ -3,6 +3,7 @@ package com.project.ticketmachine;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 
@@ -23,7 +24,7 @@ public class Ewallet extends AppCompatActivity {
     protected static EWalletBinding binding;
     Button[] arrayOfButtons;
     public static String amount = "";
-
+    InitializeTextToSpeach initializeTextToSpeach;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +35,16 @@ public class Ewallet extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+        initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                initializeTextToSpeach.speak("Πληκτρολογήστε επιθυμητό ποσό");
+            }
+        }, 300);
 
         arrayOfButtons = new Button[10];
         arrayOfButtons[0] = binding.zero;
@@ -124,11 +135,20 @@ public class Ewallet extends AppCompatActivity {
                 binding.cashBox.setVisibility(View.VISIBLE);
                 binding.cardBox.setVisibility(View.VISIBLE);
 
-
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        initializeTextToSpeach.speak("Επιλέξτε τον τρόπο πληρωμής");
+                    }
+                }, 300);
             }
         });
     }
 
-
-
+    @Override
+    protected void onDestroy() {
+        binding = null;
+        initializeTextToSpeach.destroy();
+        super.onDestroy();
+    }
 }

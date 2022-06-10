@@ -3,6 +3,7 @@ package com.project.ticketmachine.ui.airport;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.button.MaterialButton;
+import com.project.ticketmachine.InitializeTextToSpeach;
 import com.project.ticketmachine.MainActivity;
 import com.project.ticketmachine.Payment;
 import com.project.ticketmachine.ProductScreen;
@@ -38,6 +40,9 @@ public class AirportFragment extends Fragment {
     private static TextView[] airport_card_arrayCost;
 
     String product_kind = null;
+
+    InitializeTextToSpeach initializeTextToSpeach;
+
     @SuppressLint("SetTextI18n")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +51,20 @@ public class AirportFragment extends Fragment {
 
         binding = FragmentAirportBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+
+
+        super.onStart();
+
+        initializeTextToSpeach = new InitializeTextToSpeach(getContext());
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                initializeTextToSpeach.speak("Επιλέξτε προϊόν αεροδρομίου");
+            }
+        }, 500);
 
         //boxes
         airport_ticket_arrayBox = new MaterialButton[4];
@@ -97,8 +116,6 @@ public class AirportFragment extends Fragment {
         airport_card_arrayCost[4] = binding.airportCostBox5Card;
         airport_card_arrayCost[5] = binding.airportCostBox6Card;
 
-
-        ProductScreen activity = (ProductScreen) getActivity();
 
         if (MainActivity.user == null){
             product_kind = "Ticket";
@@ -274,8 +291,9 @@ public class AirportFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
-        super.onDestroyView();
         binding = null;
+        initializeTextToSpeach.destroy();
+        super.onDestroyView();
     }
 
 

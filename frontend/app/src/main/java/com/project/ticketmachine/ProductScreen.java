@@ -32,6 +32,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -200,6 +201,7 @@ public class ProductScreen extends AppCompatActivity {
                     }
                 }
 
+
             }
         });
 
@@ -297,7 +299,10 @@ public class ProductScreen extends AppCompatActivity {
             return null;
         }
 
-
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
     }
 
 

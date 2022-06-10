@@ -3,9 +3,10 @@ package com.project.ticketmachine;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,7 +14,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
-import com.project.ticketmachine.ui.airport.AirportFragment;
 import com.project.ticketmachine.ui.uniform.UniformFragment;
 
 import org.bson.Document;
@@ -31,6 +31,8 @@ public class Payment extends AppCompatActivity {
 
     private int quantity = 1;
     protected String selected_activity = "";
+
+    InitializeTextToSpeach initializeTextToSpeach;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,18 @@ public class Payment extends AppCompatActivity {
         TextView priceText = (TextView) findViewById(R.id.product_price_chosen_text);
         TextView totalPriceText = (TextView) findViewById(R.id.total_price_text);
         TextView productQuantityText = (TextView) findViewById(R.id.product_quantity);
+
+
+        initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                initializeTextToSpeach.speak("Επιλέξτε τον τρόπο πληρωμής");
+            }
+        }, 500);
+
 
         String selected = getIntent().getStringExtra("activity");
         if (selected != null)
@@ -145,6 +159,7 @@ public class Payment extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
                 Intent myIntent = new Intent(Payment.this, CashPayment.class);
                 myIntent.putExtra("Activity", "pay");
                 myIntent.putExtra("demandedPrice", String.format("%.2f", price*quantity));
@@ -160,9 +175,16 @@ public class Payment extends AppCompatActivity {
                 Intent myIntent = new Intent(Payment.this, CardPayment.class);
                 Payment.this.startActivity(myIntent);
 
+
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        initializeTextToSpeach.destroy();
+        super.onDestroy();
     }
 
     protected static void doInPayment() {

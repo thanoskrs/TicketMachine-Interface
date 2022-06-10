@@ -3,6 +3,7 @@ package com.project.ticketmachine;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -21,6 +22,8 @@ public class CardPayment extends AppCompatActivity {
     private CardPaymentBinding binding;
     private String activity = "";
 
+    InitializeTextToSpeach initializeTextToSpeach;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +34,17 @@ public class CardPayment extends AppCompatActivity {
 
         binding = CardPaymentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                initializeTextToSpeach.speak("Τοποθετήστε την κάρτα, όπως δείχνει η εικόνα.");
+            }
+        }, 500);
+
 
         String act = getIntent().getStringExtra("Activity");
         if (act != null)
@@ -82,6 +96,8 @@ public class CardPayment extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        initializeTextToSpeach.destroy();
+        binding = null;
         super.onDestroy();
     }
 

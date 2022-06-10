@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +30,8 @@ public class RechargeCode extends AppCompatActivity {
     Button[] arrayOfButtons;
     public static CodeRechargeBinding binding;
 
+    InitializeTextToSpeach initializeTextToSpeach
+
     @SuppressLint("SetTextI18n")
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +40,16 @@ public class RechargeCode extends AppCompatActivity {
 
         binding = CodeRechargeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                initializeTextToSpeach.speak("Εισάγετε τον κωδικό της κράτησης");
+            }
+        }, 300);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -117,6 +130,10 @@ public class RechargeCode extends AppCompatActivity {
         });
     }
 
-
-
+    @Override
+    protected void onDestroy() {
+        binding = null;
+        initializeTextToSpeach.destroy();
+        super.onDestroy();
+    }
 }

@@ -6,6 +6,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.os.AsyncTask;
@@ -24,13 +26,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.HashMap;
-
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
 
 
-    public static final String MainServerIp = "10.0.2.2";
+    public static final String MainServerIp = "192.168.1.9";
     public static final int MainServerPort = 8080;
     public static Socket socket = null;
     private String student = "";
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static HashMap<String , String> ProductCodes;
 
+    InitializeTextToSpeach initializeTextToSpeach;
+
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
 
         ProductCodes = new HashMap<>();
         ProductCodes.put("12345678" , "airport_box2_card");
@@ -85,10 +91,9 @@ public class MainActivity extends AppCompatActivity {
         TextInputEditText inputCode = (TextInputEditText) findViewById(R.id.card_barcode);
 
 
-
-
         ticketBtn.setOnClickListener(view ->{
-                Intent myIntent = new Intent(MainActivity.this, CheckCard.class);
+
+            Intent myIntent = new Intent(MainActivity.this, CheckCard.class);
                 myIntent.putExtra("key", "Ticket");
                 MainActivity.this.startActivity(myIntent);
         });
@@ -108,6 +113,14 @@ public class MainActivity extends AppCompatActivity {
                 ticketInfoText.setVisibility(View.VISIBLE);
                 ticketRechargeText.setVisibility(View.INVISIBLE);
                 ticketInfoBtn.setImageResource(R.drawable.info_pressed_icon);
+
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        initializeTextToSpeach.speak(ticketInfoText.getText().toString());
+                    }
+                }, 300);
             }
             else {
                 ticketInfoText.setVisibility(View.INVISIBLE);
@@ -123,6 +136,14 @@ public class MainActivity extends AppCompatActivity {
                     cardInfoText.setVisibility(View.VISIBLE);
                     cardRechargeText.setVisibility(View.INVISIBLE);
                     cardInfoBtn.setImageResource(R.drawable.info_pressed_icon);
+
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            initializeTextToSpeach.speak(cardInfoText.getText().toString());
+                        }
+                    }, 300);
                 }
                 else {
                     cardInfoText.setVisibility(View.INVISIBLE);
@@ -152,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
                 cardInfoText.setText("\nPress here if you want to recharge your card. (Personalized, Anonymous, Unemployed Card)");
                 ticketRechargeText.setText("Buy or Recharge \nTicket");
                 cardRechargeText.setText("Recharge \nCard");
+
 
             }
         });
@@ -211,6 +233,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
     }
 
     private void setAlphaForLanguageButtons(ImageButton[] imageButtons) {
@@ -221,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        initializeTextToSpeach.destroy();
         super.onDestroy();
     }
-
 }
