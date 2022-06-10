@@ -22,12 +22,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class Payment extends AppCompatActivity {
 
     protected static String ticketId = null;
     protected static String userId = null;
     protected static String type;
+    ArrayList<String> multipleOrdersTickets;
 
     private int quantity = 1;
     protected String selected_activity = "";
@@ -43,6 +45,17 @@ public class Payment extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
+        multipleOrdersTickets = new ArrayList<>();
+        multipleOrdersTickets.add("90 λεπτών");
+        multipleOrdersTickets.add("24 Ωρών");
+        multipleOrdersTickets.add("Λεωφοριακές\n" +
+                "Γραμμές Express");
+        multipleOrdersTickets.add("Λεωφοριακές \n" +
+                "Γραμμές Express");
+        multipleOrdersTickets.add("90 Λεπτών\n" +
+                "Συρμός Μετρό");
+        multipleOrdersTickets.add("90 Λεπτών\n" +
+                "Μετ'επιστροφής");
 
 
         MaterialButton backBtn = (MaterialButton) findViewById(R.id.payment_back_button);
@@ -126,34 +139,48 @@ public class Payment extends AppCompatActivity {
             }
         });
 
-        decreaseQuantityBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                quantity = Integer.parseInt(productQuantityText.getText().toString());
-                if (quantity > 1) {
-                    productQuantityText.setText(String.valueOf(--quantity));
-                    totalPriceText.setText(total_price + String.format("%.2f", price*quantity) + "€");
-                } else {
-                    Toast.makeText(getApplicationContext(), "Δε μπορείτε να επιλέξετε 0 προϊόντα",
-                            Toast.LENGTH_LONG).show();
-                }
-            }
-        });
 
-        increaseQuantityBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                quantity = Integer.parseInt(productQuantityText.getText().toString());
-                Log.e("quantity", String.valueOf(quantity));
-                if (quantity < 10) {
-                    productQuantityText.setText(String.valueOf(++quantity));
-                    totalPriceText.setText(total_price + String.format("%.2f", price*quantity) + "€");
-                } else {
-                    Toast.makeText(getApplicationContext(), "Δε μπορείτε να επιλέξετε περισσότερα από 10 προϊόντα",
-                            Toast.LENGTH_LONG).show();
+
+        if (multipleOrdersTickets.contains(product)){
+
+            decreaseQuantityBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    quantity = Integer.parseInt(productQuantityText.getText().toString());
+                    if (quantity > 1) {
+                        productQuantityText.setText(String.valueOf(--quantity));
+                        totalPriceText.setText(total_price + String.format("%.2f", price*quantity) + "€");
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Δε μπορείτε να επιλέξετε 0 προϊόντα",
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
-        });
+            });
+
+            increaseQuantityBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    quantity = Integer.parseInt(productQuantityText.getText().toString());
+                    Log.e("quantity", String.valueOf(quantity));
+                    if (quantity < 5) {
+                        productQuantityText.setText(String.valueOf(++quantity));
+                        totalPriceText.setText(total_price + String.format("%.2f", price*quantity) + "€");
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Δε μπορείτε να επιλέξετε περισσότερα από 5 προϊόντα",
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        }
+        else {
+            productQuantityText.setAlpha(0.25F);
+            increaseQuantityBtn.setAlpha(0.25F);
+            decreaseQuantityBtn.setAlpha(0.25F);
+//            increaseQuantityBtn.setVisibility(View.INVISIBLE);
+//            decreaseQuantityBtn.setVisibility(View.INVISIBLE);
+        }
+
+
 
         pay_cash.setOnClickListener(new View.OnClickListener() {
             @Override

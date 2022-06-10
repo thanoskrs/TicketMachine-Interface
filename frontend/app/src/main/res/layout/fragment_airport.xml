@@ -47,7 +47,7 @@
             style="?attr/materialButtonOutlinedStyle"
             app:strokeColor="@color/athena_blue"
             app:strokeWidth="2dp"
-
+            android:layout_marginTop="20dp"
             android:layout_width="161dp"
             android:layout_height="106dp"
 
@@ -114,7 +114,7 @@
             app:strokeColor="@color/athena_blue"
             app:strokeWidth="2dp"
             app:layout_constraintStart_toStartOf="@id/divider_card"
-
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent">
 
         </com.google.android.material.button.MaterialButton>
