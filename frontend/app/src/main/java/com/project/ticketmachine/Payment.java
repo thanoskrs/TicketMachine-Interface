@@ -173,11 +173,9 @@ public class Payment extends AppCompatActivity {
             });
         }
         else {
-            productQuantityText.setAlpha(0.25F);
-            increaseQuantityBtn.setAlpha(0.25F);
-            decreaseQuantityBtn.setAlpha(0.25F);
-//            increaseQuantityBtn.setVisibility(View.INVISIBLE);
-//            decreaseQuantityBtn.setVisibility(View.INVISIBLE);
+            productQuantityText.setVisibility(View.INVISIBLE);
+            increaseQuantityBtn.setVisibility(View.INVISIBLE);
+            decreaseQuantityBtn.setVisibility(View.INVISIBLE);
         }
 
 
