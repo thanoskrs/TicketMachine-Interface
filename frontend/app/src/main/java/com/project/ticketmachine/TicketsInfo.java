@@ -4,11 +4,13 @@ package com.project.ticketmachine;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -26,17 +28,19 @@ public class TicketsInfo  {
     HashMap<String, List<String>> expandableDetailList;
 
     MaterialButton backBtn;
+    ImageButton volumeBtn;
 
     AlertDialog.Builder dialogBuilder;
     AlertDialog dialog;
 
 
-    public void createInfoTicketDialog(Context context, LayoutInflater layoutInflater, String kind) {
+    public void createInfoTicketDialog(Context context, LayoutInflater layoutInflater, InitializeTextToSpeach initializeTextToSpeach, String kind) {
         dialogBuilder = new AlertDialog.Builder(context);
         final View infoPopUp = layoutInflater.inflate(R.layout.tickets_info, null);
 
 
         backBtn = (MaterialButton) infoPopUp.findViewById(R.id.info_back_button);
+        volumeBtn = (ImageButton) infoPopUp.findViewById(R.id.volumeButton);
 
         groupList = new ArrayList<>();
         expandableDetailList = new HashMap<String, List<String>>();
@@ -56,10 +60,25 @@ public class TicketsInfo  {
             int lastExpandedPosition = -1;
             @Override
             public void onGroupExpand(int i) {
-                if (lastExpandedPosition != -1 && i != lastExpandedPosition)
+
+                if (lastExpandedPosition != -1 && i != lastExpandedPosition) {
                     expandableListView.collapseGroup(lastExpandedPosition);
+                }
 
                 lastExpandedPosition = i;
+
+                if (MainActivity.TTS) {
+                    initializeTextToSpeach.speak(expandableDetailList.get(groupList.get(i)).get(0));
+                }
+            }
+        });
+
+        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+            @Override
+            public void onGroupCollapse(int i) {
+                if (MainActivity.TTS) {
+                    initializeTextToSpeach.stop();
+                }
             }
         });
 
@@ -74,9 +93,42 @@ public class TicketsInfo  {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (MainActivity.TTS)
+                    initializeTextToSpeach.stop();
+
                 dialog.dismiss();
             }
         });
+
+        if (MainActivity.TTS) {
+            volumeBtn.setImageResource(R.drawable.volume_up);
+        } else {
+            volumeBtn.setImageResource(R.drawable.volume_off);
+        }
+
+        volumeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.TTS = !MainActivity.TTS;
+                if (MainActivity.TTS) {
+                    volumeBtn.setImageResource(R.drawable.volume_up);
+                } else {
+                    initializeTextToSpeach.stop();
+                    volumeBtn.setImageResource(R.drawable.volume_off);
+                }
+            }
+        });
+
+        final Handler handler = new Handler();
+
+        if (MainActivity.TTS) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    initializeTextToSpeach.speak("Για να δείτε πληροφορίες για κάποιο εισιτήριο, πατήστε πάνω στον τίτλο εισιτηρίου που σας ενδιαφέρει.");
+                }
+            }, 100);
+        }
     }
 
     private void initExpandableDetailList(String kind) {

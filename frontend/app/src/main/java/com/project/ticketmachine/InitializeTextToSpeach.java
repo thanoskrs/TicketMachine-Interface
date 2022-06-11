@@ -2,6 +2,7 @@ package com.project.ticketmachine;
 
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
+import android.util.Log;
 
 import java.util.Locale;
 
@@ -15,6 +16,10 @@ public class InitializeTextToSpeach {
             public void onInit(int i) {
                 if (i != textToSpeech.ERROR) {
                     textToSpeech.setLanguage(Locale.ROOT);
+                    Log.e("InitializeTextToSpeach", "OK");
+                } else {
+                    Log.e("InitializeTextToSpeach", "ERROR");
+
                 }
             }
         });
@@ -29,5 +34,13 @@ public class InitializeTextToSpeach {
             textToSpeech.stop();
             textToSpeech.shutdown();
         }
+    }
+
+    public void stop() {
+        textToSpeech.stop();
+    }
+
+    public static void speakAfer(InitializeTextToSpeach initializeTextToSpeach) {
+
     }
 }

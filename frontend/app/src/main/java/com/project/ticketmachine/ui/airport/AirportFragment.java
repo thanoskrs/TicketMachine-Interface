@@ -60,12 +60,15 @@ public class AirportFragment extends Fragment {
         initializeTextToSpeach = new InitializeTextToSpeach(getContext());
 
         final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                initializeTextToSpeach.speak("Επιλέξτε προϊόν αεροδρομίου");
-            }
-        }, 500);
+
+        if (MainActivity.TTS) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    initializeTextToSpeach.speak("Επιλέξτε προϊόν αεροδρομίου");
+                }
+            }, 500);
+        }
 
         //boxes
         airport_ticket_arrayBox = new MaterialButton[4];
@@ -199,14 +202,14 @@ public class AirportFragment extends Fragment {
         binding.cardInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new TicketsInfo().createInfoTicketDialog(getContext(), getLayoutInflater(), "Airport");
+                new TicketsInfo().createInfoTicketDialog(getContext(), getLayoutInflater(), initializeTextToSpeach, "Airport");
             }
         });
 
         binding.ticketInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new TicketsInfo().createInfoTicketDialog(getContext(), getLayoutInflater(), "Airport");
+                new TicketsInfo().createInfoTicketDialog(getContext(), getLayoutInflater(), initializeTextToSpeach, "Airport");
             }
         });
 

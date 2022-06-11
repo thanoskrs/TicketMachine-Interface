@@ -29,12 +29,15 @@ public class MoreScreen extends AppCompatActivity {
         initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
 
         final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                initializeTextToSpeach.speak("Επιλέξτε επιθυμητή ενέργεια");
-            }
-        }, 300);
+
+        if (MainActivity.TTS) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    initializeTextToSpeach.speak("Επιλέξτε επιθυμητή ενέργεια");
+                }
+            }, 300);
+        }
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();

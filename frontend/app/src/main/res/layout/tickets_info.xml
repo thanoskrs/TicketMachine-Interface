@@ -53,6 +53,21 @@
             app:strokeColor="@color/green"
             app:strokeWidth="2dp" />
 
+        <ImageButton
+            android:id="@+id/volumeButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:backgroundTint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:srcCompat="@drawable/volume_off" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

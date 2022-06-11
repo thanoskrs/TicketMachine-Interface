@@ -65,12 +65,16 @@ public class OnPostPayment extends AppCompatActivity {
         }
 
         final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                initializeTextToSpeach.speak(text);
-            }
-        }, 500);
+
+        if (MainActivity.TTS) {
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    initializeTextToSpeach.speak(text);
+                }
+            }, 500);
+        }
 
         new Handler().postDelayed(new Runnable() {
             @Override

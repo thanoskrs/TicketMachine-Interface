@@ -63,12 +63,15 @@ public class UniformFragment extends Fragment {
         initializeTextToSpeach = new InitializeTextToSpeach(getContext());
 
         final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                initializeTextToSpeach.speak("Επιλέξτε προϊόν ενιαίου.");
-            }
-        }, 500);
+
+        if (MainActivity.TTS) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    initializeTextToSpeach.speak("Επιλέξτε προϊόν ενιαίου.");
+                }
+            }, 500);
+        }
 
         final TextView textView = binding.textHome;
         uniformViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
@@ -220,7 +223,7 @@ public class UniformFragment extends Fragment {
         binding.cardInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new TicketsInfo().createInfoTicketDialog(getContext(), getLayoutInflater(), "Uniform");
+                new TicketsInfo().createInfoTicketDialog(getContext(), getLayoutInflater(), initializeTextToSpeach, "Uniform");
 
             }
         });
@@ -228,7 +231,7 @@ public class UniformFragment extends Fragment {
         binding.ticketInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new TicketsInfo().createInfoTicketDialog(getContext(), getLayoutInflater(), "Uniform");
+                new TicketsInfo().createInfoTicketDialog(getContext(), getLayoutInflater(), initializeTextToSpeach, "Uniform");
             }
         });
 

@@ -44,12 +44,15 @@ public class RechargeCode extends AppCompatActivity {
         initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
 
         final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                initializeTextToSpeach.speak("Εισάγετε τον κωδικό της κράτησης");
-            }
-        }, 300);
+
+        if (MainActivity.TTS) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    initializeTextToSpeach.speak("Εισάγετε τον κωδικό της κράτησης");
+                }
+            }, 300);
+        }
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();

@@ -75,12 +75,15 @@ public class Payment extends AppCompatActivity {
         initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
 
         final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                initializeTextToSpeach.speak("Επιλέξτε τον τρόπο πληρωμής");
-            }
-        }, 500);
+
+        if (MainActivity.TTS) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    initializeTextToSpeach.speak("Επιλέξτε τον τρόπο πληρωμής");
+                }
+            }, 500);
+        }
 
 
         String selected = getIntent().getStringExtra("activity");

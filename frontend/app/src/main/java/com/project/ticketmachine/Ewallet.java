@@ -37,14 +37,17 @@ public class Ewallet extends AppCompatActivity {
         }
 
         initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
-
         final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                initializeTextToSpeach.speak("Πληκτρολογήστε επιθυμητό ποσό");
-            }
-        }, 300);
+
+        if (MainActivity.TTS) {
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    initializeTextToSpeach.speak("Εισάγετε επιθυμητό ποσό");
+                }
+            }, 300);
+        }
 
         arrayOfButtons = new Button[10];
         arrayOfButtons[0] = binding.zero;
@@ -135,12 +138,14 @@ public class Ewallet extends AppCompatActivity {
                 binding.cashBox.setVisibility(View.VISIBLE);
                 binding.cardBox.setVisibility(View.VISIBLE);
 
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        initializeTextToSpeach.speak("Επιλέξτε τον τρόπο πληρωμής");
-                    }
-                }, 300);
+                if (MainActivity.TTS) {
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            initializeTextToSpeach.speak("Επιλέξτε τον τρόπο πληρωμής");
+                        }
+                    }, 300);
+                }
             }
         });
     }

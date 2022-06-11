@@ -3,6 +3,7 @@ package com.project.ticketmachine;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,8 +16,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.project.ticketmachine.databinding.ActivityMainBinding;
 
 import org.bson.Document;
 
@@ -25,7 +26,9 @@ import org.bson.Document;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -40,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     public static String category = "";
     public static String type = "";
 
-    ActivityMainBinding binding;
 
     public static ObjectOutputStream objectOutputStream;
     public static ObjectInputStream objectInputStream;
@@ -48,7 +50,12 @@ public class MainActivity extends AppCompatActivity {
 
     public static HashMap<String , String> ProductCodes;
 
+    public static boolean TTS = true;
+
     InitializeTextToSpeach initializeTextToSpeach;
+
+    AlertDialog.Builder dialogBuilder;
+    AlertDialog dialog;
 
     @SuppressLint("ResourceType")
     @Override
@@ -56,9 +63,6 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
 
         initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
 
@@ -79,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
         ImageButton franceBtn = (ImageButton) findViewById(R.id.franceButton);
         ImageButton saudiArabiaBtn = (ImageButton) findViewById(R.id.saudiArabiaButton);
         ImageButton russiaBtn = (ImageButton) findViewById(R.id.russiaButton);
+        ImageButton volumeBtn = (ImageButton) findViewById(R.id.volumeButton);
+
+        MaterialButton moreButton = (MaterialButton) findViewById(R.id.more_box);
 
         ImageButton imageButtons[] = {greeceBtn, ukBtn, italyBtn, germanBtn, franceBtn, saudiArabiaBtn, russiaBtn};
 
@@ -86,10 +93,35 @@ public class MainActivity extends AppCompatActivity {
         TextView cardRechargeText = (TextView) findViewById(R.id.recharge_card_text);
         TextView ticketInfoText = (TextView) findViewById(R.id.ticketInfoText);
         TextView cardInfoText = (TextView) findViewById(R.id.cardInfoText);
+        TextView moreText = (TextView) findViewById(R.id.more_text);
+        TextView helpClick = (TextView) findViewById(R.id.help);
 
-        Button send_barcode = (Button) findViewById(R.id.send_barcode);
-        TextInputEditText inputCode = (TextInputEditText) findViewById(R.id.card_barcode);
 
+        if (TTS) {
+            volumeBtn.setImageResource(R.drawable.volume_up);
+        } else {
+            volumeBtn.setImageResource(R.drawable.volume_off);
+        }
+
+        volumeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.TTS = !MainActivity.TTS;
+                if (TTS) {
+                    volumeBtn.setImageResource(R.drawable.volume_up);
+                } else {
+                    volumeBtn.setImageResource(R.drawable.volume_off);
+
+                }
+            }
+        });
+
+        helpClick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createInfoDialog();
+            }
+        });
 
         ticketBtn.setOnClickListener(view ->{
 
@@ -153,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        binding.moreBox.setOnClickListener(view -> {
+        moreButton.setOnClickListener(view -> {
             Log.i("click" , "more button");
 
             Intent myIntent = new Intent(MainActivity.this, MoreScreen.class);
@@ -173,7 +205,8 @@ public class MainActivity extends AppCompatActivity {
                 cardInfoText.setText("\nPress here if you want to recharge your card. (Personalized, Anonymous, Unemployed Card)");
                 ticketRechargeText.setText("Buy or Recharge \nTicket");
                 cardRechargeText.setText("Recharge \nCard");
-
+                helpClick.setText("Help");
+                moreText.setText("More");
 
             }
         });
@@ -188,7 +221,8 @@ public class MainActivity extends AppCompatActivity {
                 cardInfoText.setText("\nΠατήστε εδώ εάν θέλετε να επαναφορτίσετε την κάρτα σας. (Προσωποποιημένη, Ανώνυμη, Κάρτα Ανέργων)");
                 ticketRechargeText.setText("Αγορά ή Επαναφόρτιση \nΕισιτηρίου");
                 cardRechargeText.setText("Επαναφόρτιση \nΚάρτας");
-
+                helpClick.setText("Βοήθεια");
+                moreText.setText("Περισσότερα");
 
             }
         });
@@ -248,5 +282,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         initializeTextToSpeach.destroy();
         super.onDestroy();
+    }
+
+    protected void createInfoDialog() {
+        dialogBuilder = new AlertDialog.Builder(MainActivity.this);
+        final View infoPopUp = getLayoutInflater().inflate(R.layout.help_for_activity_main, null);
+
+        dialogBuilder.setView(infoPopUp);
+        dialog = dialogBuilder.create();
+        dialog.show();
+
+
+        MaterialButton okBtn = (MaterialButton) infoPopUp.findViewById(R.id.ok_button);
+
+        okBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
     }
 }

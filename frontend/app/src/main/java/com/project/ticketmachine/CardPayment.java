@@ -38,12 +38,14 @@ public class CardPayment extends AppCompatActivity {
         initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
 
         final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                initializeTextToSpeach.speak("Τοποθετήστε την κάρτα, όπως δείχνει η εικόνα.");
-            }
-        }, 500);
+        if (MainActivity.TTS) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    initializeTextToSpeach.speak("Τοποθετήστε την κάρτα, όπως δείχνει η εικόνα.");
+                }
+            }, 500);
+        }
 
 
         String act = getIntent().getStringExtra("Activity");
