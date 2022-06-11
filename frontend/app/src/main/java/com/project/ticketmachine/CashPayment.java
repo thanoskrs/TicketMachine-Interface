@@ -3,6 +3,8 @@ package com.project.ticketmachine;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ public class CashPayment extends AppCompatActivity {
     private float insertedMoney = 0.f;
     private float remainingPrice;
     private float change = 0.f;
+    InitializeTextToSpeach initializeTextToSpeach;
 
 
     @Override
@@ -35,6 +38,18 @@ public class CashPayment extends AppCompatActivity {
 
         binding = CashPaymentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
+
+        final Handler handler = new Handler();
+        if (MainActivity.TTS) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    initializeTextToSpeach.speak("Τοποθετήστε τα χρήματα στην υποδοχή, όπως δείχνει η εικόνα.");
+                }
+            }, 500);
+        }
 
         String activity = getIntent().getStringExtra("Activity");
 
@@ -119,6 +134,7 @@ public class CashPayment extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        initializeTextToSpeach.destroy();
         super.onDestroy();
     }
 

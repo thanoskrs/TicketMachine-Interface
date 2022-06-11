@@ -2,7 +2,9 @@ package com.project.ticketmachine;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PersistableBundle;
+import android.speech.tts.TextToSpeech;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import com.project.ticketmachine.databinding.CheckCardBinding;
 public class MoreScreen extends AppCompatActivity {
 
     ActivityMoreScreenBinding binding;
+    InitializeTextToSpeach initializeTextToSpeach;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -22,6 +25,19 @@ public class MoreScreen extends AppCompatActivity {
 
         binding = ActivityMoreScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
+
+        final Handler handler = new Handler();
+
+        if (MainActivity.TTS) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    initializeTextToSpeach.speak("Επιλέξτε επιθυμητή ενέργεια");
+                }
+            }, 300);
+        }
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -55,5 +71,12 @@ public class MoreScreen extends AppCompatActivity {
 //
 //        });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        binding = null;
+        initializeTextToSpeach.destroy();
+        super.onDestroy();
     }
 }

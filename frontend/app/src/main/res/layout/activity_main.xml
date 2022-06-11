@@ -8,12 +8,54 @@
     android:backgroundTint="#FFFFFF"
     tools:context=".MainActivity">
 
+    <ImageButton
+        android:id="@+id/volumeButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="1dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/ticketButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:srcCompat="@drawable/volume_off" />
+
+    <TextView
+        android:id="@+id/help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/athena_blue"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Βοήθεια"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@id/ticketButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.95"
+        />
+
+    <View
+        android:layout_width="75dp"
+        android:layout_height="1dp"
+        android:background="@color/athena_blue"
+        android:backgroundTint="@color/athena_blue"
+        app:layout_constraintStart_toStartOf="@+id/help"
+        app:layout_constraintEnd_toEndOf="@id/help"
+        app:layout_constraintTop_toBottomOf="@id/help"/>
+
 
     <ImageButton
         android:id="@+id/ticketButton"
         android:layout_width="260dp"
         android:layout_height="158dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:adjustViewBounds="false"
         android:backgroundTint="@color/athena_blue"
         android:cropToPadding="false"
@@ -67,26 +109,28 @@
         android:layout_height="50dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="52dp"
+        android:visibility="invisible"
         android:backgroundTint="#80FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/ticketButton"
         app:layout_constraintTop_toTopOf="@+id/ticketButton"
         app:srcCompat="@drawable/info_icon" />
 
+
     <ImageButton
         android:id="@+id/cardButton"
         android:layout_width="260dp"
         android:layout_height="158dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="48dp"
         android:adjustViewBounds="false"
         android:backgroundTint="@color/athena_blue"
         android:contextClickable="false"
         android:padding="7dp"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ticketButton"
         app:srcCompat="@drawable/athena_card" />
-
 
     <TextView
         android:id="@+id/cardInfoText"
@@ -128,6 +172,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="52dp"
+        android:visibility="invisible"
         android:backgroundTint="#80FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/cardButton"
         app:layout_constraintTop_toTopOf="@+id/cardButton"
@@ -198,12 +243,13 @@
         android:id="@+id/greeceButton"
         android:layout_width="50dp"
         android:layout_height="53.5dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="84dp"
         android:padding="1dp"
+        android:layout_marginStart="15dp"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/more_box"
+        app:layout_constraintVertical_bias="0.6"
         app:srcCompat="@drawable/greece_square" />
 
     <ImageButton

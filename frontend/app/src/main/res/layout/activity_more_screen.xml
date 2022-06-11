@@ -44,7 +44,7 @@
         android:textAllCaps="false"
         app:cornerRadius="8dp"
         android:backgroundTint="@color/lite_grey"
-        android:text="Πληροφορίες προιόντος"
+        android:text="Πληροφορίες κάρτας ή εισιτηρίου"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView" />
@@ -62,7 +62,7 @@
         android:textAllCaps="false"
         app:cornerRadius="8dp"
         android:backgroundTint="@color/lite_grey"
-        android:text="Online Κράτηση"
+        android:text="Ηλεκτρονική Κράτηση"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_info_box" />
@@ -80,28 +80,10 @@
         android:textAllCaps="false"
         app:cornerRadius="8dp"
         android:backgroundTint="@color/lite_grey"
-        android:text="Ηλεκτρονικό πορτοφόλι"
+        android:text="Ηλεκτρονικό Πορτοφόλι"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/code_recharge_box" />
-
-<!--    <Button-->
-<!--        android:id="@+id/student_box"-->
-<!--        android:layout_width="200dp"-->
-<!--        android:layout_height="90dp"-->
-<!--        android:visibility="visible"-->
-<!--        android:textColor="@color/athena_blue"-->
-<!--        android:layout_marginTop="26dp"-->
-<!--        app:strokeColor="@color/athena_blue"-->
-<!--        app:strokeWidth="2dp"-->
-<!--        android:textSize="20sp"-->
-<!--        android:textAllCaps="false"-->
-<!--        app:cornerRadius="8dp"-->
-<!--        android:backgroundTint="@color/lite_grey"-->
-<!--        android:text="Για φοιτητές"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/e_wallet_box" />-->
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/back_button"

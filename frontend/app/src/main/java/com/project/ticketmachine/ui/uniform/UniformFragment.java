@@ -1,11 +1,15 @@
 package com.project.ticketmachine.ui.uniform;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,15 +17,20 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.button.MaterialButton;
+import com.project.ticketmachine.InitializeTextToSpeach;
 import com.project.ticketmachine.MainActivity;
+import com.project.ticketmachine.MyExpandableListAdapter;
 import com.project.ticketmachine.Payment;
 import com.project.ticketmachine.ProductScreen;
 
+import com.project.ticketmachine.R;
+import com.project.ticketmachine.TicketsInfo;
 import com.project.ticketmachine.databinding.FragmentUniformBinding;
 
 import org.bson.Document;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -38,6 +47,10 @@ public class UniformFragment extends Fragment {
 
     String product_kind = null;
 
+    InitializeTextToSpeach initializeTextToSpeach;
+
+
+
     @SuppressLint("SetTextI18n")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +59,19 @@ public class UniformFragment extends Fragment {
 
         binding = FragmentUniformBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        initializeTextToSpeach = new InitializeTextToSpeach(getContext());
+
+        final Handler handler = new Handler();
+
+        if (MainActivity.TTS) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    initializeTextToSpeach.speak("Επιλέξτε προϊόν ενιαίου.");
+                }
+            }, 500);
+        }
 
         final TextView textView = binding.textHome;
         uniformViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
@@ -197,30 +223,17 @@ public class UniformFragment extends Fragment {
         binding.cardInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
-                intent.putExtra("kind", "Uniform");
-                startActivity(intent);
+                new TicketsInfo().createInfoTicketDialog(getContext(), getLayoutInflater(), initializeTextToSpeach, "Uniform");
+
             }
         });
 
         binding.ticketInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
-                intent.putExtra("kind", "Uniform");
-                startActivity(intent);
+                new TicketsInfo().createInfoTicketDialog(getContext(), getLayoutInflater(), initializeTextToSpeach, "Uniform");
             }
         });
-
-        /*binding.infoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),com.project.ticketmachine.TicketsInfo.class);
-                intent.putExtra("kind", "Uniform");
-                startActivity(intent);
-            }
-        });*/
-
 
         return root;
     }
@@ -271,9 +284,14 @@ public class UniformFragment extends Fragment {
     }
 
 
+
+
+
+
     @Override
     public void onDestroyView() {
-        super.onDestroyView();
         binding = null;
+        initializeTextToSpeach.destroy();
+        super.onDestroyView();
     }
 }

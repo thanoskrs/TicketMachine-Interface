@@ -1,12 +1,16 @@
 package com.project.ticketmachine;
 
+
+import android.app.AlertDialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.ImageButton;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -16,41 +20,65 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class TicketsInfo extends AppCompatActivity {
+public class TicketsInfo  {
 
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
     List<String> groupList;
     HashMap<String, List<String>> expandableDetailList;
-    String kind;
 
     MaterialButton backBtn;
+    ImageButton volumeBtn;
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.tickets_info);
+    AlertDialog.Builder dialogBuilder;
+    AlertDialog dialog;
 
-        backBtn = (MaterialButton) findViewById(R.id.info_back_button);
+
+    public void createInfoTicketDialog(Context context, LayoutInflater layoutInflater, InitializeTextToSpeach initializeTextToSpeach, String kind) {
+        dialogBuilder = new AlertDialog.Builder(context);
+        final View infoPopUp = layoutInflater.inflate(R.layout.tickets_info, null);
+
+
+        backBtn = (MaterialButton) infoPopUp.findViewById(R.id.info_back_button);
+        volumeBtn = (ImageButton) infoPopUp.findViewById(R.id.volumeButton);
 
         groupList = new ArrayList<>();
-        kind = getIntent().getStringExtra("kind");
         expandableDetailList = new HashMap<String, List<String>>();
 
-        initExpandableDetailList();
+        initExpandableDetailList(kind);
 
-        expandableListView = (ExpandableListView) findViewById(R.id.ticketsExpandableListView);
-        expandableListAdapter = new MyExpandableListAdapter(this, groupList, expandableDetailList);
+        expandableListView = (ExpandableListView) infoPopUp.findViewById(R.id.ticketsExpandableListView);
+        expandableListAdapter = new MyExpandableListAdapter(context, groupList, expandableDetailList);
         expandableListView.setAdapter(expandableListAdapter);
+
+
+        dialogBuilder.setView(infoPopUp);
+        dialog = dialogBuilder.create();
+        dialog.show();
 
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             int lastExpandedPosition = -1;
             @Override
             public void onGroupExpand(int i) {
-                if (lastExpandedPosition != -1 && i != lastExpandedPosition)
+
+                if (lastExpandedPosition != -1 && i != lastExpandedPosition) {
                     expandableListView.collapseGroup(lastExpandedPosition);
+                }
 
                 lastExpandedPosition = i;
+
+                if (MainActivity.TTS) {
+                    initializeTextToSpeach.speak(expandableDetailList.get(groupList.get(i)).get(0));
+                }
+            }
+        });
+
+        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+            @Override
+            public void onGroupCollapse(int i) {
+                if (MainActivity.TTS) {
+                    initializeTextToSpeach.stop();
+                }
             }
         });
 
@@ -65,12 +93,45 @@ public class TicketsInfo extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                if (MainActivity.TTS)
+                    initializeTextToSpeach.stop();
+
+                dialog.dismiss();
             }
         });
+
+        if (MainActivity.TTS) {
+            volumeBtn.setImageResource(R.drawable.volume_up);
+        } else {
+            volumeBtn.setImageResource(R.drawable.volume_off);
+        }
+
+        volumeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.TTS = !MainActivity.TTS;
+                if (MainActivity.TTS) {
+                    volumeBtn.setImageResource(R.drawable.volume_up);
+                } else {
+                    initializeTextToSpeach.stop();
+                    volumeBtn.setImageResource(R.drawable.volume_off);
+                }
+            }
+        });
+
+        final Handler handler = new Handler();
+
+        if (MainActivity.TTS) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    initializeTextToSpeach.speak("Για να δείτε πληροφορίες για κάποιο εισιτήριο, πατήστε πάνω στον τίτλο εισιτηρίου που σας ενδιαφέρει.");
+                }
+            }, 100);
+        }
     }
 
-    private void initExpandableDetailList() {
+    private void initExpandableDetailList(String kind) {
 
         for (Document document : ProductScreen.list) {
             if (!((String) document.get("Kind")).equals(kind))
@@ -85,11 +146,6 @@ public class TicketsInfo extends AppCompatActivity {
             groupList.add(name);
             expandableDetailList.put(name, childList);
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
     }
 }
 

@@ -3,9 +3,10 @@ package com.project.ticketmachine;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,7 +14,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
-import com.project.ticketmachine.ui.airport.AirportFragment;
 import com.project.ticketmachine.ui.uniform.UniformFragment;
 
 import org.bson.Document;
@@ -22,15 +22,19 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class Payment extends AppCompatActivity {
 
     protected static String ticketId = null;
     protected static String userId = null;
     protected static String type;
+    ArrayList<String> multipleOrdersTickets;
 
     private int quantity = 1;
     protected String selected_activity = "";
+
+    InitializeTextToSpeach initializeTextToSpeach;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,17 @@ public class Payment extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
+        multipleOrdersTickets = new ArrayList<>();
+        multipleOrdersTickets.add("90 λεπτών");
+        multipleOrdersTickets.add("24 Ωρών");
+        multipleOrdersTickets.add("Λεωφοριακές\n" +
+                "Γραμμές Express");
+        multipleOrdersTickets.add("Λεωφοριακές \n" +
+                "Γραμμές Express");
+        multipleOrdersTickets.add("90 Λεπτών\n" +
+                "Συρμός Μετρό");
+        multipleOrdersTickets.add("90 Λεπτών\n" +
+                "Μετ'επιστροφής");
 
 
         MaterialButton backBtn = (MaterialButton) findViewById(R.id.payment_back_button);
@@ -55,6 +70,21 @@ public class Payment extends AppCompatActivity {
         TextView priceText = (TextView) findViewById(R.id.product_price_chosen_text);
         TextView totalPriceText = (TextView) findViewById(R.id.total_price_text);
         TextView productQuantityText = (TextView) findViewById(R.id.product_quantity);
+
+
+        initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
+
+        final Handler handler = new Handler();
+
+        if (MainActivity.TTS) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    initializeTextToSpeach.speak("Επιλέξτε τον τρόπο πληρωμής");
+                }
+            }, 500);
+        }
+
 
         String selected = getIntent().getStringExtra("activity");
         if (selected != null)
@@ -112,38 +142,51 @@ public class Payment extends AppCompatActivity {
             }
         });
 
-        decreaseQuantityBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                quantity = Integer.parseInt(productQuantityText.getText().toString());
-                if (quantity > 1) {
-                    productQuantityText.setText(String.valueOf(--quantity));
-                    totalPriceText.setText(total_price + String.format("%.2f", price*quantity) + "€");
-                } else {
-                    Toast.makeText(getApplicationContext(), "Δε μπορείτε να επιλέξετε 0 προϊόντα",
-                            Toast.LENGTH_LONG).show();
-                }
-            }
-        });
 
-        increaseQuantityBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                quantity = Integer.parseInt(productQuantityText.getText().toString());
-                Log.e("quantity", String.valueOf(quantity));
-                if (quantity < 10) {
-                    productQuantityText.setText(String.valueOf(++quantity));
-                    totalPriceText.setText(total_price + String.format("%.2f", price*quantity) + "€");
-                } else {
-                    Toast.makeText(getApplicationContext(), "Δε μπορείτε να επιλέξετε περισσότερα από 10 προϊόντα",
-                            Toast.LENGTH_LONG).show();
+
+        if (multipleOrdersTickets.contains(product)){
+
+            decreaseQuantityBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    quantity = Integer.parseInt(productQuantityText.getText().toString());
+                    if (quantity > 1) {
+                        productQuantityText.setText(String.valueOf(--quantity));
+                        totalPriceText.setText(total_price + String.format("%.2f", price*quantity) + "€");
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Δε μπορείτε να επιλέξετε 0 προϊόντα",
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
-        });
+            });
+
+            increaseQuantityBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    quantity = Integer.parseInt(productQuantityText.getText().toString());
+                    Log.e("quantity", String.valueOf(quantity));
+                    if (quantity < 5) {
+                        productQuantityText.setText(String.valueOf(++quantity));
+                        totalPriceText.setText(total_price + String.format("%.2f", price*quantity) + "€");
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Δε μπορείτε να επιλέξετε περισσότερα από 5 προϊόντα",
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        }
+        else {
+            productQuantityText.setVisibility(View.INVISIBLE);
+            increaseQuantityBtn.setVisibility(View.INVISIBLE);
+            decreaseQuantityBtn.setVisibility(View.INVISIBLE);
+        }
+
+
 
         pay_cash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 Intent myIntent = new Intent(Payment.this, CashPayment.class);
                 myIntent.putExtra("Activity", "pay");
@@ -160,9 +203,16 @@ public class Payment extends AppCompatActivity {
                 Intent myIntent = new Intent(Payment.this, CardPayment.class);
                 Payment.this.startActivity(myIntent);
 
+
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        initializeTextToSpeach.destroy();
+        super.onDestroy();
     }
 
     protected static void doInPayment() {

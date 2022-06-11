@@ -3,9 +3,12 @@ package com.project.ticketmachine;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.os.AsyncTask;
@@ -13,8 +16,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.project.ticketmachine.databinding.ActivityMainBinding;
 
 import org.bson.Document;
 
@@ -23,14 +26,16 @@ import org.bson.Document;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.List;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
 
 
-    public static final String MainServerIp = "10.0.2.2";
+    public static final String MainServerIp = "192.168.1.9";
     public static final int MainServerPort = 8080;
     public static Socket socket = null;
     private String student = "";
@@ -38,13 +43,19 @@ public class MainActivity extends AppCompatActivity {
     public static String category = "";
     public static String type = "";
 
-    ActivityMainBinding binding;
 
     public static ObjectOutputStream objectOutputStream;
     public static ObjectInputStream objectInputStream;
     public static Document user = null;
 
     public static HashMap<String , String> ProductCodes;
+
+    public static boolean TTS = true;
+
+    InitializeTextToSpeach initializeTextToSpeach;
+
+    AlertDialog.Builder dialogBuilder;
+    AlertDialog dialog;
 
     @SuppressLint("ResourceType")
     @Override
@@ -53,8 +64,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
 
         ProductCodes = new HashMap<>();
         ProductCodes.put("12345678" , "airport_box2_card");
@@ -73,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
         ImageButton franceBtn = (ImageButton) findViewById(R.id.franceButton);
         ImageButton saudiArabiaBtn = (ImageButton) findViewById(R.id.saudiArabiaButton);
         ImageButton russiaBtn = (ImageButton) findViewById(R.id.russiaButton);
+        ImageButton volumeBtn = (ImageButton) findViewById(R.id.volumeButton);
+
+        MaterialButton moreButton = (MaterialButton) findViewById(R.id.more_box);
 
         ImageButton imageButtons[] = {greeceBtn, ukBtn, italyBtn, germanBtn, franceBtn, saudiArabiaBtn, russiaBtn};
 
@@ -80,15 +93,39 @@ public class MainActivity extends AppCompatActivity {
         TextView cardRechargeText = (TextView) findViewById(R.id.recharge_card_text);
         TextView ticketInfoText = (TextView) findViewById(R.id.ticketInfoText);
         TextView cardInfoText = (TextView) findViewById(R.id.cardInfoText);
-
-        Button send_barcode = (Button) findViewById(R.id.send_barcode);
-        TextInputEditText inputCode = (TextInputEditText) findViewById(R.id.card_barcode);
-
+        TextView moreText = (TextView) findViewById(R.id.more_text);
+        TextView helpClick = (TextView) findViewById(R.id.help);
 
 
+        if (TTS) {
+            volumeBtn.setImageResource(R.drawable.volume_up);
+        } else {
+            volumeBtn.setImageResource(R.drawable.volume_off);
+        }
+
+        volumeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.TTS = !MainActivity.TTS;
+                if (TTS) {
+                    volumeBtn.setImageResource(R.drawable.volume_up);
+                } else {
+                    volumeBtn.setImageResource(R.drawable.volume_off);
+
+                }
+            }
+        });
+
+        helpClick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createInfoDialog();
+            }
+        });
 
         ticketBtn.setOnClickListener(view ->{
-                Intent myIntent = new Intent(MainActivity.this, CheckCard.class);
+
+            Intent myIntent = new Intent(MainActivity.this, CheckCard.class);
                 myIntent.putExtra("key", "Ticket");
                 MainActivity.this.startActivity(myIntent);
         });
@@ -108,6 +145,14 @@ public class MainActivity extends AppCompatActivity {
                 ticketInfoText.setVisibility(View.VISIBLE);
                 ticketRechargeText.setVisibility(View.INVISIBLE);
                 ticketInfoBtn.setImageResource(R.drawable.info_pressed_icon);
+
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        initializeTextToSpeach.speak(ticketInfoText.getText().toString());
+                    }
+                }, 300);
             }
             else {
                 ticketInfoText.setVisibility(View.INVISIBLE);
@@ -123,6 +168,14 @@ public class MainActivity extends AppCompatActivity {
                     cardInfoText.setVisibility(View.VISIBLE);
                     cardRechargeText.setVisibility(View.INVISIBLE);
                     cardInfoBtn.setImageResource(R.drawable.info_pressed_icon);
+
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            initializeTextToSpeach.speak(cardInfoText.getText().toString());
+                        }
+                    }, 300);
                 }
                 else {
                     cardInfoText.setVisibility(View.INVISIBLE);
@@ -132,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        binding.moreBox.setOnClickListener(view -> {
+        moreButton.setOnClickListener(view -> {
             Log.i("click" , "more button");
 
             Intent myIntent = new Intent(MainActivity.this, MoreScreen.class);
@@ -152,6 +205,8 @@ public class MainActivity extends AppCompatActivity {
                 cardInfoText.setText("\nPress here if you want to recharge your card. (Personalized, Anonymous, Unemployed Card)");
                 ticketRechargeText.setText("Buy or Recharge \nTicket");
                 cardRechargeText.setText("Recharge \nCard");
+                helpClick.setText("Help");
+                moreText.setText("More");
 
             }
         });
@@ -166,7 +221,8 @@ public class MainActivity extends AppCompatActivity {
                 cardInfoText.setText("\nΠατήστε εδώ εάν θέλετε να επαναφορτίσετε την κάρτα σας. (Προσωποποιημένη, Ανώνυμη, Κάρτα Ανέργων)");
                 ticketRechargeText.setText("Αγορά ή Επαναφόρτιση \nΕισιτηρίου");
                 cardRechargeText.setText("Επαναφόρτιση \nΚάρτας");
-
+                helpClick.setText("Βοήθεια");
+                moreText.setText("Περισσότερα");
 
             }
         });
@@ -211,6 +267,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
     }
 
     private void setAlphaForLanguageButtons(ImageButton[] imageButtons) {
@@ -221,7 +280,26 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        initializeTextToSpeach.destroy();
         super.onDestroy();
     }
 
+    protected void createInfoDialog() {
+        dialogBuilder = new AlertDialog.Builder(MainActivity.this);
+        final View infoPopUp = getLayoutInflater().inflate(R.layout.help_for_activity_main, null);
+
+        dialogBuilder.setView(infoPopUp);
+        dialog = dialogBuilder.create();
+        dialog.show();
+
+
+        MaterialButton okBtn = (MaterialButton) infoPopUp.findViewById(R.id.ok_button);
+
+        okBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+    }
 }

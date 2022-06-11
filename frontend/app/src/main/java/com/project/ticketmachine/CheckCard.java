@@ -5,11 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.project.ticketmachine.databinding.CheckCardBinding;
@@ -20,6 +23,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.Locale;
 import java.util.Objects;
 
 public class CheckCard extends AppCompatActivity {
@@ -32,6 +36,7 @@ public class CheckCard extends AppCompatActivity {
     private String selected_box = null;
     public static RelativeLayout loading = null;
 
+    InitializeTextToSpeach initializeTextToSpeach;
 
     @SuppressLint("ResourceType")
     @Override
@@ -46,6 +51,10 @@ public class CheckCard extends AppCompatActivity {
 
         binding = CheckCardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
+        final Handler handler = new Handler();
+
 
         loading = binding.loadingPanel;
 
@@ -63,16 +72,39 @@ public class CheckCard extends AppCompatActivity {
             binding.recharge.setVisibility(View.INVISIBLE);
             binding.noRecharge.setVisibility(View.INVISIBLE);
 
+
             binding.ticketInfoText.setText("Παρακαλώ τοποθετήστε την κάρτα σας.");
             binding.ticketInfoText.setVisibility(View.VISIBLE);
             binding.cardBarcode.setVisibility(View.VISIBLE);
             binding.sendBarcode.setVisibility(View.VISIBLE);
             binding.MachineImageView.setVisibility(View.VISIBLE);
+
+            if (MainActivity.TTS) {
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        initializeTextToSpeach.speak("Παρακαλώ, τοποθετήστε την κάρτα σας, στο σημείο που δείχνει η εικόνα");
+                    }
+                }, 500);
+            }
+
+        } else {
+            if (MainActivity.TTS) {
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        initializeTextToSpeach.speak("Επιλέξτε επιθυμητή ενέργεια");
+                    }
+                }, 500);
+            }
         }
+
+
 
         binding.recharge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 binding.rechargeTicket.setVisibility(View.INVISIBLE);
                 binding.recharge.setVisibility(View.INVISIBLE);
                 binding.noRecharge.setVisibility(View.INVISIBLE);
@@ -81,6 +113,16 @@ public class CheckCard extends AppCompatActivity {
                 binding.cardBarcode.setVisibility(View.VISIBLE);
                 binding.sendBarcode.setVisibility(View.VISIBLE);
                 binding.MachineImageView.setVisibility(View.VISIBLE);
+
+
+                if (MainActivity.TTS) {
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            initializeTextToSpeach.speak("Παρακαλώ, τοποθετήστε τo εισιτήριο σας, στο σημείο που δείχνει η εικόνα");
+                        }
+                    }, 500);
+                }
 
             }
         });
@@ -99,6 +141,7 @@ public class CheckCard extends AppCompatActivity {
                 Intent myIntent = new Intent(CheckCard.this, ProductScreen.class);
                 myIntent.putExtra("Type", "Simple Ticket");
                 CheckCard.this.startActivity(myIntent);
+
 
 
             }
@@ -150,6 +193,12 @@ public class CheckCard extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        initializeTextToSpeach.destroy();
+        super.onDestroy();
     }
 
     private class CheckCode extends AsyncTask<String, String, String>{
@@ -262,9 +311,8 @@ public class CheckCard extends AppCompatActivity {
 
             Toast toast = Toast.makeText(context, message, duration);
             toast.show();
+
         }
     }
-
-
 
 }

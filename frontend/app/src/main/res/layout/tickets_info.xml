@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="#FFFFFF"
-    tools:context=".TicketsInfo">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="650dp"
+        android:layout_height="match_parent"
+        android:paddingBottom="70dp"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/buttonLayout"
         android:layout_marginBottom="0dp"
@@ -33,7 +30,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/buttonLayout"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="70dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,25 +41,33 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:backgroundTint="#0DE2AD1D"
-            android:text="ΠΙΣΩ"
+            android:backgroundTint="#33377C3B"
+            android:text="Eνταξει"
             android:textAlignment="center"
             android:textColor="@color/black"
             app:cornerRadius="10dp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:strokeColor="#E2AD1D"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/green"
             app:strokeWidth="2dp" />
 
-        <ImageView
-            android:id="@+id/info_back_text"
-            android:layout_width="30dp"
-            android:layout_height="50dp"
-            app:layout_constraintBottom_toBottomOf="@+id/info_back_button"
-            app:layout_constraintStart_toStartOf="@+id/info_back_button"
-            app:layout_constraintTop_toTopOf="@+id/info_back_button"
-            app:srcCompat="@drawable/back" />
+        <ImageButton
+            android:id="@+id/volumeButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:backgroundTint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:srcCompat="@drawable/volume_off" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

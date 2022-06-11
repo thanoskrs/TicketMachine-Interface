@@ -18,6 +18,9 @@ public class OnPostPayment extends AppCompatActivity {
     OnPostPaymentBinding binding;
     private static int TIME_OUT = 4000; //Time to launch the another activity
 
+    InitializeTextToSpeach initializeTextToSpeach;
+    String text = "";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +28,9 @@ public class OnPostPayment extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+        initializeTextToSpeach = new InitializeTextToSpeach(getApplicationContext());
+
 
         binding = OnPostPaymentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -35,21 +41,39 @@ public class OnPostPayment extends AppCompatActivity {
         binding.loadingPanel.setVisibility(View.INVISIBLE);
         binding.info.setVisibility(View.VISIBLE);
 
+
+
         if (getIntent().getStringExtra("act").equals("recharge")){
-            binding.receiveTicketText.setText("Παρακαλώ παραλάβετε το εισιτήριο και την απόδειξή σας");
+            text = "Παρακαλώ παραλάβετε το εισιτήριο και την απόδειξη σας";
+            binding.receiveTicketText.setText(text);
         }
         else{
             if (Payment.type == null){
-                binding.receiveTicketText.setText("Παρακαλώ παραλάβετε την κάρτα και την απόδειξή σας");
+                text = "Παρακαλώ παραλάβετε την κάρτα και την απόδειξη σας";
+                binding.receiveTicketText.setText(text);
             }
             else{
                 if (Payment.type.equals("Card")) {
-                    binding.receiveTicketText.setText("Παρακαλώ παραλάβετε την κάρτα και την απόδειξή σας");
+                    text = "Παρακαλώ παραλάβετε την κάρτα και την απόδειξη σας";
+                    binding.receiveTicketText.setText(text);
                 } else {
-                    binding.receiveTicketText.setText("Παρακαλώ παραλάβετε το εισιτήριο και την απόδειξή σας");
+                    text = "Παρακαλώ παραλάβετε το εισιτήριο και την απόδειξη σας";
+                    binding.receiveTicketText.setText(text);
                 }
             }
 
+        }
+
+        final Handler handler = new Handler();
+
+        if (MainActivity.TTS) {
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    initializeTextToSpeach.speak(text);
+                }
+            }, 500);
         }
 
         new Handler().postDelayed(new Runnable() {
@@ -63,4 +87,9 @@ public class OnPostPayment extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        initializeTextToSpeach.destroy();
+        super.onDestroy();
+    }
 }

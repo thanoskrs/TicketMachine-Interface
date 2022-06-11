@@ -5,12 +5,15 @@ import static com.project.ticketmachine.MainActivity.MainServerPort;
 import static com.project.ticketmachine.MainActivity.category;
 import static com.project.ticketmachine.MainActivity.type;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -20,6 +23,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.internal.NavigationMenuItemView;
 import com.project.ticketmachine.databinding.ActivityProductScreenBinding;
 import com.project.ticketmachine.ui.airport.AirportFragment;
@@ -32,6 +36,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -46,6 +53,9 @@ public class ProductScreen extends AppCompatActivity {
     public volatile boolean notify = false;
     public static ArrayList<Document> list = null;
     public static final AtomicBoolean processed = new AtomicBoolean(true) ;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +116,6 @@ public class ProductScreen extends AppCompatActivity {
 
             if (!showLastProductScreen || lastProductId.equals("")){
 
-                Log.e("here", "1");
                 binding.repeatOrderLayout.setVisibility(View.INVISIBLE);
                 binding.softBackground.setVisibility(View.INVISIBLE);
 
@@ -122,8 +131,10 @@ public class ProductScreen extends AppCompatActivity {
                     try {
                         processed.wait();
 
-                        UniformFragment.fill_tickets_uniform();
-                        UniformFragment.fill_cards_uniform();
+                        if (params[1].equals("Ticket"))
+                            UniformFragment.fill_tickets_uniform();
+                        else
+                            UniformFragment.fill_cards_uniform();
 
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -200,6 +211,7 @@ public class ProductScreen extends AppCompatActivity {
                     }
                 }
 
+
             }
         });
 
@@ -232,6 +244,8 @@ public class ProductScreen extends AppCompatActivity {
         navView.getMenu().getItem(0).setChecked(true);
 
     }
+
+
 
     private class GetTickets extends AsyncTask<String, String, String> {
 
@@ -297,7 +311,10 @@ public class ProductScreen extends AppCompatActivity {
             return null;
         }
 
-
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
     }
 
 
