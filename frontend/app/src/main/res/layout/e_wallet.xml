@@ -32,7 +32,7 @@
         android:id="@+id/choose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Επιλέξτε τρόπο φόρτισης."
+        android:text="Επιλέξτε τρόπο πληρωμής."
         android:textColor="@color/black"
         android:textSize="21sp"
         android:textStyle="bold"
