@@ -73,7 +73,7 @@ public class OnPostPayment extends AppCompatActivity {
                 public void run() {
                     initializeTextToSpeach.speak(text);
                 }
-            }, 500);
+            }, 100);
         }
 
         new Handler().postDelayed(new Runnable() {
