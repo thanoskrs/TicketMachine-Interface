@@ -46,7 +46,7 @@ public class Ewallet extends AppCompatActivity {
                 public void run() {
                     initializeTextToSpeach.speak("Εισάγετε επιθυμητό ποσό");
                 }
-            }, 300);
+            }, 100);
         }
 
         arrayOfButtons = new Button[10];
@@ -144,7 +144,7 @@ public class Ewallet extends AppCompatActivity {
                         public void run() {
                             initializeTextToSpeach.speak("Επιλέξτε τον τρόπο πληρωμής");
                         }
-                    }, 300);
+                    }, 100);
                 }
             }
         });
