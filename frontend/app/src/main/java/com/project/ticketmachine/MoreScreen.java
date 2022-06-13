@@ -36,7 +36,7 @@ public class MoreScreen extends AppCompatActivity {
                 public void run() {
                     initializeTextToSpeach.speak("Επιλέξτε επιθυμητή ενέργεια");
                 }
-            }, 300);
+            }, 100);
         }
 
         if (getSupportActionBar() != null) {
