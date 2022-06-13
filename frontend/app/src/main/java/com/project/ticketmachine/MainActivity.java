@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         initializeTextToSpeach.speak(ticketInfoText.getText().toString());
                     }
-                }, 300);
+                }, 100);
             }
             else {
                 ticketInfoText.setVisibility(View.INVISIBLE);
@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                         public void run() {
                             initializeTextToSpeach.speak(cardInfoText.getText().toString());
                         }
-                    }, 300);
+                    }, 100);
                 }
                 else {
                     cardInfoText.setVisibility(View.INVISIBLE);
