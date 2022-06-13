@@ -44,7 +44,7 @@ public class CardPayment extends AppCompatActivity {
                 public void run() {
                     initializeTextToSpeach.speak("Τοποθετήστε την κάρτα, όπως δείχνει η εικόνα.");
                 }
-            }, 500);
+            }, 100);
         }
 
 
