@@ -82,7 +82,7 @@ public class Payment extends AppCompatActivity {
                 public void run() {
                     initializeTextToSpeach.speak("Επιλέξτε τον τρόπο πληρωμής");
                 }
-            }, 500);
+            }, 100);
         }
 
 
