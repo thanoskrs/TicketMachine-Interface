@@ -70,7 +70,7 @@ public class UniformFragment extends Fragment {
                 public void run() {
                     initializeTextToSpeach.speak("Επιλέξτε προϊόν ενιαίου.");
                 }
-            }, 500);
+            }, 100);
         }
 
         final TextView textView = binding.textHome;
