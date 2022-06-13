@@ -48,7 +48,7 @@ public class CashPayment extends AppCompatActivity {
                 public void run() {
                     initializeTextToSpeach.speak("Τοποθετήστε τα χρήματα στην υποδοχή, όπως δείχνει η εικόνα.");
                 }
-            }, 500);
+            }, 100);
         }
 
         String activity = getIntent().getStringExtra("Activity");
