@@ -85,7 +85,7 @@ public class CheckCard extends AppCompatActivity {
                     public void run() {
                         initializeTextToSpeach.speak("Παρακαλώ, τοποθετήστε την κάρτα σας, στο σημείο που δείχνει η εικόνα");
                     }
-                }, 500);
+                }, 100);
             }
 
         } else {
@@ -95,7 +95,7 @@ public class CheckCard extends AppCompatActivity {
                     public void run() {
                         initializeTextToSpeach.speak("Επιλέξτε επιθυμητή ενέργεια");
                     }
-                }, 500);
+                }, 100);
             }
         }
 
