@@ -51,7 +51,7 @@ public class RechargeCode extends AppCompatActivity {
                 public void run() {
                     initializeTextToSpeach.speak("Εισάγετε τον κωδικό της κράτησης");
                 }
-            }, 300);
+            }, 100);
         }
 
         if (getSupportActionBar() != null) {
