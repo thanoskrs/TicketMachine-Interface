@@ -67,7 +67,7 @@ public class AirportFragment extends Fragment {
                 public void run() {
                     initializeTextToSpeach.speak("Επιλέξτε προϊόν αεροδρομίου");
                 }
-            }, 500);
+            }, 100);
         }
 
         //boxes
